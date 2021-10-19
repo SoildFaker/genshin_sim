@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace genshin_sim
 {
-    class Relic
+    class Artifact
     {
         private int level = 1;
         public int Level
@@ -28,9 +28,9 @@ namespace genshin_sim
             }
         }
         public string Name { get; private set; }
-        public Sentence MainSentence { get; private set; }
-        public List<Sentence> SubSentence { get; private set; }
-        private List<Sentence> InitSentence = new List<Sentence>();
+        public Affix MainAffix { get; private set; }
+        public List<Affix> MinorAffixes { get; private set; }
+        private List<Affix> InitSentence = new List<Affix>();
         public string Description
         {
             get
@@ -38,9 +38,9 @@ namespace genshin_sim
                 string str = "";
                 for (int i = 0; i < 4; i++)
                 {
-                    SentenceAttr attr = InitSentence[i].Attribute;
-                    str += SentenceFactory.attr2str(attr) + " + " 
-                        + SubSentence.Where(x => x.Attribute == attr).Sum(x => x.Value).ToString()
+                    AffixAttr attr = InitSentence[i].Attribute;
+                    str += AffixFactory.attr2str(attr) + " + " 
+                        + MinorAffixes.Where(x => x.Attribute == attr).Sum(x => x.Value).ToString()
                         + (attr.ToString().StartsWith("p") ? "%" : "");
                     str += "\r\n";
                 }
@@ -48,26 +48,26 @@ namespace genshin_sim
             }
         }
 
-        public Relic(Sentence main, List<Sentence> sub, int lv = 1)
+        public Artifact(Affix main, List<Affix> sub, int lv = 1)
         {
-            this.MainSentence = main;
-            this.SubSentence = sub;
+            this.MainAffix = main;
+            this.MinorAffixes = sub;
             this.Level = lv;
         }
 
-        public Relic()
+        public Artifact()
         {
             this.Name = "test relic";
-            this.MainSentence = SentenceFactory.pick();
-            this.SubSentence = new List<Sentence>();
-            List<SentenceAttr> lst = new List<SentenceAttr>();
-            lst.AddRange(SentenceFactory.attr_arr);
+            this.MainAffix = AffixFactory.pick();
+            this.MinorAffixes = new List<Affix>();
+            List<AffixAttr> lst = new List<AffixAttr>();
+            lst.AddRange(AffixFactory.attr_arr);
             
             for (int i = 0; i < 4; i++)
             {
-                int code = SentenceFactory.rand.Next(lst.Count);
-                Sentence line = new Sentence(lst[code]);
-                this.SubSentence.Add(line);
+                int code = AffixFactory.rand.Next(lst.Count);
+                Affix line = new Affix(lst[code]);
+                this.MinorAffixes.Add(line);
                 this.InitSentence.Add(line);
                 lst.RemoveAt(code);
             }
@@ -78,12 +78,12 @@ namespace genshin_sim
             if (this.Level < 20)
             {
                 this.level++;
-                this.MainSentence.Value += 10;
+                this.MainAffix.Value += 10;
                 if (this.Level % 4 == 0)
                 {
-                    int index = SentenceFactory.rand.Next(this.InitSentence.Count);
-                    this.SubSentence.Add(new Sentence(InitSentence[index].Attribute));
-                    //this.SubSentence[index].Value += SentenceFactory.pick(this.SubSentence[index].Attribute);
+                    int index = AffixFactory.rand.Next(this.InitSentence.Count);
+                    this.MinorAffixes.Add(new Affix(InitSentence[index].Attribute));
+                    //this.MinorAffixes[index].Value += AffixFactory.pick(this.MinorAffixes[index].Attribute);
                 }
             }
         }

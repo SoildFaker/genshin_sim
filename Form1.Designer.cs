@@ -42,10 +42,13 @@ namespace genshin_sim
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstRelicSubSentence
@@ -55,7 +58,7 @@ namespace genshin_sim
             this.lstRelicSubSentence.ItemHeight = 12;
             this.lstRelicSubSentence.Location = new System.Drawing.Point(3, 17);
             this.lstRelicSubSentence.Name = "lstRelicSubSentence";
-            this.lstRelicSubSentence.Size = new System.Drawing.Size(125, 116);
+            this.lstRelicSubSentence.Size = new System.Drawing.Size(144, 116);
             this.lstRelicSubSentence.TabIndex = 0;
             // 
             // cmdReset
@@ -81,8 +84,8 @@ namespace genshin_sim
             // labInfo
             // 
             this.labInfo.AutoSize = true;
-            this.labInfo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labInfo.Location = new System.Drawing.Point(140, 17);
+            this.labInfo.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labInfo.Location = new System.Drawing.Point(6, 202);
             this.labInfo.Name = "labInfo";
             this.labInfo.Size = new System.Drawing.Size(66, 21);
             this.labInfo.TabIndex = 3;
@@ -107,10 +110,11 @@ namespace genshin_sim
             this.groupBox1.Size = new System.Drawing.Size(776, 426);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Relic";
+            this.groupBox1.Text = "Artifact";
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Controls.Add(this.labInfo);
             this.groupBox3.Controls.Add(this.cmdLevelUp20);
@@ -126,12 +130,12 @@ namespace genshin_sim
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.lstRelicSubSentence);
-            this.groupBox4.Location = new System.Drawing.Point(6, 14);
+            this.groupBox4.Location = new System.Drawing.Point(6, 63);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(131, 136);
+            this.groupBox4.Size = new System.Drawing.Size(150, 136);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Sub Sentence";
+            this.groupBox4.Text = "Minor Affixes";
             // 
             // groupBox2
             // 
@@ -141,7 +145,7 @@ namespace genshin_sim
             this.groupBox2.Size = new System.Drawing.Size(194, 403);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Relic List";
+            this.groupBox2.Text = "Artifact List";
             // 
             // lstRelic
             // 
@@ -178,6 +182,25 @@ namespace genshin_sim
             this.columnHeader3.Text = "Level";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(3, 17);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(144, 20);
+            this.comboBox1.TabIndex = 5;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.comboBox1);
+            this.groupBox5.Location = new System.Drawing.Point(6, 14);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(150, 43);
+            this.groupBox5.TabIndex = 6;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Main Affix";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -192,6 +215,7 @@ namespace genshin_sim
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -211,6 +235,8 @@ namespace genshin_sim
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

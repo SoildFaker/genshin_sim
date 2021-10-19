@@ -17,13 +17,13 @@ namespace genshin_sim
             InitializeComponent();
         }
 
-        List<Relic> relics = new List<Relic>();
-        Relic relic_now;
+        List<Artifact> relics = new List<Artifact>();
+        Artifact relic_now;
         private void Form1_Load(object sender, EventArgs e)
         {
             for (int j = 0; j < 20; j++)
             {
-                relics.Add(new Relic());
+                relics.Add(new Artifact());
             }
             relic_now = relics[0];
             refresh_relic_list();
@@ -54,9 +54,9 @@ namespace genshin_sim
         private void get_relic_info()
         {
             lstRelicSubSentence.Items.Clear();
-            for (int i = 0; i < relic_now.SubSentence.Count; i++)
+            for (int i = 0; i < relic_now.MinorAffixes.Count; i++)
             {
-                lstRelicSubSentence.Items.Add(relic_now.SubSentence[i].Description);
+                lstRelicSubSentence.Items.Add(relic_now.MinorAffixes[i].Description);
             }
             this.labInfo.Text = $"Level: {relic_now.Level}\r\n";
             this.labInfo.Text += $"{relic_now.Description}";
@@ -67,9 +67,9 @@ namespace genshin_sim
             relic_now.LevelUp();
            
             lstRelicSubSentence.Items.Clear();
-            for (int i = 0; i < relic_now.SubSentence.Count; i++)
+            for (int i = 0; i < relic_now.MinorAffixes.Count; i++)
             {
-                lstRelicSubSentence.Items.Add(relic_now.SubSentence[i].Description);
+                lstRelicSubSentence.Items.Add(relic_now.MinorAffixes[i].Description);
             }
             refresh_relic_list();
         }
