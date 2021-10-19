@@ -31,7 +31,16 @@ namespace genshin_sim
         public Affix MainAffix { get; private set; }
         public List<Affix> MinorAffixes { get; private set; }
         private List<Affix> InitSentence = new List<Affix>();
-        public string Description
+        public string MainAffixesString
+        {
+            get
+            {
+                return AffixFactory.attr2str(MainAffix.Attribute) + " + " + MainAffix.Value.ToString()
+                    + (MainAffix.Attribute.ToString().StartsWith("p") ? "%\r\n" : "\r\n");
+
+            }
+        }
+        public string MinorAffixesString
         {
             get
             {
@@ -47,6 +56,7 @@ namespace genshin_sim
                 return str;
             }
         }
+        public string Description { get; private set; }
 
         public Artifact(Affix main, List<Affix> sub, int lv = 1)
         {

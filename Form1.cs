@@ -58,8 +58,7 @@ namespace genshin_sim
             {
                 lstRelicSubSentence.Items.Add(relic_now.MinorAffixes[i].Description);
             }
-            this.labInfo.Text = $"Level: {relic_now.Level}\r\n";
-            this.labInfo.Text += $"{relic_now.Description}";
+            this.labInfo.Text = $"Level: {relic_now.Level}\r\n{relic_now.MainAffixesString}\r\n{relic_now.MinorAffixesString}";
         }
 
         private void level_up()
