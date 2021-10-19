@@ -31,12 +31,12 @@ namespace genshin_sim
         public Affix MainAffix { get; private set; }
         public List<Affix> MinorAffixes { get; private set; }
         private List<Affix> InitSentence = new List<Affix>();
-        public string MainAffixesString
+        public string MainAffixString
         {
             get
             {
-                return AffixFactory.attr2str(MainAffix.Attribute) + " + " + MainAffix.Value.ToString()
-                    + (MainAffix.Attribute.ToString().StartsWith("p") ? "%\r\n" : "\r\n");
+                return AffixFactory.attr2str(MainAffix.Attribute) + " + " + MainAffix.Value.ToString("0")
+                    + (MainAffix.Attribute.ToString("").StartsWith("p") ? "%\r\n" : "\r\n");
 
             }
         }
@@ -68,10 +68,11 @@ namespace genshin_sim
         public Artifact()
         {
             this.Name = "test relic";
-            this.MainAffix = AffixFactory.pick();
+            this.MainAffix = new Affix(AffixAttr.HP, 717);
             this.MinorAffixes = new List<Affix>();
             List<AffixAttr> lst = new List<AffixAttr>();
             lst.AddRange(AffixFactory.attr_arr);
+            lst.Remove(AffixAttr.HP);
             
             for (int i = 0; i < 4; i++)
             {
@@ -88,7 +89,7 @@ namespace genshin_sim
             if (this.Level < 20)
             {
                 this.level++;
-                this.MainAffix.Value += 10;
+                this.MainAffix.Value += 213.8421;
                 if (this.Level % 4 == 0)
                 {
                     int index = AffixFactory.rand.Next(this.InitSentence.Count);

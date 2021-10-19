@@ -53,22 +53,23 @@ namespace genshin_sim
 
         private void get_relic_info()
         {
-            lstRelicSubSentence.Items.Clear();
+            lstRelicMinorAffixes.Items.Clear();
             for (int i = 0; i < relic_now.MinorAffixes.Count; i++)
             {
-                lstRelicSubSentence.Items.Add(relic_now.MinorAffixes[i].Description);
+                lstRelicMinorAffixes.Items.Add(relic_now.MinorAffixes[i].Description);
             }
-            this.labInfo.Text = $"Level: {relic_now.Level}\r\n{relic_now.MainAffixesString}\r\n{relic_now.MinorAffixesString}";
+            cmbMainAffix.Text = relic_now.MainAffixString;
+            this.labInfo.Text = $"Level: {relic_now.Level}\r\n{relic_now.MainAffixString}\r\n{relic_now.MinorAffixesString}";
         }
 
         private void level_up()
         {
             relic_now.LevelUp();
            
-            lstRelicSubSentence.Items.Clear();
+            lstRelicMinorAffixes.Items.Clear();
             for (int i = 0; i < relic_now.MinorAffixes.Count; i++)
             {
-                lstRelicSubSentence.Items.Add(relic_now.MinorAffixes[i].Description);
+                lstRelicMinorAffixes.Items.Add(relic_now.MinorAffixes[i].Description);
             }
             refresh_relic_list();
         }
