@@ -23,7 +23,7 @@ namespace genshin_sim
         {
             for (int j = 0; j < 20; j++)
             {
-                relics.Add(new Artifact());
+                relics.Add(ArtifactFactory.pick());
             }
             relic_now = relics[0];
             refresh_relic_list();
@@ -35,6 +35,7 @@ namespace genshin_sim
             for (int i = 0; i < relics.Count; i++)
             {
                 lstRelic.Items.Add(i.ToString());
+                lstRelic.Items[i].ImageIndex = ((int)relics[i].Type);
                 lstRelic.Items[i].SubItems.Add(relics[i].Name);
                 lstRelic.Items[i].SubItems.Add(relics[i].Level.ToString());
             }

@@ -18,7 +18,15 @@ namespace genshin_sim
         pCGR,
         pCRI,
         pCRD,
+        pPhysical,
+        pHydro,
+        pCryo,
+        pElectro,
+        pAnemo,
+        pGeo,
+        pHealing,
     }
+
     public static class AffixFactory
     {
         public static Affix HP_209 = new Affix(AffixAttr.HP, 209);
@@ -71,7 +79,7 @@ namespace genshin_sim
         public static Affix CRD_7p0 = new Affix(AffixAttr.pCRD, 7.0);
         public static Affix CRD_7p8 = new Affix(AffixAttr.pCRD, 7.8);
 
-        public static Affix[] sub_sentence_arr = new Affix[40] 
+        public static Affix[] minor_affixes_arr = new Affix[40] 
         {
             HP_209, HP_239, HP_269, HP_299,
             HP_4p1, HP_4p7, HP_5p3, HP_5p8,
@@ -85,7 +93,7 @@ namespace genshin_sim
             ELM_16, ELM_19, ELM_21, ELM_23,
         };
 
-        public static AffixAttr[] attr_arr = new AffixAttr[]
+        public static AffixAttr[] minor_affix_attr_arr = new AffixAttr[]
         {
             AffixAttr.HP,
             AffixAttr.ATK,
@@ -99,13 +107,65 @@ namespace genshin_sim
             AffixAttr.pCRD,
         };
 
-        public static Random rand = new Random();
-        public static Affix pick()
+        public static AffixAttr[] goblet_main_affix_attr_arr = new AffixAttr[]
         {
-            return sub_sentence_arr[rand.Next(0, 40)];
+            AffixAttr.ELM,
+            AffixAttr.pHP,
+            AffixAttr.pATK,
+            AffixAttr.pDEF,
+            AffixAttr.pPhysical,
+            AffixAttr.pHydro,
+            AffixAttr.pCryo,
+            AffixAttr.pAnemo,
+            AffixAttr.pGeo,
+            AffixAttr.pElectro,
+        };
+
+        public static AffixAttr[] sands_main_affix_attr_arr = new AffixAttr[]
+        {
+            AffixAttr.ELM,
+            AffixAttr.pHP,
+            AffixAttr.pATK,
+            AffixAttr.pDEF,
+            AffixAttr.pCGR,
+        };
+
+        public static AffixAttr[] circlet_main_affix_attr_arr = new AffixAttr[]
+        {
+            AffixAttr.ELM,
+            AffixAttr.pHP,
+            AffixAttr.pATK,
+            AffixAttr.pDEF,
+            AffixAttr.pCRI,
+            AffixAttr.pCRD,
+            AffixAttr.pHealing,
+        };
+
+        public static Random rand = new Random();
+        public static Affix pick_minor_affixes()
+        {
+            return minor_affixes_arr[rand.Next(minor_affixes_arr.Length)];
         }
 
-        public static double pick(AffixAttr attr)
+        public static Affix pick_main_affixes(ArtifactType type)
+        {
+            switch (type)
+            {
+                case ArtifactType.FlowerOfLife:
+                    return new Affix(AffixAttr.HP);
+                case ArtifactType.PlumeOfDeath:
+                    return new Affix(AffixAttr.ATK);
+                case ArtifactType.SandsOfEon:
+                    return new Affix(sands_main_affix_attr_arr[rand.Next(sands_main_affix_attr_arr.Length)]);
+                case ArtifactType.GobletOfEonothem:
+                    return new Affix(goblet_main_affix_attr_arr[rand.Next(goblet_main_affix_attr_arr.Length)]);
+                case ArtifactType.CircletOfLogos:
+                    return new Affix(circlet_main_affix_attr_arr[rand.Next(circlet_main_affix_attr_arr.Length)]);
+            }
+           return new Affix(AffixAttr.HP);
+        }
+
+        public static double pick_minor_affix_value(AffixAttr attr)
         {
             switch (attr)
             {
@@ -146,6 +206,13 @@ namespace genshin_sim
                 case AffixAttr.pCGR: return "充能效率";
                 case AffixAttr.pCRI: return "暴击率";
                 case AffixAttr.pCRD: return "暴击伤害";
+                case AffixAttr.pPhysical: return "物理伤害加成";
+                case AffixAttr.pHydro: return "火属性伤害加成";
+                case AffixAttr.pCryo: return "冰属性伤害加成";
+                case AffixAttr.pElectro: return "雷属性伤害加成";
+                case AffixAttr.pAnemo: return "风属性伤害加成";
+                case AffixAttr.pGeo: return "岩属性伤害加成";
+                case AffixAttr.pHealing: return "治疗效果加成";
                 default: return "？？？";
             }
         }
@@ -171,7 +238,7 @@ namespace genshin_sim
         public Affix(AffixAttr attr)
         {
             this.Attribute = attr;
-            this.Value = AffixFactory.pick(attr);
+            this.Value = AffixFactory.pick_minor_affix_value(attr);
         }
 
     }

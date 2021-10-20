@@ -29,25 +29,28 @@ namespace genshin_sim
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lstRelicMinorAffixes = new System.Windows.Forms.ListBox();
             this.cmdAdd = new System.Windows.Forms.Button();
             this.labInfo = new System.Windows.Forms.Label();
             this.cmdLevelUp20 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cmbMainAffix = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstRelic = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cmbMainAffix = new System.Windows.Forms.ComboBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.ArtifactTypeImageList = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstRelicMinorAffixes
@@ -62,7 +65,7 @@ namespace genshin_sim
             // 
             // cmdAdd
             // 
-            this.cmdAdd.Location = new System.Drawing.Point(443, 14);
+            this.cmdAdd.Location = new System.Drawing.Point(395, 14);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(115, 23);
             this.cmdAdd.TabIndex = 2;
@@ -73,7 +76,7 @@ namespace genshin_sim
             // labInfo
             // 
             this.labInfo.AutoSize = true;
-            this.labInfo.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labInfo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labInfo.Location = new System.Drawing.Point(6, 202);
             this.labInfo.Name = "labInfo";
             this.labInfo.Size = new System.Drawing.Size(66, 21);
@@ -82,7 +85,7 @@ namespace genshin_sim
             // 
             // cmdLevelUp20
             // 
-            this.cmdLevelUp20.Location = new System.Drawing.Point(443, 43);
+            this.cmdLevelUp20.Location = new System.Drawing.Point(395, 43);
             this.cmdLevelUp20.Name = "cmdLevelUp20";
             this.cmdLevelUp20.Size = new System.Drawing.Size(115, 23);
             this.cmdLevelUp20.TabIndex = 4;
@@ -108,12 +111,31 @@ namespace genshin_sim
             this.groupBox3.Controls.Add(this.labInfo);
             this.groupBox3.Controls.Add(this.cmdLevelUp20);
             this.groupBox3.Controls.Add(this.cmdAdd);
-            this.groupBox3.Location = new System.Drawing.Point(206, 20);
+            this.groupBox3.Location = new System.Drawing.Point(254, 20);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(564, 397);
+            this.groupBox3.Size = new System.Drawing.Size(516, 397);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Info";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.cmbMainAffix);
+            this.groupBox5.Location = new System.Drawing.Point(6, 14);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(150, 43);
+            this.groupBox5.TabIndex = 6;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Main Affix";
+            // 
+            // cmbMainAffix
+            // 
+            this.cmbMainAffix.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbMainAffix.FormattingEnabled = true;
+            this.cmbMainAffix.Location = new System.Drawing.Point(3, 17);
+            this.cmbMainAffix.Name = "cmbMainAffix";
+            this.cmbMainAffix.Size = new System.Drawing.Size(144, 20);
+            this.cmbMainAffix.TabIndex = 5;
             // 
             // groupBox4
             // 
@@ -130,7 +152,7 @@ namespace genshin_sim
             this.groupBox2.Controls.Add(this.lstRelic);
             this.groupBox2.Location = new System.Drawing.Point(6, 17);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(194, 403);
+            this.groupBox2.Size = new System.Drawing.Size(242, 403);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Artifact List";
@@ -145,10 +167,12 @@ namespace genshin_sim
             this.lstRelic.FullRowSelect = true;
             this.lstRelic.GridLines = true;
             this.lstRelic.HideSelection = false;
+            this.lstRelic.LargeImageList = this.ArtifactTypeImageList;
             this.lstRelic.Location = new System.Drawing.Point(3, 17);
             this.lstRelic.MultiSelect = false;
             this.lstRelic.Name = "lstRelic";
-            this.lstRelic.Size = new System.Drawing.Size(188, 383);
+            this.lstRelic.Size = new System.Drawing.Size(236, 383);
+            this.lstRelic.SmallImageList = this.ArtifactTypeImageList;
             this.lstRelic.TabIndex = 5;
             this.lstRelic.UseCompatibleStateImageBehavior = false;
             this.lstRelic.View = System.Windows.Forms.View.Details;
@@ -157,7 +181,7 @@ namespace genshin_sim
             // columnHeader1
             // 
             this.columnHeader1.Text = "ID";
-            this.columnHeader1.Width = 30;
+            this.columnHeader1.Width = 53;
             // 
             // columnHeader2
             // 
@@ -170,24 +194,15 @@ namespace genshin_sim
             this.columnHeader3.Text = "Level";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // cmbMainAffix
+            // ArtifactTypeImageList
             // 
-            this.cmbMainAffix.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbMainAffix.FormattingEnabled = true;
-            this.cmbMainAffix.Location = new System.Drawing.Point(3, 17);
-            this.cmbMainAffix.Name = "cmbMainAffix";
-            this.cmbMainAffix.Size = new System.Drawing.Size(144, 20);
-            this.cmbMainAffix.TabIndex = 5;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.cmbMainAffix);
-            this.groupBox5.Location = new System.Drawing.Point(6, 14);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(150, 43);
-            this.groupBox5.TabIndex = 6;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Main Affix";
+            this.ArtifactTypeImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ArtifactTypeImageList.ImageStream")));
+            this.ArtifactTypeImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.ArtifactTypeImageList.Images.SetKeyName(0, "Icon_Flower_of_Life.png");
+            this.ArtifactTypeImageList.Images.SetKeyName(1, "Icon_Plume_of_Death.png");
+            this.ArtifactTypeImageList.Images.SetKeyName(2, "Icon_Sands_of_Eon.png");
+            this.ArtifactTypeImageList.Images.SetKeyName(3, "Icon_Goblet_of_Eonothem.png");
+            this.ArtifactTypeImageList.Images.SetKeyName(4, "Icon_Circlet_of_Logos.png");
             // 
             // Form1
             // 
@@ -201,9 +216,9 @@ namespace genshin_sim
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -224,6 +239,7 @@ namespace genshin_sim
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ComboBox cmbMainAffix;
+        private System.Windows.Forms.ImageList ArtifactTypeImageList;
     }
 }
 
