@@ -36,7 +36,7 @@ namespace genshin_sim
 
     public class Artifact
     {
-        private int level = 1;
+        private int level = 0;
         public int Level
         {
             get
@@ -51,7 +51,7 @@ namespace genshin_sim
                 }
                 else if (value < 1)
                 {
-                    this.level = 1;
+                    this.level = 0;
                 }
             }
         }
@@ -65,8 +65,14 @@ namespace genshin_sim
         {
             get
             {
-                return AffixFactory.attr2str(MainAffix.Attribute) + " + " + MainAffix.Value.ToString("0")
-                    + (MainAffix.Attribute.ToString("").StartsWith("p") ? "%\r\n" : "\r\n");
+                if (MainAffix.Attribute.ToString().StartsWith("p"))
+                {
+                    return AffixFactory.attr2str(MainAffix.Attribute) + " + " + MainAffix.Value.ToString("0.0%");
+                }
+                else
+                {
+                    return AffixFactory.attr2str(MainAffix.Attribute) + " + " + MainAffix.Value.ToString();
+                }
 
             }
         }
@@ -78,9 +84,16 @@ namespace genshin_sim
                 for (int i = 0; i < 4; i++)
                 {
                     AffixAttr attr = InitSentence[i].Attribute;
-                    str += AffixFactory.attr2str(attr) + " + " 
-                        + MinorAffixes.Where(x => x.Attribute == attr).Sum(x => x.Value).ToString()
-                        + (attr.ToString().StartsWith("p") ? "%" : "");
+                    if (attr.ToString().StartsWith("p"))
+                    {
+                        str += AffixFactory.attr2str(attr) + " + "
+                            + MinorAffixes.Where(x => x.Attribute == attr).Sum(x => x.Value).ToString("0.0%");
+                    }
+                    else
+                    {
+                        str += AffixFactory.attr2str(attr) + " + "
+                            + MinorAffixes.Where(x => x.Attribute == attr).Sum(x => x.Value).ToString();
+                    }
                     str += "\r\n";
                 }
                 return str;
@@ -122,30 +135,30 @@ namespace genshin_sim
             {
                 case ArtifactType.FlowerOfLife:
                     this.Name = "Flower of Life";
-                    this.MainAffixValues = new double[20]{ 717, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4780};
+                    this.MainAffixValues = new double[21]{ 717, 920, 1123, 1326, 1530, 1733, 1936, 2139, 2342, 2545, 2749, 2952, 3155, 3358, 3561, 3764, 3967, 4171, 4374, 4577, 4780 };
                     break;
                 case ArtifactType.PlumeOfDeath:
                     this.Name = "Plume of Death";
-                    this.MainAffixValues = new double[20]{ 47, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 311};
+                    this.MainAffixValues = new double[21]{ 47, 60, 73, 86, 100, 113, 126, 139, 152, 166, 179, 192, 205, 219, 232, 245, 258, 272, 285, 298, 311 };
                     break;
                 case ArtifactType.SandsOfEon:
                     this.Name = "Sands of Eon";
                     switch (MainAffix.Attribute)
                     {
                         case AffixAttr.ELM:
-                            this.MainAffixValues = new double[20]{ 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 186.5};
+                            this.MainAffixValues = new double[21]{ 28, 36, 44, 52, 60, 68, 76, 84, 91, 99, 107, 115, 123, 131, 139, 147, 155, 163, 171, 179, 187 };
                             break;
                         case AffixAttr.pHP:
-                            this.MainAffixValues = new double[20]{ 7.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46.6};
+                            this.MainAffixValues = new double[21]{ 0.07, 0.09, 0.11, 0.129, 0.149, 0.169, 0.189, 0.209, 0.228, 0.248, 0.268, 0.288, 0.308, 0.328, 0.347, 0.367, 0.387, 0.407, 0.427, 0.446, 0.466 };
                             break;
                         case AffixAttr.pATK:
-                            this.MainAffixValues = new double[20]{ 7.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46.6};
+                            this.MainAffixValues = new double[21]{ 0.07, 0.09, 0.11, 0.129, 0.149, 0.169, 0.189, 0.209, 0.228, 0.248, 0.268, 0.288, 0.308, 0.328, 0.347, 0.367, 0.387, 0.407, 0.427, 0.446, 0.466 };
                             break;
                         case AffixAttr.pDEF:
-                            this.MainAffixValues = new double[20]{ 8.7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 58.3};
+                            this.MainAffixValues = new double[21]{ 0.087, 0.112, 0.137, 0.162, 0.186, 0.211, 0.236, 0.261, 0.286, 0.31, 0.335, 0.36, 0.385, 0.409, 0.434, 0.459, 0.484, 0.508, 0.533, 0.558, 0.583 };
                             break;
                         case AffixAttr.pCGR:
-                            this.MainAffixValues = new double[20]{ 7.8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 51.8};
+                            this.MainAffixValues = new double[21]{ 0.078, 0.1, 0.122, 0.144, 0.166, 0.188, 0.21, 0.232, 0.254, 0.276, 0.298, 0.32, 0.342, 0.364, 0.386, 0.408, 0.43, 0.452, 0.474, 0.496, 0.518 };
                             break;
                     }
                     break;
@@ -154,26 +167,26 @@ namespace genshin_sim
                     switch (MainAffix.Attribute)
                     {
                         case AffixAttr.ELM:
-                            this.MainAffixValues = new double[20]{ 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 186.5};
+                            this.MainAffixValues = new double[21]{ 28, 36, 44, 52, 60, 68, 76, 84, 91, 99, 107, 115, 123, 131, 139, 147, 155, 163, 171, 179, 187 };
                             break;
                         case AffixAttr.pHP:
-                            this.MainAffixValues = new double[20]{ 7.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46.6};
+                            this.MainAffixValues = new double[21]{ 0.07, 0.09, 0.11, 0.129, 0.149, 0.169, 0.189, 0.209, 0.228, 0.248, 0.268, 0.288, 0.308, 0.328, 0.347, 0.367, 0.387, 0.407, 0.427, 0.446, 0.466 };
                             break;
                         case AffixAttr.pATK:
-                            this.MainAffixValues = new double[20]{ 7.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46.6};
+                            this.MainAffixValues = new double[21]{ 0.07, 0.09, 0.11, 0.129, 0.149, 0.169, 0.189, 0.209, 0.228, 0.248, 0.268, 0.288, 0.308, 0.328, 0.347, 0.367, 0.387, 0.407, 0.427, 0.446, 0.466 };
                             break;
                         case AffixAttr.pDEF:
-                            this.MainAffixValues = new double[20]{ 8.7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 58.3};
+                            this.MainAffixValues = new double[21]{ 0.087, 0.112, 0.137, 0.162, 0.186, 0.211, 0.236, 0.261, 0.286, 0.31, 0.335, 0.36, 0.385, 0.409, 0.434, 0.459, 0.484, 0.508, 0.533, 0.558, 0.583 };
                             break;
                         case AffixAttr.pPhysical:
-                            this.MainAffixValues = new double[20]{ 8.7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 58.3};
+                            this.MainAffixValues = new double[21]{ 0.087, 0.112, 0.137, 0.162, 0.186, 0.211, 0.236, 0.261, 0.286, 0.31, 0.335, 0.36, 0.385, 0.409, 0.434, 0.459, 0.484, 0.508, 0.533, 0.558, 0.583 };
                             break;
                         case AffixAttr.pHydro:
                         case AffixAttr.pCryo:
                         case AffixAttr.pElectro:
                         case AffixAttr.pAnemo:
                         case AffixAttr.pGeo:
-                            this.MainAffixValues = new double[20]{ 7.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46.6};
+                            this.MainAffixValues = new double[21]{ 0.07, 0.09, 0.11, 0.129, 0.149, 0.169, 0.189, 0.209, 0.228, 0.248, 0.268, 0.288, 0.308, 0.328, 0.347, 0.367, 0.387, 0.407, 0.427, 0.446, 0.466 };
                             break;
                     }
                     break;
@@ -182,27 +195,28 @@ namespace genshin_sim
                     switch (MainAffix.Attribute)
                     {
                         case AffixAttr.ELM:
-                            this.MainAffixValues = new double[20]{ 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 186.5};
+                            this.MainAffixValues = new double[21]{ 28, 36, 44, 52, 60, 68, 76, 84, 91, 99, 107, 115, 123, 131, 139, 147, 155, 163, 171, 179, 187 };
                             break;
                         case AffixAttr.pHP:
-                            this.MainAffixValues = new double[20]{ 7.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46.6};
+                            this.MainAffixValues = new double[21]{ 0.07, 0.09, 0.11, 0.129, 0.149, 0.169, 0.189, 0.209, 0.228, 0.248, 0.268, 0.288, 0.308, 0.328, 0.347, 0.367, 0.387, 0.407, 0.427, 0.446, 0.466 };
                             break;
                         case AffixAttr.pATK:
-                            this.MainAffixValues = new double[20]{ 7.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46.6};
+                            this.MainAffixValues = new double[21]{ 0.07, 0.09, 0.11, 0.129, 0.149, 0.169, 0.189, 0.209, 0.228, 0.248, 0.268, 0.288, 0.308, 0.328, 0.347, 0.367, 0.387, 0.407, 0.427, 0.446, 0.466 };
                             break;
                         case AffixAttr.pDEF:
-                            this.MainAffixValues = new double[20]{ 8.7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 58.3};
+                            this.MainAffixValues = new double[21]{ 0.087, 0.112, 0.137, 0.162, 0.186, 0.211, 0.236, 0.261, 0.286, 0.31, 0.335, 0.36, 0.385, 0.409, 0.434, 0.459, 0.484, 0.508, 0.533, 0.558, 0.583 };
                             break;
                         case AffixAttr.pCGR:
+                            this.MainAffixValues = new double[21]{ 0.078, 0.1, 0.122, 0.144, 0.166, 0.188, 0.21, 0.232, 0.254, 0.276, 0.298, 0.32, 0.342, 0.364, 0.386, 0.408, 0.43, 0.452, 0.474, 0.496, 0.518 };
                             break;
                         case AffixAttr.pCRI:
-                            this.MainAffixValues = new double[20]{ 4.7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31.1};
+                            this.MainAffixValues = new double[21]{ 0.047, 0.06, 0.073, 0.086, 0.099, 0.113, 0.126, 0.139, 0.152, 0.166, 0.179, 0.192, 0.205, 0.218, 0.232, 0.245, 0.258, 0.271, 0.284, 0.298, 0.311 };
                             break;
                         case AffixAttr.pCRD:
-                            this.MainAffixValues = new double[20]{ 9.3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 62.2};
+                            this.MainAffixValues = new double[21]{ 0.093, 0.12, 0.146, 0.173, 0.199, 0.225, 0.252, 0.278, 0.305, 0.331, 0.357, 0.384, 0.41, 0.437, 0.463, 0.49, 0.516, 0.542, 0.569, 0.595, 0.622 };
                             break;
                         case AffixAttr.pHealing:
-                            this.MainAffixValues = new double[20]{ 5.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35.9};
+                            this.MainAffixValues = new double[21]{ 0.054, 0.069, 0.084, 0.1, 0.115, 0.13, 0.145, 0.161, 0.176, 0.191, 0.206, 0.221, 0.237, 0.252, 0.267, 0.282, 0.298, 0.313, 0.328, 0.343, 0.359 };
                             break;
                     }
                     break;
@@ -216,7 +230,7 @@ namespace genshin_sim
             if (this.Level < 20)
             {
                 this.level++;
-                this.MainAffix.Value = MainAffixValues[level - 1];
+                this.MainAffix.Value = MainAffixValues[level];
                 if (this.Level % 4 == 0)
                 {
                     int index = AffixFactory.rand.Next(this.InitSentence.Count);

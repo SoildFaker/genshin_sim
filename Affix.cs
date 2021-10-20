@@ -49,35 +49,35 @@ namespace genshin_sim
         public static Affix ELM_21 = new Affix(AffixAttr.ELM, 21);
         public static Affix ELM_23 = new Affix(AffixAttr.ELM, 23);
 
-        public static Affix CGR_4p5 = new Affix(AffixAttr.pCGR, 4.5);
-        public static Affix CGR_5p2 = new Affix(AffixAttr.pCGR, 5.2);
-        public static Affix CGR_5p8 = new Affix(AffixAttr.pCGR, 5.8);
-        public static Affix CGR_6p5 = new Affix(AffixAttr.pCGR, 6.5);
+        public static Affix CGR_4p5 = new Affix(AffixAttr.pCGR, 0.045);
+        public static Affix CGR_5p2 = new Affix(AffixAttr.pCGR, 0.052);
+        public static Affix CGR_5p8 = new Affix(AffixAttr.pCGR, 0.058);
+        public static Affix CGR_6p5 = new Affix(AffixAttr.pCGR, 0.065);
 
-        public static Affix DEF_5p1 = new Affix(AffixAttr.pDEF, 5.1);
-        public static Affix DEF_5p8 = new Affix(AffixAttr.pDEF, 5.8);
-        public static Affix DEF_6p6 = new Affix(AffixAttr.pDEF, 6.6);
-        public static Affix DEF_7p3 = new Affix(AffixAttr.pDEF, 7.3);
+        public static Affix DEF_5p1 = new Affix(AffixAttr.pDEF, 0.051);
+        public static Affix DEF_5p8 = new Affix(AffixAttr.pDEF, 0.058);
+        public static Affix DEF_6p6 = new Affix(AffixAttr.pDEF, 0.066);
+        public static Affix DEF_7p3 = new Affix(AffixAttr.pDEF, 0.073);
 
-        public static Affix HP_4p1 = new Affix(AffixAttr.pHP, 4.1);
-        public static Affix HP_4p7 = new Affix(AffixAttr.pHP, 4.7);
-        public static Affix HP_5p3 = new Affix(AffixAttr.pHP, 5.3);
-        public static Affix HP_5p8 = new Affix(AffixAttr.pHP, 5.8);
+        public static Affix HP_4p1 = new Affix(AffixAttr.pHP, 0.041);
+        public static Affix HP_4p7 = new Affix(AffixAttr.pHP, 0.047);
+        public static Affix HP_5p3 = new Affix(AffixAttr.pHP, 0.053);
+        public static Affix HP_5p8 = new Affix(AffixAttr.pHP, 0.058);
 
-        public static Affix ATK_4p1 = new Affix(AffixAttr.pATK, 4.1);
-        public static Affix ATK_4p7 = new Affix(AffixAttr.pATK, 4.7);
-        public static Affix ATK_5p3 = new Affix(AffixAttr.pATK, 5.3);
-        public static Affix ATK_5p8 = new Affix(AffixAttr.pATK, 5.8);
+        public static Affix ATK_4p1 = new Affix(AffixAttr.pATK, 0.041);
+        public static Affix ATK_4p7 = new Affix(AffixAttr.pATK, 0.047);
+        public static Affix ATK_5p3 = new Affix(AffixAttr.pATK, 0.053);
+        public static Affix ATK_5p8 = new Affix(AffixAttr.pATK, 0.058);
 
-        public static Affix CRI_2p7 = new Affix(AffixAttr.pCRI, 2.7);
-        public static Affix CRI_3p1 = new Affix(AffixAttr.pCRI, 3.1);
-        public static Affix CRI_3p5 = new Affix(AffixAttr.pCRI, 3.5);
-        public static Affix CRI_3p9 = new Affix(AffixAttr.pCRI, 3.9);
+        public static Affix CRI_2p7 = new Affix(AffixAttr.pCRI, 0.027);
+        public static Affix CRI_3p1 = new Affix(AffixAttr.pCRI, 0.031);
+        public static Affix CRI_3p5 = new Affix(AffixAttr.pCRI, 0.035);
+        public static Affix CRI_3p9 = new Affix(AffixAttr.pCRI, 0.039);
 
-        public static Affix CRD_5p4 = new Affix(AffixAttr.pCRD, 5.4);
-        public static Affix CRD_6p2 = new Affix(AffixAttr.pCRD, 6.2);
-        public static Affix CRD_7p0 = new Affix(AffixAttr.pCRD, 7.0);
-        public static Affix CRD_7p8 = new Affix(AffixAttr.pCRD, 7.8);
+        public static Affix CRD_5p4 = new Affix(AffixAttr.pCRD, 0.054);
+        public static Affix CRD_6p2 = new Affix(AffixAttr.pCRD, 0.062);
+        public static Affix CRD_7p0 = new Affix(AffixAttr.pCRD, 0.070);
+        public static Affix CRD_7p8 = new Affix(AffixAttr.pCRD, 0.078);
 
         public static Affix[] minor_affixes_arr = new Affix[40] 
         {
@@ -172,21 +172,21 @@ namespace genshin_sim
                 case AffixAttr.HP:
                     return new double[4]{209, 239, 269, 299}[AffixFactory.rand.Next(0,4)];
                 case AffixAttr.pHP:
-                    return new double[4]{4.1, 4.7, 5.3, 5.8}[AffixFactory.rand.Next(0,4)];
+                    return new double[4]{0.041, 0.047, 0.053, 0.058}[AffixFactory.rand.Next(0,4)];
                 case AffixAttr.DEF:
                     return new double[4]{16, 19, 21, 23}[AffixFactory.rand.Next(0,4)];
                 case AffixAttr.pDEF:
-                    return new double[4]{5.1, 5.8, 6.6, 7.3}[AffixFactory.rand.Next(0,4)];
+                    return new double[4]{0.051, 0.058, 0.066, 0.073}[AffixFactory.rand.Next(0,4)];
                 case AffixAttr.ATK:
                     return new double[4]{14, 16, 18, 19}[AffixFactory.rand.Next(0,4)];
                 case AffixAttr.pATK:
-                    return new double[4]{4.1, 4.7, 5.3, 5.8}[AffixFactory.rand.Next(0,4)];
+                    return new double[4]{0.041, 0.047, 0.053, 0.058}[AffixFactory.rand.Next(0,4)];
                 case AffixAttr.pCGR:
-                    return new double[4]{4.5, 5.2, 5.8, 6.5}[AffixFactory.rand.Next(0,4)];
+                    return new double[4]{0.045, 0.052, 0.058, 0.065}[AffixFactory.rand.Next(0,4)];
                 case AffixAttr.pCRD:
-                    return new double[4]{5.4, 6.2, 7.0, 7.8}[AffixFactory.rand.Next(0,4)];
+                    return new double[4]{0.054, 0.062, 0.070, 0.078}[AffixFactory.rand.Next(0,4)];
                 case AffixAttr.pCRI:
-                    return new double[4]{2.7, 3.1, 3.5, 3.9}[AffixFactory.rand.Next(0,4)];
+                    return new double[4]{0.027, 0.031, 0.035, 0.039}[AffixFactory.rand.Next(0,4)];
                 case AffixAttr.ELM:
                     return new double[4]{16, 19, 21, 23}[AffixFactory.rand.Next(0,4)];
             }
@@ -226,7 +226,14 @@ namespace genshin_sim
         {
             get
             {
-                return AffixFactory.attr2str(Attribute) + " + " + Value.ToString() + (Attribute.ToString().StartsWith("p") ? "%" : "");
+                if (Attribute.ToString().StartsWith("p"))
+                {
+                    return AffixFactory.attr2str(Attribute) + " + " + Value.ToString("0.0%");
+                }
+                else
+                {
+                    return AffixFactory.attr2str(Attribute) + " + " + Value.ToString();
+                }
             }
         }
 

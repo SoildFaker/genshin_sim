@@ -99,8 +99,8 @@ namespace genshin_sim
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     cmdCharacterAdd.BackgroundImage = fm.WaifuImage;
-                    cmdCharacterAdd.Text = fm.Waifu.Name;
-                    cmdCharacterAdd.TextAlign = ContentAlignment.TopLeft;
+                    cmdCharacterAdd.Text = "";
+                    labCharacterName.Text = $"Name: {fm.Waifu.Name}";
                 }
             }
         }
