@@ -91,5 +91,18 @@ namespace genshin_sim
                 get_relic_info();
             }
         }
+
+        private void cmdCharacterAdd_Click(object sender, EventArgs e)
+        {
+            using (var fm = new fmCharacterList())
+            {
+                if (fm.ShowDialog() == DialogResult.OK)
+                {
+                    cmdCharacterAdd.BackgroundImage = fm.WaifuImage;
+                    cmdCharacterAdd.Text = fm.Waifu.Name;
+                    cmdCharacterAdd.TextAlign = ContentAlignment.TopLeft;
+                }
+            }
+        }
     }
 }
