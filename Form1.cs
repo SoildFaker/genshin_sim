@@ -19,6 +19,7 @@ namespace genshin_sim
 
         List<Artifact> relics = new List<Artifact>();
         Artifact relic_now;
+        Waifu waifu_now;
         private void Form1_Load(object sender, EventArgs e)
         {
             for (int j = 0; j < 20; j++)
@@ -100,8 +101,30 @@ namespace genshin_sim
                 {
                     cmdCharacterAdd.BackgroundImage = fm.WaifuImage;
                     cmdCharacterAdd.Text = "";
-                    labCharacterName.Text = $"Name: {fm.Waifu.Name}";
+                    waifu_now = fm.Waifu;
+                    labCharacterName.Text = $"Name: {waifu_now.Name}(lv.{waifu_now.Level})";
+                    selCharacterLevel.Value = waifu_now.Level;
+                    refresh_character_info();
                 }
+            }
+        }
+
+        private void refresh_character_info()
+        {
+            labCharacterBaseStat.Text = ""; 
+            foreach (var item in waifu_now.BaseStat)
+            {
+                labCharacterBaseStat.Text += item.Description + "\r\n";
+            }
+        }
+
+        private void selCharacterLevel_Scroll(object sender, EventArgs e)
+        {
+            if (waifu_now != null)
+            {
+                waifu_now.SetLevel(selCharacterLevel.Value);
+                labCharacterName.Text = $"Name: {waifu_now.Name}(lv.{waifu_now.Level})";
+                refresh_character_info();
             }
         }
     }

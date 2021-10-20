@@ -53,6 +53,9 @@ namespace genshin_sim
             this.cmdCharacterAdd = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.labCharacterName = new System.Windows.Forms.Label();
+            this.selCharacterLevel = new System.Windows.Forms.TrackBar();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.labCharacterBaseStat = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -62,6 +65,8 @@ namespace genshin_sim
             this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).BeginInit();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstRelicMinorAffixes
@@ -249,6 +254,9 @@ namespace genshin_sim
             // 
             // groupBox6
             // 
+            this.groupBox6.BackColor = System.Drawing.Color.White;
+            this.groupBox6.Controls.Add(this.groupBox8);
+            this.groupBox6.Controls.Add(this.selCharacterLevel);
             this.groupBox6.Controls.Add(this.labCharacterName);
             this.groupBox6.Controls.Add(this.cmdCharacterAdd);
             this.groupBox6.Location = new System.Drawing.Point(6, 6);
@@ -293,6 +301,37 @@ namespace genshin_sim
             this.labCharacterName.Text = "Name: ";
             this.labCharacterName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // selCharacterLevel
+            // 
+            this.selCharacterLevel.BackColor = System.Drawing.Color.White;
+            this.selCharacterLevel.Location = new System.Drawing.Point(59, 43);
+            this.selCharacterLevel.Maximum = 90;
+            this.selCharacterLevel.Minimum = 1;
+            this.selCharacterLevel.Name = "selCharacterLevel";
+            this.selCharacterLevel.Size = new System.Drawing.Size(207, 45);
+            this.selCharacterLevel.TabIndex = 2;
+            this.selCharacterLevel.TickFrequency = 10;
+            this.selCharacterLevel.Value = 1;
+            this.selCharacterLevel.Scroll += new System.EventHandler(this.selCharacterLevel_Scroll);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.labCharacterBaseStat);
+            this.groupBox8.Location = new System.Drawing.Point(6, 73);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(260, 123);
+            this.groupBox8.TabIndex = 3;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Base Stat";
+            // 
+            // labCharacterBaseStat
+            // 
+            this.labCharacterBaseStat.Location = new System.Drawing.Point(6, 17);
+            this.labCharacterBaseStat.Name = "labCharacterBaseStat";
+            this.labCharacterBaseStat.Size = new System.Drawing.Size(248, 103);
+            this.labCharacterBaseStat.TabIndex = 0;
+            this.labCharacterBaseStat.Text = "Stat";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -311,7 +350,10 @@ namespace genshin_sim
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).EndInit();
+            this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -340,6 +382,9 @@ namespace genshin_sim
         private System.Windows.Forms.Button cmdCharacterAdd;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label labCharacterName;
+        private System.Windows.Forms.TrackBar selCharacterLevel;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label labCharacterBaseStat;
     }
 }
 

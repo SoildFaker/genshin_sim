@@ -58,7 +58,7 @@ namespace genshin_sim
             for (int i = 0; i < total; i++)
             {
                 string[] items = get_value("Characters", i.ToString()).Split(',');
-                waifus.Add(new Waifu(items[0], cvt_str2element(items[1]), new List<Talent>(), Convert.ToInt32(items[2])));
+                waifus.Add(new Waifu(items[0], cvt_str2element(items[1]), new List<Affix>() { new Affix(AffixAttr.HP, new double[] { 100, 200, 300, 400}, 0), new Affix(AffixAttr.ATK, 133) },new List<Talent>(), Convert.ToInt32(items[2])));
             }
         }
 

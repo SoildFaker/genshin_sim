@@ -67,6 +67,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="StatData.cs" />
     <Compile Include="Waifu.cs" />
     <Compile Include="Weapon.cs" />
     <EmbeddedResource Include="fmCharacterList.resx">

@@ -8,23 +8,25 @@ namespace genshin_sim
 {
     public enum AffixAttr
     {
-        HP,
-        ATK,
-        DEF,
-        ELM,
-        pHP,
-        pATK,
-        pDEF,
-        pCGR,
-        pCRI,
-        pCRD,
-        pPhysical,
-        pHydro,
-        pCryo,
-        pElectro,
-        pAnemo,
-        pGeo,
-        pHealing,
+        HP,         // 生命加成
+        ATK,        // 攻击加成
+        DEF,        // 防御加成
+        pHP,        // 生命百分比加成
+        pATK,       // 攻击百分比加成
+        pDEF,       // 防御百分比加成
+        ELM,        // 元素精通
+        pCGR,       // 充能效率
+        pCRI,       // 暴击率
+        pCRD,       // 暴击伤害
+        pPhysical,  // 物理伤害加成
+        pPyro,      // 火属性伤害加成
+        pHydro,     // 水属性伤害加成
+        pCryo,      // 冰属性伤害加成
+        pDendro,    // 草属性伤害加成
+        pElectro,   // 雷属性伤害加成
+        pAnemo,     // 风属性伤害加成
+        pGeo,       // 岩属性伤害加成
+        pHealing,   // 治疗效果加成
     }
 
     public static class AffixFactory
@@ -114,8 +116,10 @@ namespace genshin_sim
             AffixAttr.pATK,
             AffixAttr.pDEF,
             AffixAttr.pPhysical,
+            AffixAttr.pPyro,
             AffixAttr.pHydro,
             AffixAttr.pCryo,
+            AffixAttr.pDendro,
             AffixAttr.pAnemo,
             AffixAttr.pGeo,
             AffixAttr.pElectro,
@@ -207,7 +211,9 @@ namespace genshin_sim
                 case AffixAttr.pCRI: return "暴击率";
                 case AffixAttr.pCRD: return "暴击伤害";
                 case AffixAttr.pPhysical: return "物理伤害加成";
-                case AffixAttr.pHydro: return "火属性伤害加成";
+                case AffixAttr.pPyro: return "火属性伤害加成";
+                case AffixAttr.pHydro: return "水属性伤害加成";
+                case AffixAttr.pDendro: return "草属性伤害加成";
                 case AffixAttr.pCryo: return "冰属性伤害加成";
                 case AffixAttr.pElectro: return "雷属性伤害加成";
                 case AffixAttr.pAnemo: return "风属性伤害加成";
@@ -221,7 +227,8 @@ namespace genshin_sim
     {
         public AffixAttr Attribute { get; private set; }
         public double Value { get; set; }
-
+        private int level = 0;
+        private List<double> value_arr = new List<double>();
         public string Description
         {
             get
@@ -246,6 +253,42 @@ namespace genshin_sim
         {
             this.Attribute = attr;
             this.Value = AffixFactory.pick_minor_affix_value(attr);
+        }
+
+        public Affix(AffixAttr attr, double[] vals, int lv)
+        {
+            this.Attribute = attr;
+            this.Value = vals[lv];
+            this.value_arr.AddRange(vals);
+        }
+
+        public void SetValueArray(double[] vals, int lv = 0)
+        {
+            value_arr.Clear();
+            value_arr.AddRange(vals);
+            SetLevel(lv);
+        }
+
+        public void SetLevel(int lv)
+        {
+            if (lv < value_arr.Count)
+            {
+                this.level = lv;
+                this.Value = value_arr[level];
+            }
+            else
+            {
+                this.level = 0;
+            }
+        }
+
+        public void LevelUp()
+        {
+            if (level < value_arr.Count)
+            {
+                level++;
+                this.Value = value_arr[level];
+            }
         }
 
     }
