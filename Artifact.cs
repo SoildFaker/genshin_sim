@@ -107,6 +107,17 @@ namespace genshin_sim
             }
         }
 
+        public void SetMainAffix(Affix affix)
+        {
+            this.MainAffix = affix;
+        }
+
+        public void SetLevel(int lv)
+        {
+            this.MainAffix.SetLevel(lv);
+            this.level = lv;
+        }
+
         private void SetMainAffix()
         {
             this.MainAffix = AffixFactory.pick_main_affixes(this.Type);
@@ -160,6 +171,8 @@ namespace genshin_sim
                         case AffixAttr.pPhysical:
                             this.MainAffix.SetValueArray(ArtifactFactory.value_array_type_physical);
                             break;
+                        case AffixAttr.pPyro:
+                        case AffixAttr.pDendro:
                         case AffixAttr.pHydro:
                         case AffixAttr.pCryo:
                         case AffixAttr.pElectro:

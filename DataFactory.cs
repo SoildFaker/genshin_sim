@@ -122,7 +122,66 @@ namespace genshin_sim
             AffixAttr.pHealing,
         };
 
+        public static Affix[] flower_main_affix_arr = new Affix[]
+        {
+            new Affix(AffixAttr.HP, ArtifactFactory.value_array_type_hp, 0),
+        };
+
+        public static Affix[] plume_main_affix_arr = new Affix[]
+        {
+            new Affix(AffixAttr.ATK, ArtifactFactory.value_array_type_atk, 0),
+        };
+
+        public static Affix[] sands_main_affix_arr = new Affix[]
+        {
+            new Affix(AffixAttr.ELM, ArtifactFactory.value_array_type_elm, 0),
+            new Affix(AffixAttr.pHP, ArtifactFactory.value_array_type_hp_pct, 0),
+            new Affix(AffixAttr.pATK, ArtifactFactory.value_array_type_atk_pct, 0),
+            new Affix(AffixAttr.pDEF, ArtifactFactory.value_array_type_def_pct, 0),
+            new Affix(AffixAttr.pCGR, ArtifactFactory.value_array_type_cgr_pct, 0),
+        };
+
+        public static Affix[] goblet_main_affix_arr = new Affix[]
+        {
+            new Affix(AffixAttr.ELM, ArtifactFactory.value_array_type_elm, 0),
+            new Affix(AffixAttr.pHP, ArtifactFactory.value_array_type_hp_pct, 0),
+            new Affix(AffixAttr.pATK, ArtifactFactory.value_array_type_atk_pct, 0),
+            new Affix(AffixAttr.pDEF, ArtifactFactory.value_array_type_def_pct, 0),
+            new Affix(AffixAttr.pPhysical, ArtifactFactory.value_array_type_physical, 0),
+            new Affix(AffixAttr.pPyro, ArtifactFactory.value_array_type_element, 0),
+            new Affix(AffixAttr.pHydro, ArtifactFactory.value_array_type_element, 0),
+            new Affix(AffixAttr.pCryo, ArtifactFactory.value_array_type_element, 0),
+            new Affix(AffixAttr.pDendro, ArtifactFactory.value_array_type_element, 0),
+            new Affix(AffixAttr.pAnemo, ArtifactFactory.value_array_type_element, 0),
+            new Affix(AffixAttr.pGeo, ArtifactFactory.value_array_type_element, 0),
+            new Affix(AffixAttr.pElectro, ArtifactFactory.value_array_type_element, 0),
+        };
+
+        public static Affix[] circlet_main_affix_arr = new Affix[]
+        {
+            new Affix(AffixAttr.ELM, ArtifactFactory.value_array_type_elm, 0),
+            new Affix(AffixAttr.pHP, ArtifactFactory.value_array_type_hp_pct, 0),
+            new Affix(AffixAttr.pATK, ArtifactFactory.value_array_type_atk_pct, 0),
+            new Affix(AffixAttr.pDEF, ArtifactFactory.value_array_type_def_pct, 0),
+            new Affix(AffixAttr.pCRI, ArtifactFactory.value_array_type_cri_pct, 0),
+            new Affix(AffixAttr.pCRD, ArtifactFactory.value_array_type_crd_pct, 0),
+            new Affix(AffixAttr.pHealing, ArtifactFactory.value_array_type_healing, 0),
+        };
+
         public static Random rand = new Random();
+
+        public static Affix[] get_artifact_main_affix_array(ArtifactType type)
+        {
+            switch (type)
+            {
+                case ArtifactType.FlowerOfLife: return flower_main_affix_arr;
+                case ArtifactType.PlumeOfDeath: return plume_main_affix_arr;
+                case ArtifactType.SandsOfEon: return sands_main_affix_arr;
+                case ArtifactType.GobletOfEonothem: return goblet_main_affix_arr;
+                case ArtifactType.CircletOfLogos: return circlet_main_affix_arr;
+                default: return flower_main_affix_arr;
+            }
+        }
         public static Affix pick_minor_affixes()
         {
             return minor_affixes_arr[rand.Next(minor_affixes_arr.Length)];
@@ -234,7 +293,7 @@ namespace genshin_sim
     public static class WaifuFactory
     {
         public static Waifu Albedo = new Waifu(
-            "Albedo",
+            "阿贝多",
             ElementType.Geo,
             new List<Affix>()
             {
@@ -247,8 +306,9 @@ namespace genshin_sim
             } ,
             new List<Talent>()
         );
+
         public static Waifu Amber = new Waifu(
-            "Amber",
+            "安柏",
             ElementType.Pyro,
             new List<Affix>()
             {
@@ -261,8 +321,9 @@ namespace genshin_sim
             } ,
             new List<Talent>()
         );
+
         public static Waifu Keqing = new Waifu(
-            "Keqing",
+            "刻晴",
             ElementType.Electro,
             new List<Affix>()
             {
@@ -274,9 +335,38 @@ namespace genshin_sim
             } ,
             new List<Talent>()
         );
+
+        public static Waifu Ayaka = new Waifu(
+            "神里绫华",
+            ElementType.Cryo,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.ayaka_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.ayaka_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.ayaka_base_def, 0),
+                new Affix(AffixAttr.pCRD, StatData.ayaka_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.ayaka_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Zhongli = new Waifu(
+            "钟离",
+            ElementType.Geo,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.zhongli_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.zhongli_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.zhongli_base_def, 0),
+                new Affix(AffixAttr.pGeo, StatData.zhongli_geo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.zhongli_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.zhongli_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
         public static Waifu[] Waifus = new Waifu[] 
         {
-            Albedo, Amber, Keqing
+            Albedo, Amber, Keqing, Ayaka, Zhongli
         };
     }
 }

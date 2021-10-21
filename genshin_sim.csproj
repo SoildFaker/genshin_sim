@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataFactory.cs" />
+    <Compile Include="fmArtifact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmArtifact.Designer.cs">
+      <DependentUpon>fmArtifact.cs</DependentUpon>
+    </Compile>
     <Compile Include="fmCharacterList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     <Compile Include="StatData.cs" />
     <Compile Include="Waifu.cs" />
     <Compile Include="Weapon.cs" />
+    <EmbeddedResource Include="fmArtifact.resx">
+      <DependentUpon>fmArtifact.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fmCharacterList.resx">
       <DependentUpon>fmCharacterList.cs</DependentUpon>
     </EmbeddedResource>

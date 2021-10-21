@@ -110,7 +110,7 @@ namespace genshin_sim
 
         private void refresh_character_info()
         {
-            labCharacterName.Text = $"Name: {waifu_now.Name} (lv.{waifu_now.Level} {waifu_now.Vision})";
+            labCharacterName.Text = $"{waifu_now.Name} (lv.{waifu_now.Level} {waifu_now.Vision})";
             labCharacterBaseStat.Text = ""; 
             foreach (var item in waifu_now.BaseStat)
             {
@@ -124,6 +124,28 @@ namespace genshin_sim
             {
                 waifu_now.SetLevel(selCharacterLevel.Value);
                 refresh_character_info();
+            }
+        }
+
+        private void cmdCharacterArtifactFlower_Click(object sender, EventArgs e)
+        {
+            using (var fm = new fmArtifact(new Artifact(ArtifactType.FlowerOfLife)))
+            {
+                if (fm.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
+
+        private void cmdCharacterArtifactGoblet_Click(object sender, EventArgs e)
+        {
+            using (var fm = new fmArtifact(new Artifact(ArtifactType.GobletOfEonothem)))
+            {
+                if (fm.ShowDialog() == DialogResult.OK)
+                {
+
+                }
             }
         }
     }

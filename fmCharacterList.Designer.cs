@@ -144,7 +144,7 @@ namespace genshin_sim
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "fmCharacterList";
-            this.Text = "fmCharacterList";
+            this.Text = "Waifu Select";
             this.Load += new System.EventHandler(this.fmCharacterList_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
