@@ -21,7 +21,12 @@ namespace genshin_sim
     {
         public static List<Affix> affixes_amber = new List<Affix>() 
         {
-            new Affix(AffixAttr.HP, new double[] { 0, 1, 2, 3, 4, 5 }, 0),
+            new Affix(AffixAttr.HP, StatData.amber_base_hp, 0),
+            new Affix(AffixAttr.ATK, StatData.amber_base_atk, 0),
+            new Affix(AffixAttr.DEF, StatData.amber_base_def, 0),
+            new Affix(AffixAttr.pATK, StatData.amber_atk, 0),
+            new Affix(AffixAttr.pCRD, StatData.amber_crit_dmg, 0),
+            new Affix(AffixAttr.pCRI, StatData.amber_crit_rate, 0),
         };
         public static Waifu Amber = new Waifu("Amber", ElementType.Pyro, affixes_amber,new List<Talent>());
     }
@@ -34,16 +39,14 @@ namespace genshin_sim
         public List<Affix> BaseStat {  get; private set; }
         public List<Talent> Talents { get; private set; }
         public Artifact[] Artifacts = new Artifact[5];
-        public int ImageIndex { get; private set; }
         public Weapon Weapon { get; set; }
 
-        public Waifu(string name, ElementType vision, List<Affix> stat, List<Talent> talents, int image_index = 0, int level = 1)
+        public Waifu(string name, ElementType vision, List<Affix> stat, List<Talent> talents, int level = 1)
         {
             this.Name = name;
             this.Vision = vision;
             this.Talents = talents;
             this.BaseStat = stat;
-            this.ImageIndex = image_index;
             this.Level = level;
         }
 

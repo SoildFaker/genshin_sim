@@ -19,6 +19,7 @@ namespace genshin_sim
 
         public Waifu Waifu { get; private set; }
         public Image WaifuImage { get; private set; }
+        private List<int> image_index = new List<int>();
         private string[] raw_lines = Properties.Resources.characters.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
         private List<Waifu> waifus = new List<Waifu>();
 
@@ -27,7 +28,7 @@ namespace genshin_sim
             add_waifus();
             for (int i = 0; i < waifus.Count; i++)
             {
-                this.lstCharacters.Items.Add(new ListViewItem(waifus[i].Name, waifus[i].ImageIndex));
+                this.lstCharacters.Items.Add(new ListViewItem(waifus[i].Name, image_index[i]));
             }
 
         }
@@ -58,7 +59,8 @@ namespace genshin_sim
             for (int i = 0; i < total; i++)
             {
                 string[] items = get_value("Characters", i.ToString()).Split(',');
-                waifus.Add(new Waifu(items[0], cvt_str2element(items[1]), new List<Affix>() { new Affix(AffixAttr.HP, new double[] { 100, 200, 300, 400}, 0), new Affix(AffixAttr.ATK, 133) },new List<Talent>(), Convert.ToInt32(items[2])));
+                waifus.Add(WaifuFactory.Amber);
+                image_index.Add(Convert.ToInt32(items[2]));
             }
         }
 
@@ -106,6 +108,11 @@ namespace genshin_sim
             {
                 fmReturn();
             }
+        }
+
+        private void lstCharacters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
