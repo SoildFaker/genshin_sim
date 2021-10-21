@@ -17,20 +17,6 @@ namespace genshin_sim
         Geo,        // 岩
     }
 
-    public static class WaifuFactory
-    {
-        public static List<Affix> affixes_amber = new List<Affix>() 
-        {
-            new Affix(AffixAttr.HP, StatData.amber_base_hp, 0),
-            new Affix(AffixAttr.ATK, StatData.amber_base_atk, 0),
-            new Affix(AffixAttr.DEF, StatData.amber_base_def, 0),
-            new Affix(AffixAttr.pATK, StatData.amber_atk, 0),
-            new Affix(AffixAttr.pCRD, StatData.amber_crit_dmg, 0),
-            new Affix(AffixAttr.pCRI, StatData.amber_crit_rate, 0),
-        };
-        public static Waifu Amber = new Waifu("Amber", ElementType.Pyro, affixes_amber,new List<Talent>());
-    }
-
     public class Waifu
     {
         public string Name { get; private set; }

@@ -50,12 +50,12 @@ namespace genshin_sim
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.cmdCharacterAdd = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.labCharacterName = new System.Windows.Forms.Label();
-            this.selCharacterLevel = new System.Windows.Forms.TrackBar();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.labCharacterBaseStat = new System.Windows.Forms.Label();
+            this.selCharacterLevel = new System.Windows.Forms.TrackBar();
+            this.labCharacterName = new System.Windows.Forms.Label();
+            this.cmdCharacterAdd = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -64,9 +64,9 @@ namespace genshin_sim
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).BeginInit();
             this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).BeginInit();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstRelicMinorAffixes
@@ -92,7 +92,7 @@ namespace genshin_sim
             // labInfo
             // 
             this.labInfo.AutoSize = true;
-            this.labInfo.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labInfo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labInfo.Location = new System.Drawing.Point(6, 202);
             this.labInfo.Name = "labInfo";
             this.labInfo.Size = new System.Drawing.Size(66, 21);
@@ -261,17 +261,68 @@ namespace genshin_sim
             this.groupBox6.Controls.Add(this.cmdCharacterAdd);
             this.groupBox6.Location = new System.Drawing.Point(6, 6);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(272, 202);
+            this.groupBox6.Size = new System.Drawing.Size(228, 202);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Character Select";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox8.Controls.Add(this.labCharacterBaseStat);
+            this.groupBox8.Location = new System.Drawing.Point(6, 73);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(216, 123);
+            this.groupBox8.TabIndex = 3;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Base Stat";
+            // 
+            // labCharacterBaseStat
+            // 
+            this.labCharacterBaseStat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labCharacterBaseStat.Location = new System.Drawing.Point(6, 17);
+            this.labCharacterBaseStat.Name = "labCharacterBaseStat";
+            this.labCharacterBaseStat.Size = new System.Drawing.Size(204, 103);
+            this.labCharacterBaseStat.TabIndex = 0;
+            this.labCharacterBaseStat.Text = "Stat";
+            // 
+            // selCharacterLevel
+            // 
+            this.selCharacterLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.selCharacterLevel.BackColor = System.Drawing.Color.White;
+            this.selCharacterLevel.Location = new System.Drawing.Point(59, 43);
+            this.selCharacterLevel.Maximum = 90;
+            this.selCharacterLevel.Minimum = 1;
+            this.selCharacterLevel.Name = "selCharacterLevel";
+            this.selCharacterLevel.Size = new System.Drawing.Size(163, 45);
+            this.selCharacterLevel.TabIndex = 2;
+            this.selCharacterLevel.TickFrequency = 10;
+            this.selCharacterLevel.Value = 1;
+            this.selCharacterLevel.Scroll += new System.EventHandler(this.selCharacterLevel_Scroll);
+            // 
+            // labCharacterName
+            // 
+            this.labCharacterName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labCharacterName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labCharacterName.Location = new System.Drawing.Point(59, 17);
+            this.labCharacterName.Name = "labCharacterName";
+            this.labCharacterName.Size = new System.Drawing.Size(163, 23);
+            this.labCharacterName.TabIndex = 1;
+            this.labCharacterName.Text = "Name: ";
+            this.labCharacterName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmdCharacterAdd
             // 
             this.cmdCharacterAdd.BackColor = System.Drawing.Color.White;
             this.cmdCharacterAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdCharacterAdd.BackgroundImage")));
             this.cmdCharacterAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdCharacterAdd.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmdCharacterAdd.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmdCharacterAdd.Location = new System.Drawing.Point(3, 17);
             this.cmdCharacterAdd.Name = "cmdCharacterAdd";
             this.cmdCharacterAdd.Size = new System.Drawing.Size(50, 50);
@@ -290,47 +341,6 @@ namespace genshin_sim
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Artifact Sim";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // labCharacterName
-            // 
-            this.labCharacterName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labCharacterName.Location = new System.Drawing.Point(59, 17);
-            this.labCharacterName.Name = "labCharacterName";
-            this.labCharacterName.Size = new System.Drawing.Size(207, 23);
-            this.labCharacterName.TabIndex = 1;
-            this.labCharacterName.Text = "Name: ";
-            this.labCharacterName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // selCharacterLevel
-            // 
-            this.selCharacterLevel.BackColor = System.Drawing.Color.White;
-            this.selCharacterLevel.Location = new System.Drawing.Point(59, 43);
-            this.selCharacterLevel.Maximum = 90;
-            this.selCharacterLevel.Minimum = 1;
-            this.selCharacterLevel.Name = "selCharacterLevel";
-            this.selCharacterLevel.Size = new System.Drawing.Size(207, 45);
-            this.selCharacterLevel.TabIndex = 2;
-            this.selCharacterLevel.TickFrequency = 10;
-            this.selCharacterLevel.Value = 1;
-            this.selCharacterLevel.Scroll += new System.EventHandler(this.selCharacterLevel_Scroll);
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.labCharacterBaseStat);
-            this.groupBox8.Location = new System.Drawing.Point(6, 73);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(260, 123);
-            this.groupBox8.TabIndex = 3;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Base Stat";
-            // 
-            // labCharacterBaseStat
-            // 
-            this.labCharacterBaseStat.Location = new System.Drawing.Point(6, 17);
-            this.labCharacterBaseStat.Name = "labCharacterBaseStat";
-            this.labCharacterBaseStat.Size = new System.Drawing.Size(248, 103);
-            this.labCharacterBaseStat.TabIndex = 0;
-            this.labCharacterBaseStat.Text = "Stat";
             // 
             // Form1
             // 
@@ -351,9 +361,9 @@ namespace genshin_sim
             this.tabPage2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).EndInit();
             this.groupBox8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).EndInit();
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

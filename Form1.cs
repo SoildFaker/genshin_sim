@@ -123,7 +123,7 @@ namespace genshin_sim
             if (waifu_now != null)
             {
                 waifu_now.SetLevel(selCharacterLevel.Value);
-                labCharacterName.Text = $"Name: {waifu_now.Name}(lv.{waifu_now.Level})";
+                labCharacterName.Text = $"Name: {waifu_now.Name} (lv.{waifu_now.Level} {waifu_now.Vision})";
                 refresh_character_info();
             }
         }
