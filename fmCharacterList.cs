@@ -19,16 +19,16 @@ namespace genshin_sim
 
         public Waifu Waifu { get; private set; }
         public Image WaifuImage { get; private set; }
-        private List<int> image_index = new List<int>();
+        private int[] images_index = new int[] { 0, 2, 17 };
         private string[] raw_lines = Properties.Resources.characters.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-        private List<Waifu> waifus = new List<Waifu>();
+        private List<Waifu> waifus;
 
         private void fmCharacterList_Load(object sender, EventArgs e)
         {
-            add_waifus();
+            waifus = WaifuFactory.Waifus.ToList();
             for (int i = 0; i < waifus.Count; i++)
             {
-                this.lstCharacters.Items.Add(new ListViewItem(waifus[i].Name, image_index[i]));
+                this.lstCharacters.Items.Add(new ListViewItem(waifus[i].Name, images_index[i]));
             }
 
         }
@@ -43,7 +43,7 @@ namespace genshin_sim
             this.DialogResult = DialogResult.OK;
             int index = lstCharacters.SelectedItems[0].Index;
             this.Waifu = waifus[index];
-            this.WaifuImage = imCharacters.Images[index];
+            this.WaifuImage = imCharacters.Images[images_index[index]];
             this.Close();
         }
 
@@ -51,17 +51,6 @@ namespace genshin_sim
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
-        }
-
-        private void add_waifus()
-        {
-            int total = Convert.ToInt32(get_value("Characters", "total"));
-            for (int i = 0; i < total; i++)
-            {
-                string[] items = get_value("Characters", i.ToString()).Split(',');
-                waifus.Add(WaifuFactory.Amber);
-                image_index.Add(Convert.ToInt32(items[2]));
-            }
         }
 
         private ElementType cvt_str2element(string raw)

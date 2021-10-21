@@ -102,7 +102,6 @@ namespace genshin_sim
                     cmdCharacterAdd.BackgroundImage = fm.WaifuImage;
                     cmdCharacterAdd.Text = "";
                     waifu_now = fm.Waifu;
-                    labCharacterName.Text = $"Name: {waifu_now.Name}(lv.{waifu_now.Level})";
                     selCharacterLevel.Value = waifu_now.Level;
                     refresh_character_info();
                 }
@@ -111,6 +110,7 @@ namespace genshin_sim
 
         private void refresh_character_info()
         {
+            labCharacterName.Text = $"Name: {waifu_now.Name} (lv.{waifu_now.Level} {waifu_now.Vision})";
             labCharacterBaseStat.Text = ""; 
             foreach (var item in waifu_now.BaseStat)
             {
@@ -123,7 +123,6 @@ namespace genshin_sim
             if (waifu_now != null)
             {
                 waifu_now.SetLevel(selCharacterLevel.Value);
-                labCharacterName.Text = $"Name: {waifu_now.Name} (lv.{waifu_now.Level} {waifu_now.Vision})";
                 refresh_character_info();
             }
         }

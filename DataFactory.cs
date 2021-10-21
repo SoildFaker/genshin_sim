@@ -261,5 +261,22 @@ namespace genshin_sim
             } ,
             new List<Talent>()
         );
+        public static Waifu Keqing = new Waifu(
+            "Keqing",
+            ElementType.Electro,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.keqing_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.keqing_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.keqing_base_def, 0),
+                new Affix(AffixAttr.pCRD, StatData.keqing_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.keqing_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+        public static Waifu[] Waifus = new Waifu[] 
+        {
+            Albedo, Amber, Keqing
+        };
     }
 }
