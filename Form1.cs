@@ -133,7 +133,7 @@ namespace genshin_sim
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
-
+                    labCharacterArtifactFlowerInfo.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
                 }
             }
         }
@@ -144,7 +144,41 @@ namespace genshin_sim
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
+                    labCharacterArtifactGoblet.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
+                }
+            }
+        }
 
+        private void cmdCharacterArtifactPlume_Click(object sender, EventArgs e)
+        {
+            using (var fm = new fmArtifact(new Artifact(ArtifactType.PlumeOfDeath)))
+            {
+                if (fm.ShowDialog() == DialogResult.OK)
+                {
+                    labCharacterArtifactPlume.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
+                }
+            }
+        }
+
+        private void cmdCharacterArtifactSands_Click(object sender, EventArgs e)
+        {
+            using (var fm = new fmArtifact(new Artifact(ArtifactType.SandsOfEon)))
+            {
+                if (fm.ShowDialog() == DialogResult.OK)
+                {
+                    labCharacterArtifactSands.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
+                }
+            }
+
+        }
+
+        private void cmdCharacterArtifactCirclet_Click(object sender, EventArgs e)
+        {
+            using (var fm = new fmArtifact(new Artifact(ArtifactType.CircletOfLogos)))
+            {
+                if (fm.ShowDialog() == DialogResult.OK)
+                {
+                    labCharacterArtifactCirclet.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
                 }
             }
         }

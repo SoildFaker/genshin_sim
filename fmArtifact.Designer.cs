@@ -40,11 +40,11 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lstSelectedMinorAffix = new System.Windows.Forms.ListBox();
             this.gpMainAffix = new System.Windows.Forms.GroupBox();
+            this.labInfo = new System.Windows.Forms.Label();
             this.selLevel = new System.Windows.Forms.TrackBar();
             this.cmbMainAffix = new System.Windows.Forms.ComboBox();
             this.cmdCamcel = new System.Windows.Forms.Button();
             this.cmdOK = new System.Windows.Forms.Button();
-            this.labInfo = new System.Windows.Forms.Label();
             this.gpArtifact.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -120,6 +120,7 @@
             this.cmdRemove.TabIndex = 4;
             this.cmdRemove.Text = "->";
             this.cmdRemove.UseVisualStyleBackColor = true;
+            this.cmdRemove.Click += new System.EventHandler(this.cmdRemove_Click);
             // 
             // groupBox6
             // 
@@ -142,6 +143,8 @@
             this.lstMinorAffixList.Name = "lstMinorAffixList";
             this.lstMinorAffixList.Size = new System.Drawing.Size(179, 207);
             this.lstMinorAffixList.TabIndex = 0;
+            this.lstMinorAffixList.SelectedIndexChanged += new System.EventHandler(this.lstMinorAffixList_SelectedIndexChanged);
+            this.lstMinorAffixList.DoubleClick += new System.EventHandler(this.lstMinorAffixList_DoubleClick);
             // 
             // cmdAddMinorAffix
             // 
@@ -176,6 +179,8 @@
             this.lstSelectedMinorAffix.Name = "lstSelectedMinorAffix";
             this.lstSelectedMinorAffix.Size = new System.Drawing.Size(179, 207);
             this.lstSelectedMinorAffix.TabIndex = 0;
+            this.lstSelectedMinorAffix.SelectedIndexChanged += new System.EventHandler(this.lstSelectedMinorAffix_SelectedIndexChanged);
+            this.lstSelectedMinorAffix.DoubleClick += new System.EventHandler(this.lstSelectedMinorAffix_DoubleClick);
             // 
             // gpMainAffix
             // 
@@ -188,6 +193,15 @@
             this.gpMainAffix.TabIndex = 0;
             this.gpMainAffix.TabStop = false;
             this.gpMainAffix.Text = "Main Affix";
+            // 
+            // labInfo
+            // 
+            this.labInfo.AutoSize = true;
+            this.labInfo.Location = new System.Drawing.Point(7, 76);
+            this.labInfo.Name = "labInfo";
+            this.labInfo.Size = new System.Drawing.Size(29, 12);
+            this.labInfo.TabIndex = 3;
+            this.labInfo.Text = "Info";
             // 
             // selLevel
             // 
@@ -216,10 +230,12 @@
             this.cmdCamcel.TabIndex = 1;
             this.cmdCamcel.Text = "Cancel";
             this.cmdCamcel.UseVisualStyleBackColor = true;
+            this.cmdCamcel.Click += new System.EventHandler(this.cmdCamcel_Click);
             // 
             // cmdOK
             // 
             this.cmdOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdOK.Enabled = false;
             this.cmdOK.Location = new System.Drawing.Point(307, 415);
             this.cmdOK.Name = "cmdOK";
             this.cmdOK.Size = new System.Drawing.Size(75, 23);
@@ -227,15 +243,6 @@
             this.cmdOK.Text = "OK";
             this.cmdOK.UseVisualStyleBackColor = true;
             this.cmdOK.Click += new System.EventHandler(this.cmdOK_Click);
-            // 
-            // labInfo
-            // 
-            this.labInfo.AutoSize = true;
-            this.labInfo.Location = new System.Drawing.Point(7, 76);
-            this.labInfo.Name = "labInfo";
-            this.labInfo.Size = new System.Drawing.Size(29, 12);
-            this.labInfo.TabIndex = 3;
-            this.labInfo.Text = "Info";
             // 
             // fmArtifact
             // 

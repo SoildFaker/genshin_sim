@@ -40,7 +40,7 @@ namespace genshin_sim
         public string Name { get; private set; }
         public Affix MainAffix { get; private set; }
         public List<Affix> MinorAffixes { get; private set; }
-        private List<Affix> InitSentence = new List<Affix>();
+        private List<Affix> InitAffixes = new List<Affix>();
         public string MainAffixString
         {
             get
@@ -63,7 +63,7 @@ namespace genshin_sim
                 string str = "";
                 for (int i = 0; i < 4; i++)
                 {
-                    AffixAttr attr = InitSentence[i].Attribute;
+                    AffixAttr attr = InitAffixes[i].Attribute;
                     if (attr.ToString().StartsWith("p"))
                     {
                         str += AffixFactory.attr2str(attr) + " + "
@@ -102,7 +102,7 @@ namespace genshin_sim
                 int code = AffixFactory.rand.Next(lst.Count);
                 Affix line = new Affix(lst[code]);
                 this.MinorAffixes.Add(line);
-                this.InitSentence.Add(line);
+                this.InitAffixes.Add(line);
                 lst.RemoveAt(code);
             }
         }
@@ -110,6 +110,16 @@ namespace genshin_sim
         public void SetMainAffix(Affix affix)
         {
             this.MainAffix = affix;
+        }
+
+        public void SetInitMinorAffix(List<Affix> affixes)
+        {
+            this.InitAffixes = affixes;
+        }
+
+        public void SetMinorAffix(List<Affix> affixes)
+        {
+            this.MinorAffixes = affixes;
         }
 
         public void SetLevel(int lv)
@@ -225,8 +235,8 @@ namespace genshin_sim
                 this.MainAffix.LevelUp();
                 if (this.Level % 4 == 0)
                 {
-                    int index = AffixFactory.rand.Next(this.InitSentence.Count);
-                    this.MinorAffixes.Add(new Affix(InitSentence[index].Attribute));
+                    int index = AffixFactory.rand.Next(this.InitAffixes.Count);
+                    this.MinorAffixes.Add(new Affix(InitAffixes[index].Attribute));
                     //this.MinorAffixes[index].Value += AffixFactory.pick_minor_affixes(this.MinorAffixes[index].Attribute);
                 }
             }

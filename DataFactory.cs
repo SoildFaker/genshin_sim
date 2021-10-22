@@ -364,9 +364,24 @@ namespace genshin_sim
             } ,
             new List<Talent>()
         );
+
+        public static Waifu Aloy = new Waifu(
+            "埃洛伊",
+            ElementType.Cryo,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.aloy_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.aloy_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.aloy_base_def, 0),
+                new Affix(AffixAttr.pCryo, StatData.aloy_cryo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.aloy_cryo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRI, StatData.albedo_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
         public static Waifu[] Waifus = new Waifu[] 
         {
-            Albedo, Amber, Keqing, Ayaka, Zhongli
+            Albedo, Aloy, Amber, Keqing, Ayaka, Zhongli
         };
     }
 }
