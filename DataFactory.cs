@@ -417,9 +417,24 @@ namespace genshin_sim
             } ,
             new List<Talent>()
         );
+
+        public static Waifu Beidou = new Waifu(
+            "北斗",
+            ElementType.Electro,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.beidou_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.beidou_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.beidou_base_def, 0),
+                new Affix(AffixAttr.pElectro, StatData.beidou_electro_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.beidou_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.beidou_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
         public static Waifu[] Waifus = new Waifu[] 
         {
-            Albedo, Aloy, Amber, Barbara, Keqing, Ayaka, Zhongli
+            Albedo, Aloy, Amber, Barbara, Beidou, Keqing, Ayaka, Zhongli
         };
     }
 }
