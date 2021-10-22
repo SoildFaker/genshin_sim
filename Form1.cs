@@ -18,8 +18,10 @@ namespace genshin_sim
         }
 
         List<Artifact> relics = new List<Artifact>();
-        Artifact relic_now;
+        Artifact[] artifacts_now = new Artifact[5];
         Waifu waifu_now;
+
+        Artifact relic_now;
         private void Form1_Load(object sender, EventArgs e)
         {
             for (int j = 0; j < 20; j++)
@@ -103,6 +105,7 @@ namespace genshin_sim
                     cmdCharacterAdd.Text = "";
                     waifu_now = fm.Waifu;
                     selCharacterLevel.Value = waifu_now.Level;
+                    waifu_now.Artifacts = artifacts_now;
                     refresh_character_info();
                 }
             }
@@ -110,11 +113,33 @@ namespace genshin_sim
 
         private void refresh_character_info()
         {
+            if (waifu_now == null)
+            {
+                return;
+            }
+            List<Affix> stat = waifu_now.Stat;
             labCharacterName.Text = $"{waifu_now.Name} (lv.{waifu_now.Level} {waifu_now.Vision})";
             labCharacterBaseStat.Text = ""; 
             foreach (var item in waifu_now.BaseStat)
             {
                 labCharacterBaseStat.Text += item.Description + "\r\n";
+            }
+            labCharacterAttributes.Text = $"{waifu_now.Name}\r\n" +
+                $"生命值: {waifu_now.HP}\r\n" +
+                $"攻击力: {waifu_now.ATK}\r\n" +
+                $"防御力: {waifu_now.DEF}\r\n" +
+                $"元素精通: {waifu_now.ELM}\r\n";
+            for (int i = 0; i < AffixFactory.waifu_stat_arr.Length; i++)
+            {
+                AffixAttr attr = AffixFactory.waifu_stat_arr[i];
+                if (attr.ToString().StartsWith("p"))
+                {
+                    labCharacterAttributes.Text += $"{AffixFactory.attr2str(attr)}: \t{stat.Where(x => x.Attribute == attr).Sum(x => x.Value).ToString("0.0%")}\r\n";
+                }
+                else
+                {
+                    labCharacterAttributes.Text += $"{AffixFactory.attr2str(attr)}: \t{stat.Where(x => x.Attribute == attr).Sum(x => x.Value)}\r\n";
+                }
             }
         }
 
@@ -129,44 +154,84 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactFlower_Click(object sender, EventArgs e)
         {
-            using (var fm = new fmArtifact(new Artifact(ArtifactType.FlowerOfLife)))
+            if (artifacts_now[0] == null)
+            {
+                artifacts_now[0] = new Artifact(ArtifactType.FlowerOfLife);
+            }
+            using (var fm = new fmArtifact(artifacts_now[0]))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactFlowerInfo.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
+                    artifacts_now[0] = fm.Artifact;
+                    if (waifu_now != null)
+                    {
+                        waifu_now.Artifacts[0] = fm.Artifact;
+                    }
+                    refresh_character_info();
                 }
             }
         }
 
         private void cmdCharacterArtifactGoblet_Click(object sender, EventArgs e)
         {
-            using (var fm = new fmArtifact(new Artifact(ArtifactType.GobletOfEonothem)))
+            if (artifacts_now[3] == null)
+            {
+                artifacts_now[3] = new Artifact(ArtifactType.GobletOfEonothem);
+            }
+            using (var fm = new fmArtifact(artifacts_now[3]))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactGoblet.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
+                    artifacts_now[3] = fm.Artifact;
+                    if (waifu_now != null)
+                    {
+                        waifu_now.Artifacts[3] = fm.Artifact;
+                    }
+                    refresh_character_info();
                 }
             }
         }
 
         private void cmdCharacterArtifactPlume_Click(object sender, EventArgs e)
         {
-            using (var fm = new fmArtifact(new Artifact(ArtifactType.PlumeOfDeath)))
+            if (artifacts_now[1] == null)
+            {
+                artifacts_now[1] = new Artifact(ArtifactType.PlumeOfDeath);
+            }
+            using (var fm = new fmArtifact(artifacts_now[1]))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactPlume.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
+                    artifacts_now[1] = fm.Artifact;
+                    if (waifu_now != null)
+                    {
+                        waifu_now.Artifacts[1] = fm.Artifact;
+                    }
+                    refresh_character_info();
                 }
             }
         }
 
         private void cmdCharacterArtifactSands_Click(object sender, EventArgs e)
         {
-            using (var fm = new fmArtifact(new Artifact(ArtifactType.SandsOfEon)))
+            if (artifacts_now[2] == null)
+            {
+                artifacts_now[2] = new Artifact(ArtifactType.SandsOfEon);
+            }
+            using (var fm = new fmArtifact(artifacts_now[2]))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactSands.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
+                    artifacts_now[2] = fm.Artifact;
+                    if (waifu_now != null)
+                    {
+                        waifu_now.Artifacts[2] = fm.Artifact;
+                    }
+                    refresh_character_info();
                 }
             }
 
@@ -174,11 +239,21 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactCirclet_Click(object sender, EventArgs e)
         {
-            using (var fm = new fmArtifact(new Artifact(ArtifactType.CircletOfLogos)))
+            if (artifacts_now[4] == null)
+            {
+                artifacts_now[4] = new Artifact(ArtifactType.CircletOfLogos);
+            }
+            using (var fm = new fmArtifact(artifacts_now[4]))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactCirclet.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
+                    artifacts_now[4] = fm.Artifact;
+                    if (waifu_now != null)
+                    {
+                        waifu_now.Artifacts[4] = fm.Artifact;
+                    }
+                    refresh_character_info();
                 }
             }
         }

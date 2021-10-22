@@ -75,6 +75,8 @@ namespace genshin_sim
             this.labCharacterName = new System.Windows.Forms.Label();
             this.cmdCharacterAdd = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.labCharacterAttributes = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -89,6 +91,7 @@ namespace genshin_sim
             this.gpCharacterArtifactSands.SuspendLayout();
             this.gpCharacterArtifactPlume.SuspendLayout();
             this.gpCharacterArtifactFlower.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).BeginInit();
@@ -263,6 +266,7 @@ namespace genshin_sim
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
@@ -345,9 +349,9 @@ namespace genshin_sim
             this.labCharacterArtifactCirclet.AutoSize = true;
             this.labCharacterArtifactCirclet.Location = new System.Drawing.Point(76, 20);
             this.labCharacterArtifactCirclet.Name = "labCharacterArtifactCirclet";
-            this.labCharacterArtifactCirclet.Size = new System.Drawing.Size(29, 12);
+            this.labCharacterArtifactCirclet.Size = new System.Drawing.Size(47, 12);
             this.labCharacterArtifactCirclet.TabIndex = 2;
-            this.labCharacterArtifactCirclet.Text = "Info";
+            this.labCharacterArtifactCirclet.Text = "(Empty)";
             // 
             // cmdCharacterArtifactCirclet
             // 
@@ -378,9 +382,9 @@ namespace genshin_sim
             this.labCharacterArtifactGoblet.AutoSize = true;
             this.labCharacterArtifactGoblet.Location = new System.Drawing.Point(76, 20);
             this.labCharacterArtifactGoblet.Name = "labCharacterArtifactGoblet";
-            this.labCharacterArtifactGoblet.Size = new System.Drawing.Size(29, 12);
+            this.labCharacterArtifactGoblet.Size = new System.Drawing.Size(47, 12);
             this.labCharacterArtifactGoblet.TabIndex = 2;
-            this.labCharacterArtifactGoblet.Text = "Info";
+            this.labCharacterArtifactGoblet.Text = "(Empty)";
             // 
             // cmdCharacterArtifactGoblet
             // 
@@ -411,9 +415,9 @@ namespace genshin_sim
             this.labCharacterArtifactSands.AutoSize = true;
             this.labCharacterArtifactSands.Location = new System.Drawing.Point(76, 20);
             this.labCharacterArtifactSands.Name = "labCharacterArtifactSands";
-            this.labCharacterArtifactSands.Size = new System.Drawing.Size(29, 12);
+            this.labCharacterArtifactSands.Size = new System.Drawing.Size(47, 12);
             this.labCharacterArtifactSands.TabIndex = 2;
-            this.labCharacterArtifactSands.Text = "Info";
+            this.labCharacterArtifactSands.Text = "(Empty)";
             // 
             // cmdCharacterArtifactSands
             // 
@@ -444,9 +448,9 @@ namespace genshin_sim
             this.labCharacterArtifactPlume.AutoSize = true;
             this.labCharacterArtifactPlume.Location = new System.Drawing.Point(76, 20);
             this.labCharacterArtifactPlume.Name = "labCharacterArtifactPlume";
-            this.labCharacterArtifactPlume.Size = new System.Drawing.Size(29, 12);
+            this.labCharacterArtifactPlume.Size = new System.Drawing.Size(47, 12);
             this.labCharacterArtifactPlume.TabIndex = 2;
-            this.labCharacterArtifactPlume.Text = "Info";
+            this.labCharacterArtifactPlume.Text = "(Empty)";
             // 
             // cmdCharacterArtifactPlume
             // 
@@ -477,9 +481,9 @@ namespace genshin_sim
             this.labCharacterArtifactFlowerInfo.AutoSize = true;
             this.labCharacterArtifactFlowerInfo.Location = new System.Drawing.Point(76, 20);
             this.labCharacterArtifactFlowerInfo.Name = "labCharacterArtifactFlowerInfo";
-            this.labCharacterArtifactFlowerInfo.Size = new System.Drawing.Size(29, 12);
+            this.labCharacterArtifactFlowerInfo.Size = new System.Drawing.Size(47, 12);
             this.labCharacterArtifactFlowerInfo.TabIndex = 2;
-            this.labCharacterArtifactFlowerInfo.Text = "Info";
+            this.labCharacterArtifactFlowerInfo.Text = "(Empty)";
             // 
             // cmdCharacterArtifactFlower
             // 
@@ -499,6 +503,7 @@ namespace genshin_sim
             this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Controls.Add(this.labCharacterAttributes);
             this.groupBox7.Location = new System.Drawing.Point(573, 6);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(301, 518);
@@ -518,7 +523,7 @@ namespace genshin_sim
             this.groupBox6.Size = new System.Drawing.Size(277, 202);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Character Select";
+            this.groupBox6.Text = "Character";
             // 
             // groupBox8
             // 
@@ -595,6 +600,25 @@ namespace genshin_sim
             this.tabPage1.Text = "Artifact Sim";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(880, 530);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Damage Test";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // labCharacterAttributes
+            // 
+            this.labCharacterAttributes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labCharacterAttributes.Location = new System.Drawing.Point(3, 17);
+            this.labCharacterAttributes.Name = "labCharacterAttributes";
+            this.labCharacterAttributes.Size = new System.Drawing.Size(295, 498);
+            this.labCharacterAttributes.TabIndex = 0;
+            this.labCharacterAttributes.Text = "Info";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -625,6 +649,7 @@ namespace genshin_sim
             this.gpCharacterArtifactPlume.PerformLayout();
             this.gpCharacterArtifactFlower.ResumeLayout(false);
             this.gpCharacterArtifactFlower.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -680,6 +705,8 @@ namespace genshin_sim
         private System.Windows.Forms.Button cmdCharacterArtifactCirclet;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.Label labCharacterArtifactSetEffect;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label labCharacterAttributes;
     }
 }
 

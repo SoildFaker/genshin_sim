@@ -257,6 +257,7 @@
             this.MinimizeBox = false;
             this.Name = "fmArtifact";
             this.Text = "fmArtifact";
+            this.Load += new System.EventHandler(this.fmArtifact_Load);
             this.gpArtifact.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();

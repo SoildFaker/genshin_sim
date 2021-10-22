@@ -35,12 +35,28 @@ namespace genshin_sim
         {
             this.gpArtifact.Text = $"Artifact ({artifact.Name})";
             this.main_affixes = AffixFactory.get_artifact_main_affix_array(artifact.Type);
+            this.selLevel.Value = artifact.Level;
             this.cmbMainAffix.Text = artifact.MainAffixString;
+            this.init_minor_affixes.AddRange(AffixFactory.minor_affixes_arr.Where(x => x.Attribute != artifact.MainAffix.Attribute));
+            for (int i = 0; i < artifact.MinorAffixes.Count; i++)
+            {
+                this.affix_slot[i] = artifact.MinorAffixes[i];
+                if (i < 4)
+                {
+                    this.init_minor_affixes.RemoveAll(x => x.Attribute == affix_slot[i].Attribute);
+                    this.lstSelectedMinorAffix.Items.Add($"Slot * [{artifact.MinorAffixes[i].Description}\t]");
+                }
+                else
+                {
+                    this.lstSelectedMinorAffix.Items.Add($"Slot   [{artifact.MinorAffixes[i].Description}\t]");
+                }
+            }
+            affix_slot_count = 4 + (int)artifact.Level / 4;
             this.cmbMainAffix.Items.AddRange(main_affixes.Select(x => x.Description).ToArray());
             refresh_list();
             refresh_slot();
             refresh_info();
-            refresh_minor_affix();
+            //refresh_minor_affix();
         }
 
         private void cmdOK_Click(object sender, EventArgs e)
@@ -59,11 +75,11 @@ namespace genshin_sim
 
         private void refresh_list()
         {
+            this.lstMinorAffixList.Items.Clear();
             if (this.lstSelectedMinorAffix.SelectedIndex < 0)
             {
                 return;
             }
-            this.lstMinorAffixList.Items.Clear();
             if (lstSelectedMinorAffix.SelectedIndex < 4)
             {
                 this.lstMinorAffixList.Items.AddRange(this.init_minor_affixes.Select(x => x.Description).ToArray());
@@ -151,8 +167,8 @@ namespace genshin_sim
             if (cmbMainAffix.SelectedIndex >= 0)
             {
                 artifact.SetMainAffix(main_affixes[cmbMainAffix.SelectedIndex]);
-                refresh_list();
                 refresh_minor_affix();
+                refresh_list();
             }
         }
 
@@ -177,11 +193,29 @@ namespace genshin_sim
                 if (index < 4)
                 {
                     lstSelectedMinorAffix.Items[index] = $"Slot * [{affix.Description}\t]";
+                    refresh_minor_affix();
                     refresh_list();
                 }
                 else
                 {
                     lstSelectedMinorAffix.Items[index] = $"Slot   [{affix.Description}\t]";
+                }
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                if (affix_slot[i] != null)
+                {
+                    if (affix_slot[i].Attribute == artifact.MainAffix.Attribute)
+                    {
+                        slot_unplug(i);
+                    }
+                    if (i >= 4)
+                    {
+                        if (affix_slot.Take(4).Where(x => x.Attribute == affix_slot[i].Attribute).Count() == 0)
+                        {
+                            slot_unplug(i);
+                        }
+                    }
                 }
             }
             for (int i = 0; i < affix_slot_count; i++)
@@ -205,6 +239,7 @@ namespace genshin_sim
                 if (index < 4)
                 {
                     lstSelectedMinorAffix.Items[index] = $"Slot * [\t]";
+                    refresh_minor_affix();
                     refresh_list();
                 }
                 else
@@ -224,8 +259,8 @@ namespace genshin_sim
 
         private void lstSelectedMinorAffix_SelectedIndexChanged(object sender, EventArgs e)
         {
-            refresh_list();
             refresh_minor_affix();
+            refresh_list();
         }
 
         private void lstMinorAffixList_SelectedIndexChanged(object sender, EventArgs e)
@@ -266,6 +301,11 @@ namespace genshin_sim
         private void cmdCamcel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void fmArtifact_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

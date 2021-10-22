@@ -72,6 +72,29 @@ namespace genshin_sim
             ELM_16, ELM_19, ELM_21, ELM_23,
         };
 
+        public static AffixAttr[] waifu_stat_arr = new AffixAttr[]
+        {
+            AffixAttr.HP,
+            AffixAttr.ATK,
+            AffixAttr.DEF,
+            AffixAttr.pHP,
+            AffixAttr.pATK,
+            AffixAttr.pDEF,
+            AffixAttr.ELM,
+            AffixAttr.pCGR,
+            AffixAttr.pCRI,
+            AffixAttr.pCRD,
+            AffixAttr.pPhysical,
+            AffixAttr.pPyro,
+            AffixAttr.pHydro,
+            AffixAttr.pCryo,
+            AffixAttr.pDendro,
+            AffixAttr.pElectro,
+            AffixAttr.pAnemo,
+            AffixAttr.pGeo,
+            AffixAttr.pHealing,
+        };
+
         public static AffixAttr[] minor_affix_attr_arr = new AffixAttr[]
         {
             AffixAttr.HP,
@@ -239,9 +262,9 @@ namespace genshin_sim
                 case AffixAttr.HP: return "生命值";
                 case AffixAttr.ATK: return "攻击力";
                 case AffixAttr.DEF: return "防御力";
-                case AffixAttr.pHP: return "生命值";
-                case AffixAttr.pATK: return "攻击力";
-                case AffixAttr.pDEF: return "防御力";
+                case AffixAttr.pHP: return "生命加成";
+                case AffixAttr.pATK: return "攻击加成";
+                case AffixAttr.pDEF: return "防御加成";
                 case AffixAttr.ELM: return "元素精通";
                 case AffixAttr.pCGR: return "充能效率";
                 case AffixAttr.pCRI: return "暴击率";
@@ -379,9 +402,24 @@ namespace genshin_sim
             } ,
             new List<Talent>()
         );
+
+        public static Waifu Barbara = new Waifu(
+            "芭芭拉",
+            ElementType.Hydro,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.barbara_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.barbara_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.barbara_base_def, 0),
+                new Affix(AffixAttr.pHP, StatData.barbara_hp, 0),
+                new Affix(AffixAttr.pCRD, StatData.barbara_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.barbara_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
         public static Waifu[] Waifus = new Waifu[] 
         {
-            Albedo, Aloy, Amber, Keqing, Ayaka, Zhongli
+            Albedo, Aloy, Amber, Barbara, Keqing, Ayaka, Zhongli
         };
     }
 }
