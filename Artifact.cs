@@ -75,7 +75,7 @@ namespace genshin_sim
                         str += AffixFactory.attr2str(attr) + " + "
                             + MinorAffixes.Where(x => x.Attribute == attr).Sum(x => x.Value).ToString();
                     }
-                    str += "\r\n";
+                    str += " \r\n";
                 }
                 return str;
             }
@@ -89,9 +89,10 @@ namespace genshin_sim
             
         }
 
-        public Artifact(ArtifactType type, Affix main, List<Affix> sub, int lv = 1)
+        public Artifact(ArtifactType type, Affix main, List<Affix> sub, int lv = 1, string name = "")
         {
             this.Type = type;
+            this.Name = name;
             SetMainAffix(main);
             SetMinorAffix(sub);
             SetLevel(lv);

@@ -36,6 +36,8 @@ namespace genshin_sim
             this.cmdLevelUp20 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cmdArtifactAdd = new System.Windows.Forms.Button();
+            this.cmdArtifactDelete = new System.Windows.Forms.Button();
             this.cmdArtifactSave = new System.Windows.Forms.Button();
             this.cmdArtifactEdit = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -76,6 +78,11 @@ namespace genshin_sim
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.labGithubLink = new System.Windows.Forms.LinkLabel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuArtifactEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuArtifactAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuArtifactDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -93,12 +100,13 @@ namespace genshin_sim
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).BeginInit();
             this.tabPage1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmdAdd
             // 
             this.cmdAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdAdd.Location = new System.Drawing.Point(611, 13);
+            this.cmdAdd.Location = new System.Drawing.Point(490, 13);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(115, 23);
             this.cmdAdd.TabIndex = 2;
@@ -119,7 +127,7 @@ namespace genshin_sim
             // cmdLevelUp20
             // 
             this.cmdLevelUp20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdLevelUp20.Location = new System.Drawing.Point(611, 42);
+            this.cmdLevelUp20.Location = new System.Drawing.Point(490, 42);
             this.cmdLevelUp20.Name = "cmdLevelUp20";
             this.cmdLevelUp20.Size = new System.Drawing.Size(115, 23);
             this.cmdLevelUp20.TabIndex = 4;
@@ -146,6 +154,8 @@ namespace genshin_sim
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.cmdArtifactAdd);
+            this.groupBox3.Controls.Add(this.cmdArtifactDelete);
             this.groupBox3.Controls.Add(this.cmdArtifactSave);
             this.groupBox3.Controls.Add(this.cmdArtifactEdit);
             this.groupBox3.Controls.Add(this.labInfo);
@@ -157,6 +167,26 @@ namespace genshin_sim
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Info";
+            // 
+            // cmdArtifactAdd
+            // 
+            this.cmdArtifactAdd.Location = new System.Drawing.Point(611, 13);
+            this.cmdArtifactAdd.Name = "cmdArtifactAdd";
+            this.cmdArtifactAdd.Size = new System.Drawing.Size(115, 23);
+            this.cmdArtifactAdd.TabIndex = 8;
+            this.cmdArtifactAdd.Text = "Add";
+            this.cmdArtifactAdd.UseVisualStyleBackColor = true;
+            this.cmdArtifactAdd.Click += new System.EventHandler(this.cmdArtifactAdd_Click);
+            // 
+            // cmdArtifactDelete
+            // 
+            this.cmdArtifactDelete.Location = new System.Drawing.Point(611, 42);
+            this.cmdArtifactDelete.Name = "cmdArtifactDelete";
+            this.cmdArtifactDelete.Size = new System.Drawing.Size(115, 23);
+            this.cmdArtifactDelete.TabIndex = 7;
+            this.cmdArtifactDelete.Text = "Delete";
+            this.cmdArtifactDelete.UseVisualStyleBackColor = true;
+            this.cmdArtifactDelete.Click += new System.EventHandler(this.cmdArtifactDelete_Click);
             // 
             // cmdArtifactSave
             // 
@@ -197,6 +227,7 @@ namespace genshin_sim
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
+            this.lstRelic.ContextMenuStrip = this.contextMenuStrip1;
             this.lstRelic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstRelic.FullRowSelect = true;
             this.lstRelic.GridLines = true;
@@ -212,6 +243,7 @@ namespace genshin_sim
             this.lstRelic.UseCompatibleStateImageBehavior = false;
             this.lstRelic.View = System.Windows.Forms.View.Details;
             this.lstRelic.SelectedIndexChanged += new System.EventHandler(this.lstRelic_SelectedIndexChanged);
+            this.lstRelic.DoubleClick += new System.EventHandler(this.lstRelic_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -245,8 +277,8 @@ namespace genshin_sim
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -595,7 +627,7 @@ namespace genshin_sim
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(880, 530);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Artifact Sim";
+            this.tabPage1.Text = "Artifact";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // labGithubLink
@@ -609,6 +641,42 @@ namespace genshin_sim
             this.labGithubLink.TabStop = true;
             this.labGithubLink.Text = "View on Github!";
             this.labGithubLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labGithubLink_LinkClicked);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuArtifactEdit,
+            this.menuArtifactAdd,
+            this.toolStripMenuItem1,
+            this.menuArtifactDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 76);
+            // 
+            // menuArtifactEdit
+            // 
+            this.menuArtifactEdit.Name = "menuArtifactEdit";
+            this.menuArtifactEdit.Size = new System.Drawing.Size(180, 22);
+            this.menuArtifactEdit.Text = "Edit";
+            this.menuArtifactEdit.Click += new System.EventHandler(this.menuArtifactEdit_Click);
+            // 
+            // menuArtifactAdd
+            // 
+            this.menuArtifactAdd.Name = "menuArtifactAdd";
+            this.menuArtifactAdd.Size = new System.Drawing.Size(180, 22);
+            this.menuArtifactAdd.Text = "Add";
+            this.menuArtifactAdd.Click += new System.EventHandler(this.menuArtifactAdd_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // menuArtifactDelete
+            // 
+            this.menuArtifactDelete.Name = "menuArtifactDelete";
+            this.menuArtifactDelete.Size = new System.Drawing.Size(180, 22);
+            this.menuArtifactDelete.Text = "Delete";
+            this.menuArtifactDelete.Click += new System.EventHandler(this.menuArtifactDelete_Click);
             // 
             // Form1
             // 
@@ -645,6 +713,7 @@ namespace genshin_sim
             this.groupBox8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -696,6 +765,13 @@ namespace genshin_sim
         private System.Windows.Forms.LinkLabel labGithubLink;
         private System.Windows.Forms.Button cmdArtifactEdit;
         private System.Windows.Forms.Button cmdArtifactSave;
+        private System.Windows.Forms.Button cmdArtifactAdd;
+        private System.Windows.Forms.Button cmdArtifactDelete;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuArtifactEdit;
+        private System.Windows.Forms.ToolStripMenuItem menuArtifactAdd;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem menuArtifactDelete;
     }
 }
 

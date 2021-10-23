@@ -53,11 +53,23 @@
     <Compile Include="fmArtifactEditor.Designer.cs">
       <DependentUpon>fmArtifactEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="fmArtifactList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmArtifactList.Designer.cs">
+      <DependentUpon>fmArtifactList.cs</DependentUpon>
+    </Compile>
     <Compile Include="fmCharacterList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fmCharacterList.Designer.cs">
       <DependentUpon>fmCharacterList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmSelectArtifactType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmSelectArtifactType.Designer.cs">
+      <DependentUpon>fmSelectArtifactType.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -80,8 +92,14 @@
     <EmbeddedResource Include="fmArtifactEditor.resx">
       <DependentUpon>fmArtifactEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fmArtifactList.resx">
+      <DependentUpon>fmArtifactList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fmCharacterList.resx">
       <DependentUpon>fmCharacterList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmSelectArtifactType.resx">
+      <DependentUpon>fmSelectArtifactType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

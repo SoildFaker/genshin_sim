@@ -34,6 +34,7 @@ namespace genshin_sim
 
         private void refresh_relic_list()
         {
+            lstRelic.BeginUpdate();
             lstRelic.Items.Clear();
             for (int i = 0; i < artifacts_inventory.Count; i++)
             {
@@ -43,6 +44,7 @@ namespace genshin_sim
                 lstRelic.Items[i].ImageIndex = ((int)artifacts_inventory[i].Type);
             }
             get_relic_info();
+            lstRelic.EndUpdate();
         }
 
         private void cmdReset_Click(object sender, EventArgs e)
@@ -70,8 +72,9 @@ namespace genshin_sim
         {
             for (int i = 0; i < 20; i++)
             {
-                level_up();
+                artifact_now.LevelUp();
             }
+            refresh_relic_list();
         }
 
         private void lstRelic_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,11 +145,7 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactFlower_Click(object sender, EventArgs e)
         {
-            if (waifu_artifacts[0] == null)
-            {
-                waifu_artifacts[0] = new Artifact(ArtifactType.FlowerOfLife);
-            }
-            using (var fm = new fmArtifactEditor(waifu_artifacts[0]))
+            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.FlowerOfLife).ToList(), this.ArtifactTypeImageList, ArtifactType.FlowerOfLife))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
@@ -164,11 +163,7 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactGoblet_Click(object sender, EventArgs e)
         {
-            if (waifu_artifacts[3] == null)
-            {
-                waifu_artifacts[3] = new Artifact(ArtifactType.GobletOfEonothem);
-            }
-            using (var fm = new fmArtifactEditor(waifu_artifacts[3]))
+            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.GobletOfEonothem).ToList(), this.ArtifactTypeImageList, ArtifactType.GobletOfEonothem))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
@@ -186,11 +181,7 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactPlume_Click(object sender, EventArgs e)
         {
-            if (waifu_artifacts[1] == null)
-            {
-                waifu_artifacts[1] = new Artifact(ArtifactType.PlumeOfDeath);
-            }
-            using (var fm = new fmArtifactEditor(waifu_artifacts[1]))
+            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.PlumeOfDeath).ToList(), this.ArtifactTypeImageList, ArtifactType.PlumeOfDeath))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
@@ -208,11 +199,7 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactSands_Click(object sender, EventArgs e)
         {
-            if (waifu_artifacts[2] == null)
-            {
-                waifu_artifacts[2] = new Artifact(ArtifactType.SandsOfEon);
-            }
-            using (var fm = new fmArtifactEditor(waifu_artifacts[2]))
+            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.SandsOfEon).ToList(), this.ArtifactTypeImageList, ArtifactType.SandsOfEon))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
@@ -226,16 +213,11 @@ namespace genshin_sim
                     refresh_character_info();
                 }
             }
-
         }
 
         private void cmdCharacterArtifactCirclet_Click(object sender, EventArgs e)
         {
-            if (waifu_artifacts[4] == null)
-            {
-                waifu_artifacts[4] = new Artifact(ArtifactType.CircletOfLogos);
-            }
-            using (var fm = new fmArtifactEditor(waifu_artifacts[4]))
+            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.CircletOfLogos).ToList(), this.ArtifactTypeImageList, ArtifactType.CircletOfLogos))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
@@ -265,13 +247,7 @@ namespace genshin_sim
 
         private void cmdArtifactEdit_Click(object sender, EventArgs e)
         {
-            using (var fm = new fmArtifactEditor(artifacts_inventory[lstRelic.SelectedItems[0].Index]))
-            {
-                if (fm.ShowDialog() == DialogResult.OK)
-                {
-                    artifacts_inventory[lstRelic.SelectedItems[0].Index] = fm.Artifact;
-                }
-            }
+            artifact_edit();
         }
 
         private void cmdArtifactSave_Click(object sender, EventArgs e)
@@ -283,17 +259,26 @@ namespace genshin_sim
             {
                 sb.Append($"{ArtifactFactory.artifactTypes.ToList().IndexOf(artifacts_inventory[i].Type)},"); // 0 -- Artifact Type
                 sb.Append($"{artifacts_inventory[i].Level},"); // 1 -- Level
-                sb.Append($"{artifacts_inventory[i].NickName},"); // 2 -- Nick Name
-                sb.Append($"{AffixFactory.get_artifact_main_affix_array(artifacts_inventory[i].Type).Select(x => x.Attribute).ToList().IndexOf(artifacts_inventory[i].MainAffix.Attribute)},"); // 3 -- Main Affix Type
-                sb.Append($"{artifacts_inventory[i].MinorAffixes.Count},"); // 4 -- Minor Affix Count
+                sb.Append($"{artifacts_inventory[i].Name},"); // 2 -- Name
+                sb.Append($"{artifacts_inventory[i].NickName},"); // 3 -- Nick Name
+                sb.Append($"{AffixFactory.get_artifact_main_affix_array(artifacts_inventory[i].Type).Select(x => x.Attribute).ToList().IndexOf(artifacts_inventory[i].MainAffix.Attribute)},"); // 4 -- Main Affix Type
+                sb.Append($"{artifacts_inventory[i].MinorAffixes.Count},"); // 5 -- Minor Affix Count
                 for (int j = 0; j < artifacts_inventory[i].MinorAffixes.Count; j++)
                 {
                     sb.Append($"{AffixFactory.minor_affixes_arr.Select(x => x.Attribute).ToList().IndexOf(artifacts_inventory[i].MinorAffixes[j].Attribute)},");
                 }
                 sb.Append("\n");
             }
-
-            File.WriteAllText(file_artifact_data, sb.ToString());
+            try
+            {
+                File.WriteAllText(file_artifact_data, sb.ToString());
+                MessageBox.Show("保存成功！", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"保存失败！\r\n{ex.Message}", "Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
         }
 
         private void read_artifacts_from_file()
@@ -306,19 +291,94 @@ namespace genshin_sim
                 {
                     string[] item = lines[i].Split(',');
                     List<Affix> minor_affix = new List<Affix>();
-                    for (int j = 0; j < Convert.ToInt32(item[4]); j++)
+                    for (int j = 0; j < Convert.ToInt32(item[5]); j++)
                     {
-                        minor_affix.Add(AffixFactory.minor_affixes_arr[Convert.ToInt32(item[5 + j])]);
+                        minor_affix.Add(AffixFactory.minor_affixes_arr[Convert.ToInt32(item[6 + j])]);
                     }
                     ArtifactType type = ArtifactFactory.artifactTypes[Convert.ToInt32(item[0])];
-                    Artifact tmp = new Artifact(type, AffixFactory.get_artifact_main_affix_array(type)[Convert.ToInt32(item[3])], minor_affix, Convert.ToInt32(item[1]));
-                    tmp.NickName = item[2];
+                    Artifact tmp = new Artifact(type, AffixFactory.get_artifact_main_affix_array(type)[Convert.ToInt32(item[4])], minor_affix, Convert.ToInt32(item[1]), item[2]);
+                    tmp.NickName = item[3];
                     artifacts_inventory.Add(tmp);
                 }
             }
             else
             {
                 artifacts_inventory.Add(ArtifactFactory.pick());
+            }
+        }
+
+        private void lstRelic_DoubleClick(object sender, EventArgs e)
+        {
+            if (lstRelic.SelectedItems.Count > 0)
+            {
+                using (var fm = new fmArtifactEditor(artifacts_inventory[lstRelic.SelectedItems[0].Index]))
+                {
+                    if (fm.ShowDialog() == DialogResult.OK)
+                    {
+                        artifacts_inventory[lstRelic.SelectedItems[0].Index] = fm.Artifact;
+                    }
+                }
+            }
+
+        }
+
+        private void cmdArtifactAdd_Click(object sender, EventArgs e)
+        {
+            artifact_add();
+        }
+
+        private void cmdArtifactDelete_Click(object sender, EventArgs e)
+        {
+            artifact_delete();
+        }
+
+        private void menuArtifactEdit_Click(object sender, EventArgs e)
+        {
+            artifact_edit();
+        }
+
+        private void menuArtifactAdd_Click(object sender, EventArgs e)
+        {
+            artifact_add();
+        }
+
+        private void menuArtifactDelete_Click(object sender, EventArgs e)
+        {
+            artifact_delete();
+        }
+
+        private void artifact_delete()
+        {
+            if (lstRelic.SelectedItems.Count > 0)
+            {
+                this.artifacts_inventory.RemoveAt(lstRelic.SelectedItems[0].Index);
+                refresh_relic_list();
+            }
+        }
+
+        private void artifact_add()
+        {
+            using (var fm = new fmSelectArtifactType(this.ArtifactTypeImageList))
+            {
+                if (fm.ShowDialog() == DialogResult.OK)
+                {
+                    this.artifacts_inventory.Add(fm.artifact);
+                    refresh_relic_list();
+                }
+            }
+        }
+
+        private void artifact_edit()
+        {
+            if (lstRelic.SelectedItems.Count > 0)
+            {
+                using (var fm = new fmArtifactEditor(artifacts_inventory[lstRelic.SelectedItems[0].Index]))
+                {
+                    if (fm.ShowDialog() == DialogResult.OK)
+                    {
+                        artifacts_inventory[lstRelic.SelectedItems[0].Index] = fm.Artifact;
+                    }
+                }
             }
         }
     }
