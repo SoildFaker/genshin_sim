@@ -262,5 +262,17 @@ namespace genshin_sim
                 }
             }
         }
+
+        private void labGithubLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://github.com/SoildFaker/genshin_sim");
+            }
+            catch (Exception ex )
+            {
+                MessageBox.Show("Unable to open link that was clicked.");
+            }
+        }
     }
 }

@@ -68,15 +68,16 @@ namespace genshin_sim
             this.labCharacterArtifactFlowerInfo = new System.Windows.Forms.Label();
             this.cmdCharacterArtifactFlower = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.labCharacterAttributes = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.labCharacterBaseStat = new System.Windows.Forms.Label();
             this.selCharacterLevel = new System.Windows.Forms.TrackBar();
             this.labCharacterName = new System.Windows.Forms.Label();
             this.cmdCharacterAdd = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.labCharacterAttributes = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.labGithubLink = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -122,7 +123,7 @@ namespace genshin_sim
             // labInfo
             // 
             this.labInfo.AutoSize = true;
-            this.labInfo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labInfo.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labInfo.Location = new System.Drawing.Point(6, 202);
             this.labInfo.Name = "labInfo";
             this.labInfo.Size = new System.Drawing.Size(66, 21);
@@ -511,6 +512,15 @@ namespace genshin_sim
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Attributes";
             // 
+            // labCharacterAttributes
+            // 
+            this.labCharacterAttributes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labCharacterAttributes.Location = new System.Drawing.Point(3, 17);
+            this.labCharacterAttributes.Name = "labCharacterAttributes";
+            this.labCharacterAttributes.Size = new System.Drawing.Size(295, 498);
+            this.labCharacterAttributes.TabIndex = 0;
+            this.labCharacterAttributes.Text = "Info";
+            // 
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.Color.White;
@@ -581,13 +591,23 @@ namespace genshin_sim
             this.cmdCharacterAdd.BackColor = System.Drawing.Color.White;
             this.cmdCharacterAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdCharacterAdd.BackgroundImage")));
             this.cmdCharacterAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdCharacterAdd.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmdCharacterAdd.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmdCharacterAdd.Location = new System.Drawing.Point(3, 17);
             this.cmdCharacterAdd.Name = "cmdCharacterAdd";
             this.cmdCharacterAdd.Size = new System.Drawing.Size(50, 50);
             this.cmdCharacterAdd.TabIndex = 0;
             this.cmdCharacterAdd.UseVisualStyleBackColor = false;
             this.cmdCharacterAdd.Click += new System.EventHandler(this.cmdCharacterAdd_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(880, 530);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Damage Test";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
@@ -600,30 +620,24 @@ namespace genshin_sim
             this.tabPage1.Text = "Artifact Sim";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // labGithubLink
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(880, 530);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Damage Test";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // labCharacterAttributes
-            // 
-            this.labCharacterAttributes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labCharacterAttributes.Location = new System.Drawing.Point(3, 17);
-            this.labCharacterAttributes.Name = "labCharacterAttributes";
-            this.labCharacterAttributes.Size = new System.Drawing.Size(295, 498);
-            this.labCharacterAttributes.TabIndex = 0;
-            this.labCharacterAttributes.Text = "Info";
+            this.labGithubLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labGithubLink.AutoSize = true;
+            this.labGithubLink.Location = new System.Drawing.Point(805, 567);
+            this.labGithubLink.Name = "labGithubLink";
+            this.labGithubLink.Size = new System.Drawing.Size(95, 12);
+            this.labGithubLink.TabIndex = 5;
+            this.labGithubLink.TabStop = true;
+            this.labGithubLink.Text = "View on Github!";
+            this.labGithubLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labGithubLink_LinkClicked);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 580);
+            this.Controls.Add(this.labGithubLink);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Genshin Impact Damage Simulator";
@@ -656,6 +670,7 @@ namespace genshin_sim
             ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -707,6 +722,7 @@ namespace genshin_sim
         private System.Windows.Forms.Label labCharacterArtifactSetEffect;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label labCharacterAttributes;
+        private System.Windows.Forms.LinkLabel labGithubLink;
     }
 }
 
