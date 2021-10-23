@@ -163,6 +163,7 @@ namespace genshin_sim
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactFlowerInfo.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
+                    gpCharacterArtifactFlower.Text = $"Flower of Life (Lv.{fm.Artifact.Level})";
                     artifacts_now[0] = fm.Artifact;
                     if (waifu_now != null)
                     {
@@ -184,6 +185,7 @@ namespace genshin_sim
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactGoblet.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
+                    gpCharacterArtifactGoblet.Text = $"Goblet of Eonothem (Lv.{fm.Artifact.Level})";
                     artifacts_now[3] = fm.Artifact;
                     if (waifu_now != null)
                     {
@@ -205,6 +207,7 @@ namespace genshin_sim
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactPlume.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
+                    gpCharacterArtifactPlume.Text = $"Plume of Death (Lv.{fm.Artifact.Level})";
                     artifacts_now[1] = fm.Artifact;
                     if (waifu_now != null)
                     {
@@ -226,6 +229,7 @@ namespace genshin_sim
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactSands.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
+                    gpCharacterArtifactSands.Text = $"Sands of Eon (Lv.{fm.Artifact.Level})";
                     artifacts_now[2] = fm.Artifact;
                     if (waifu_now != null)
                     {
@@ -248,6 +252,7 @@ namespace genshin_sim
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactCirclet.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
+                    gpCharacterArtifactCirclet.Text = $"Circlet of Logos (Lv.{fm.Artifact.Level})";
                     artifacts_now[4] = fm.Artifact;
                     if (waifu_now != null)
                     {
