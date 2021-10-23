@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace genshin_sim
 {
-    public partial class fmArtifact : Form
+    public partial class fmArtifactEditor : Form
     {
-        public fmArtifact(Artifact artifact)
+        public fmArtifactEditor(Artifact artifact)
         {
             InitializeComponent();
             this.artifact = artifact;
@@ -62,7 +62,6 @@ namespace genshin_sim
         private void cmdOK_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
-            this.artifact.SetInitMinorAffix(affix_slot.Take(4).ToList());
             this.artifact.SetMinorAffix(affix_slot.Take(affix_slot_count).ToList());
             this.Close();
         }

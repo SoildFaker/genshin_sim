@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -17,30 +18,29 @@ namespace genshin_sim
             InitializeComponent();
         }
 
-        List<Artifact> relics = new List<Artifact>();
-        Artifact[] artifacts_now = new Artifact[5];
+        string file_artifact_data = @"artifacts.dat";
+        int[] version = new int[4] { 0, 1, 0, 0};
+        List<Artifact> artifacts_inventory = new List<Artifact>();
+        Artifact[] waifu_artifacts = new Artifact[5];
         Waifu waifu_now;
+        Artifact artifact_now;
 
-        Artifact relic_now;
         private void Form1_Load(object sender, EventArgs e)
         {
-            for (int j = 0; j < 20; j++)
-            {
-                relics.Add(ArtifactFactory.pick());
-            }
-            relic_now = relics[0];
+            read_artifacts_from_file();
+            artifact_now = artifacts_inventory[0];
             refresh_relic_list();
         }
 
         private void refresh_relic_list()
         {
             lstRelic.Items.Clear();
-            for (int i = 0; i < relics.Count; i++)
+            for (int i = 0; i < artifacts_inventory.Count; i++)
             {
-                lstRelic.Items.Add(i.ToString());
-                lstRelic.Items[i].ImageIndex = ((int)relics[i].Type);
-                lstRelic.Items[i].SubItems.Add(relics[i].Name);
-                lstRelic.Items[i].SubItems.Add(relics[i].Level.ToString());
+                lstRelic.Items.Add($"{artifacts_inventory[i].Name} ({artifacts_inventory[i].Level})");
+                lstRelic.Items[i].SubItems.Add($"{artifacts_inventory[i].MainAffixString}");
+                lstRelic.Items[i].SubItems.Add($"{artifacts_inventory[i].MinorAffixesString}");
+                lstRelic.Items[i].ImageIndex = ((int)artifacts_inventory[i].Type);
             }
             get_relic_info();
         }
@@ -57,24 +57,12 @@ namespace genshin_sim
 
         private void get_relic_info()
         {
-            lstRelicMinorAffixes.Items.Clear();
-            for (int i = 0; i < relic_now.MinorAffixes.Count; i++)
-            {
-                lstRelicMinorAffixes.Items.Add(relic_now.MinorAffixes[i].Description);
-            }
-            cmbMainAffix.Text = relic_now.MainAffixString;
-            this.labInfo.Text = $"Level: {relic_now.Level}\r\n{relic_now.MainAffixString}\r\n{relic_now.MinorAffixesString}";
+            this.labInfo.Text = $"Level: {artifact_now.Level}\r\n{artifact_now.MainAffixString}\r\n{artifact_now.MinorAffixesString}";
         }
 
         private void level_up()
         {
-            relic_now.LevelUp();
-           
-            lstRelicMinorAffixes.Items.Clear();
-            for (int i = 0; i < relic_now.MinorAffixes.Count; i++)
-            {
-                lstRelicMinorAffixes.Items.Add(relic_now.MinorAffixes[i].Description);
-            }
+            artifact_now.LevelUp();
             refresh_relic_list();
         }
 
@@ -90,7 +78,7 @@ namespace genshin_sim
         {
             if (lstRelic.SelectedItems.Count > 0)
             {
-                relic_now = relics[lstRelic.SelectedItems[0].Index];
+                artifact_now = artifacts_inventory[lstRelic.SelectedItems[0].Index];
                 get_relic_info();
             }
         }
@@ -105,7 +93,7 @@ namespace genshin_sim
                     cmdCharacterAdd.Text = "";
                     waifu_now = fm.Waifu;
                     selCharacterLevel.Value = waifu_now.Level;
-                    waifu_now.Artifacts = artifacts_now;
+                    waifu_now.Artifacts = waifu_artifacts;
                     refresh_character_info();
                 }
             }
@@ -154,17 +142,17 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactFlower_Click(object sender, EventArgs e)
         {
-            if (artifacts_now[0] == null)
+            if (waifu_artifacts[0] == null)
             {
-                artifacts_now[0] = new Artifact(ArtifactType.FlowerOfLife);
+                waifu_artifacts[0] = new Artifact(ArtifactType.FlowerOfLife);
             }
-            using (var fm = new fmArtifact(artifacts_now[0]))
+            using (var fm = new fmArtifactEditor(waifu_artifacts[0]))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactFlowerInfo.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
                     gpCharacterArtifactFlower.Text = $"Flower of Life (Lv.{fm.Artifact.Level})";
-                    artifacts_now[0] = fm.Artifact;
+                    waifu_artifacts[0] = fm.Artifact;
                     if (waifu_now != null)
                     {
                         waifu_now.Artifacts[0] = fm.Artifact;
@@ -176,17 +164,17 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactGoblet_Click(object sender, EventArgs e)
         {
-            if (artifacts_now[3] == null)
+            if (waifu_artifacts[3] == null)
             {
-                artifacts_now[3] = new Artifact(ArtifactType.GobletOfEonothem);
+                waifu_artifacts[3] = new Artifact(ArtifactType.GobletOfEonothem);
             }
-            using (var fm = new fmArtifact(artifacts_now[3]))
+            using (var fm = new fmArtifactEditor(waifu_artifacts[3]))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactGoblet.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
                     gpCharacterArtifactGoblet.Text = $"Goblet of Eonothem (Lv.{fm.Artifact.Level})";
-                    artifacts_now[3] = fm.Artifact;
+                    waifu_artifacts[3] = fm.Artifact;
                     if (waifu_now != null)
                     {
                         waifu_now.Artifacts[3] = fm.Artifact;
@@ -198,17 +186,17 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactPlume_Click(object sender, EventArgs e)
         {
-            if (artifacts_now[1] == null)
+            if (waifu_artifacts[1] == null)
             {
-                artifacts_now[1] = new Artifact(ArtifactType.PlumeOfDeath);
+                waifu_artifacts[1] = new Artifact(ArtifactType.PlumeOfDeath);
             }
-            using (var fm = new fmArtifact(artifacts_now[1]))
+            using (var fm = new fmArtifactEditor(waifu_artifacts[1]))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactPlume.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
                     gpCharacterArtifactPlume.Text = $"Plume of Death (Lv.{fm.Artifact.Level})";
-                    artifacts_now[1] = fm.Artifact;
+                    waifu_artifacts[1] = fm.Artifact;
                     if (waifu_now != null)
                     {
                         waifu_now.Artifacts[1] = fm.Artifact;
@@ -220,17 +208,17 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactSands_Click(object sender, EventArgs e)
         {
-            if (artifacts_now[2] == null)
+            if (waifu_artifacts[2] == null)
             {
-                artifacts_now[2] = new Artifact(ArtifactType.SandsOfEon);
+                waifu_artifacts[2] = new Artifact(ArtifactType.SandsOfEon);
             }
-            using (var fm = new fmArtifact(artifacts_now[2]))
+            using (var fm = new fmArtifactEditor(waifu_artifacts[2]))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactSands.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
                     gpCharacterArtifactSands.Text = $"Sands of Eon (Lv.{fm.Artifact.Level})";
-                    artifacts_now[2] = fm.Artifact;
+                    waifu_artifacts[2] = fm.Artifact;
                     if (waifu_now != null)
                     {
                         waifu_now.Artifacts[2] = fm.Artifact;
@@ -243,17 +231,17 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactCirclet_Click(object sender, EventArgs e)
         {
-            if (artifacts_now[4] == null)
+            if (waifu_artifacts[4] == null)
             {
-                artifacts_now[4] = new Artifact(ArtifactType.CircletOfLogos);
+                waifu_artifacts[4] = new Artifact(ArtifactType.CircletOfLogos);
             }
-            using (var fm = new fmArtifact(artifacts_now[4]))
+            using (var fm = new fmArtifactEditor(waifu_artifacts[4]))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactCirclet.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
                     gpCharacterArtifactCirclet.Text = $"Circlet of Logos (Lv.{fm.Artifact.Level})";
-                    artifacts_now[4] = fm.Artifact;
+                    waifu_artifacts[4] = fm.Artifact;
                     if (waifu_now != null)
                     {
                         waifu_now.Artifacts[4] = fm.Artifact;
@@ -269,9 +257,68 @@ namespace genshin_sim
             {
                 System.Diagnostics.Process.Start("https://github.com/SoildFaker/genshin_sim");
             }
-            catch (Exception ex )
+            catch 
             {
                 MessageBox.Show("Unable to open link that was clicked.");
+            }
+        }
+
+        private void cmdArtifactEdit_Click(object sender, EventArgs e)
+        {
+            using (var fm = new fmArtifactEditor(artifacts_inventory[lstRelic.SelectedItems[0].Index]))
+            {
+                if (fm.ShowDialog() == DialogResult.OK)
+                {
+                    artifacts_inventory[lstRelic.SelectedItems[0].Index] = fm.Artifact;
+                }
+            }
+        }
+
+        private void cmdArtifactSave_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"version = {version[0]}.{version[1]}.{version[2]}.{version[3]}\n");
+
+            for (int i = 0; i < artifacts_inventory.Count; i++)
+            {
+                sb.Append($"{ArtifactFactory.artifactTypes.ToList().IndexOf(artifacts_inventory[i].Type)},"); // 0 -- Artifact Type
+                sb.Append($"{artifacts_inventory[i].Level},"); // 1 -- Level
+                sb.Append($"{artifacts_inventory[i].NickName},"); // 2 -- Nick Name
+                sb.Append($"{AffixFactory.get_artifact_main_affix_array(artifacts_inventory[i].Type).Select(x => x.Attribute).ToList().IndexOf(artifacts_inventory[i].MainAffix.Attribute)},"); // 3 -- Main Affix Type
+                sb.Append($"{artifacts_inventory[i].MinorAffixes.Count},"); // 4 -- Minor Affix Count
+                for (int j = 0; j < artifacts_inventory[i].MinorAffixes.Count; j++)
+                {
+                    sb.Append($"{AffixFactory.minor_affixes_arr.Select(x => x.Attribute).ToList().IndexOf(artifacts_inventory[i].MinorAffixes[j].Attribute)},");
+                }
+                sb.Append("\n");
+            }
+
+            File.WriteAllText(file_artifact_data, sb.ToString());
+        }
+
+        private void read_artifacts_from_file()
+        {
+            if (File.Exists(file_artifact_data))
+            {
+                string[] lines = File.ReadAllLines(file_artifact_data);
+                // skip first line(version info)
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    string[] item = lines[i].Split(',');
+                    List<Affix> minor_affix = new List<Affix>();
+                    for (int j = 0; j < Convert.ToInt32(item[4]); j++)
+                    {
+                        minor_affix.Add(AffixFactory.minor_affixes_arr[Convert.ToInt32(item[5 + j])]);
+                    }
+                    ArtifactType type = ArtifactFactory.artifactTypes[Convert.ToInt32(item[0])];
+                    Artifact tmp = new Artifact(type, AffixFactory.get_artifact_main_affix_array(type)[Convert.ToInt32(item[3])], minor_affix, Convert.ToInt32(item[1]));
+                    tmp.NickName = item[2];
+                    artifacts_inventory.Add(tmp);
+                }
+            }
+            else
+            {
+                artifacts_inventory.Add(ArtifactFactory.pick());
             }
         }
     }

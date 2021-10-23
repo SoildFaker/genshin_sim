@@ -1,6 +1,6 @@
 ﻿namespace genshin_sim
 {
-    partial class fmArtifact
+    partial class fmArtifactEditor
     {
         /// <summary>
         /// Required designer variable.
@@ -243,7 +243,7 @@
             this.cmdOK.UseVisualStyleBackColor = true;
             this.cmdOK.Click += new System.EventHandler(this.cmdOK_Click);
             // 
-            // fmArtifact
+            // fmArtifactEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -254,8 +254,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "fmArtifact";
-            this.Text = "fmArtifact";
+            this.Name = "fmArtifactEditor";
+            this.Text = "Edit Artifact";
             this.Load += new System.EventHandler(this.fmArtifact_Load);
             this.gpArtifact.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);

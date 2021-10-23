@@ -31,15 +31,13 @@ namespace genshin_sim
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.lstRelicMinorAffixes = new System.Windows.Forms.ListBox();
             this.cmdAdd = new System.Windows.Forms.Button();
             this.labInfo = new System.Windows.Forms.Label();
             this.cmdLevelUp20 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.cmbMainAffix = new System.Windows.Forms.ComboBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cmdArtifactSave = new System.Windows.Forms.Button();
+            this.cmdArtifactEdit = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstRelic = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -80,8 +78,6 @@ namespace genshin_sim
             this.labGithubLink = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -99,20 +95,10 @@ namespace genshin_sim
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lstRelicMinorAffixes
-            // 
-            this.lstRelicMinorAffixes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstRelicMinorAffixes.FormattingEnabled = true;
-            this.lstRelicMinorAffixes.ItemHeight = 12;
-            this.lstRelicMinorAffixes.Location = new System.Drawing.Point(3, 17);
-            this.lstRelicMinorAffixes.Name = "lstRelicMinorAffixes";
-            this.lstRelicMinorAffixes.Size = new System.Drawing.Size(174, 116);
-            this.lstRelicMinorAffixes.TabIndex = 0;
-            // 
             // cmdAdd
             // 
             this.cmdAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdAdd.Location = new System.Drawing.Point(458, 14);
+            this.cmdAdd.Location = new System.Drawing.Point(611, 13);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(115, 23);
             this.cmdAdd.TabIndex = 2;
@@ -123,17 +109,17 @@ namespace genshin_sim
             // labInfo
             // 
             this.labInfo.AutoSize = true;
-            this.labInfo.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labInfo.Location = new System.Drawing.Point(6, 202);
+            this.labInfo.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labInfo.Location = new System.Drawing.Point(6, 17);
             this.labInfo.Name = "labInfo";
-            this.labInfo.Size = new System.Drawing.Size(66, 21);
+            this.labInfo.Size = new System.Drawing.Size(63, 13);
             this.labInfo.TabIndex = 3;
             this.labInfo.Text = "Level: 1";
             // 
             // cmdLevelUp20
             // 
             this.cmdLevelUp20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdLevelUp20.Location = new System.Drawing.Point(458, 43);
+            this.cmdLevelUp20.Location = new System.Drawing.Point(611, 42);
             this.cmdLevelUp20.Name = "cmdLevelUp20";
             this.cmdLevelUp20.Size = new System.Drawing.Size(115, 23);
             this.cmdLevelUp20.TabIndex = 4;
@@ -160,46 +146,38 @@ namespace genshin_sim
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.groupBox5);
-            this.groupBox3.Controls.Add(this.groupBox4);
+            this.groupBox3.Controls.Add(this.cmdArtifactSave);
+            this.groupBox3.Controls.Add(this.cmdArtifactEdit);
             this.groupBox3.Controls.Add(this.labInfo);
             this.groupBox3.Controls.Add(this.cmdLevelUp20);
             this.groupBox3.Controls.Add(this.cmdAdd);
-            this.groupBox3.Location = new System.Drawing.Point(283, 20);
+            this.groupBox3.Location = new System.Drawing.Point(9, 360);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(579, 489);
+            this.groupBox3.Size = new System.Drawing.Size(853, 152);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Info";
             // 
-            // groupBox5
+            // cmdArtifactSave
             // 
-            this.groupBox5.Controls.Add(this.cmbMainAffix);
-            this.groupBox5.Location = new System.Drawing.Point(6, 14);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(180, 43);
-            this.groupBox5.TabIndex = 6;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Main Affix";
+            this.cmdArtifactSave.Location = new System.Drawing.Point(732, 42);
+            this.cmdArtifactSave.Name = "cmdArtifactSave";
+            this.cmdArtifactSave.Size = new System.Drawing.Size(115, 23);
+            this.cmdArtifactSave.TabIndex = 6;
+            this.cmdArtifactSave.Text = "Save";
+            this.cmdArtifactSave.UseVisualStyleBackColor = true;
+            this.cmdArtifactSave.Click += new System.EventHandler(this.cmdArtifactSave_Click);
             // 
-            // cmbMainAffix
+            // cmdArtifactEdit
             // 
-            this.cmbMainAffix.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbMainAffix.FormattingEnabled = true;
-            this.cmbMainAffix.Location = new System.Drawing.Point(3, 17);
-            this.cmbMainAffix.Name = "cmbMainAffix";
-            this.cmbMainAffix.Size = new System.Drawing.Size(174, 20);
-            this.cmbMainAffix.TabIndex = 5;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.lstRelicMinorAffixes);
-            this.groupBox4.Location = new System.Drawing.Point(6, 63);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(180, 136);
-            this.groupBox4.TabIndex = 4;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Minor Affixes";
+            this.cmdArtifactEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdArtifactEdit.Location = new System.Drawing.Point(732, 13);
+            this.cmdArtifactEdit.Name = "cmdArtifactEdit";
+            this.cmdArtifactEdit.Size = new System.Drawing.Size(115, 23);
+            this.cmdArtifactEdit.TabIndex = 5;
+            this.cmdArtifactEdit.Text = "Edit";
+            this.cmdArtifactEdit.UseVisualStyleBackColor = true;
+            this.cmdArtifactEdit.Click += new System.EventHandler(this.cmdArtifactEdit_Click);
             // 
             // groupBox2
             // 
@@ -208,7 +186,7 @@ namespace genshin_sim
             this.groupBox2.Controls.Add(this.lstRelic);
             this.groupBox2.Location = new System.Drawing.Point(6, 17);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(271, 495);
+            this.groupBox2.Size = new System.Drawing.Size(856, 337);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Artifact List";
@@ -227,29 +205,29 @@ namespace genshin_sim
             this.lstRelic.Location = new System.Drawing.Point(3, 17);
             this.lstRelic.MultiSelect = false;
             this.lstRelic.Name = "lstRelic";
-            this.lstRelic.Size = new System.Drawing.Size(265, 475);
+            this.lstRelic.Size = new System.Drawing.Size(850, 317);
             this.lstRelic.SmallImageList = this.ArtifactTypeImageList;
             this.lstRelic.TabIndex = 5;
+            this.lstRelic.TileSize = new System.Drawing.Size(120, 80);
             this.lstRelic.UseCompatibleStateImageBehavior = false;
             this.lstRelic.View = System.Windows.Forms.View.Details;
             this.lstRelic.SelectedIndexChanged += new System.EventHandler(this.lstRelic_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "ID";
+            this.columnHeader1.Text = "Name";
             this.columnHeader1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader1.Width = 53;
+            this.columnHeader1.Width = 134;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Name";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 115;
+            this.columnHeader2.Text = "Main Affix";
+            this.columnHeader2.Width = 145;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Level";
-            this.columnHeader3.Width = 70;
+            this.columnHeader3.Text = "Minor Affix";
+            this.columnHeader3.Width = 513;
             // 
             // ArtifactTypeImageList
             // 
@@ -645,8 +623,6 @@ namespace genshin_sim
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -675,21 +651,16 @@ namespace genshin_sim
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox lstRelicMinorAffixes;
         private System.Windows.Forms.Button cmdAdd;
         private System.Windows.Forms.Label labInfo;
         private System.Windows.Forms.Button cmdLevelUp20;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView lstRelic;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ComboBox cmbMainAffix;
         private System.Windows.Forms.ImageList ArtifactTypeImageList;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -723,6 +694,8 @@ namespace genshin_sim
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label labCharacterAttributes;
         private System.Windows.Forms.LinkLabel labGithubLink;
+        private System.Windows.Forms.Button cmdArtifactEdit;
+        private System.Windows.Forms.Button cmdArtifactSave;
     }
 }
 

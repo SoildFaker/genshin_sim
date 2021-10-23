@@ -30,7 +30,7 @@ namespace genshin_sim
                 {
                     this.level = 20;
                 }
-                else if (value < 1)
+                else if (value < 0)
                 {
                     this.level = 0;
                 }
@@ -38,6 +38,7 @@ namespace genshin_sim
         }
         public ArtifactType Type { get; private set; }
         public string Name { get; private set; }
+        public string NickName { get; set; }
         public Affix MainAffix { get; private set; }
         public List<Affix> MinorAffixes { get; private set; }
         private List<Affix> InitAffixes = new List<Affix>();
@@ -79,13 +80,21 @@ namespace genshin_sim
                 return str;
             }
         }
-        public string Description { get; private set; }
-
-        public Artifact(Affix main, List<Affix> sub, int lv = 1)
+        public string Description 
         {
-            this.MainAffix = main;
-            this.MinorAffixes = sub;
-            this.Level = lv;
+            get
+            {
+                return this.MainAffixString + "\r\n" + this.MinorAffixesString;
+            }
+            
+        }
+
+        public Artifact(ArtifactType type, Affix main, List<Affix> sub, int lv = 1)
+        {
+            this.Type = type;
+            SetMainAffix(main);
+            SetMinorAffix(sub);
+            SetLevel(lv);
         }
 
         public Artifact(ArtifactType type)
@@ -110,16 +119,13 @@ namespace genshin_sim
         public void SetMainAffix(Affix affix)
         {
             this.MainAffix = affix;
-        }
-
-        public void SetInitMinorAffix(List<Affix> affixes)
-        {
-            this.InitAffixes = affixes;
+            this.MainAffix.SetLevel(Level);
         }
 
         public void SetMinorAffix(List<Affix> affixes)
         {
             this.MinorAffixes = affixes;
+            this.InitAffixes = affixes.Take(4).ToList();
         }
 
         public void SetLevel(int lv)
