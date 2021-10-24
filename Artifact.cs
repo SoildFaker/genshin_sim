@@ -37,7 +37,17 @@ namespace genshin_sim
             }
         }
         public ArtifactType Type { get; private set; }
-        public string Name { get; private set; }
+        public ArtifactSetEffect ArtifactSetEffect { get; private set; }
+        public string Name {
+            get 
+            {
+                if (this.ArtifactSetEffect == null)
+                {
+                    return "Unknow";
+                }
+                return ArtifactFactory.get_artifact_name(Type, this.ArtifactSetEffect.Type);
+            }
+        }
         public string NickName { get; set; }
         public Affix MainAffix { get; private set; }
         public List<Affix> MinorAffixes { get; private set; }
@@ -89,10 +99,9 @@ namespace genshin_sim
             
         }
 
-        public Artifact(ArtifactType type, Affix main, List<Affix> sub, int lv = 1, string name = "")
+        public Artifact(ArtifactType type, Affix main, List<Affix> sub, int lv = 1)
         {
             this.Type = type;
-            this.Name = name;
             SetMainAffix(main);
             SetMinorAffix(sub);
             SetLevel(lv);
@@ -115,6 +124,11 @@ namespace genshin_sim
                 this.InitAffixes.Add(line);
                 lst.RemoveAt(code);
             }
+        }
+
+        public void SetArtifactSetEffect(ArtifactSetEffect effect)
+        {
+            this.ArtifactSetEffect = effect;
         }
 
         public void SetMainAffix(Affix affix)
@@ -141,15 +155,12 @@ namespace genshin_sim
             switch (Type)
             {
                 case ArtifactType.FlowerOfLife:
-                    this.Name = "Flower of Life";
                     this.MainAffix.SetValueArray(ArtifactFactory.value_array_type_hp);
                     break;
                 case ArtifactType.PlumeOfDeath:
-                    this.Name = "Plume of Death";
                     this.MainAffix.SetValueArray(ArtifactFactory.value_array_type_atk);
                     break;
                 case ArtifactType.SandsOfEon:
-                    this.Name = "Sands of Eon";
                     switch (MainAffix.Attribute)
                     {
                         case AffixAttr.ELM:
@@ -170,7 +181,6 @@ namespace genshin_sim
                     }
                     break;
                 case ArtifactType.GobletOfEonothem:
-                    this.Name = "Goblet of Eonothem";
                     switch (MainAffix.Attribute)
                     {
                         case AffixAttr.ELM:
@@ -200,7 +210,6 @@ namespace genshin_sim
                     }
                     break;
                 case ArtifactType.CircletOfLogos:
-                    this.Name = "Circle of Logos";
                     switch (MainAffix.Attribute)
                     {
                         case AffixAttr.ELM:
@@ -247,6 +256,51 @@ namespace genshin_sim
                     //this.MinorAffixes[index].Value += AffixFactory.pick_minor_affixes(this.MinorAffixes[index].Attribute);
                 }
             }
+        }
+    }
+
+    public enum ArtifactSetEffectType : int
+    {
+        GladiatorsFinale
+    }
+    public class SpecialCondEffect
+    {
+        public int ActiveNumber { get; private set; }
+        public AbilityType Type { get; private set; }
+        public SpecialCond SpecialCond { get; private set; }
+        public WaifuStat BonusBase { get; private set; }
+        public Affix Affix { get; private set; }
+
+        public SpecialCondEffect(SpecialCond cond, int active_number, AbilityType type, Affix affix, WaifuStat bonus_base = WaifuStat.HP)
+        {
+            this.SpecialCond = cond;
+            this.ActiveNumber = active_number;
+            this.Type = type;
+            this.Affix = affix;
+            this.BonusBase = bonus_base;
+        }
+    }
+
+    public class ArtifactSetEffect
+    {
+        public string Name { get; private set; }
+        public ArtifactSetEffectType Type { get; private set; }
+        public List<SpecialCondEffect> Effects { get; private set; }
+        private string description;
+        public string Description
+        {
+            get
+            {
+                return String.Format(description, Effects.Select(x => x.Affix.Value.ToString("0.0%")).ToArray());
+            }
+        }
+
+        public ArtifactSetEffect(string name, ArtifactSetEffectType type, List<SpecialCondEffect> effects, string desc)
+        {
+            this.Name = name;
+            this.Type = type;
+            this.Effects = effects;
+            this.description = desc;
         }
     }
 }

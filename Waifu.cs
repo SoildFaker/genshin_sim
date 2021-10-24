@@ -17,6 +17,15 @@ namespace genshin_sim
         Geo,        // 岩
     }
 
+    public enum WaifuStat
+    {
+        HP,
+        BaseHP,
+        ATK,
+        DEF,
+        ELM,
+    }
+
     public class Waifu
     {
         public string Name { get; private set; }
@@ -39,10 +48,10 @@ namespace genshin_sim
         public int Level { get; private set; }
         public ElementType Vision { get; private set; }
         public List<Affix> BaseStat {  get; private set; }
-        public Weapon Weapon { get; set; }
+        public Weapon Weapon { get; private set; }
         public WeaponType WeaponType { get; private set; }
         public List<Talent> Talents { get; private set; }
-        public Artifact[] Artifacts = new Artifact[5];
+        public Artifact[] Artifacts { get; private set; }
         private List<Affix> stat = new List<Affix>();
         public List<Affix> Stat
         { 
@@ -62,9 +71,68 @@ namespace genshin_sim
             }
         }
 
+        public double GetStat(WaifuStat stat)
+        {
+            switch (stat)
+            {
+                case WaifuStat.HP:
+                    return this.HP;
+                case WaifuStat.BaseHP:
+                    return this.BaseStat.Where(x => x.Attribute == AffixAttr.HP).ToList()[0].Value;
+                case WaifuStat.ATK:
+                    return this.ATK;
+                case WaifuStat.DEF:
+                    return this.DEF;
+                case WaifuStat.ELM:
+                default:
+                    return this.ELM;
+            }
+        }
+
+        public void SetWeapon(Weapon weapon)
+        {
+            this.Weapon = weapon;
+        }
+        public void SetAritfacts(Artifact[] artifacts)
+        {
+            this.Artifacts = artifacts;
+        }
+
+        public void SetAritfact(Artifact artifact)
+        {
+            switch (artifact.Type)
+            {
+                case ArtifactType.FlowerOfLife:
+                    this.Artifacts[0] = artifact;
+                    break;
+                case ArtifactType.PlumeOfDeath:
+                    this.Artifacts[1] = artifact;
+                    break;
+                case ArtifactType.SandsOfEon:
+                    this.Artifacts[2] = artifact;
+                    break;
+                case ArtifactType.GobletOfEonothem:
+                    this.Artifacts[3] = artifact;
+                    break;
+                case ArtifactType.CircletOfLogos:
+                default:
+                    this.Artifacts[4] = artifact;
+                    break;
+            }
+        }
+
         private double get_attribute(AffixAttr attr)
         {
             double val = BaseStat.Where(x => x.Attribute == attr).Sum(x => x.Value);
+            // Artifact
+            val += this.Artifacts.Where(x => x != null && x.MainAffix.Attribute == attr).Sum(x => x.MainAffix.Value);
+            for (int i = 0; i < 5; i++)
+            {
+                if (this.Artifacts[i] != null)
+                {
+                    val += this.Artifacts[i].MinorAffixes.Where(x => x.Attribute == attr).Sum(x => x.Value);
+                }
+            }
             // Weapon
             if (this.Weapon != null)
             {
@@ -78,19 +146,24 @@ namespace genshin_sim
                 }
                 foreach (var ability in Weapon.SpecialAbility.Abilities)
                 {
-                    if (ability.SpecialCond == SpecialCond.Always && ability.Affix.Attribute == attr)
+                    if (ability.SpecialCond == SpecialCond.Always)
                     {
-                        val += ability.Affix.Value;
+                        if (ability.Type == AbilityType.Simple)
+                        {
+                            if (ability.Affix.Attribute == attr)
+                            {
+                                val+= ability.Affix.Value;
+                            }
+
+                        }
+                        if (ability.Type == AbilityType.Bonus)
+                        {
+                            if (ability.Affix.Attribute == attr)
+                            {
+                                val+= ability.Affix.Value * GetStat(ability.BonusBase);
+                            }
+                        }
                     }
-                }
-            }
-            // Artifact
-            val += this.Artifacts.Where(x => x != null && x.MainAffix.Attribute == attr).Sum(x => x.MainAffix.Value);
-            for (int i = 0; i < 5; i++)
-            {
-                if (this.Artifacts[i] != null)
-                {
-                    val += this.Artifacts[i].MinorAffixes.Where(x => x.Attribute == attr).Sum(x => x.Value);
                 }
             }
             return val;
@@ -98,61 +171,96 @@ namespace genshin_sim
 
         private double get_attribute(AffixAttr attr_base, AffixAttr attr_pct)
         {
-            double val = BaseStat.Where(x => x.Attribute == attr_base).Sum(x => x.Value);
+            // Base Stat
+            double val_base = BaseStat.Where(x => x.Attribute == attr_base).Sum(x => x.Value);
+            double val_base_pct = BaseStat.Where(x => x.Attribute == attr_pct).Sum(x => x.Value);
+            // Artifact
+            double val_artifact = this.Artifacts.Where(x => x != null && x.MainAffix.Attribute == attr_base).Sum(x => x.MainAffix.Value);
+            double val_artifact_pct = this.Artifacts.Where(x => x != null && x.MainAffix.Attribute == attr_pct).Sum(x => x.MainAffix.Value);
+            for (int i = 0; i < 5; i++)
+            {
+                if (this.Artifacts[i] != null)
+                {
+                    val_artifact += this.Artifacts[i].MinorAffixes.Where(x => x.Attribute == attr_base).Sum(x => x.Value);
+                    val_artifact_pct += this.Artifacts[i].MinorAffixes.Where(x => x.Attribute == attr_pct).Sum(x => x.Value);
+                }
+            }
+            // Artifact Set Effect
+            double val_set_effect = 0;
+            double val_set_effect_pct = 0;
+            if (this.Artifacts[0] != null && this.Artifacts[0].ArtifactSetEffect != null)
+            {
+                foreach (var effect in this.Artifacts[0].ArtifactSetEffect.Effects )
+                {
+                    if (effect.SpecialCond == SpecialCond.Always)
+                    {
+                        if (effect.Affix.Attribute == attr_base)
+                        {
+                            val_set_effect += effect.Affix.Value;
+                        }
+                        if (effect.Affix.Attribute == attr_pct)
+                        {
+                            val_set_effect_pct += effect.Affix.Value;
+                        }
+                    }
+                }
+            }
             // Weapon
+            double val_weapon_base = 0;
+            double val_weapon = 0;
+            double val_weapon_pct = 0;
             if (this.Weapon != null)
             {
                 if (this.Weapon.BaseATK.Attribute == attr_base)
                 {
-                    val += this.Weapon.BaseATK.Value;
+                    val_weapon_base += this.Weapon.BaseATK.Value;
                 }
                 if (this.Weapon.SecondaryStat.Attribute == attr_base)
                 {
-                    val += this.Weapon.SecondaryStat.Value;
+                    val_weapon += this.Weapon.SecondaryStat.Value;
+                } else if (this.Weapon.SecondaryStat.Attribute == attr_pct)
+                {
+                    val_weapon_pct += this.Weapon.SecondaryStat.Value;
                 }
                 foreach (var ability in Weapon.SpecialAbility.Abilities)
                 {
-                    if (ability.SpecialCond == SpecialCond.Always && ability.Affix.Attribute == attr_base)
+                    if (ability.SpecialCond == SpecialCond.Always)
                     {
-                        val += ability.Affix.Value;
+                        if (ability.Type == AbilityType.Simple)
+                        {
+                            if (ability.Affix.Attribute == attr_base)
+                            {
+                                val_weapon += ability.Affix.Value;
+                            }
+                            if (ability.Affix.Attribute == attr_pct)
+                            {
+                                val_weapon_pct += ability.Affix.Value;
+                            }
+
+                        }
+                        if (ability.Type == AbilityType.Bonus)
+                        {
+                            if (ability.Affix.Attribute == attr_base)
+                            {
+                                val_weapon += ability.Affix.Value * GetStat(ability.BonusBase);
+                            }
+                            if (ability.Affix.Attribute == attr_pct)
+                            {
+                                val_weapon_pct += ability.Affix.Value * GetStat(ability.BonusBase);
+                            }
+                        }
                     }
                 }
             }
-            // Artifact
-            val += this.Artifacts.Where(x => x != null && x.MainAffix.Attribute == attr_base).Sum(x => x.MainAffix.Value);
-            for (int i = 0; i < 5; i++)
-            {
-                if (this.Artifacts[i] != null)
-                {
-                    val += this.Artifacts[i].MinorAffixes.Where(x => x.Attribute == attr_base).Sum(x => x.Value);
-                }
-            }
-            double val_pct = BaseStat.Where(x => x.Attribute == attr_pct).Sum(x => x.Value);
-            // Weapon
-            if (this.Weapon != null)
-            {
-                if (this.Weapon.SecondaryStat.Attribute == attr_pct)
-                {
-                    val_pct += this.Weapon.SecondaryStat.Value;
-                }
-                foreach (var ability in Weapon.SpecialAbility.Abilities)
-                {
-                    if (ability.SpecialCond == SpecialCond.Always && ability.Affix.Attribute == attr_pct)
-                    {
-                        val_pct += ability.Affix.Value;
-                    }
-                }
-            }
-            // Artifact
-            val_pct += this.Artifacts.Where(x => x != null && x.MainAffix.Attribute == attr_pct).Sum(x => x.MainAffix.Value);
-            for (int i = 0; i < 5; i++)
-            {
-                if (this.Artifacts[i] != null)
-                {
-                    val_pct += this.Artifacts[i].MinorAffixes.Where(x => x.Attribute == attr_pct).Sum(x => x.Value);
-                }
-            }
-            return Math.Round(val * (1 + val_pct));
+            return Math.Round(
+                (val_base + val_weapon_base) +
+                (val_artifact) +
+                (val_base + val_weapon_base) * (val_artifact_pct) +
+                (val_set_effect) +
+                (val_base + val_weapon_base) * (val_set_effect_pct) +
+                (val_weapon) +
+                (val_base + val_weapon_base) * (val_weapon_pct)
+                );
         }
 
         public Waifu(string name, ElementType vision, WeaponType weapon_type, List<Affix> stat, List<Talent> talents, int level = 1)
@@ -163,6 +271,7 @@ namespace genshin_sim
             this.Talents = talents;
             this.BaseStat = stat;
             this.Level = level;
+            this.Artifacts = new Artifact[5];
         }
 
         public void SetLevel(int level)

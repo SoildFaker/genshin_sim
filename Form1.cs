@@ -100,7 +100,7 @@ namespace genshin_sim
                     cmdCharacterAdd.Text = "";
                     waifu_now = fm.Waifu;
                     selCharacterLevel.Value = waifu_now.Level;
-                    waifu_now.Artifacts = waifu_artifacts;
+                    waifu_now.SetAritfacts(waifu_artifacts);
                     refresh_character_info();
                     clear_weapon_info();
                 }
@@ -109,6 +109,7 @@ namespace genshin_sim
 
         private void clear_weapon_info()
         {
+            waifu_now.SetWeapon(null);
             this.cmdWeaponAdd.BackgroundImage = imUserIcons.Images[0];
             this.labWeaponName.Text = "Name";
             this.labWeaponStat.Text = "Stat";
@@ -123,6 +124,12 @@ namespace genshin_sim
             }
             List<Affix> stat = waifu_now.Stat;
             labCharacterName.Text = $"{waifu_now.Name} (lv.{waifu_now.Level} {waifu_now.Vision})";
+            // Artifact
+            if (waifu_now.Artifacts[0] != null && waifu_now.Artifacts[0].ArtifactSetEffect != null)
+            {
+                gpCharacterArtifactSetEffect.Text = $"{waifu_now.Artifacts[0].ArtifactSetEffect.Name}";
+                labCharacterArtifactSetEffect.Text = $"{waifu_now.Artifacts[0].ArtifactSetEffect.Description}";
+            }
             // Weapon
             if (waifu_now.Weapon != null)
             {
@@ -169,7 +176,7 @@ namespace genshin_sim
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactFlowerInfo.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
-                    gpCharacterArtifactFlower.Text = $"Flower of Life (Lv.{fm.Artifact.Level})";
+                    gpCharacterArtifactFlower.Text = $"{fm.Artifact.Name} (Lv.{fm.Artifact.Level})";
                     waifu_artifacts[0] = fm.Artifact;
                     if (waifu_now != null)
                     {
@@ -187,7 +194,7 @@ namespace genshin_sim
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactGoblet.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
-                    gpCharacterArtifactGoblet.Text = $"Goblet of Eonothem (Lv.{fm.Artifact.Level})";
+                    gpCharacterArtifactGoblet.Text = $"{fm.Artifact.Name} (Lv.{fm.Artifact.Level})";
                     waifu_artifacts[3] = fm.Artifact;
                     if (waifu_now != null)
                     {
@@ -205,7 +212,7 @@ namespace genshin_sim
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactPlume.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
-                    gpCharacterArtifactPlume.Text = $"Plume of Death (Lv.{fm.Artifact.Level})";
+                    gpCharacterArtifactPlume.Text = $"{fm.Artifact.Name} (Lv.{fm.Artifact.Level})";
                     waifu_artifacts[1] = fm.Artifact;
                     if (waifu_now != null)
                     {
@@ -223,7 +230,7 @@ namespace genshin_sim
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactSands.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
-                    gpCharacterArtifactSands.Text = $"Sands of Eon (Lv.{fm.Artifact.Level})";
+                    gpCharacterArtifactSands.Text = $"{fm.Artifact.Name} (Lv.{fm.Artifact.Level})";
                     waifu_artifacts[2] = fm.Artifact;
                     if (waifu_now != null)
                     {
@@ -241,7 +248,7 @@ namespace genshin_sim
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     labCharacterArtifactCirclet.Text = $"{fm.Artifact.MainAffixString}\r\n{fm.Artifact.MinorAffixesString}";
-                    gpCharacterArtifactCirclet.Text = $"Circlet of Logos (Lv.{fm.Artifact.Level})";
+                    gpCharacterArtifactCirclet.Text = $"{fm.Artifact.Name} (Lv.{fm.Artifact.Level})";
                     waifu_artifacts[4] = fm.Artifact;
                     if (waifu_now != null)
                     {
@@ -278,13 +285,13 @@ namespace genshin_sim
             {
                 sb.Append($"{ArtifactFactory.artifactTypes.ToList().IndexOf(artifacts_inventory[i].Type)},"); // 0 -- Artifact Type
                 sb.Append($"{artifacts_inventory[i].Level},"); // 1 -- Level
-                sb.Append($"{artifacts_inventory[i].Name},"); // 2 -- Name
+                sb.Append($"{ArtifactFactory.SetEffects.ToList().IndexOf(artifacts_inventory[i].ArtifactSetEffect)},"); // 2 -- Set Effect
                 sb.Append($"{artifacts_inventory[i].NickName},"); // 3 -- Nick Name
                 sb.Append($"{AffixFactory.get_artifact_main_affix_array(artifacts_inventory[i].Type).Select(x => x.Attribute).ToList().IndexOf(artifacts_inventory[i].MainAffix.Attribute)},"); // 4 -- Main Affix Type
                 sb.Append($"{artifacts_inventory[i].MinorAffixes.Count},"); // 5 -- Minor Affix Count
                 for (int j = 0; j < artifacts_inventory[i].MinorAffixes.Count; j++)
                 {
-                    sb.Append($"{AffixFactory.minor_affixes_arr.Select(x => x.Attribute).ToList().IndexOf(artifacts_inventory[i].MinorAffixes[j].Attribute)},");
+                    sb.Append($"{AffixFactory.minor_affixes_arr.ToList().IndexOf(artifacts_inventory[i].MinorAffixes[j])},");
                 }
                 sb.Append("\n");
             }
@@ -315,7 +322,8 @@ namespace genshin_sim
                         minor_affix.Add(AffixFactory.minor_affixes_arr[Convert.ToInt32(item[6 + j])]);
                     }
                     ArtifactType type = ArtifactFactory.artifactTypes[Convert.ToInt32(item[0])];
-                    Artifact tmp = new Artifact(type, AffixFactory.get_artifact_main_affix_array(type)[Convert.ToInt32(item[4])], minor_affix, Convert.ToInt32(item[1]), item[2]);
+                    Artifact tmp = new Artifact(type, AffixFactory.get_artifact_main_affix_array(type)[Convert.ToInt32(item[4])], minor_affix, Convert.ToInt32(item[1]));
+                    tmp.SetArtifactSetEffect(ArtifactFactory.SetEffects[Convert.ToInt32(item[2])]);
                     tmp.NickName = item[3];
                     artifacts_inventory.Add(tmp);
                 }
@@ -419,7 +427,7 @@ namespace genshin_sim
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
                     cmdWeaponAdd.BackgroundImage = fm.WeaponImage;
-                    waifu_now.Weapon = fm.Weapon;
+                    waifu_now.SetWeapon(fm.Weapon);
                     selWeaponLevel.Value = waifu_now.Weapon.LevelIndex;
                     refresh_character_info();
                 }
@@ -449,6 +457,11 @@ namespace genshin_sim
             {
                 waifu_artifacts[i] = null;
             }
+            gpCharacterArtifactFlower.Text = ArtifactFactory.type2str(ArtifactType.FlowerOfLife);
+            gpCharacterArtifactPlume.Text = ArtifactFactory.type2str(ArtifactType.PlumeOfDeath);
+            gpCharacterArtifactSands.Text = ArtifactFactory.type2str(ArtifactType.SandsOfEon);
+            gpCharacterArtifactGoblet.Text = ArtifactFactory.type2str(ArtifactType.GobletOfEonothem);
+            gpCharacterArtifactCirclet.Text = ArtifactFactory.type2str(ArtifactType.CircletOfLogos);
             labCharacterArtifactFlowerInfo.Text = "(Empty)";
             labCharacterArtifactPlume.Text = "(Empty)";
             labCharacterArtifactGoblet.Text = "(Empty)";

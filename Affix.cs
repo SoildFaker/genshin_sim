@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace genshin_sim
 {
-    public enum AffixAttr
+    public enum AffixAttr : int
     {
         HP,         // 生命加成
         ATK,        // 攻击加成

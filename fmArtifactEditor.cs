@@ -54,11 +54,20 @@ namespace genshin_sim
                     this.lstSelectedMinorAffix.Items.Add($"Slot   [{artifact.MinorAffixes[i].Description}\t]");
                 }
             }
+            for (int i = 0; i < main_affixes.Length; i++)
+            {
+                main_affixes[i].SetLevel(artifact.Level);
+            }
             this.cmbMainAffix.Items.AddRange(main_affixes.Select(x => x.Description).ToArray());
+            if (artifact.ArtifactSetEffect != null)
+            {
+                this.cmbSetEffect.Text = artifact.ArtifactSetEffect.Name;
+                labSetEffectInfo.Text = artifact.ArtifactSetEffect.Description;
+            }
+            this.cmbSetEffect.Items.AddRange(ArtifactFactory.SetEffects.Select(x => x.Name).ToArray());
             refresh_list();
             refresh_slot();
             refresh_info();
-            //refresh_minor_affix();
         }
 
         private void cmdOK_Click(object sender, EventArgs e)
@@ -72,6 +81,7 @@ namespace genshin_sim
         private void refresh_info()
         {
             gpMainAffix.Text = $"Main Affix (Lv.{artifact.Level})";
+            txtName.Text = artifact.Name;
         }
 
         private void refresh_list()
@@ -210,7 +220,7 @@ namespace genshin_sim
                     }
                     if (i >= 4)
                     {
-                        if (affix_slot.Take(4).Where(x => x.Attribute == affix_slot[i].Attribute).Count() == 0)
+                        if (affix_slot.Take(4).Where(x => x != null && x.Attribute == affix_slot[i].Attribute).Count() == 0)
                         {
                             slot_unplug(i);
                         }
@@ -321,6 +331,16 @@ namespace genshin_sim
             {
                 affix_slot_fix = 0;
                 refresh_slot();
+            }
+        }
+
+        private void cmbSetEffect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSetEffect.SelectedIndex >= 0)
+            {
+                labSetEffectInfo.Text = ArtifactFactory.SetEffects[cmbSetEffect.SelectedIndex].Description;
+                artifact.SetArtifactSetEffect(ArtifactFactory.SetEffects[cmbSetEffect.SelectedIndex]);
+                refresh_info();
             }
         }
     }

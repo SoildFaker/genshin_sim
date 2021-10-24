@@ -58,11 +58,11 @@ namespace genshin_sim
         public static Affix CRD_7p0 = new Affix(AffixAttr.pCRD, 0.070);
         public static Affix CRD_7p8 = new Affix(AffixAttr.pCRD, 0.078);
 
-        public static Affix[] minor_affixes_arr = new Affix[40] 
+        public static Affix[] minor_affixes_arr = new Affix[40]
         {
             HP_209, HP_239, HP_269, HP_299,
             HP_4p1, HP_4p7, HP_5p3, HP_5p8,
-            ATK_14, ATK_14, ATK_18, ATK_19,
+            ATK_14, ATK_16, ATK_18, ATK_19,
             ATK_4p1, ATK_4p7, ATK_5p3, ATK_5p8,
             DEF_16, DEF_19, DEF_21, DEF_23,
             DEF_5p1, DEF_5p8, DEF_6p6, DEF_7p3,
@@ -225,7 +225,7 @@ namespace genshin_sim
                 case ArtifactType.CircletOfLogos:
                     return new Affix(circlet_main_affix_attr_arr[rand.Next(circlet_main_affix_attr_arr.Length)]);
             }
-           return new Affix(AffixAttr.HP);
+            return new Affix(AffixAttr.HP);
         }
 
         public static double pick_minor_affix_value(AffixAttr attr)
@@ -233,53 +233,35 @@ namespace genshin_sim
             switch (attr)
             {
                 case AffixAttr.HP:
-                    return new double[4]{209, 239, 269, 299}[AffixFactory.rand.Next(0,4)];
+                    return new double[4] { 209, 239, 269, 299 }[AffixFactory.rand.Next(0, 4)];
                 case AffixAttr.pHP:
-                    return new double[4]{0.041, 0.047, 0.053, 0.058}[AffixFactory.rand.Next(0,4)];
+                    return new double[4] { 0.041, 0.047, 0.053, 0.058 }[AffixFactory.rand.Next(0, 4)];
                 case AffixAttr.DEF:
-                    return new double[4]{16, 19, 21, 23}[AffixFactory.rand.Next(0,4)];
+                    return new double[4] { 16, 19, 21, 23 }[AffixFactory.rand.Next(0, 4)];
                 case AffixAttr.pDEF:
-                    return new double[4]{0.051, 0.058, 0.066, 0.073}[AffixFactory.rand.Next(0,4)];
+                    return new double[4] { 0.051, 0.058, 0.066, 0.073 }[AffixFactory.rand.Next(0, 4)];
                 case AffixAttr.ATK:
-                    return new double[4]{14, 16, 18, 19}[AffixFactory.rand.Next(0,4)];
+                    return new double[4] { 14, 16, 18, 19 }[AffixFactory.rand.Next(0, 4)];
                 case AffixAttr.pATK:
-                    return new double[4]{0.041, 0.047, 0.053, 0.058}[AffixFactory.rand.Next(0,4)];
+                    return new double[4] { 0.041, 0.047, 0.053, 0.058 }[AffixFactory.rand.Next(0, 4)];
                 case AffixAttr.pCGR:
-                    return new double[4]{0.045, 0.052, 0.058, 0.065}[AffixFactory.rand.Next(0,4)];
+                    return new double[4] { 0.045, 0.052, 0.058, 0.065 }[AffixFactory.rand.Next(0, 4)];
                 case AffixAttr.pCRD:
-                    return new double[4]{0.054, 0.062, 0.070, 0.078}[AffixFactory.rand.Next(0,4)];
+                    return new double[4] { 0.054, 0.062, 0.070, 0.078 }[AffixFactory.rand.Next(0, 4)];
                 case AffixAttr.pCRI:
-                    return new double[4]{0.027, 0.031, 0.035, 0.039}[AffixFactory.rand.Next(0,4)];
+                    return new double[4] { 0.027, 0.031, 0.035, 0.039 }[AffixFactory.rand.Next(0, 4)];
                 case AffixAttr.ELM:
-                    return new double[4]{16, 19, 21, 23}[AffixFactory.rand.Next(0,4)];
+                    return new double[4] { 16, 19, 21, 23 }[AffixFactory.rand.Next(0, 4)];
             }
             return -1;
         }
+        public static string[] affix_names = new string[] {
+            "生命值", "攻击力", "防御力", "生命加成", "攻击加成", "防御加成", "元素精通", "充能效率", "暴击率", "暴击伤害",
+            "物理伤害加成", "火属性伤害加成", "水属性伤害加成", "草属性伤害加成", "冰属性伤害加成", "雷属性伤害加成", "风属性伤害加成", "岩属性伤害加成", "治疗效果加成",
+            };
         public static string attr2str(AffixAttr attr)
         {
-            switch (attr)
-            {
-                case AffixAttr.HP: return "生命值";
-                case AffixAttr.ATK: return "攻击力";
-                case AffixAttr.DEF: return "防御力";
-                case AffixAttr.pHP: return "生命加成";
-                case AffixAttr.pATK: return "攻击加成";
-                case AffixAttr.pDEF: return "防御加成";
-                case AffixAttr.ELM: return "元素精通";
-                case AffixAttr.pCGR: return "充能效率";
-                case AffixAttr.pCRI: return "暴击率";
-                case AffixAttr.pCRD: return "暴击伤害";
-                case AffixAttr.pPhysical: return "物理伤害加成";
-                case AffixAttr.pPyro: return "火属性伤害加成";
-                case AffixAttr.pHydro: return "水属性伤害加成";
-                case AffixAttr.pDendro: return "草属性伤害加成";
-                case AffixAttr.pCryo: return "冰属性伤害加成";
-                case AffixAttr.pElectro: return "雷属性伤害加成";
-                case AffixAttr.pAnemo: return "风属性伤害加成";
-                case AffixAttr.pGeo: return "岩属性伤害加成";
-                case AffixAttr.pHealing: return "治疗效果加成";
-                default: return "？？？";
-            }
+            return affix_names[((int)attr)];
         }
     }
     public static class ArtifactFactory
@@ -306,23 +288,39 @@ namespace genshin_sim
             ArtifactType.GobletOfEonothem,
             ArtifactType.CircletOfLogos,
         };
+
+        public static ArtifactSetEffect GladiatorsFinale = new ArtifactSetEffect(
+            "角斗士的终幕礼",
+            ArtifactSetEffectType.GladiatorsFinale,
+            new List<SpecialCondEffect>()
+            {
+                new SpecialCondEffect(SpecialCond.Always, 2, AbilityType.Simple, new Affix(AffixAttr.pATK, 0.18)),
+                new SpecialCondEffect(SpecialCond.UsingSword, 4, AbilityType.Simple, new Affix(AffixAttr.pATK, 0.35))
+            },
+            "两件套效果: 攻击力提高{0}。\r\n" + 
+            "四件套效果: 装备该圣遗物套装的角色为单手剑、双手剑、长柄武器角色时，角色普通攻击造成的伤害提高{1}。"
+        );
+
+        public static string[,] set_effect_names = new string[,] { { "角斗士的留恋", "角斗士的归宿", "角斗士的希冀", "角斗士的酣醉", "角斗士的凯旋" } }; 
+
+        public static string get_artifact_name(ArtifactType artifact_type, ArtifactSetEffectType set_type)
+        {
+            return set_effect_names[((int)set_type), ((int)artifact_type)];
+        }
         
+        public static ArtifactSetEffect[] SetEffects = new ArtifactSetEffect[]
+        {
+            GladiatorsFinale
+        };
+
+        public static string[] artifact_type_names = new string[]
+        {
+            "生之花", "死之羽", "时之沙", "空之杯", "理之冠",
+        };
+
         public static string type2str(ArtifactType type)
         {
-            switch (type)
-            {
-                case ArtifactType.FlowerOfLife:
-                    return "生之花";
-                case ArtifactType.PlumeOfDeath:
-                    return "死之羽";
-                case ArtifactType.SandsOfEon:
-                    return "时之沙";
-                case ArtifactType.GobletOfEonothem:
-                    return "空之杯";
-                case ArtifactType.CircletOfLogos:
-                default:
-                    return "理之冠";
-            }
+            return artifact_type_names[((int)type)];
         }
 
         public static Artifact pick()
@@ -509,16 +507,16 @@ namespace genshin_sim
                 "护国的无垢之心",
                 new List<SpecialCondAbility>()
                 {
-                    new SpecialCondAbility(SpecialCond.Always, new Affix(AffixAttr.pHP, new double[] { 0.2, 0.25, 0.3, 0.35, 0.4}, 0)),
-                    new SpecialCondAbility(SpecialCond.Always, new Affix(AffixAttr.pATK, new double[] { 0.012, 0.015, 0.018, 0.021, 0.024}, 0)),
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.pHP, new double[] { 0.2, 0.25, 0.3, 0.35, 0.4}, 0)),
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Bonus, new Affix(AffixAttr.ATK, new double[] { 0.012, 0.015, 0.018, 0.021, 0.024}, 0), WaifuStat.HP),
                 },
-                "生命值提升{0}。此外，基于装备该武器的角色生命值上限的{1},获得攻击力加成。",
+                "生命值提升{0}。此外，基于装备该武器的角色生命值上限的{1}，获得攻击力加成。",
                 0
             ),
             0
         );
 
-        public static Weapon[] weapons = new Weapon[]
+        public static Weapon[] Weapons = new Weapon[]
         {
             PrimordialJadeCutter,
         };

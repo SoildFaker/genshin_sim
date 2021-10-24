@@ -25,7 +25,7 @@ namespace genshin_sim
 
         private void fmWeaponList_Load(object sender, EventArgs e)
         {
-            weapons = WeaponFactory.weapons.Where(x => x.Type == type).ToList();
+            weapons = WeaponFactory.Weapons.Where(x => x.Type == type).ToList();
             for (int i = 0; i < weapons.Count; i++)
             {
                 this.lstWeapon.Items.Add(new ListViewItem(weapons[i].Name, images[i]));

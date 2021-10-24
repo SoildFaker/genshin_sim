@@ -29,9 +29,15 @@
         private void InitializeComponent()
         {
             this.gpArtifact = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.selSlot3 = new System.Windows.Forms.RadioButton();
+            this.selSlot4 = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtNickName = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.labSetEffectInfo = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbSetEffect = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cmdRemove = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -45,21 +51,15 @@
             this.cmbMainAffix = new System.Windows.Forms.ComboBox();
             this.cmdCamcel = new System.Windows.Forms.Button();
             this.cmdOK = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.selSlot4 = new System.Windows.Forms.RadioButton();
-            this.selSlot3 = new System.Windows.Forms.RadioButton();
-            this.txtNickName = new System.Windows.Forms.TextBox();
             this.gpArtifact.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.gpMainAffix.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selLevel)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpArtifact
@@ -79,10 +79,73 @@
             this.gpArtifact.TabStop = false;
             this.gpArtifact.Text = "Artifact";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.selSlot3);
+            this.groupBox2.Controls.Add(this.selSlot4);
+            this.groupBox2.Location = new System.Drawing.Point(299, 20);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(145, 50);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Initial Affix Count";
+            // 
+            // selSlot3
+            // 
+            this.selSlot3.AutoSize = true;
+            this.selSlot3.Location = new System.Drawing.Point(77, 20);
+            this.selSlot3.Name = "selSlot3";
+            this.selSlot3.Size = new System.Drawing.Size(29, 16);
+            this.selSlot3.TabIndex = 1;
+            this.selSlot3.Text = "3";
+            this.selSlot3.UseVisualStyleBackColor = true;
+            this.selSlot3.CheckedChanged += new System.EventHandler(this.selSlot3_CheckedChanged);
+            // 
+            // selSlot4
+            // 
+            this.selSlot4.AutoSize = true;
+            this.selSlot4.Checked = true;
+            this.selSlot4.Location = new System.Drawing.Point(25, 21);
+            this.selSlot4.Name = "selSlot4";
+            this.selSlot4.Size = new System.Drawing.Size(29, 16);
+            this.selSlot4.TabIndex = 0;
+            this.selSlot4.TabStop = true;
+            this.selSlot4.Text = "4";
+            this.selSlot4.UseVisualStyleBackColor = true;
+            this.selSlot4.CheckedChanged += new System.EventHandler(this.selSlot4_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtNickName);
+            this.groupBox1.Controls.Add(this.txtName);
+            this.groupBox1.Location = new System.Drawing.Point(6, 20);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(287, 50);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Name";
+            // 
+            // txtNickName
+            // 
+            this.txtNickName.Location = new System.Drawing.Point(145, 20);
+            this.txtNickName.Name = "txtNickName";
+            this.txtNickName.Size = new System.Drawing.Size(136, 21);
+            this.txtNickName.TabIndex = 1;
+            this.txtNickName.Text = "NickName";
+            // 
+            // txtName
+            // 
+            this.txtName.Enabled = false;
+            this.txtName.Location = new System.Drawing.Point(6, 20);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(133, 21);
+            this.txtName.TabIndex = 0;
+            this.txtName.Text = "Name";
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.labSetEffectInfo);
-            this.groupBox4.Controls.Add(this.comboBox2);
+            this.groupBox4.Controls.Add(this.cmbSetEffect);
             this.groupBox4.Location = new System.Drawing.Point(228, 76);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(216, 112);
@@ -92,20 +155,20 @@
             // 
             // labSetEffectInfo
             // 
-            this.labSetEffectInfo.AutoSize = true;
             this.labSetEffectInfo.Location = new System.Drawing.Point(6, 43);
             this.labSetEffectInfo.Name = "labSetEffectInfo";
-            this.labSetEffectInfo.Size = new System.Drawing.Size(83, 36);
+            this.labSetEffectInfo.Size = new System.Drawing.Size(204, 66);
             this.labSetEffectInfo.TabIndex = 3;
             this.labSetEffectInfo.Text = "Info\r\n两件套 - 效果\r\n四件套 - 效果";
             // 
-            // comboBox2
+            // cmbSetEffect
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(6, 20);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(204, 20);
-            this.comboBox2.TabIndex = 2;
+            this.cmbSetEffect.FormattingEnabled = true;
+            this.cmbSetEffect.Location = new System.Drawing.Point(6, 20);
+            this.cmbSetEffect.Name = "cmbSetEffect";
+            this.cmbSetEffect.Size = new System.Drawing.Size(204, 20);
+            this.cmbSetEffect.TabIndex = 2;
+            this.cmbSetEffect.SelectedIndexChanged += new System.EventHandler(this.cmbSetEffect_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -253,68 +316,6 @@
             this.cmdOK.UseVisualStyleBackColor = true;
             this.cmdOK.Click += new System.EventHandler(this.cmdOK_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtNickName);
-            this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Location = new System.Drawing.Point(6, 20);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(287, 50);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Name";
-            // 
-            // txtName
-            // 
-            this.txtName.Enabled = false;
-            this.txtName.Location = new System.Drawing.Point(6, 20);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(133, 21);
-            this.txtName.TabIndex = 0;
-            this.txtName.Text = "Name";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.selSlot3);
-            this.groupBox2.Controls.Add(this.selSlot4);
-            this.groupBox2.Location = new System.Drawing.Point(299, 20);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(145, 50);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Initial Affix Count";
-            // 
-            // selSlot4
-            // 
-            this.selSlot4.AutoSize = true;
-            this.selSlot4.Checked = true;
-            this.selSlot4.Location = new System.Drawing.Point(25, 21);
-            this.selSlot4.Name = "selSlot4";
-            this.selSlot4.Size = new System.Drawing.Size(29, 16);
-            this.selSlot4.TabIndex = 0;
-            this.selSlot4.Text = "4";
-            this.selSlot4.UseVisualStyleBackColor = true;
-            this.selSlot4.CheckedChanged += new System.EventHandler(this.selSlot4_CheckedChanged);
-            // 
-            // selSlot3
-            // 
-            this.selSlot3.AutoSize = true;
-            this.selSlot3.Location = new System.Drawing.Point(77, 20);
-            this.selSlot3.Name = "selSlot3";
-            this.selSlot3.Size = new System.Drawing.Size(29, 16);
-            this.selSlot3.TabIndex = 1;
-            this.selSlot3.Text = "3";
-            this.selSlot3.UseVisualStyleBackColor = true;
-            this.selSlot3.CheckedChanged += new System.EventHandler(this.selSlot3_CheckedChanged);
-            // 
-            // txtNickName
-            // 
-            this.txtNickName.Location = new System.Drawing.Point(145, 20);
-            this.txtNickName.Name = "txtNickName";
-            this.txtNickName.Size = new System.Drawing.Size(136, 21);
-            this.txtNickName.TabIndex = 1;
-            this.txtNickName.Text = "NickName";
-            // 
             // fmArtifactEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -330,18 +331,17 @@
             this.Text = "Edit Artifact";
             this.Load += new System.EventHandler(this.fmArtifact_Load);
             this.gpArtifact.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.gpMainAffix.ResumeLayout(false);
             this.gpMainAffix.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selLevel)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -353,7 +353,7 @@
         private System.Windows.Forms.Button cmdOK;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label labSetEffectInfo;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbSetEffect;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.ListBox lstMinorAffixList;

@@ -59,18 +59,29 @@ namespace genshin_sim
     public enum SpecialCond
     {
         Always,
+        UsingSword,
         TakingDMG,
+    }
+
+    public enum AbilityType
+    {
+        Simple,
+        Bonus,
     }
 
     public class SpecialCondAbility
     {
+        public AbilityType Type { get; private set; }
         public SpecialCond SpecialCond { get; private set; }
+        public WaifuStat BonusBase { get; private set; }
         public Affix Affix { get; private set; }
 
-        public SpecialCondAbility(SpecialCond cond, Affix affix)
+        public SpecialCondAbility(SpecialCond cond, AbilityType type, Affix affix, WaifuStat bonus_base = WaifuStat.HP)
         {
             this.SpecialCond = cond;
+            this.Type = type;
             this.Affix = affix;
+            this.BonusBase = bonus_base;
         }
     }
 

@@ -62,7 +62,7 @@ namespace genshin_sim
             this.cmdWeaponAdd = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.cmdCharacterArtifactClear = new System.Windows.Forms.LinkLabel();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.gpCharacterArtifactSetEffect = new System.Windows.Forms.GroupBox();
             this.labCharacterArtifactSetEffect = new System.Windows.Forms.Label();
             this.gpCharacterArtifactCirclet = new System.Windows.Forms.GroupBox();
             this.labCharacterArtifactCirclet = new System.Windows.Forms.Label();
@@ -102,7 +102,7 @@ namespace genshin_sim
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selWeaponLevel)).BeginInit();
             this.groupBox9.SuspendLayout();
-            this.groupBox11.SuspendLayout();
+            this.gpCharacterArtifactSetEffect.SuspendLayout();
             this.gpCharacterArtifactCirclet.SuspendLayout();
             this.gpCharacterArtifactGoblet.SuspendLayout();
             this.gpCharacterArtifactSands.SuspendLayout();
@@ -439,7 +439,7 @@ namespace genshin_sim
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox9.BackColor = System.Drawing.Color.White;
             this.groupBox9.Controls.Add(this.cmdCharacterArtifactClear);
-            this.groupBox9.Controls.Add(this.groupBox11);
+            this.groupBox9.Controls.Add(this.gpCharacterArtifactSetEffect);
             this.groupBox9.Controls.Add(this.gpCharacterArtifactCirclet);
             this.groupBox9.Controls.Add(this.gpCharacterArtifactGoblet);
             this.groupBox9.Controls.Add(this.gpCharacterArtifactSands);
@@ -463,22 +463,22 @@ namespace genshin_sim
             this.cmdCharacterArtifactClear.Text = "Clear";
             this.cmdCharacterArtifactClear.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.cmdCharacterArtifactClear_LinkClicked);
             // 
-            // groupBox11
+            // gpCharacterArtifactSetEffect
             // 
-            this.groupBox11.Controls.Add(this.labCharacterArtifactSetEffect);
-            this.groupBox11.Location = new System.Drawing.Point(283, 214);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(271, 91);
-            this.groupBox11.TabIndex = 7;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Artifact Set Effect";
+            this.gpCharacterArtifactSetEffect.Controls.Add(this.labCharacterArtifactSetEffect);
+            this.gpCharacterArtifactSetEffect.Location = new System.Drawing.Point(283, 214);
+            this.gpCharacterArtifactSetEffect.Name = "gpCharacterArtifactSetEffect";
+            this.gpCharacterArtifactSetEffect.Size = new System.Drawing.Size(271, 91);
+            this.gpCharacterArtifactSetEffect.TabIndex = 7;
+            this.gpCharacterArtifactSetEffect.TabStop = false;
+            this.gpCharacterArtifactSetEffect.Text = "Artifact Set Effect";
             // 
             // labCharacterArtifactSetEffect
             // 
-            this.labCharacterArtifactSetEffect.AutoSize = true;
-            this.labCharacterArtifactSetEffect.Location = new System.Drawing.Point(6, 17);
+            this.labCharacterArtifactSetEffect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labCharacterArtifactSetEffect.Location = new System.Drawing.Point(3, 17);
             this.labCharacterArtifactSetEffect.Name = "labCharacterArtifactSetEffect";
-            this.labCharacterArtifactSetEffect.Size = new System.Drawing.Size(29, 12);
+            this.labCharacterArtifactSetEffect.Size = new System.Drawing.Size(265, 71);
             this.labCharacterArtifactSetEffect.TabIndex = 2;
             this.labCharacterArtifactSetEffect.Text = "Info";
             // 
@@ -821,8 +821,7 @@ namespace genshin_sim
             ((System.ComponentModel.ISupportInitialize)(this.selWeaponLevel)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
+            this.gpCharacterArtifactSetEffect.ResumeLayout(false);
             this.gpCharacterArtifactCirclet.ResumeLayout(false);
             this.gpCharacterArtifactCirclet.PerformLayout();
             this.gpCharacterArtifactGoblet.ResumeLayout(false);
@@ -882,7 +881,7 @@ namespace genshin_sim
         private System.Windows.Forms.GroupBox gpCharacterArtifactCirclet;
         private System.Windows.Forms.Label labCharacterArtifactCirclet;
         private System.Windows.Forms.Button cmdCharacterArtifactCirclet;
-        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.GroupBox gpCharacterArtifactSetEffect;
         private System.Windows.Forms.Label labCharacterArtifactSetEffect;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label labCharacterAttributes;
