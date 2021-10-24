@@ -29,11 +29,14 @@ namespace genshin_sim
         private Affix[] affix_slot = new Affix[9];
         private List<Affix> init_minor_affixes = new List<Affix>();
         private List<Affix> sub_minor_affixes = new List<Affix>();
+        private int affix_slot_fix = 0;
         private int affix_slot_count = 4;
 
         private void init()
         {
-            this.gpArtifact.Text = $"Artifact ({artifact.Name})";
+            this.gpArtifact.Text = $"Artifact ({ArtifactFactory.type2str(artifact.Type)})";
+            this.txtName.Text = artifact.Name;
+            this.txtNickName.Text = artifact.NickName;
             this.main_affixes = AffixFactory.get_artifact_main_affix_array(artifact.Type);
             this.selLevel.Value = artifact.Level;
             this.cmbMainAffix.Text = artifact.MainAffixString;
@@ -51,7 +54,6 @@ namespace genshin_sim
                     this.lstSelectedMinorAffix.Items.Add($"Slot   [{artifact.MinorAffixes[i].Description}\t]");
                 }
             }
-            affix_slot_count = 4 + (int)artifact.Level / 4;
             this.cmbMainAffix.Items.AddRange(main_affixes.Select(x => x.Description).ToArray());
             refresh_list();
             refresh_slot();
@@ -62,6 +64,7 @@ namespace genshin_sim
         private void cmdOK_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+            this.artifact.NickName = txtNickName.Text;
             this.artifact.SetMinorAffix(affix_slot.Take(affix_slot_count).ToList());
             this.Close();
         }
@@ -69,7 +72,6 @@ namespace genshin_sim
         private void refresh_info()
         {
             gpMainAffix.Text = $"Main Affix (Lv.{artifact.Level})";
-            labInfo.Text = $"Available Minor Affix Count: {affix_slot_count}";
         }
 
         private void refresh_list()
@@ -91,6 +93,11 @@ namespace genshin_sim
 
         private void refresh_slot()
         {
+            affix_slot_count = affix_slot_fix + 4 + (int)artifact.Level / 4;
+            if (affix_slot_count < 4)
+            {
+                affix_slot_count = 4;
+            }
             if (this.lstSelectedMinorAffix.Items.Count < affix_slot_count)
             {
                 for (int i = lstSelectedMinorAffix.Items.Count; i < affix_slot_count; i++)
@@ -120,14 +127,8 @@ namespace genshin_sim
                 }
             }
             refresh_minor_affix();
-            for (int i = 0; i < affix_slot_count; i++)
-            {
-                if (affix_slot[i] == null)
-                {
-                    this.cmdOK.Enabled = false;
-                    return;
-                }
-            }
+            check_slots();
+            labInfo.Text = $"Available Minor Affix Count: {affix_slot_count}";
         }
 
         private void refresh_minor_affix()
@@ -156,9 +157,8 @@ namespace genshin_sim
             artifact.SetLevel(selLevel.Value);
             this.cmbMainAffix.Text = artifact.MainAffixString;
             this.cmbMainAffix.Items.AddRange(main_affixes.Select(x => x.Description).ToArray());
-            affix_slot_count = 4 + (int)artifact.Level / 4;
-            refresh_info();
             refresh_slot();
+            refresh_info();
         }
 
         private void cmbMainAffix_SelectedIndexChanged(object sender, EventArgs e)
@@ -217,14 +217,7 @@ namespace genshin_sim
                     }
                 }
             }
-            for (int i = 0; i < affix_slot_count; i++)
-            {
-                if (affix_slot[i] == null)
-                {
-                    return;
-                }
-            }
-            this.cmdOK.Enabled = true;
+            check_slots();
         }
         private void slot_unplug(int index)
         {
@@ -246,6 +239,11 @@ namespace genshin_sim
                     lstSelectedMinorAffix.Items[index] = $"Slot   [\t]";
                 }
             }
+            check_slots();
+        }
+
+        private void check_slots()
+        {
             for (int i = 0; i < affix_slot_count; i++)
             {
                 if (affix_slot[i] == null)
@@ -254,6 +252,7 @@ namespace genshin_sim
                     return;
                 }
             }
+            this.cmdOK.Enabled = true;
         }
 
         private void lstSelectedMinorAffix_SelectedIndexChanged(object sender, EventArgs e)
@@ -305,6 +304,24 @@ namespace genshin_sim
         private void fmArtifact_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void selSlot3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (selSlot3.Checked)
+            {
+                affix_slot_fix = -1;
+                refresh_slot();
+            }
+        }
+
+        private void selSlot4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (selSlot4.Checked)
+            {
+                affix_slot_fix = 0;
+                refresh_slot();
+            }
         }
     }
 }

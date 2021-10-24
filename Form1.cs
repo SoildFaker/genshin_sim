@@ -21,30 +21,30 @@ namespace genshin_sim
         string file_artifact_data = @"artifacts.dat";
         int[] version = new int[4] { 0, 1, 0, 0};
         List<Artifact> artifacts_inventory = new List<Artifact>();
+        int artifact_list_select_index = 0;
         Artifact[] waifu_artifacts = new Artifact[5];
         Waifu waifu_now;
-        Artifact artifact_now;
 
         private void Form1_Load(object sender, EventArgs e)
         {
             read_artifacts_from_file();
-            artifact_now = artifacts_inventory[0];
-            refresh_relic_list();
+            refresh_artifact_list();
         }
 
-        private void refresh_relic_list()
+        private void refresh_artifact_list()
         {
-            lstRelic.BeginUpdate();
-            lstRelic.Items.Clear();
+            lstArtifact.BeginUpdate();
+            lstArtifact.Items.Clear();
             for (int i = 0; i < artifacts_inventory.Count; i++)
             {
-                lstRelic.Items.Add($"{artifacts_inventory[i].Name} ({artifacts_inventory[i].Level})");
-                lstRelic.Items[i].SubItems.Add($"{artifacts_inventory[i].MainAffixString}");
-                lstRelic.Items[i].SubItems.Add($"{artifacts_inventory[i].MinorAffixesString}");
-                lstRelic.Items[i].ImageIndex = ((int)artifacts_inventory[i].Type);
+                lstArtifact.Items.Add($"{artifacts_inventory[i].Name} ({artifacts_inventory[i].Level})");
+                lstArtifact.Items[i].SubItems.Add($"{artifacts_inventory[i].MainAffixString}");
+                lstArtifact.Items[i].SubItems.Add($"{artifacts_inventory[i].MinorAffixesString}");
+                lstArtifact.Items[i].SubItems.Add($"{artifacts_inventory[i].NickName}");
+                lstArtifact.Items[i].ImageIndex = ((int)artifacts_inventory[i].Type);
             }
             get_relic_info();
-            lstRelic.EndUpdate();
+            lstArtifact.EndUpdate();
         }
 
         private void cmdReset_Click(object sender, EventArgs e)
@@ -59,29 +59,33 @@ namespace genshin_sim
 
         private void get_relic_info()
         {
-            this.labInfo.Text = $"Level: {artifact_now.Level}\r\n{artifact_now.MainAffixString}\r\n{artifact_now.MinorAffixesString}";
+            Artifact tmp = this.artifacts_inventory[artifact_list_select_index];
+            this.labInfo.Text = $"Level: {tmp.Level}\r\n{tmp.MainAffixString}\r\n{tmp.MinorAffixesString}";
         }
 
         private void level_up()
         {
-            artifact_now.LevelUp();
-            refresh_relic_list();
+            artifacts_inventory[artifact_list_select_index].LevelUp();
+            lstArtifact.Items.RemoveAt(artifact_list_select_index);
+            artifact_list_insert(artifacts_inventory[artifact_list_select_index], artifact_list_select_index);
         }
 
         private void cmdLevelUp20_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 20; i++)
+            int gap = 20 - artifacts_inventory[artifact_list_select_index].Level;
+            for (int i = 0; i < gap; i++)
             {
-                artifact_now.LevelUp();
+                artifacts_inventory[artifact_list_select_index].LevelUp();
             }
-            refresh_relic_list();
+            lstArtifact.Items.RemoveAt(artifact_list_select_index);
+            artifact_list_insert(artifacts_inventory[artifact_list_select_index], artifact_list_select_index);
         }
 
         private void lstRelic_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstRelic.SelectedItems.Count > 0)
+            if (lstArtifact.SelectedItems.Count > 0)
             {
-                artifact_now = artifacts_inventory[lstRelic.SelectedItems[0].Index];
+                artifact_list_select_index = lstArtifact.SelectedItems[0].Index;
                 get_relic_info();
             }
         }
@@ -98,8 +102,17 @@ namespace genshin_sim
                     selCharacterLevel.Value = waifu_now.Level;
                     waifu_now.Artifacts = waifu_artifacts;
                     refresh_character_info();
+                    clear_weapon_info();
                 }
             }
+        }
+
+        private void clear_weapon_info()
+        {
+            this.cmdWeaponAdd.BackgroundImage = imUserIcons.Images[0];
+            this.labWeaponName.Text = "Name";
+            this.labWeaponStat.Text = "Stat";
+            this.selWeaponLevel.Value = 0;
         }
 
         private void refresh_character_info()
@@ -110,28 +123,34 @@ namespace genshin_sim
             }
             List<Affix> stat = waifu_now.Stat;
             labCharacterName.Text = $"{waifu_now.Name} (lv.{waifu_now.Level} {waifu_now.Vision})";
+            // Weapon
+            if (waifu_now.Weapon != null)
+            {
+                labWeaponName.Text = $"{waifu_now.Weapon.Name} (Lv.{waifu_now.Weapon.Level} {waifu_now.Weapon.Type})";
+                labWeaponStat.Text = $"{waifu_now.Weapon.BaseATK.Description}\r\n{waifu_now.Weapon.SecondaryStat.Description}";
+                labWeaponStat.Text += $"\r\n\r\n{waifu_now.Weapon.SpecialAbility.Name}:\r\n{waifu_now.Weapon.SpecialAbility.Description}";
+            }
             labCharacterBaseStat.Text = ""; 
             foreach (var item in waifu_now.BaseStat)
             {
                 labCharacterBaseStat.Text += item.Description + "\r\n";
             }
-            labCharacterAttributes.Text = $"{waifu_now.Name}\r\n" +
+            labCharacterAttributes.Text = $"[{waifu_now.Name}]\r\n\r\n" +
                 $"生命值: {waifu_now.HP}\r\n" +
                 $"攻击力: {waifu_now.ATK}\r\n" +
                 $"防御力: {waifu_now.DEF}\r\n" +
-                $"元素精通: {waifu_now.ELM}\r\n";
-            for (int i = 0; i < AffixFactory.waifu_stat_arr.Length; i++)
-            {
-                AffixAttr attr = AffixFactory.waifu_stat_arr[i];
-                if (attr.ToString().StartsWith("p"))
-                {
-                    labCharacterAttributes.Text += $"{AffixFactory.attr2str(attr)}: \t{stat.Where(x => x.Attribute == attr).Sum(x => x.Value).ToString("0.0%")}\r\n";
-                }
-                else
-                {
-                    labCharacterAttributes.Text += $"{AffixFactory.attr2str(attr)}: \t{stat.Where(x => x.Attribute == attr).Sum(x => x.Value)}\r\n";
-                }
-            }
+                $"元素精通: {waifu_now.ELM}\r\n" +
+                $"暴击率: {waifu_now.CRI.ToString("0.0%")}\r\n" +
+                $"暴击伤害: {waifu_now.CRD.ToString("0.0%")}\r\n" +
+                $"物理伤害加成: {waifu_now.Physical.ToString("0.0%")}\r\n" +
+                $"火属性伤害加成: {waifu_now.Pyro.ToString("0.0%")}\r\n" +
+                $"水属性伤害加成: {waifu_now.Hydro.ToString("0.0%")}\r\n" +
+                $"岩属性伤害加成: {waifu_now.Geo.ToString("0.0%")}\r\n" +
+                $"雷属性伤害加成: {waifu_now.Electro.ToString("0.0%")}\r\n" +
+                $"冰属性伤害加成: {waifu_now.Cryo.ToString("0.0%")}\r\n" +
+                $"草属性伤害加成: {waifu_now.Dendro.ToString("0.0%")}\r\n" +
+                $"风属性伤害加成: {waifu_now.Anemo.ToString("0.0%")}\r\n" +
+                $"治疗加成: {waifu_now.Healing.ToString("0.0%")}\r\n";
         }
 
         private void selCharacterLevel_Scroll(object sender, EventArgs e)
@@ -309,17 +328,7 @@ namespace genshin_sim
 
         private void lstRelic_DoubleClick(object sender, EventArgs e)
         {
-            if (lstRelic.SelectedItems.Count > 0)
-            {
-                using (var fm = new fmArtifactEditor(artifacts_inventory[lstRelic.SelectedItems[0].Index]))
-                {
-                    if (fm.ShowDialog() == DialogResult.OK)
-                    {
-                        artifacts_inventory[lstRelic.SelectedItems[0].Index] = fm.Artifact;
-                    }
-                }
-            }
-
+            artifact_edit();
         }
 
         private void cmdArtifactAdd_Click(object sender, EventArgs e)
@@ -349,10 +358,10 @@ namespace genshin_sim
 
         private void artifact_delete()
         {
-            if (lstRelic.SelectedItems.Count > 0)
+            if (lstArtifact.SelectedItems.Count > 0)
             {
-                this.artifacts_inventory.RemoveAt(lstRelic.SelectedItems[0].Index);
-                refresh_relic_list();
+                this.artifacts_inventory.RemoveAt(lstArtifact.SelectedItems[0].Index);
+                lstArtifact.Items.RemoveAt(lstArtifact.SelectedItems[0].Index);
             }
         }
 
@@ -362,23 +371,101 @@ namespace genshin_sim
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
-                    this.artifacts_inventory.Add(fm.artifact);
-                    refresh_relic_list();
+                    int index = lstArtifact.Items.Count;
+                    this.artifacts_inventory.Add(fm.Artifact);
+                    artifact_list_insert(fm.Artifact, index);
                 }
             }
         }
 
         private void artifact_edit()
         {
-            if (lstRelic.SelectedItems.Count > 0)
+            if (lstArtifact.SelectedItems.Count > 0)
             {
-                using (var fm = new fmArtifactEditor(artifacts_inventory[lstRelic.SelectedItems[0].Index]))
+                using (var fm = new fmArtifactEditor(artifacts_inventory[lstArtifact.SelectedItems[0].Index]))
                 {
                     if (fm.ShowDialog() == DialogResult.OK)
                     {
-                        artifacts_inventory[lstRelic.SelectedItems[0].Index] = fm.Artifact;
+                        int index = lstArtifact.SelectedItems[0].Index;
+                        artifacts_inventory[index] = fm.Artifact;
+                        lstArtifact.Items.RemoveAt(index);
+                        artifact_list_insert(fm.Artifact, index);
                     }
                 }
+            }
+        }
+        private void artifact_list_insert(Artifact artifact, int pos)
+        {
+            lstArtifact.BeginUpdate();
+            lstArtifact.Items.Insert(pos, $"{artifact.Name} ({artifact.Level})");
+            lstArtifact.Items[pos].SubItems.Add($"{artifact.MainAffixString}");
+            lstArtifact.Items[pos].SubItems.Add($"{artifact.MinorAffixesString}");
+            lstArtifact.Items[pos].SubItems.Add($"{artifact.NickName}");
+            lstArtifact.Items[pos].ImageIndex = ((int)artifact.Type);
+            lstArtifact.Items[pos].Selected = true;
+            lstArtifact.Items[pos].EnsureVisible();
+            lstArtifact.Select();
+            lstArtifact.EndUpdate();
+        }
+
+        private void cmdWeaponAdd_Click(object sender, EventArgs e)
+        {
+            if (waifu_now == null)
+            {
+                return;
+            }
+            using (var fm = new fmWeaponList(waifu_now.WeaponType))
+            {
+                if (fm.ShowDialog() == DialogResult.OK)
+                {
+                    cmdWeaponAdd.BackgroundImage = fm.WeaponImage;
+                    waifu_now.Weapon = fm.Weapon;
+                    selWeaponLevel.Value = waifu_now.Weapon.LevelIndex;
+                    refresh_character_info();
+                }
+            }
+        }
+
+        private void selWeaponLevel_Scroll(object sender, EventArgs e)
+        {
+            if (waifu_now != null && waifu_now.Weapon != null)
+            {
+                waifu_now.Weapon.SetLevel(selWeaponLevel.Value);
+                refresh_character_info();
+            }
+        }
+
+        private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedIndex == 1)
+            {
+                refresh_artifact_list();
+            }
+        }
+
+        private void cmdCharacterArtifactClear_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            for (int i = 0; i < waifu_artifacts.Length; i++)
+            {
+                waifu_artifacts[i] = null;
+            }
+            labCharacterArtifactFlowerInfo.Text = "(Empty)";
+            labCharacterArtifactPlume.Text = "(Empty)";
+            labCharacterArtifactGoblet.Text = "(Empty)";
+            labCharacterArtifactSands.Text = "(Empty)";
+            labCharacterArtifactCirclet.Text = "(Empty)";
+            refresh_character_info();
+        }
+
+        private void cmdWeaponRefine_Click(object sender, EventArgs e)
+        {
+            if (waifu_now != null && waifu_now.Weapon != null)
+            {
+                int level = waifu_now.Weapon.SpecialAbility.Level;
+                level = level < 4 ? level + 1 : 0;
+                waifu_now.Weapon.SpecialAbility.SetLevel(level);
+                cmdWeaponRefine.Text = $"Refine: {level + 1}";
+                refresh_character_info();
             }
         }
     }

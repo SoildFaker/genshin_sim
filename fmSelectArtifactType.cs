@@ -23,7 +23,7 @@ namespace genshin_sim
         }
 
         ArtifactType type = ArtifactType.SandsOfEon;
-        public Artifact artifact;
+        public Artifact Artifact;
         bool isSelected = false;
 
         private void cmdCharacterArtifactFlower_Click(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace genshin_sim
                     if (fm.ShowDialog() == DialogResult.OK)
                     {
                         this.DialogResult = DialogResult.OK;
-                        this.artifact = fm.Artifact;
+                        this.Artifact = fm.Artifact;
                     }
                 }
             }

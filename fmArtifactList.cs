@@ -18,8 +18,8 @@ namespace genshin_sim
             this.artifacts = artifacts;
             this.ImageList = imageList;
             this.type = type;
-            this.lstArtifacts.LargeImageList = imageList;
-            this.lstArtifacts.SmallImageList = imageList;
+            this.lstArtifact.LargeImageList = imageList;
+            this.lstArtifact.SmallImageList = imageList;
             for (int i = 0; i < artifacts.Count; i++)
             {
                 artifact_list_add(artifacts[i]);
@@ -38,9 +38,9 @@ namespace genshin_sim
 
         private void dialog_return()
         {
-            if (lstArtifacts.SelectedItems.Count > 0)
+            if (lstArtifact.SelectedItems.Count > 0)
             {
-                this.Artifact = artifacts[lstArtifacts.SelectedItems[0].Index];
+                this.Artifact = artifacts[lstArtifact.SelectedItems[0].Index];
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -58,10 +58,10 @@ namespace genshin_sim
 
         private void menuDelete_Click(object sender, EventArgs e)
         {
-            if (lstArtifacts.SelectedItems.Count > 0)
+            if (lstArtifact.SelectedItems.Count > 0)
             {
-                this.artifacts.RemoveAt(lstArtifacts.SelectedItems[0].Index);
-                lstArtifacts.Items.RemoveAt(lstArtifacts.SelectedItems[0].Index);
+                this.artifacts.RemoveAt(lstArtifact.SelectedItems[0].Index);
+                lstArtifact.Items.RemoveAt(lstArtifact.SelectedItems[0].Index);
             }
         }
 
@@ -79,21 +79,39 @@ namespace genshin_sim
 
         private void artifact_list_add(Artifact artifact)
         {
-            lstArtifacts.Items.Add($"{artifact.Name} ({artifact.Level})");
-            lstArtifacts.Items[lstArtifacts.Items.Count - 1].SubItems.Add($"{artifact.MainAffixString}");
-            lstArtifacts.Items[lstArtifacts.Items.Count - 1].SubItems.Add($"{artifact.MinorAffixesString}");
-            lstArtifacts.Items[lstArtifacts.Items.Count - 1].ImageIndex = ((int)artifact.Type);
+            lstArtifact.Items.Add($"{artifact.Name} ({artifact.Level})");
+            lstArtifact.Items[lstArtifact.Items.Count - 1].SubItems.Add($"{artifact.MainAffixString}");
+            lstArtifact.Items[lstArtifact.Items.Count - 1].SubItems.Add($"{artifact.MinorAffixesString}");
+            lstArtifact.Items[lstArtifact.Items.Count - 1].SubItems.Add($"{artifact.NickName}");
+            lstArtifact.Items[lstArtifact.Items.Count - 1].ImageIndex = ((int)artifact.Type);
+        }
+
+        private void artifact_list_insert(Artifact artifact, int pos)
+        {
+            lstArtifact.BeginUpdate();
+            lstArtifact.Items.Insert(pos, $"{artifact.Name} ({artifact.Level})");
+            lstArtifact.Items[pos].SubItems.Add($"{artifact.MainAffixString}");
+            lstArtifact.Items[pos].SubItems.Add($"{artifact.MinorAffixesString}");
+            lstArtifact.Items[pos].SubItems.Add($"{artifact.NickName}");
+            lstArtifact.Items[pos].ImageIndex = ((int)artifact.Type);
+            lstArtifact.Items[pos].Selected = true;
+            lstArtifact.Items[pos].EnsureVisible();
+            lstArtifact.Select();
+            lstArtifact.EndUpdate();
         }
 
         private void menuEdit_Click(object sender, EventArgs e)
         {
-            if (lstArtifacts.SelectedItems.Count > 0)
+            if (lstArtifact.SelectedItems.Count > 0)
             {
-                using (var fm = new fmArtifactEditor(artifacts[lstArtifacts.SelectedItems[0].Index]))
+                using (var fm = new fmArtifactEditor(artifacts[lstArtifact.SelectedItems[0].Index]))
                 {
                     if (fm.ShowDialog() == DialogResult.OK)
                     {
-                        artifacts[lstArtifacts.SelectedItems[0].Index] = fm.Artifact;
+                        int index = lstArtifact.SelectedItems[0].Index;
+                        artifacts[index] = fm.Artifact;
+                        lstArtifact.Items.RemoveAt(index);
+                        artifact_list_insert(fm.Artifact, index);
                     }
                 }
             }

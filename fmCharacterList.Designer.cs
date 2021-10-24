@@ -140,11 +140,8 @@ namespace genshin_sim
             this.Controls.Add(this.cmdOK);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "fmCharacterList";
-            this.Text = "Waifu Select";
+            this.Text = "Character Select";
             this.Load += new System.EventHandler(this.fmCharacterList_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

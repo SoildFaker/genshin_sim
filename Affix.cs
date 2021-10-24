@@ -90,7 +90,7 @@ namespace genshin_sim
 
         public void LevelUp()
         {
-            if (level < value_arr.Count)
+            if (level < value_arr.Count - 1)
             {
                 level++;
                 this.Value = value_arr[level];

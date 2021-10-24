@@ -71,6 +71,12 @@
     <Compile Include="fmSelectArtifactType.Designer.cs">
       <DependentUpon>fmSelectArtifactType.cs</DependentUpon>
     </Compile>
+    <Compile Include="fmWeaponList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmWeaponList.Designer.cs">
+      <DependentUpon>fmWeaponList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fmSelectArtifactType.resx">
       <DependentUpon>fmSelectArtifactType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmWeaponList.resx">
+      <DependentUpon>fmWeaponList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

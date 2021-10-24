@@ -41,15 +41,27 @@ namespace genshin_sim
             this.cmdArtifactSave = new System.Windows.Forms.Button();
             this.cmdArtifactEdit = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lstRelic = new System.Windows.Forms.ListView();
+            this.lstArtifact = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuArtifactEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuArtifactAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuArtifactDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.ArtifactTypeImageList = new System.Windows.Forms.ImageList(this.components);
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabMain = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.labWeaponStat = new System.Windows.Forms.Label();
+            this.selWeaponLevel = new System.Windows.Forms.TrackBar();
+            this.labWeaponName = new System.Windows.Forms.Label();
+            this.cmdWeaponAdd = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.cmdCharacterArtifactClear = new System.Windows.Forms.LinkLabel();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.labCharacterArtifactSetEffect = new System.Windows.Forms.Label();
             this.gpCharacterArtifactCirclet = new System.Windows.Forms.GroupBox();
@@ -75,19 +87,20 @@ namespace genshin_sim
             this.selCharacterLevel = new System.Windows.Forms.TrackBar();
             this.labCharacterName = new System.Windows.Forms.Label();
             this.cmdCharacterAdd = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.labGithubLink = new System.Windows.Forms.LinkLabel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menuArtifactEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuArtifactAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuArtifactDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.imUserIcons = new System.Windows.Forms.ImageList(this.components);
+            this.cmdWeaponRefine = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
+            this.tabMain.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selWeaponLevel)).BeginInit();
             this.groupBox9.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.gpCharacterArtifactCirclet.SuspendLayout();
@@ -100,7 +113,6 @@ namespace genshin_sim
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).BeginInit();
             this.tabPage1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmdAdd
@@ -151,8 +163,7 @@ namespace genshin_sim
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.cmdArtifactAdd);
             this.groupBox3.Controls.Add(this.cmdArtifactDelete);
@@ -170,6 +181,7 @@ namespace genshin_sim
             // 
             // cmdArtifactAdd
             // 
+            this.cmdArtifactAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdArtifactAdd.Location = new System.Drawing.Point(611, 13);
             this.cmdArtifactAdd.Name = "cmdArtifactAdd";
             this.cmdArtifactAdd.Size = new System.Drawing.Size(115, 23);
@@ -180,6 +192,7 @@ namespace genshin_sim
             // 
             // cmdArtifactDelete
             // 
+            this.cmdArtifactDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdArtifactDelete.Location = new System.Drawing.Point(611, 42);
             this.cmdArtifactDelete.Name = "cmdArtifactDelete";
             this.cmdArtifactDelete.Size = new System.Drawing.Size(115, 23);
@@ -190,6 +203,7 @@ namespace genshin_sim
             // 
             // cmdArtifactSave
             // 
+            this.cmdArtifactSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdArtifactSave.Location = new System.Drawing.Point(732, 42);
             this.cmdArtifactSave.Name = "cmdArtifactSave";
             this.cmdArtifactSave.Size = new System.Drawing.Size(115, 23);
@@ -211,9 +225,10 @@ namespace genshin_sim
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox2.Controls.Add(this.lstRelic);
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.lstArtifact);
             this.groupBox2.Location = new System.Drawing.Point(6, 17);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(856, 337);
@@ -221,29 +236,30 @@ namespace genshin_sim
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Artifact List";
             // 
-            // lstRelic
+            // lstArtifact
             // 
-            this.lstRelic.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstArtifact.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3});
-            this.lstRelic.ContextMenuStrip = this.contextMenuStrip1;
-            this.lstRelic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstRelic.FullRowSelect = true;
-            this.lstRelic.GridLines = true;
-            this.lstRelic.HideSelection = false;
-            this.lstRelic.LargeImageList = this.ArtifactTypeImageList;
-            this.lstRelic.Location = new System.Drawing.Point(3, 17);
-            this.lstRelic.MultiSelect = false;
-            this.lstRelic.Name = "lstRelic";
-            this.lstRelic.Size = new System.Drawing.Size(850, 317);
-            this.lstRelic.SmallImageList = this.ArtifactTypeImageList;
-            this.lstRelic.TabIndex = 5;
-            this.lstRelic.TileSize = new System.Drawing.Size(120, 80);
-            this.lstRelic.UseCompatibleStateImageBehavior = false;
-            this.lstRelic.View = System.Windows.Forms.View.Details;
-            this.lstRelic.SelectedIndexChanged += new System.EventHandler(this.lstRelic_SelectedIndexChanged);
-            this.lstRelic.DoubleClick += new System.EventHandler(this.lstRelic_DoubleClick);
+            this.columnHeader3,
+            this.columnHeader4});
+            this.lstArtifact.ContextMenuStrip = this.contextMenuStrip1;
+            this.lstArtifact.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstArtifact.FullRowSelect = true;
+            this.lstArtifact.GridLines = true;
+            this.lstArtifact.HideSelection = false;
+            this.lstArtifact.LargeImageList = this.ArtifactTypeImageList;
+            this.lstArtifact.Location = new System.Drawing.Point(3, 17);
+            this.lstArtifact.MultiSelect = false;
+            this.lstArtifact.Name = "lstArtifact";
+            this.lstArtifact.Size = new System.Drawing.Size(850, 317);
+            this.lstArtifact.SmallImageList = this.ArtifactTypeImageList;
+            this.lstArtifact.TabIndex = 5;
+            this.lstArtifact.TileSize = new System.Drawing.Size(120, 80);
+            this.lstArtifact.UseCompatibleStateImageBehavior = false;
+            this.lstArtifact.View = System.Windows.Forms.View.Details;
+            this.lstArtifact.SelectedIndexChanged += new System.EventHandler(this.lstRelic_SelectedIndexChanged);
+            this.lstArtifact.DoubleClick += new System.EventHandler(this.lstRelic_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -259,7 +275,48 @@ namespace genshin_sim
             // columnHeader3
             // 
             this.columnHeader3.Text = "Minor Affix";
-            this.columnHeader3.Width = 513;
+            this.columnHeader3.Width = 438;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Nick Name";
+            this.columnHeader4.Width = 95;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuArtifactEdit,
+            this.menuArtifactAdd,
+            this.toolStripMenuItem1,
+            this.menuArtifactDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 76);
+            // 
+            // menuArtifactEdit
+            // 
+            this.menuArtifactEdit.Name = "menuArtifactEdit";
+            this.menuArtifactEdit.Size = new System.Drawing.Size(107, 22);
+            this.menuArtifactEdit.Text = "Edit";
+            this.menuArtifactEdit.Click += new System.EventHandler(this.menuArtifactEdit_Click);
+            // 
+            // menuArtifactAdd
+            // 
+            this.menuArtifactAdd.Name = "menuArtifactAdd";
+            this.menuArtifactAdd.Size = new System.Drawing.Size(107, 22);
+            this.menuArtifactAdd.Text = "Add";
+            this.menuArtifactAdd.Click += new System.EventHandler(this.menuArtifactAdd_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(104, 6);
+            // 
+            // menuArtifactDelete
+            // 
+            this.menuArtifactDelete.Name = "menuArtifactDelete";
+            this.menuArtifactDelete.Size = new System.Drawing.Size(107, 22);
+            this.menuArtifactDelete.Text = "Delete";
+            this.menuArtifactDelete.Click += new System.EventHandler(this.menuArtifactDelete_Click);
             // 
             // ArtifactTypeImageList
             // 
@@ -271,23 +328,25 @@ namespace genshin_sim
             this.ArtifactTypeImageList.Images.SetKeyName(3, "Icon_Goblet_of_Eonothem.png");
             this.ArtifactTypeImageList.Images.SetKeyName(4, "Icon_Circlet_of_Logos.png");
             // 
-            // tabControl1
+            // tabMain
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(888, 556);
-            this.tabControl1.TabIndex = 6;
+            this.tabMain.Controls.Add(this.tabPage2);
+            this.tabMain.Controls.Add(this.tabPage1);
+            this.tabMain.Controls.Add(this.tabPage3);
+            this.tabMain.Location = new System.Drawing.Point(12, 12);
+            this.tabMain.Name = "tabMain";
+            this.tabMain.SelectedIndex = 0;
+            this.tabMain.Size = new System.Drawing.Size(888, 556);
+            this.tabMain.TabIndex = 6;
+            this.tabMain.SelectedIndexChanged += new System.EventHandler(this.tabMain_SelectedIndexChanged);
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.groupBox10);
+            this.tabPage2.BackColor = System.Drawing.Color.White;
+            this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.groupBox9);
             this.tabPage2.Controls.Add(this.groupBox7);
             this.tabPage2.Controls.Add(this.groupBox6);
@@ -297,21 +356,89 @@ namespace genshin_sim
             this.tabPage2.Size = new System.Drawing.Size(880, 530);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Character";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // groupBox10
+            // groupBox4
             // 
-            this.groupBox10.Location = new System.Drawing.Point(289, 6);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(278, 202);
-            this.groupBox10.TabIndex = 4;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Weapon";
+            this.groupBox4.BackColor = System.Drawing.Color.White;
+            this.groupBox4.Controls.Add(this.groupBox5);
+            this.groupBox4.Controls.Add(this.selWeaponLevel);
+            this.groupBox4.Controls.Add(this.labWeaponName);
+            this.groupBox4.Controls.Add(this.cmdWeaponAdd);
+            this.groupBox4.Location = new System.Drawing.Point(289, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(278, 202);
+            this.groupBox4.TabIndex = 4;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Weapon";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.cmdWeaponRefine);
+            this.groupBox5.Controls.Add(this.labWeaponStat);
+            this.groupBox5.Location = new System.Drawing.Point(6, 73);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(266, 123);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Stat and Ability";
+            // 
+            // labWeaponStat
+            // 
+            this.labWeaponStat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labWeaponStat.Location = new System.Drawing.Point(6, 17);
+            this.labWeaponStat.Name = "labWeaponStat";
+            this.labWeaponStat.Size = new System.Drawing.Size(254, 103);
+            this.labWeaponStat.TabIndex = 0;
+            this.labWeaponStat.Text = "Stat";
+            // 
+            // selWeaponLevel
+            // 
+            this.selWeaponLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.selWeaponLevel.BackColor = System.Drawing.Color.White;
+            this.selWeaponLevel.Location = new System.Drawing.Point(59, 43);
+            this.selWeaponLevel.Maximum = 24;
+            this.selWeaponLevel.Name = "selWeaponLevel";
+            this.selWeaponLevel.Size = new System.Drawing.Size(213, 45);
+            this.selWeaponLevel.TabIndex = 2;
+            this.selWeaponLevel.Scroll += new System.EventHandler(this.selWeaponLevel_Scroll);
+            // 
+            // labWeaponName
+            // 
+            this.labWeaponName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labWeaponName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labWeaponName.Location = new System.Drawing.Point(59, 17);
+            this.labWeaponName.Name = "labWeaponName";
+            this.labWeaponName.Size = new System.Drawing.Size(213, 23);
+            this.labWeaponName.TabIndex = 1;
+            this.labWeaponName.Text = "Name: ";
+            this.labWeaponName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmdWeaponAdd
+            // 
+            this.cmdWeaponAdd.BackColor = System.Drawing.Color.White;
+            this.cmdWeaponAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdWeaponAdd.BackgroundImage")));
+            this.cmdWeaponAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdWeaponAdd.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmdWeaponAdd.Location = new System.Drawing.Point(3, 17);
+            this.cmdWeaponAdd.Name = "cmdWeaponAdd";
+            this.cmdWeaponAdd.Size = new System.Drawing.Size(50, 50);
+            this.cmdWeaponAdd.TabIndex = 0;
+            this.cmdWeaponAdd.UseVisualStyleBackColor = false;
+            this.cmdWeaponAdd.Click += new System.EventHandler(this.cmdWeaponAdd_Click);
             // 
             // groupBox9
             // 
             this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox9.BackColor = System.Drawing.Color.White;
+            this.groupBox9.Controls.Add(this.cmdCharacterArtifactClear);
             this.groupBox9.Controls.Add(this.groupBox11);
             this.groupBox9.Controls.Add(this.gpCharacterArtifactCirclet);
             this.groupBox9.Controls.Add(this.gpCharacterArtifactGoblet);
@@ -324,6 +451,17 @@ namespace genshin_sim
             this.groupBox9.TabIndex = 3;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Artifact";
+            // 
+            // cmdCharacterArtifactClear
+            // 
+            this.cmdCharacterArtifactClear.AutoSize = true;
+            this.cmdCharacterArtifactClear.Location = new System.Drawing.Point(520, 0);
+            this.cmdCharacterArtifactClear.Name = "cmdCharacterArtifactClear";
+            this.cmdCharacterArtifactClear.Size = new System.Drawing.Size(35, 12);
+            this.cmdCharacterArtifactClear.TabIndex = 8;
+            this.cmdCharacterArtifactClear.TabStop = true;
+            this.cmdCharacterArtifactClear.Text = "Clear";
+            this.cmdCharacterArtifactClear.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.cmdCharacterArtifactClear_LinkClicked);
             // 
             // groupBox11
             // 
@@ -525,6 +663,7 @@ namespace genshin_sim
             // labCharacterAttributes
             // 
             this.labCharacterAttributes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labCharacterAttributes.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labCharacterAttributes.Location = new System.Drawing.Point(3, 17);
             this.labCharacterAttributes.Name = "labCharacterAttributes";
             this.labCharacterAttributes.Size = new System.Drawing.Size(295, 498);
@@ -609,16 +748,6 @@ namespace genshin_sim
             this.cmdCharacterAdd.UseVisualStyleBackColor = false;
             this.cmdCharacterAdd.Click += new System.EventHandler(this.cmdCharacterAdd_Click);
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(880, 530);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Damage Test";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -629,6 +758,16 @@ namespace genshin_sim
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Artifact";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(880, 530);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Damage Test";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // labGithubLink
             // 
@@ -642,41 +781,21 @@ namespace genshin_sim
             this.labGithubLink.Text = "View on Github!";
             this.labGithubLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labGithubLink_LinkClicked);
             // 
-            // contextMenuStrip1
+            // imUserIcons
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuArtifactEdit,
-            this.menuArtifactAdd,
-            this.toolStripMenuItem1,
-            this.menuArtifactDelete});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 76);
+            this.imUserIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imUserIcons.ImageStream")));
+            this.imUserIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.imUserIcons.Images.SetKeyName(0, "add.png");
             // 
-            // menuArtifactEdit
+            // cmdWeaponRefine
             // 
-            this.menuArtifactEdit.Name = "menuArtifactEdit";
-            this.menuArtifactEdit.Size = new System.Drawing.Size(180, 22);
-            this.menuArtifactEdit.Text = "Edit";
-            this.menuArtifactEdit.Click += new System.EventHandler(this.menuArtifactEdit_Click);
-            // 
-            // menuArtifactAdd
-            // 
-            this.menuArtifactAdd.Name = "menuArtifactAdd";
-            this.menuArtifactAdd.Size = new System.Drawing.Size(180, 22);
-            this.menuArtifactAdd.Text = "Add";
-            this.menuArtifactAdd.Click += new System.EventHandler(this.menuArtifactAdd_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // menuArtifactDelete
-            // 
-            this.menuArtifactDelete.Name = "menuArtifactDelete";
-            this.menuArtifactDelete.Size = new System.Drawing.Size(180, 22);
-            this.menuArtifactDelete.Text = "Delete";
-            this.menuArtifactDelete.Click += new System.EventHandler(this.menuArtifactDelete_Click);
+            this.cmdWeaponRefine.Location = new System.Drawing.Point(185, 12);
+            this.cmdWeaponRefine.Name = "cmdWeaponRefine";
+            this.cmdWeaponRefine.Size = new System.Drawing.Size(75, 23);
+            this.cmdWeaponRefine.TabIndex = 1;
+            this.cmdWeaponRefine.Text = "Refine: 1";
+            this.cmdWeaponRefine.UseVisualStyleBackColor = true;
+            this.cmdWeaponRefine.Click += new System.EventHandler(this.cmdWeaponRefine_Click);
             // 
             // Form1
             // 
@@ -684,7 +803,8 @@ namespace genshin_sim
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 580);
             this.Controls.Add(this.labGithubLink);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabMain);
+            this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Genshin Impact Damage Simulator";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -692,9 +812,15 @@ namespace genshin_sim
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
+            this.tabMain.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.selWeaponLevel)).EndInit();
             this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.gpCharacterArtifactCirclet.ResumeLayout(false);
@@ -713,7 +839,6 @@ namespace genshin_sim
             this.groupBox8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).EndInit();
             this.tabPage1.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -726,12 +851,12 @@ namespace genshin_sim
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListView lstRelic;
+        private System.Windows.Forms.ListView lstArtifact;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ImageList ArtifactTypeImageList;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox6;
@@ -741,7 +866,6 @@ namespace genshin_sim
         private System.Windows.Forms.TrackBar selCharacterLevel;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label labCharacterBaseStat;
-        private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.GroupBox gpCharacterArtifactGoblet;
         private System.Windows.Forms.Label labCharacterArtifactGoblet;
@@ -772,6 +896,16 @@ namespace genshin_sim
         private System.Windows.Forms.ToolStripMenuItem menuArtifactAdd;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem menuArtifactDelete;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label labWeaponStat;
+        private System.Windows.Forms.TrackBar selWeaponLevel;
+        private System.Windows.Forms.Label labWeaponName;
+        private System.Windows.Forms.Button cmdWeaponAdd;
+        private System.Windows.Forms.ImageList imUserIcons;
+        private System.Windows.Forms.LinkLabel cmdCharacterArtifactClear;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Button cmdWeaponRefine;
     }
 }
 

@@ -19,7 +19,7 @@ namespace genshin_sim
 
         public Waifu Waifu { get; private set; }
         public Image WaifuImage { get; private set; }
-        private int[] images_index = new int[] { 0, 1, 2, 3, 4, 17, 16, 39 };
+        private int[] images_index = new int[] { 0, 1, 2, 3, 4, 5, 6, 17, 16, 39 };
         private string[] raw_lines = Properties.Resources.characters.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
         private List<Waifu> waifus;
 
@@ -35,7 +35,10 @@ namespace genshin_sim
 
         private void cmdOK_Click(object sender, EventArgs e)
         {
-            fmReturn();
+            if (lstCharacters.SelectedItems.Count > 0)
+            {
+                fmReturn();
+            }
         }
 
         private void fmReturn()

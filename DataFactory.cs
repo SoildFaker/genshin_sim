@@ -306,6 +306,24 @@ namespace genshin_sim
             ArtifactType.GobletOfEonothem,
             ArtifactType.CircletOfLogos,
         };
+        
+        public static string type2str(ArtifactType type)
+        {
+            switch (type)
+            {
+                case ArtifactType.FlowerOfLife:
+                    return "生之花";
+                case ArtifactType.PlumeOfDeath:
+                    return "死之羽";
+                case ArtifactType.SandsOfEon:
+                    return "时之沙";
+                case ArtifactType.GobletOfEonothem:
+                    return "空之杯";
+                case ArtifactType.CircletOfLogos:
+                default:
+                    return "理之冠";
+            }
+        }
 
         public static Artifact pick()
         {
@@ -318,6 +336,7 @@ namespace genshin_sim
         public static Waifu Albedo = new Waifu(
             "阿贝多",
             ElementType.Geo,
+            WeaponType.Sword,
             new List<Affix>()
             {
                 new Affix(AffixAttr.HP, StatData.albedo_base_hp, 0),
@@ -333,6 +352,7 @@ namespace genshin_sim
         public static Waifu Amber = new Waifu(
             "安柏",
             ElementType.Pyro,
+            WeaponType.Bow,
             new List<Affix>()
             {
                 new Affix(AffixAttr.HP, StatData.amber_base_hp, 0),
@@ -348,6 +368,7 @@ namespace genshin_sim
         public static Waifu Keqing = new Waifu(
             "刻晴",
             ElementType.Electro,
+            WeaponType.Sword,
             new List<Affix>()
             {
                 new Affix(AffixAttr.HP, StatData.keqing_base_hp, 0),
@@ -362,6 +383,7 @@ namespace genshin_sim
         public static Waifu Ayaka = new Waifu(
             "神里绫华",
             ElementType.Cryo,
+            WeaponType.Sword,
             new List<Affix>()
             {
                 new Affix(AffixAttr.HP, StatData.ayaka_base_hp, 0),
@@ -376,6 +398,7 @@ namespace genshin_sim
         public static Waifu Zhongli = new Waifu(
             "钟离",
             ElementType.Geo,
+            WeaponType.Polearm,
             new List<Affix>()
             {
                 new Affix(AffixAttr.HP, StatData.zhongli_base_hp, 0),
@@ -391,6 +414,7 @@ namespace genshin_sim
         public static Waifu Aloy = new Waifu(
             "埃洛伊",
             ElementType.Cryo,
+            WeaponType.Bow,
             new List<Affix>()
             {
                 new Affix(AffixAttr.HP, StatData.aloy_base_hp, 0),
@@ -406,6 +430,7 @@ namespace genshin_sim
         public static Waifu Barbara = new Waifu(
             "芭芭拉",
             ElementType.Hydro,
+            WeaponType.Catalyst,
             new List<Affix>()
             {
                 new Affix(AffixAttr.HP, StatData.barbara_base_hp, 0),
@@ -421,6 +446,7 @@ namespace genshin_sim
         public static Waifu Beidou = new Waifu(
             "北斗",
             ElementType.Electro,
+            WeaponType.Claymore,
             new List<Affix>()
             {
                 new Affix(AffixAttr.HP, StatData.beidou_base_hp, 0),
@@ -432,9 +458,69 @@ namespace genshin_sim
             } ,
             new List<Talent>()
         );
+
+        public static Waifu Bennett = new Waifu(
+            "班尼特",
+            ElementType.Pyro,
+            WeaponType.Sword,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.benne_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.benne_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.benne_base_def, 0),
+                new Affix(AffixAttr.pCGR, StatData.benne_energy_recharge, 0),
+                new Affix(AffixAttr.pCRD, StatData.benne_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.benne_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Chongyun = new Waifu(
+            "重云",
+            ElementType.Pyro,
+            WeaponType.Claymore,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.chongyun_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.chongyun_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.chongyun_base_def, 0),
+                new Affix(AffixAttr.pATK, StatData.chongyun_atk, 0),
+                new Affix(AffixAttr.pCRD, StatData.chongyun_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.chongyun_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
         public static Waifu[] Waifus = new Waifu[] 
         {
-            Albedo, Aloy, Amber, Barbara, Beidou, Keqing, Ayaka, Zhongli
+            Albedo, Aloy, Amber, Barbara, Beidou, Bennett, Chongyun, Keqing, Ayaka, Zhongli
+        };
+    }
+
+    public static class WeaponFactory
+    {
+
+        public static Weapon PrimordialJadeCutter = new Weapon(
+            "磐岩结绿",
+            WeaponType.Sword,
+            new Affix(AffixAttr.ATK, StatData.primordial_jade_cutter_base_atk, 1),
+            new Affix(AffixAttr.pCRI, StatData.primordial_jade_cutter_crit_rate, 1),
+            new WeaponSpecialAbility(
+                "护国的无垢之心",
+                new List<SpecialCondAbility>()
+                {
+                    new SpecialCondAbility(SpecialCond.Always, new Affix(AffixAttr.pHP, new double[] { 0.2, 0.25, 0.3, 0.35, 0.4}, 0)),
+                    new SpecialCondAbility(SpecialCond.Always, new Affix(AffixAttr.pATK, new double[] { 0.012, 0.015, 0.018, 0.021, 0.024}, 0)),
+                },
+                "生命值提升{0}。此外，基于装备该武器的角色生命值上限的{1},获得攻击力加成。",
+                0
+            ),
+            0
+        );
+
+        public static Weapon[] weapons = new Weapon[]
+        {
+            PrimordialJadeCutter,
         };
     }
 }

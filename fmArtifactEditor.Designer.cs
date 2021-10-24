@@ -45,6 +45,12 @@
             this.cmbMainAffix = new System.Windows.Forms.ComboBox();
             this.cmdCamcel = new System.Windows.Forms.Button();
             this.cmdOK = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.selSlot4 = new System.Windows.Forms.RadioButton();
+            this.selSlot3 = new System.Windows.Forms.RadioButton();
+            this.txtNickName = new System.Windows.Forms.TextBox();
             this.gpArtifact.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -52,6 +58,8 @@
             this.groupBox5.SuspendLayout();
             this.gpMainAffix.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selLevel)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpArtifact
@@ -59,12 +67,14 @@
             this.gpArtifact.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gpArtifact.Controls.Add(this.groupBox2);
+            this.gpArtifact.Controls.Add(this.groupBox1);
             this.gpArtifact.Controls.Add(this.groupBox4);
             this.gpArtifact.Controls.Add(this.groupBox3);
             this.gpArtifact.Controls.Add(this.gpMainAffix);
             this.gpArtifact.Location = new System.Drawing.Point(12, 12);
             this.gpArtifact.Name = "gpArtifact";
-            this.gpArtifact.Size = new System.Drawing.Size(451, 397);
+            this.gpArtifact.Size = new System.Drawing.Size(450, 454);
             this.gpArtifact.TabIndex = 0;
             this.gpArtifact.TabStop = false;
             this.gpArtifact.Text = "Artifact";
@@ -73,7 +83,7 @@
             // 
             this.groupBox4.Controls.Add(this.labSetEffectInfo);
             this.groupBox4.Controls.Add(this.comboBox2);
-            this.groupBox4.Location = new System.Drawing.Point(228, 20);
+            this.groupBox4.Location = new System.Drawing.Point(228, 76);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(216, 112);
             this.groupBox4.TabIndex = 2;
@@ -103,7 +113,7 @@
             this.groupBox3.Controls.Add(this.groupBox6);
             this.groupBox3.Controls.Add(this.cmdAddMinorAffix);
             this.groupBox3.Controls.Add(this.groupBox5);
-            this.groupBox3.Location = new System.Drawing.Point(6, 138);
+            this.groupBox3.Location = new System.Drawing.Point(6, 194);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(438, 253);
             this.groupBox3.TabIndex = 1;
@@ -187,7 +197,7 @@
             this.gpMainAffix.Controls.Add(this.labInfo);
             this.gpMainAffix.Controls.Add(this.selLevel);
             this.gpMainAffix.Controls.Add(this.cmbMainAffix);
-            this.gpMainAffix.Location = new System.Drawing.Point(6, 20);
+            this.gpMainAffix.Location = new System.Drawing.Point(6, 76);
             this.gpMainAffix.Name = "gpMainAffix";
             this.gpMainAffix.Size = new System.Drawing.Size(216, 112);
             this.gpMainAffix.TabIndex = 0;
@@ -224,7 +234,7 @@
             // cmdCamcel
             // 
             this.cmdCamcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdCamcel.Location = new System.Drawing.Point(388, 415);
+            this.cmdCamcel.Location = new System.Drawing.Point(387, 472);
             this.cmdCamcel.Name = "cmdCamcel";
             this.cmdCamcel.Size = new System.Drawing.Size(75, 23);
             this.cmdCamcel.TabIndex = 1;
@@ -235,7 +245,7 @@
             // cmdOK
             // 
             this.cmdOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdOK.Location = new System.Drawing.Point(307, 415);
+            this.cmdOK.Location = new System.Drawing.Point(306, 472);
             this.cmdOK.Name = "cmdOK";
             this.cmdOK.Size = new System.Drawing.Size(75, 23);
             this.cmdOK.TabIndex = 2;
@@ -243,11 +253,73 @@
             this.cmdOK.UseVisualStyleBackColor = true;
             this.cmdOK.Click += new System.EventHandler(this.cmdOK_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtNickName);
+            this.groupBox1.Controls.Add(this.txtName);
+            this.groupBox1.Location = new System.Drawing.Point(6, 20);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(287, 50);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Name";
+            // 
+            // txtName
+            // 
+            this.txtName.Enabled = false;
+            this.txtName.Location = new System.Drawing.Point(6, 20);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(133, 21);
+            this.txtName.TabIndex = 0;
+            this.txtName.Text = "Name";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.selSlot3);
+            this.groupBox2.Controls.Add(this.selSlot4);
+            this.groupBox2.Location = new System.Drawing.Point(299, 20);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(145, 50);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Initial Affix Count";
+            // 
+            // selSlot4
+            // 
+            this.selSlot4.AutoSize = true;
+            this.selSlot4.Checked = true;
+            this.selSlot4.Location = new System.Drawing.Point(25, 21);
+            this.selSlot4.Name = "selSlot4";
+            this.selSlot4.Size = new System.Drawing.Size(29, 16);
+            this.selSlot4.TabIndex = 0;
+            this.selSlot4.Text = "4";
+            this.selSlot4.UseVisualStyleBackColor = true;
+            this.selSlot4.CheckedChanged += new System.EventHandler(this.selSlot4_CheckedChanged);
+            // 
+            // selSlot3
+            // 
+            this.selSlot3.AutoSize = true;
+            this.selSlot3.Location = new System.Drawing.Point(77, 20);
+            this.selSlot3.Name = "selSlot3";
+            this.selSlot3.Size = new System.Drawing.Size(29, 16);
+            this.selSlot3.TabIndex = 1;
+            this.selSlot3.Text = "3";
+            this.selSlot3.UseVisualStyleBackColor = true;
+            this.selSlot3.CheckedChanged += new System.EventHandler(this.selSlot3_CheckedChanged);
+            // 
+            // txtNickName
+            // 
+            this.txtNickName.Location = new System.Drawing.Point(145, 20);
+            this.txtNickName.Name = "txtNickName";
+            this.txtNickName.Size = new System.Drawing.Size(136, 21);
+            this.txtNickName.TabIndex = 1;
+            this.txtNickName.Text = "NickName";
+            // 
             // fmArtifactEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(475, 450);
+            this.ClientSize = new System.Drawing.Size(474, 507);
             this.Controls.Add(this.cmdOK);
             this.Controls.Add(this.cmdCamcel);
             this.Controls.Add(this.gpArtifact);
@@ -266,6 +338,10 @@
             this.gpMainAffix.ResumeLayout(false);
             this.gpMainAffix.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selLevel)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -289,5 +365,11 @@
         private System.Windows.Forms.Button cmdRemove;
         private System.Windows.Forms.TrackBar selLevel;
         private System.Windows.Forms.Label labInfo;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton selSlot3;
+        private System.Windows.Forms.RadioButton selSlot4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtNickName;
+        private System.Windows.Forms.TextBox txtName;
     }
 }

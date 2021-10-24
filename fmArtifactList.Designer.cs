@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lstArtifacts = new System.Windows.Forms.ListView();
+            this.lstArtifact = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,6 +42,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +52,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.lstArtifacts);
+            this.groupBox1.Controls.Add(this.lstArtifact);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1012, 522);
@@ -59,25 +60,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Artifacts List";
             // 
-            // lstArtifacts
+            // lstArtifact
             // 
-            this.lstArtifacts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstArtifact.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3});
-            this.lstArtifacts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstArtifacts.FullRowSelect = true;
-            this.lstArtifacts.GridLines = true;
-            this.lstArtifacts.HideSelection = false;
-            this.lstArtifacts.Location = new System.Drawing.Point(3, 17);
-            this.lstArtifacts.MultiSelect = false;
-            this.lstArtifacts.Name = "lstArtifacts";
-            this.lstArtifacts.Size = new System.Drawing.Size(1006, 502);
-            this.lstArtifacts.TabIndex = 6;
-            this.lstArtifacts.TileSize = new System.Drawing.Size(120, 80);
-            this.lstArtifacts.UseCompatibleStateImageBehavior = false;
-            this.lstArtifacts.View = System.Windows.Forms.View.Details;
-            this.lstArtifacts.DoubleClick += new System.EventHandler(this.lstRelic_DoubleClick);
+            this.columnHeader3,
+            this.columnHeader4});
+            this.lstArtifact.ContextMenuStrip = this.contextMenuStrip1;
+            this.lstArtifact.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstArtifact.FullRowSelect = true;
+            this.lstArtifact.GridLines = true;
+            this.lstArtifact.HideSelection = false;
+            this.lstArtifact.Location = new System.Drawing.Point(3, 17);
+            this.lstArtifact.MultiSelect = false;
+            this.lstArtifact.Name = "lstArtifact";
+            this.lstArtifact.Size = new System.Drawing.Size(1006, 502);
+            this.lstArtifact.TabIndex = 6;
+            this.lstArtifact.TileSize = new System.Drawing.Size(120, 80);
+            this.lstArtifact.UseCompatibleStateImageBehavior = false;
+            this.lstArtifact.View = System.Windows.Forms.View.Details;
+            this.lstArtifact.DoubleClick += new System.EventHandler(this.lstRelic_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -130,26 +133,26 @@
             // menuEdit
             // 
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(180, 22);
+            this.menuEdit.Size = new System.Drawing.Size(107, 22);
             this.menuEdit.Text = "Edit";
             this.menuEdit.Click += new System.EventHandler(this.menuEdit_Click);
             // 
             // menuAdd
             // 
             this.menuAdd.Name = "menuAdd";
-            this.menuAdd.Size = new System.Drawing.Size(180, 22);
+            this.menuAdd.Size = new System.Drawing.Size(107, 22);
             this.menuAdd.Text = "Add";
             this.menuAdd.Click += new System.EventHandler(this.menuAdd_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(104, 6);
             // 
             // menuDelete
             // 
             this.menuDelete.Name = "menuDelete";
-            this.menuDelete.Size = new System.Drawing.Size(180, 22);
+            this.menuDelete.Size = new System.Drawing.Size(107, 22);
             this.menuDelete.Text = "Delete";
             this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
             // 
@@ -162,6 +165,11 @@
             this.menuDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(108, 76);
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Nick Name";
+            this.columnHeader4.Width = 180;
             // 
             // fmArtifactList
             // 
@@ -186,7 +194,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.Button cmdOK;
-        private System.Windows.Forms.ListView lstArtifacts;
+        private System.Windows.Forms.ListView lstArtifact;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
@@ -196,5 +204,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem menuDelete;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
