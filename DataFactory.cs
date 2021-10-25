@@ -475,7 +475,7 @@ namespace genshin_sim
 
         public static Waifu Chongyun = new Waifu(
             "重云",
-            ElementType.Pyro,
+            ElementType.Cryo,
             WeaponType.Claymore,
             new List<Affix>()
             {
@@ -489,10 +489,79 @@ namespace genshin_sim
             new List<Talent>()
         );
 
+        public static Waifu Diluc = new Waifu(
+            "迪卢克",
+            ElementType.Pyro,
+            WeaponType.Claymore,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.diluc_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.diluc_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.diluc_base_def, 0),
+                new Affix(AffixAttr.pCRD, StatData.diluc_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.diluc_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Diona = new Waifu(
+            "迪奥娜",
+            ElementType.Cryo,
+            WeaponType.Bow,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.diona_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.diona_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.diona_base_def, 0),
+                new Affix(AffixAttr.pPyro, StatData.diona_cryo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.diona_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.diona_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Eula = new Waifu(
+            "尤拉",
+            ElementType.Cryo,
+            WeaponType.Claymore,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.eula_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.eula_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.eula_base_def, 0),
+                new Affix(AffixAttr.pCRD, StatData.eula_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.eula_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Fischl = new Waifu(
+            "菲谢尔",
+            ElementType.Electro,
+            WeaponType.Bow,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.fisc_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.fisc_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.fisc_base_def, 0),
+                new Affix(AffixAttr.pATK, StatData.fisc_atk, 0),
+                new Affix(AffixAttr.pCRD, StatData.fisc_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.fisc_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
         public static Waifu[] Waifus = new Waifu[] 
         {
-            Albedo, Aloy, Amber, Barbara, Beidou, Bennett, Chongyun, Keqing, Ayaka, Zhongli
+            Albedo, Aloy, Amber, Barbara, Beidou, Bennett, Chongyun, Diluc, Diona, Eula, Fischl, Ayaka, Keqing, Zhongli
         };
+
+        public static string[] element_names = new string[] { "火", "水", "冰", "草", "雷", "风", "岩" };
+
+        public static string element2str(ElementType type)
+        {
+            return element_names[((int)type)];
+        }
     }
 
     public static class WeaponFactory

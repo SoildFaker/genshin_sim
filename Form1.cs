@@ -123,7 +123,7 @@ namespace genshin_sim
                 return;
             }
             List<Affix> stat = waifu_now.Stat;
-            labCharacterName.Text = $"{waifu_now.Name} (lv.{waifu_now.Level} {waifu_now.Vision})";
+            labCharacterName.Text = $"{waifu_now.Name} (lv.{waifu_now.Level} {WaifuFactory.element2str(waifu_now.Vision)})";
             // Artifact
             if (waifu_now.Artifacts[0] != null && waifu_now.Artifacts[0].ArtifactSetEffect != null)
             {

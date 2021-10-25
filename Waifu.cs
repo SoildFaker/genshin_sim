@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace genshin_sim
 {
-    public enum ElementType
+    public enum ElementType: int
     {
         Pyro,       // 火
         Hydro,      // 水
