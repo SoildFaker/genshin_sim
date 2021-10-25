@@ -56,6 +56,7 @@ namespace genshin_sim
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cmdWeaponRefine = new System.Windows.Forms.Button();
             this.labWeaponStat = new System.Windows.Forms.Label();
             this.selWeaponLevel = new System.Windows.Forms.TrackBar();
             this.labWeaponName = new System.Windows.Forms.Label();
@@ -91,7 +92,6 @@ namespace genshin_sim
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.labGithubLink = new System.Windows.Forms.LinkLabel();
             this.imUserIcons = new System.Windows.Forms.ImageList(this.components);
-            this.cmdWeaponRefine = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -129,7 +129,7 @@ namespace genshin_sim
             // labInfo
             // 
             this.labInfo.AutoSize = true;
-            this.labInfo.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labInfo.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labInfo.Location = new System.Drawing.Point(6, 17);
             this.labInfo.Name = "labInfo";
             this.labInfo.Size = new System.Drawing.Size(63, 13);
@@ -290,31 +290,31 @@ namespace genshin_sim
             this.toolStripMenuItem1,
             this.menuArtifactDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(114, 76);
             // 
             // menuArtifactEdit
             // 
             this.menuArtifactEdit.Name = "menuArtifactEdit";
-            this.menuArtifactEdit.Size = new System.Drawing.Size(107, 22);
+            this.menuArtifactEdit.Size = new System.Drawing.Size(113, 22);
             this.menuArtifactEdit.Text = "Edit";
             this.menuArtifactEdit.Click += new System.EventHandler(this.menuArtifactEdit_Click);
             // 
             // menuArtifactAdd
             // 
             this.menuArtifactAdd.Name = "menuArtifactAdd";
-            this.menuArtifactAdd.Size = new System.Drawing.Size(107, 22);
+            this.menuArtifactAdd.Size = new System.Drawing.Size(113, 22);
             this.menuArtifactAdd.Text = "Add";
             this.menuArtifactAdd.Click += new System.EventHandler(this.menuArtifactAdd_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(104, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(110, 6);
             // 
             // menuArtifactDelete
             // 
             this.menuArtifactDelete.Name = "menuArtifactDelete";
-            this.menuArtifactDelete.Size = new System.Drawing.Size(107, 22);
+            this.menuArtifactDelete.Size = new System.Drawing.Size(113, 22);
             this.menuArtifactDelete.Text = "Delete";
             this.menuArtifactDelete.Click += new System.EventHandler(this.menuArtifactDelete_Click);
             // 
@@ -385,6 +385,16 @@ namespace genshin_sim
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Stat and Ability";
             // 
+            // cmdWeaponRefine
+            // 
+            this.cmdWeaponRefine.Location = new System.Drawing.Point(185, 12);
+            this.cmdWeaponRefine.Name = "cmdWeaponRefine";
+            this.cmdWeaponRefine.Size = new System.Drawing.Size(75, 23);
+            this.cmdWeaponRefine.TabIndex = 1;
+            this.cmdWeaponRefine.Text = "Refine: 1";
+            this.cmdWeaponRefine.UseVisualStyleBackColor = true;
+            this.cmdWeaponRefine.Click += new System.EventHandler(this.cmdWeaponRefine_Click);
+            // 
             // labWeaponStat
             // 
             this.labWeaponStat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -425,7 +435,7 @@ namespace genshin_sim
             this.cmdWeaponAdd.BackColor = System.Drawing.Color.White;
             this.cmdWeaponAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdWeaponAdd.BackgroundImage")));
             this.cmdWeaponAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdWeaponAdd.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmdWeaponAdd.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmdWeaponAdd.Location = new System.Drawing.Point(3, 17);
             this.cmdWeaponAdd.Name = "cmdWeaponAdd";
             this.cmdWeaponAdd.Size = new System.Drawing.Size(50, 50);
@@ -714,13 +724,11 @@ namespace genshin_sim
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selCharacterLevel.BackColor = System.Drawing.Color.White;
             this.selCharacterLevel.Location = new System.Drawing.Point(59, 43);
-            this.selCharacterLevel.Maximum = 90;
-            this.selCharacterLevel.Minimum = 1;
+            this.selCharacterLevel.Maximum = 95;
             this.selCharacterLevel.Name = "selCharacterLevel";
             this.selCharacterLevel.Size = new System.Drawing.Size(212, 45);
             this.selCharacterLevel.TabIndex = 2;
             this.selCharacterLevel.TickFrequency = 10;
-            this.selCharacterLevel.Value = 1;
             this.selCharacterLevel.Scroll += new System.EventHandler(this.selCharacterLevel_Scroll);
             // 
             // labCharacterName
@@ -740,7 +748,7 @@ namespace genshin_sim
             this.cmdCharacterAdd.BackColor = System.Drawing.Color.White;
             this.cmdCharacterAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdCharacterAdd.BackgroundImage")));
             this.cmdCharacterAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdCharacterAdd.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmdCharacterAdd.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmdCharacterAdd.Location = new System.Drawing.Point(3, 17);
             this.cmdCharacterAdd.Name = "cmdCharacterAdd";
             this.cmdCharacterAdd.Size = new System.Drawing.Size(50, 50);
@@ -786,16 +794,6 @@ namespace genshin_sim
             this.imUserIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imUserIcons.ImageStream")));
             this.imUserIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.imUserIcons.Images.SetKeyName(0, "add.png");
-            // 
-            // cmdWeaponRefine
-            // 
-            this.cmdWeaponRefine.Location = new System.Drawing.Point(185, 12);
-            this.cmdWeaponRefine.Name = "cmdWeaponRefine";
-            this.cmdWeaponRefine.Size = new System.Drawing.Size(75, 23);
-            this.cmdWeaponRefine.TabIndex = 1;
-            this.cmdWeaponRefine.Text = "Refine: 1";
-            this.cmdWeaponRefine.UseVisualStyleBackColor = true;
-            this.cmdWeaponRefine.Click += new System.EventHandler(this.cmdWeaponRefine_Click);
             // 
             // Form1
             // 

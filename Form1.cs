@@ -99,7 +99,7 @@ namespace genshin_sim
                     cmdCharacterAdd.BackgroundImage = fm.WaifuImage;
                     cmdCharacterAdd.Text = "";
                     waifu_now = fm.Waifu;
-                    selCharacterLevel.Value = waifu_now.Level;
+                    selCharacterLevel.Value = waifu_now.LevelIndex;
                     waifu_now.SetAritfacts(waifu_artifacts);
                     refresh_character_info();
                     clear_weapon_info();
