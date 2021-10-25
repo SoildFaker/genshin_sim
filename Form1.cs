@@ -171,7 +171,7 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactFlower_Click(object sender, EventArgs e)
         {
-            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.FlowerOfLife).ToList(), this.ArtifactTypeImageList, ArtifactType.FlowerOfLife))
+            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.FlowerOfLife).ToList(), this.imArtifacts, ArtifactType.FlowerOfLife))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
@@ -182,6 +182,7 @@ namespace genshin_sim
                     {
                         waifu_now.Artifacts[0] = fm.Artifact;
                     }
+                    cmdCharacterArtifactFlower.ImageIndex = ((int)fm.Artifact.Type) + ((int)fm.Artifact.ArtifactSetEffect.Type) * 5;
                     refresh_character_info();
                 }
             }
@@ -189,7 +190,7 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactGoblet_Click(object sender, EventArgs e)
         {
-            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.GobletOfEonothem).ToList(), this.ArtifactTypeImageList, ArtifactType.GobletOfEonothem))
+            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.GobletOfEonothem).ToList(), this.imArtifacts, ArtifactType.GobletOfEonothem))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
@@ -200,6 +201,7 @@ namespace genshin_sim
                     {
                         waifu_now.Artifacts[3] = fm.Artifact;
                     }
+                    cmdCharacterArtifactGoblet.ImageIndex = ((int)fm.Artifact.Type) + ((int)fm.Artifact.ArtifactSetEffect.Type) * 5;
                     refresh_character_info();
                 }
             }
@@ -207,7 +209,7 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactPlume_Click(object sender, EventArgs e)
         {
-            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.PlumeOfDeath).ToList(), this.ArtifactTypeImageList, ArtifactType.PlumeOfDeath))
+            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.PlumeOfDeath).ToList(), this.imArtifacts, ArtifactType.PlumeOfDeath))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
@@ -218,6 +220,7 @@ namespace genshin_sim
                     {
                         waifu_now.Artifacts[1] = fm.Artifact;
                     }
+                    cmdCharacterArtifactPlume.ImageIndex = ((int)fm.Artifact.Type) + ((int)fm.Artifact.ArtifactSetEffect.Type) * 5;
                     refresh_character_info();
                 }
             }
@@ -225,7 +228,7 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactSands_Click(object sender, EventArgs e)
         {
-            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.SandsOfEon).ToList(), this.ArtifactTypeImageList, ArtifactType.SandsOfEon))
+            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.SandsOfEon).ToList(), this.imArtifacts, ArtifactType.SandsOfEon))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
@@ -236,6 +239,7 @@ namespace genshin_sim
                     {
                         waifu_now.Artifacts[2] = fm.Artifact;
                     }
+                    cmdCharacterArtifactSands.ImageIndex = ((int)fm.Artifact.Type) + ((int)fm.Artifact.ArtifactSetEffect.Type) * 5;
                     refresh_character_info();
                 }
             }
@@ -243,7 +247,7 @@ namespace genshin_sim
 
         private void cmdCharacterArtifactCirclet_Click(object sender, EventArgs e)
         {
-            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.CircletOfLogos).ToList(), this.ArtifactTypeImageList, ArtifactType.CircletOfLogos))
+            using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.CircletOfLogos).ToList(), this.imArtifacts, ArtifactType.CircletOfLogos))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
@@ -254,6 +258,7 @@ namespace genshin_sim
                     {
                         waifu_now.Artifacts[4] = fm.Artifact;
                     }
+                    cmdCharacterArtifactCirclet.ImageIndex = ((int)fm.Artifact.Type) + ((int)fm.Artifact.ArtifactSetEffect.Type) * 5;
                     refresh_character_info();
                 }
             }
@@ -322,8 +327,7 @@ namespace genshin_sim
                         minor_affix.Add(AffixFactory.minor_affixes_arr[Convert.ToInt32(item[6 + j])]);
                     }
                     ArtifactType type = ArtifactFactory.artifactTypes[Convert.ToInt32(item[0])];
-                    Artifact tmp = new Artifact(type, AffixFactory.get_artifact_main_affix_array(type)[Convert.ToInt32(item[4])], minor_affix, Convert.ToInt32(item[1]));
-                    tmp.SetArtifactSetEffect(ArtifactFactory.SetEffects[Convert.ToInt32(item[2])]);
+                    Artifact tmp = new Artifact(type, AffixFactory.get_artifact_main_affix_array(type)[Convert.ToInt32(item[4])], minor_affix, ArtifactFactory.SetEffects[Convert.ToInt32(item[2])], Convert.ToInt32(item[1]));
                     tmp.NickName = item[3];
                     artifacts_inventory.Add(tmp);
                 }
@@ -375,7 +379,7 @@ namespace genshin_sim
 
         private void artifact_add()
         {
-            using (var fm = new fmSelectArtifactType(this.ArtifactTypeImageList))
+            using (var fm = new fmSelectArtifactType(this.imArtifacts))
             {
                 if (fm.ShowDialog() == DialogResult.OK)
                 {

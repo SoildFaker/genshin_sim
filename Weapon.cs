@@ -17,6 +17,7 @@ namespace genshin_sim
 
     public class Weapon
     {
+        public int ImageIndex { get; private set; }
         public WeaponType Type {  get; private set; }
         public string Name { get; private set; }
         private int level = 0;
@@ -38,7 +39,7 @@ namespace genshin_sim
 
         public WeaponSpecialAbility SpecialAbility { get; private set; }
 
-        public Weapon(string name, WeaponType type, Affix base_atk, Affix secondary, WeaponSpecialAbility ability, int lv = 0)
+        public Weapon(string name, WeaponType type, Affix base_atk, Affix secondary, WeaponSpecialAbility ability, int image_index, int lv = 0)
         {
             this.Name = name;
             this.Type = type;
@@ -46,6 +47,7 @@ namespace genshin_sim
             this.BaseATK = base_atk;
             this.SecondaryStat = secondary;
             this.SpecialAbility = ability;
+            this.ImageIndex = image_index;
         }
 
         public void SetLevel(int lv)
@@ -56,11 +58,20 @@ namespace genshin_sim
         }
     }
 
-    public enum SpecialCond
+    public enum SpecialCond : int
     {
-        Always,
-        UsingSword,
-        TakingDMG,
+        Always = (int)(1 << 0),
+        UsingSword = (int)(1 << 1),
+        UsingClaymore = (int)(1 << 2),
+        UsingBow = (int)(1 << 3),
+        UsingPolearm = (int)(1 << 4),
+        UsingCatalyst = (int)(1 << 5),
+        OnNormalAttack = (int)(1 << 6),
+        OnChargedAttack = (int)(1 << 7),
+        TakingDMG = (int)(1 << 8),
+        EnemyTakeCryoElement = (int)(1 << 9),
+        EnemyFrozen = (int)(1 << 10),
+        TimeDelay = (int)(1 << 11),
     }
 
     public enum AbilityType
@@ -108,7 +119,7 @@ namespace genshin_sim
 
         public void SetLevel(int lv)
         {
-            this.Level = lv < 5 ? (lv >= 0 ? lv : 0) : 4;
+            this.Level = lv > 4 ? 4 : (lv < 0 ? 0 : lv);
             for (int i = 0; i < Abilities.Count; i++)
             {
                 Abilities[i].Affix.SetLevel(this.Level);

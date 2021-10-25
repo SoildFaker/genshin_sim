@@ -83,7 +83,7 @@ namespace genshin_sim
             lstArtifact.Items[lstArtifact.Items.Count - 1].SubItems.Add($"{artifact.MainAffixString}");
             lstArtifact.Items[lstArtifact.Items.Count - 1].SubItems.Add($"{artifact.MinorAffixesString}");
             lstArtifact.Items[lstArtifact.Items.Count - 1].SubItems.Add($"{artifact.NickName}");
-            lstArtifact.Items[lstArtifact.Items.Count - 1].ImageIndex = ((int)artifact.Type);
+            lstArtifact.Items[lstArtifact.Items.Count - 1].ImageIndex = ((int)artifact.Type) + ((int)artifact.ArtifactSetEffect.Type) * 5;
         }
 
         private void artifact_list_insert(Artifact artifact, int pos)
@@ -93,7 +93,7 @@ namespace genshin_sim
             lstArtifact.Items[pos].SubItems.Add($"{artifact.MainAffixString}");
             lstArtifact.Items[pos].SubItems.Add($"{artifact.MinorAffixesString}");
             lstArtifact.Items[pos].SubItems.Add($"{artifact.NickName}");
-            lstArtifact.Items[pos].ImageIndex = ((int)artifact.Type);
+            lstArtifact.Items[pos].ImageIndex = ((int)artifact.Type) + ((int)artifact.ArtifactSetEffect.Type) * 5;
             lstArtifact.Items[pos].Selected = true;
             lstArtifact.Items[pos].EnsureVisible();
             lstArtifact.Select();

@@ -20,7 +20,6 @@ namespace genshin_sim
         private WeaponType type;
         public Weapon Weapon { get; private set; }
         public Image WeaponImage { get; private set; }
-        private int[] images = new int[] { 0 };
         private List<Weapon> weapons;
 
         private void fmWeaponList_Load(object sender, EventArgs e)
@@ -28,7 +27,7 @@ namespace genshin_sim
             weapons = WeaponFactory.Weapons.Where(x => x.Type == type).ToList();
             for (int i = 0; i < weapons.Count; i++)
             {
-                this.lstWeapon.Items.Add(new ListViewItem(weapons[i].Name, images[i]));
+                this.lstWeapon.Items.Add(new ListViewItem(weapons[i].Name, weapons[i].ImageIndex));
             }
         }
 
@@ -45,7 +44,7 @@ namespace genshin_sim
             this.DialogResult = DialogResult.OK;
             int index = lstWeapon.SelectedItems[0].Index;
             this.Weapon = weapons[index];
-            this.WeaponImage = imWeapons.Images[images[index]];
+            this.WeaponImage = imWeapons.Images[weapons[index].ImageIndex];
             this.Close();
         }
 

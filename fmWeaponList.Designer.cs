@@ -91,6 +91,7 @@
             this.imWeapons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imWeapons.ImageStream")));
             this.imWeapons.TransparentColor = System.Drawing.Color.Transparent;
             this.imWeapons.Images.SetKeyName(0, "Weapon_Primordial_Jade_Cutter.png");
+            this.imWeapons.Images.SetKeyName(1, "Weapon_Amos%27_Bow.png");
             // 
             // fmWeaponList
             // 

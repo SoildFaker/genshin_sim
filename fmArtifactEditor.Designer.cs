@@ -67,14 +67,13 @@
             this.gpArtifact.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gpArtifact.Controls.Add(this.groupBox2);
             this.gpArtifact.Controls.Add(this.groupBox1);
             this.gpArtifact.Controls.Add(this.groupBox4);
             this.gpArtifact.Controls.Add(this.groupBox3);
             this.gpArtifact.Controls.Add(this.gpMainAffix);
             this.gpArtifact.Location = new System.Drawing.Point(12, 12);
             this.gpArtifact.Name = "gpArtifact";
-            this.gpArtifact.Size = new System.Drawing.Size(450, 454);
+            this.gpArtifact.Size = new System.Drawing.Size(450, 502);
             this.gpArtifact.TabIndex = 0;
             this.gpArtifact.TabStop = false;
             this.gpArtifact.Text = "Artifact";
@@ -83,9 +82,9 @@
             // 
             this.groupBox2.Controls.Add(this.selSlot3);
             this.groupBox2.Controls.Add(this.selSlot4);
-            this.groupBox2.Location = new System.Drawing.Point(299, 20);
+            this.groupBox2.Location = new System.Drawing.Point(9, 105);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(145, 50);
+            this.groupBox2.Size = new System.Drawing.Size(201, 50);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Initial Affix Count";
@@ -93,7 +92,7 @@
             // selSlot3
             // 
             this.selSlot3.AutoSize = true;
-            this.selSlot3.Location = new System.Drawing.Point(77, 20);
+            this.selSlot3.Location = new System.Drawing.Point(118, 20);
             this.selSlot3.Name = "selSlot3";
             this.selSlot3.Size = new System.Drawing.Size(29, 16);
             this.selSlot3.TabIndex = 1;
@@ -105,7 +104,7 @@
             // 
             this.selSlot4.AutoSize = true;
             this.selSlot4.Checked = true;
-            this.selSlot4.Location = new System.Drawing.Point(25, 21);
+            this.selSlot4.Location = new System.Drawing.Point(39, 20);
             this.selSlot4.Name = "selSlot4";
             this.selSlot4.Size = new System.Drawing.Size(29, 16);
             this.selSlot4.TabIndex = 0;
@@ -120,16 +119,16 @@
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Location = new System.Drawing.Point(6, 20);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(287, 50);
+            this.groupBox1.Size = new System.Drawing.Size(438, 50);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Name";
             // 
             // txtNickName
             // 
-            this.txtNickName.Location = new System.Drawing.Point(145, 20);
+            this.txtNickName.Location = new System.Drawing.Point(222, 20);
             this.txtNickName.Name = "txtNickName";
-            this.txtNickName.Size = new System.Drawing.Size(136, 21);
+            this.txtNickName.Size = new System.Drawing.Size(210, 21);
             this.txtNickName.TabIndex = 1;
             this.txtNickName.Text = "NickName";
             // 
@@ -138,7 +137,7 @@
             this.txtName.Enabled = false;
             this.txtName.Location = new System.Drawing.Point(6, 20);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(133, 21);
+            this.txtName.Size = new System.Drawing.Size(210, 21);
             this.txtName.TabIndex = 0;
             this.txtName.Text = "Name";
             // 
@@ -148,7 +147,7 @@
             this.groupBox4.Controls.Add(this.cmbSetEffect);
             this.groupBox4.Location = new System.Drawing.Point(228, 76);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(216, 112);
+            this.groupBox4.Size = new System.Drawing.Size(216, 161);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Set Effect";
@@ -157,7 +156,7 @@
             // 
             this.labSetEffectInfo.Location = new System.Drawing.Point(6, 43);
             this.labSetEffectInfo.Name = "labSetEffectInfo";
-            this.labSetEffectInfo.Size = new System.Drawing.Size(204, 66);
+            this.labSetEffectInfo.Size = new System.Drawing.Size(204, 112);
             this.labSetEffectInfo.TabIndex = 3;
             this.labSetEffectInfo.Text = "Info\r\n两件套 - 效果\r\n四件套 - 效果";
             // 
@@ -176,7 +175,7 @@
             this.groupBox3.Controls.Add(this.groupBox6);
             this.groupBox3.Controls.Add(this.cmdAddMinorAffix);
             this.groupBox3.Controls.Add(this.groupBox5);
-            this.groupBox3.Location = new System.Drawing.Point(6, 194);
+            this.groupBox3.Location = new System.Drawing.Point(6, 243);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(438, 253);
             this.groupBox3.TabIndex = 1;
@@ -257,12 +256,13 @@
             // 
             // gpMainAffix
             // 
+            this.gpMainAffix.Controls.Add(this.groupBox2);
             this.gpMainAffix.Controls.Add(this.labInfo);
             this.gpMainAffix.Controls.Add(this.selLevel);
             this.gpMainAffix.Controls.Add(this.cmbMainAffix);
             this.gpMainAffix.Location = new System.Drawing.Point(6, 76);
             this.gpMainAffix.Name = "gpMainAffix";
-            this.gpMainAffix.Size = new System.Drawing.Size(216, 112);
+            this.gpMainAffix.Size = new System.Drawing.Size(216, 161);
             this.gpMainAffix.TabIndex = 0;
             this.gpMainAffix.TabStop = false;
             this.gpMainAffix.Text = "Main Affix";
@@ -297,7 +297,7 @@
             // cmdCamcel
             // 
             this.cmdCamcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdCamcel.Location = new System.Drawing.Point(387, 472);
+            this.cmdCamcel.Location = new System.Drawing.Point(387, 520);
             this.cmdCamcel.Name = "cmdCamcel";
             this.cmdCamcel.Size = new System.Drawing.Size(75, 23);
             this.cmdCamcel.TabIndex = 1;
@@ -308,7 +308,7 @@
             // cmdOK
             // 
             this.cmdOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdOK.Location = new System.Drawing.Point(306, 472);
+            this.cmdOK.Location = new System.Drawing.Point(306, 520);
             this.cmdOK.Name = "cmdOK";
             this.cmdOK.Size = new System.Drawing.Size(75, 23);
             this.cmdOK.TabIndex = 2;
@@ -320,7 +320,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 507);
+            this.ClientSize = new System.Drawing.Size(474, 555);
             this.Controls.Add(this.cmdOK);
             this.Controls.Add(this.cmdCamcel);
             this.Controls.Add(this.gpArtifact);

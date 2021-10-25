@@ -51,7 +51,6 @@ namespace genshin_sim
             this.menuArtifactAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuArtifactDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.ArtifactTypeImageList = new System.Windows.Forms.ImageList(this.components);
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -92,6 +91,7 @@ namespace genshin_sim
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.labGithubLink = new System.Windows.Forms.LinkLabel();
             this.imUserIcons = new System.Windows.Forms.ImageList(this.components);
+            this.imArtifacts = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -129,7 +129,7 @@ namespace genshin_sim
             // labInfo
             // 
             this.labInfo.AutoSize = true;
-            this.labInfo.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labInfo.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labInfo.Location = new System.Drawing.Point(6, 17);
             this.labInfo.Name = "labInfo";
             this.labInfo.Size = new System.Drawing.Size(63, 13);
@@ -248,12 +248,10 @@ namespace genshin_sim
             this.lstArtifact.FullRowSelect = true;
             this.lstArtifact.GridLines = true;
             this.lstArtifact.HideSelection = false;
-            this.lstArtifact.LargeImageList = this.ArtifactTypeImageList;
             this.lstArtifact.Location = new System.Drawing.Point(3, 17);
             this.lstArtifact.MultiSelect = false;
             this.lstArtifact.Name = "lstArtifact";
             this.lstArtifact.Size = new System.Drawing.Size(850, 317);
-            this.lstArtifact.SmallImageList = this.ArtifactTypeImageList;
             this.lstArtifact.TabIndex = 5;
             this.lstArtifact.TileSize = new System.Drawing.Size(120, 80);
             this.lstArtifact.UseCompatibleStateImageBehavior = false;
@@ -290,43 +288,33 @@ namespace genshin_sim
             this.toolStripMenuItem1,
             this.menuArtifactDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(114, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 76);
             // 
             // menuArtifactEdit
             // 
             this.menuArtifactEdit.Name = "menuArtifactEdit";
-            this.menuArtifactEdit.Size = new System.Drawing.Size(113, 22);
+            this.menuArtifactEdit.Size = new System.Drawing.Size(107, 22);
             this.menuArtifactEdit.Text = "Edit";
             this.menuArtifactEdit.Click += new System.EventHandler(this.menuArtifactEdit_Click);
             // 
             // menuArtifactAdd
             // 
             this.menuArtifactAdd.Name = "menuArtifactAdd";
-            this.menuArtifactAdd.Size = new System.Drawing.Size(113, 22);
+            this.menuArtifactAdd.Size = new System.Drawing.Size(107, 22);
             this.menuArtifactAdd.Text = "Add";
             this.menuArtifactAdd.Click += new System.EventHandler(this.menuArtifactAdd_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(110, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(104, 6);
             // 
             // menuArtifactDelete
             // 
             this.menuArtifactDelete.Name = "menuArtifactDelete";
-            this.menuArtifactDelete.Size = new System.Drawing.Size(113, 22);
+            this.menuArtifactDelete.Size = new System.Drawing.Size(107, 22);
             this.menuArtifactDelete.Text = "Delete";
             this.menuArtifactDelete.Click += new System.EventHandler(this.menuArtifactDelete_Click);
-            // 
-            // ArtifactTypeImageList
-            // 
-            this.ArtifactTypeImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ArtifactTypeImageList.ImageStream")));
-            this.ArtifactTypeImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.ArtifactTypeImageList.Images.SetKeyName(0, "Icon_Flower_of_Life.png");
-            this.ArtifactTypeImageList.Images.SetKeyName(1, "Icon_Plume_of_Death.png");
-            this.ArtifactTypeImageList.Images.SetKeyName(2, "Icon_Sands_of_Eon.png");
-            this.ArtifactTypeImageList.Images.SetKeyName(3, "Icon_Goblet_of_Eonothem.png");
-            this.ArtifactTypeImageList.Images.SetKeyName(4, "Icon_Circlet_of_Logos.png");
             // 
             // tabMain
             // 
@@ -435,7 +423,7 @@ namespace genshin_sim
             this.cmdWeaponAdd.BackColor = System.Drawing.Color.White;
             this.cmdWeaponAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdWeaponAdd.BackgroundImage")));
             this.cmdWeaponAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdWeaponAdd.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmdWeaponAdd.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmdWeaponAdd.Location = new System.Drawing.Point(3, 17);
             this.cmdWeaponAdd.Name = "cmdWeaponAdd";
             this.cmdWeaponAdd.Size = new System.Drawing.Size(50, 50);
@@ -515,12 +503,11 @@ namespace genshin_sim
             // cmdCharacterArtifactCirclet
             // 
             this.cmdCharacterArtifactCirclet.ImageIndex = 4;
-            this.cmdCharacterArtifactCirclet.ImageList = this.ArtifactTypeImageList;
+            this.cmdCharacterArtifactCirclet.ImageList = this.imArtifacts;
             this.cmdCharacterArtifactCirclet.Location = new System.Drawing.Point(6, 20);
             this.cmdCharacterArtifactCirclet.Name = "cmdCharacterArtifactCirclet";
             this.cmdCharacterArtifactCirclet.Size = new System.Drawing.Size(64, 64);
             this.cmdCharacterArtifactCirclet.TabIndex = 0;
-            this.cmdCharacterArtifactCirclet.Text = "Select";
             this.cmdCharacterArtifactCirclet.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cmdCharacterArtifactCirclet.UseVisualStyleBackColor = true;
             this.cmdCharacterArtifactCirclet.Click += new System.EventHandler(this.cmdCharacterArtifactCirclet_Click);
@@ -548,12 +535,11 @@ namespace genshin_sim
             // cmdCharacterArtifactGoblet
             // 
             this.cmdCharacterArtifactGoblet.ImageIndex = 3;
-            this.cmdCharacterArtifactGoblet.ImageList = this.ArtifactTypeImageList;
+            this.cmdCharacterArtifactGoblet.ImageList = this.imArtifacts;
             this.cmdCharacterArtifactGoblet.Location = new System.Drawing.Point(6, 20);
             this.cmdCharacterArtifactGoblet.Name = "cmdCharacterArtifactGoblet";
             this.cmdCharacterArtifactGoblet.Size = new System.Drawing.Size(64, 64);
             this.cmdCharacterArtifactGoblet.TabIndex = 0;
-            this.cmdCharacterArtifactGoblet.Text = "Select";
             this.cmdCharacterArtifactGoblet.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cmdCharacterArtifactGoblet.UseVisualStyleBackColor = true;
             this.cmdCharacterArtifactGoblet.Click += new System.EventHandler(this.cmdCharacterArtifactGoblet_Click);
@@ -581,12 +567,11 @@ namespace genshin_sim
             // cmdCharacterArtifactSands
             // 
             this.cmdCharacterArtifactSands.ImageIndex = 2;
-            this.cmdCharacterArtifactSands.ImageList = this.ArtifactTypeImageList;
+            this.cmdCharacterArtifactSands.ImageList = this.imArtifacts;
             this.cmdCharacterArtifactSands.Location = new System.Drawing.Point(6, 20);
             this.cmdCharacterArtifactSands.Name = "cmdCharacterArtifactSands";
             this.cmdCharacterArtifactSands.Size = new System.Drawing.Size(64, 64);
             this.cmdCharacterArtifactSands.TabIndex = 0;
-            this.cmdCharacterArtifactSands.Text = "Select";
             this.cmdCharacterArtifactSands.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cmdCharacterArtifactSands.UseVisualStyleBackColor = true;
             this.cmdCharacterArtifactSands.Click += new System.EventHandler(this.cmdCharacterArtifactSands_Click);
@@ -614,12 +599,11 @@ namespace genshin_sim
             // cmdCharacterArtifactPlume
             // 
             this.cmdCharacterArtifactPlume.ImageIndex = 1;
-            this.cmdCharacterArtifactPlume.ImageList = this.ArtifactTypeImageList;
+            this.cmdCharacterArtifactPlume.ImageList = this.imArtifacts;
             this.cmdCharacterArtifactPlume.Location = new System.Drawing.Point(6, 20);
             this.cmdCharacterArtifactPlume.Name = "cmdCharacterArtifactPlume";
             this.cmdCharacterArtifactPlume.Size = new System.Drawing.Size(64, 64);
             this.cmdCharacterArtifactPlume.TabIndex = 0;
-            this.cmdCharacterArtifactPlume.Text = "Select";
             this.cmdCharacterArtifactPlume.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cmdCharacterArtifactPlume.UseVisualStyleBackColor = true;
             this.cmdCharacterArtifactPlume.Click += new System.EventHandler(this.cmdCharacterArtifactPlume_Click);
@@ -647,12 +631,11 @@ namespace genshin_sim
             // cmdCharacterArtifactFlower
             // 
             this.cmdCharacterArtifactFlower.ImageIndex = 0;
-            this.cmdCharacterArtifactFlower.ImageList = this.ArtifactTypeImageList;
+            this.cmdCharacterArtifactFlower.ImageList = this.imArtifacts;
             this.cmdCharacterArtifactFlower.Location = new System.Drawing.Point(6, 20);
             this.cmdCharacterArtifactFlower.Name = "cmdCharacterArtifactFlower";
             this.cmdCharacterArtifactFlower.Size = new System.Drawing.Size(64, 64);
             this.cmdCharacterArtifactFlower.TabIndex = 0;
-            this.cmdCharacterArtifactFlower.Text = "Select";
             this.cmdCharacterArtifactFlower.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cmdCharacterArtifactFlower.UseVisualStyleBackColor = true;
             this.cmdCharacterArtifactFlower.Click += new System.EventHandler(this.cmdCharacterArtifactFlower_Click);
@@ -748,7 +731,7 @@ namespace genshin_sim
             this.cmdCharacterAdd.BackColor = System.Drawing.Color.White;
             this.cmdCharacterAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdCharacterAdd.BackgroundImage")));
             this.cmdCharacterAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdCharacterAdd.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmdCharacterAdd.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cmdCharacterAdd.Location = new System.Drawing.Point(3, 17);
             this.cmdCharacterAdd.Name = "cmdCharacterAdd";
             this.cmdCharacterAdd.Size = new System.Drawing.Size(50, 50);
@@ -794,6 +777,26 @@ namespace genshin_sim
             this.imUserIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imUserIcons.ImageStream")));
             this.imUserIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.imUserIcons.Images.SetKeyName(0, "add.png");
+            // 
+            // imArtifacts
+            // 
+            this.imArtifacts.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imArtifacts.ImageStream")));
+            this.imArtifacts.TransparentColor = System.Drawing.Color.Transparent;
+            this.imArtifacts.Images.SetKeyName(0, "Icon_Flower_of_Life.png");
+            this.imArtifacts.Images.SetKeyName(1, "Icon_Plume_of_Death.png");
+            this.imArtifacts.Images.SetKeyName(2, "Icon_Sands_of_Eon.png");
+            this.imArtifacts.Images.SetKeyName(3, "Icon_Goblet_of_Eonothem.png");
+            this.imArtifacts.Images.SetKeyName(4, "Icon_Circlet_of_Logos.png");
+            this.imArtifacts.Images.SetKeyName(5, "Item_Gladiator%27s_Nostalgia.png");
+            this.imArtifacts.Images.SetKeyName(6, "Item_Gladiator%27s_Destiny.png");
+            this.imArtifacts.Images.SetKeyName(7, "Item_Gladiator%27s_Longing.png");
+            this.imArtifacts.Images.SetKeyName(8, "Item_Gladiator%27s_Intoxication.png");
+            this.imArtifacts.Images.SetKeyName(9, "Item_Gladiator%27s_Triumphus.png");
+            this.imArtifacts.Images.SetKeyName(10, "Item_Snowswept_Memory.png");
+            this.imArtifacts.Images.SetKeyName(11, "Item_Icebreaker%27s_Resolve.png");
+            this.imArtifacts.Images.SetKeyName(12, "Item_Frozen_Homeland%27s_Demise.png");
+            this.imArtifacts.Images.SetKeyName(13, "Item_Frost-Weaved_Dignity.png");
+            this.imArtifacts.Images.SetKeyName(14, "Item_Broken_Rime%27s_Echo.png");
             // 
             // Form1
             // 
@@ -852,7 +855,6 @@ namespace genshin_sim
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ImageList ArtifactTypeImageList;
         private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox7;
@@ -903,6 +905,7 @@ namespace genshin_sim
         private System.Windows.Forms.LinkLabel cmdCharacterArtifactClear;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button cmdWeaponRefine;
+        private System.Windows.Forms.ImageList imArtifacts;
     }
 }
 

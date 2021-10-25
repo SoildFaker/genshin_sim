@@ -99,9 +99,10 @@ namespace genshin_sim
             
         }
 
-        public Artifact(ArtifactType type, Affix main, List<Affix> sub, int lv = 1)
+        public Artifact(ArtifactType type, Affix main, List<Affix> sub, ArtifactSetEffect effect, int lv = 1)
         {
             this.Type = type;
+            this.ArtifactSetEffect = effect;
             SetMainAffix(main);
             SetMinorAffix(sub);
             SetLevel(lv);
@@ -115,7 +116,7 @@ namespace genshin_sim
             List<AffixAttr> lst = new List<AffixAttr>();
             lst.AddRange(AffixFactory.minor_affix_attr_arr);
             lst.Remove(this.MainAffix.Attribute);
-            
+            this.ArtifactSetEffect = ArtifactFactory.UnknowSetEffect;
             for (int i = 0; i < 4; i++)
             {
                 int code = AffixFactory.rand.Next(lst.Count);
@@ -261,7 +262,9 @@ namespace genshin_sim
 
     public enum ArtifactSetEffectType : int
     {
-        GladiatorsFinale
+        Unknow,
+        GladiatorsFinale,
+        BlizzardStrayer,
     }
     public class SpecialCondEffect
     {

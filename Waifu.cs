@@ -24,6 +24,7 @@ namespace genshin_sim
         ATK,
         DEF,
         ELM,
+        TimeAfter,
     }
 
     public class Waifu

@@ -77,15 +77,8 @@ namespace genshin_sim
 
         public void SetLevel(int lv)
         {
-            if (lv > 0 && lv < value_arr.Count)
-            {
-                this.level = lv;
-                this.Value = value_arr[level];
-            }
-            else
-            {
-                this.level = 0;
-            }
+            this.level = lv < 0 ? 0 : (lv > (value_arr.Count - 1) ? (value_arr.Count - 1) : lv);
+            this.Value = value_arr[level];
         }
 
         public void LevelUp()

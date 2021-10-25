@@ -289,19 +289,45 @@ namespace genshin_sim
             ArtifactType.CircletOfLogos,
         };
 
+        public static ArtifactSetEffect UnknowSetEffect = new ArtifactSetEffect(
+            "未选择的套装特效",
+            ArtifactSetEffectType.Unknow,
+            new List<SpecialCondEffect>()
+            {
+            },
+            "无" 
+        );
+
         public static ArtifactSetEffect GladiatorsFinale = new ArtifactSetEffect(
             "角斗士的终幕礼",
             ArtifactSetEffectType.GladiatorsFinale,
             new List<SpecialCondEffect>()
             {
                 new SpecialCondEffect(SpecialCond.Always, 2, AbilityType.Simple, new Affix(AffixAttr.pATK, 0.18)),
-                new SpecialCondEffect(SpecialCond.UsingSword, 4, AbilityType.Simple, new Affix(AffixAttr.pATK, 0.35))
+                new SpecialCondEffect(SpecialCond.UsingSword|SpecialCond.UsingClaymore|SpecialCond.UsingPolearm, 4, AbilityType.Simple, new Affix(AffixAttr.pATK, 0.35))
             },
-            "两件套效果: 攻击力提高{0}。\r\n" + 
-            "四件套效果: 装备该圣遗物套装的角色为单手剑、双手剑、长柄武器角色时，角色普通攻击造成的伤害提高{1}。"
+            "两件套: 攻击力提高{0}。\r\n" + 
+            "四件套: 装备该圣遗物套装的角色为单手剑、双手剑、长柄武器角色时，角色普通攻击造成的伤害提高{1}。"
         );
 
-        public static string[,] set_effect_names = new string[,] { { "角斗士的留恋", "角斗士的归宿", "角斗士的希冀", "角斗士的酣醉", "角斗士的凯旋" } }; 
+        public static ArtifactSetEffect BlizzardStrayer = new ArtifactSetEffect(
+            "冰风迷途的勇士",
+            ArtifactSetEffectType.BlizzardStrayer,
+            new List<SpecialCondEffect>()
+            {
+                new SpecialCondEffect(SpecialCond.Always, 2, AbilityType.Simple, new Affix(AffixAttr.pCryo, 0.15)),
+                new SpecialCondEffect(SpecialCond.EnemyTakeCryoElement, 4, AbilityType.Simple, new Affix(AffixAttr.pCRI, 0.20)),
+                new SpecialCondEffect(SpecialCond.EnemyFrozen, 4, AbilityType.Simple, new Affix(AffixAttr.pCRI, 0.20))
+            },
+            "两件套: 获得{0}冰元素伤害加成\r\n" + 
+            "四件套:	攻击处于冰元素影响状态下的敌人时，暴击率提高{1}；若敌人处于冰冻状态下，暴击率额外提高{2}。"
+        );
+
+        public static string[,] set_effect_names = new string[,] {
+            { "未知的生之花", "未知的死之羽", "未知的时之沙", "未知的空之杯", "未知的理之冠" },
+            { "角斗士的留恋", "角斗士的归宿", "角斗士的希冀", "角斗士的酣醉", "角斗士的凯旋" },
+            { "历经风雪的思念", "摧冰而行的执望", "冰雪故园的终期", "遍结寒霜的傲骨", "破冰踏雪的回音" },
+        }; 
 
         public static string get_artifact_name(ArtifactType artifact_type, ArtifactSetEffectType set_type)
         {
@@ -310,7 +336,9 @@ namespace genshin_sim
         
         public static ArtifactSetEffect[] SetEffects = new ArtifactSetEffect[]
         {
-            GladiatorsFinale
+            UnknowSetEffect,
+            GladiatorsFinale,
+            BlizzardStrayer,
         };
 
         public static string[] artifact_type_names = new string[]
@@ -566,7 +594,6 @@ namespace genshin_sim
 
     public static class WeaponFactory
     {
-
         public static Weapon PrimordialJadeCutter = new Weapon(
             "磐岩结绿",
             WeaponType.Sword,
@@ -582,11 +609,32 @@ namespace genshin_sim
                 "生命值提升{0}。此外，基于装备该武器的角色生命值上限的{1}，获得攻击力加成。",
                 0
             ),
+            0, // image index
+            0
+        );
+
+        public static Weapon AmosBow = new Weapon(
+            "阿莫斯之弓",
+            WeaponType.Bow,
+            new Affix(AffixAttr.ATK, StatData.primordial_jade_cutter_base_atk, 1),
+            new Affix(AffixAttr.pCRI, StatData.primordial_jade_cutter_crit_rate, 1),
+            new WeaponSpecialAbility(
+                "矢志不忘",
+                new List<SpecialCondAbility>()
+                {
+                    new SpecialCondAbility(SpecialCond.OnNormalAttack|SpecialCond.OnChargedAttack, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.12, 0.15, 0.18, 0.21, 0.24}, 0)),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pATK, new double[] { 0.08, 0.10, 0.12, 0.14, 0.16}, 0), WaifuStat.TimeAfter),
+                },
+                "普通攻击和重击造成的伤害提升{0}。箭矢发射后每经过0.1秒，伤害还会提升{1}。至多提升5次。",
+                0
+            ),
+            1, // image index
             0
         );
 
         public static Weapon[] Weapons = new Weapon[]
         {
+            AmosBow,
             PrimordialJadeCutter,
         };
     }
