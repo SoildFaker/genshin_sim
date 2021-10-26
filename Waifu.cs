@@ -295,7 +295,7 @@ namespace genshin_sim
             this.level = level;
             foreach (var item in BaseStat)
             {
-                item.SetLevel(level - 1);
+                item.SetLevel(level);
             }
         }
     }
