@@ -579,9 +579,87 @@ namespace genshin_sim
             new List<Talent>()
         );
 
+        public static Waifu Ganyu = new Waifu(
+            "甘雨",
+            ElementType.Cryo,
+            WeaponType.Bow,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.ganyu_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.ganyu_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.ganyu_base_def, 0),
+                new Affix(AffixAttr.pCRD, StatData.ganyu_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.ganyu_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Hutao = new Waifu(
+            "胡桃",
+            ElementType.Pyro,
+            WeaponType.Polearm,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.hutao_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.hutao_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.hutao_base_def, 0),
+                new Affix(AffixAttr.pCRD, StatData.hutao_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.hutao_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Jean = new Waifu(
+            "琴",
+            ElementType.Anemo,
+            WeaponType.Sword,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.jean_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.jean_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.jean_base_def, 0),
+                new Affix(AffixAttr.pHealing, StatData.jean_healing_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.jean_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.jean_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Kaedehara = new Waifu(
+            "枫原万叶",
+            ElementType.Anemo,
+            WeaponType.Sword,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.kazuha_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.kazuha_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.kazuha_base_def, 0),
+                new Affix(AffixAttr.ELM, StatData.kazuha_elemental_mastery, 0),
+                new Affix(AffixAttr.pCRD, StatData.kazuha_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.kazuha_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Kaeya = new Waifu(
+            "凯亚",
+            ElementType.Cryo,
+            WeaponType.Sword,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.kaeya_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.kaeya_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.kaeya_base_def, 0),
+                new Affix(AffixAttr.pCGR, StatData.kaeya_energy_recharge, 0),
+                new Affix(AffixAttr.pCRD, StatData.kaeya_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.kaeya_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
         public static Waifu[] Waifus = new Waifu[] 
         {
-            Albedo, Aloy, Amber, Barbara, Beidou, Bennett, Chongyun, Diluc, Diona, Eula, Fischl, Ayaka, Keqing, Zhongli
+            Albedo, Aloy, Amber, Barbara, Beidou, Bennett, Chongyun, Diluc, Diona, Eula, Fischl, Ganyu, Hutao, Jean, Kaedehara, Kaeya, Ayaka, Keqing, Zhongli
         };
 
         public static string[] element_names = new string[] { "火", "水", "冰", "草", "雷", "风", "岩" };
