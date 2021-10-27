@@ -421,22 +421,6 @@ namespace genshin_sim
             new List<Talent>()
         );
 
-        public static Waifu Zhongli = new Waifu(
-            "钟离",
-            ElementType.Geo,
-            WeaponType.Polearm,
-            new List<Affix>()
-            {
-                new Affix(AffixAttr.HP, StatData.zhongli_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.zhongli_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.zhongli_base_def, 0),
-                new Affix(AffixAttr.pGeo, StatData.zhongli_geo_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.zhongli_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.zhongli_crit_rate, 0),
-            } ,
-            new List<Talent>()
-        );
-
         public static Waifu Aloy = new Waifu(
             "埃洛伊",
             ElementType.Cryo,
@@ -657,9 +641,348 @@ namespace genshin_sim
             new List<Talent>()
         );
 
+        public static Waifu Klee = new Waifu(
+            "可莉",
+            ElementType.Pyro,
+            WeaponType.Catalyst,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.klee_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.klee_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.klee_base_def, 0),
+                new Affix(AffixAttr.pPyro, StatData.klee_pyro_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.klee_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.klee_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Lisa = new Waifu(
+            "丽莎",
+            ElementType.Electro,
+            WeaponType.Catalyst,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.lisa_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.lisa_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.lisa_base_def, 0),
+                new Affix(AffixAttr.ELM, StatData.lisa_elemental_mastery, 0),
+                new Affix(AffixAttr.pCRD, StatData.lisa_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.lisa_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Mona = new Waifu(
+            "莫娜",
+            ElementType.Hydro,
+            WeaponType.Catalyst,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.mona_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.mona_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.mona_base_def, 0),
+                new Affix(AffixAttr.pCGR, StatData.mona_energy_recharge, 0),
+                new Affix(AffixAttr.pCRD, StatData.mona_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.mona_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Ningguang = new Waifu(
+            "凝光",
+            ElementType.Geo,
+            WeaponType.Catalyst,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.ningguang_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.ningguang_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.ningguang_base_def, 0),
+                new Affix(AffixAttr.pGeo, StatData.ningguang_geo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.ningguang_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.ningguang_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Noelle = new Waifu(
+            "诺艾尔",
+            ElementType.Geo,
+            WeaponType.Claymore,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.noelle_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.noelle_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.noelle_base_def, 0),
+                new Affix(AffixAttr.pDEF, StatData.noelle_def, 0),
+                new Affix(AffixAttr.pCRD, StatData.noelle_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.noelle_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Qiqi = new Waifu(
+            "七七",
+            ElementType.Cryo,
+            WeaponType.Sword,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.qiqi_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.qiqi_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.qiqi_base_def, 0),
+                new Affix(AffixAttr.pHealing, StatData.qiqi_healing_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.qiqi_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.qiqi_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Raiden = new Waifu(
+            "雷电将军",
+            ElementType.Electro,
+            WeaponType.Polearm,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.shougun_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.shougun_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.shougun_base_def, 0),
+                new Affix(AffixAttr.pCGR, StatData.shougun_energy_recharge, 0),
+                new Affix(AffixAttr.pCRD, StatData.shougun_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.shougun_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Razor = new Waifu(
+            "雷泽",
+            ElementType.Electro,
+            WeaponType.Claymore,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.razor_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.razor_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.razor_base_def, 0),
+                new Affix(AffixAttr.pPhysical, StatData.razor_physical_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.razor_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.razor_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Rosaraia = new Waifu(
+            "罗萨莉亚",
+            ElementType.Cryo,
+            WeaponType.Polearm,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.rosaria_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.rosaria_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.rosaria_base_def, 0),
+                new Affix(AffixAttr.pATK, StatData.rosaria_atk, 0),
+                new Affix(AffixAttr.pCRD, StatData.rosaria_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.rosaria_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Kokomi = new Waifu(
+            "珊瑚宫心海",
+            ElementType.Hydro,
+            WeaponType.Catalyst,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.kokomi_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.kokomi_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.kokomi_base_def, 0),
+                new Affix(AffixAttr.pHydro, StatData.kokomi_hydro_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.kokomi_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.kokomi_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Sayu = new Waifu(
+            "早柚",
+            ElementType.Anemo,
+            WeaponType.Claymore,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.sayu_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.sayu_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.sayu_base_def, 0),
+                new Affix(AffixAttr.ELM, StatData.sayu_elemental_mastery, 0),
+                new Affix(AffixAttr.pCRD, StatData.sayu_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.sayu_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Sucrose = new Waifu(
+            "砂糖",
+            ElementType.Anemo,
+            WeaponType.Catalyst,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.sucrose_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.sucrose_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.sucrose_base_def, 0),
+                new Affix(AffixAttr.pAnemo, StatData.sucrose_anemo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.sucrose_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.sucrose_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Tartaglia = new Waifu(
+            "公子",
+            ElementType.Hydro,
+            WeaponType.Bow,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.tartaglia_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.tartaglia_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.tartaglia_base_def, 0),
+                new Affix(AffixAttr.pHydro, StatData.tartaglia_hydro_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.tartaglia_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.tartaglia_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Venti = new Waifu(
+            "温蒂",
+            ElementType.Anemo,
+            WeaponType.Bow,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.venti_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.venti_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.venti_base_def, 0),
+                new Affix(AffixAttr.pCGR, StatData.venti_energy_recharge, 0),
+                new Affix(AffixAttr.pCRD, StatData.venti_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.venti_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Xiangling = new Waifu(
+            "香菱",
+            ElementType.Pyro,
+            WeaponType.Polearm,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.xiangling_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.xiangling_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.xiangling_base_def, 0),
+                new Affix(AffixAttr.ELM, StatData.xiangling_elemental_mastery, 0),
+                new Affix(AffixAttr.pCRD, StatData.xiangling_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.xiangling_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Xiao = new Waifu(
+            "魈",
+            ElementType.Anemo,
+            WeaponType.Polearm,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.xiao_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.xiao_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.xiao_base_def, 0),
+                new Affix(AffixAttr.pCRD, StatData.xiao_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.xiao_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Xingqiu = new Waifu(
+            "行秋",
+            ElementType.Hydro,
+            WeaponType.Sword,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.xingqiu_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.xingqiu_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.xingqiu_base_def, 0),
+                new Affix(AffixAttr.pATK, StatData.xingqiu_atk, 0),
+                new Affix(AffixAttr.pCRD, StatData.xingqiu_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.xingqiu_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+        
+        public static Waifu Xinyan = new Waifu(
+            "辛焱",
+            ElementType.Pyro,
+            WeaponType.Claymore,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.xinyan_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.xinyan_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.xinyan_base_def, 0),
+                new Affix(AffixAttr.pATK, StatData.xinyan_atk, 0),
+                new Affix(AffixAttr.pCRD, StatData.xinyan_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.xinyan_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Yanfei = new Waifu(
+            "烟绯",
+            ElementType.Pyro,
+            WeaponType.Catalyst,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.feiyan_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.feiyan_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.feiyan_base_def, 0),
+                new Affix(AffixAttr.pPyro, StatData.feiyan_pyro_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.feiyan_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.feiyan_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Yoimiya = new Waifu(
+            "宵宫",
+            ElementType.Pyro,
+            WeaponType.Bow,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.yoimiya_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.yoimiya_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.yoimiya_base_def, 0),
+                new Affix(AffixAttr.pCRD, StatData.yoimiya_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.yoimiya_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+        public static Waifu Zhongli = new Waifu(
+            "钟离",
+            ElementType.Geo,
+            WeaponType.Polearm,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.zhongli_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.zhongli_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.zhongli_base_def, 0),
+                new Affix(AffixAttr.pGeo, StatData.zhongli_geo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, StatData.zhongli_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.zhongli_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
+//31=Traveler,Geo,31
         public static Waifu[] Waifus = new Waifu[] 
         {
-            Albedo, Aloy, Amber, Barbara, Beidou, Bennett, Chongyun, Diluc, Diona, Eula, Fischl, Ganyu, Hutao, Jean, Kaedehara, Kaeya, Ayaka, Keqing, Zhongli
+            Albedo, Aloy, Amber, Barbara, Beidou, Bennett, Chongyun, Diluc, Diona,
+            Eula, Fischl, Ganyu, Hutao, Jean, Kaedehara, Kaeya, Ayaka, Keqing, Klee,
+            Lisa, Mona, Ningguang, Noelle, Qiqi, Raiden, Razor, Rosaraia, Kokomi,
+            Sayu, Sucrose, Tartaglia, Venti, Xiangling, Xiao, Xingqiu, Xinyan, Yanfei,
+            Yoimiya, Zhongli
         };
 
         public static string[] element_names = new string[] { "火", "水", "冰", "草", "雷", "风", "岩" };
