@@ -125,10 +125,14 @@ namespace genshin_sim
             List<Affix> stat = waifu_now.Stat;
             labCharacterName.Text = $"{waifu_now.Name} (lv.{waifu_now.Level} {WaifuFactory.element2str(waifu_now.Vision)})";
             // Artifact
-            if (waifu_now.Artifacts[0] != null && waifu_now.Artifacts[0].ArtifactSetEffect != null)
+            if (waifu_now.Effects != null)
             {
-                gpCharacterArtifactSetEffect.Text = $"{waifu_now.Artifacts[0].ArtifactSetEffect.Name}";
-                labCharacterArtifactSetEffect.Text = $"{waifu_now.Artifacts[0].ArtifactSetEffect.Description}";
+                gpCharacterArtifactSetEffect.Text = $"Set Effects";
+                labCharacterArtifactSetEffect.Text = "";
+                for (int i = 0; i < waifu_now.Effects.Count; i++)
+                {
+                    labCharacterArtifactSetEffect.Text += $"{waifu_now.Effects[i].Affix.Description}\r\n";
+                }
             }
             // Weapon
             if (waifu_now.Weapon != null)
@@ -180,7 +184,7 @@ namespace genshin_sim
                     waifu_artifacts[0] = fm.Artifact;
                     if (waifu_now != null)
                     {
-                        waifu_now.Artifacts[0] = fm.Artifact;
+                        waifu_now.SetAritfact(fm.Artifact);
                     }
                     cmdCharacterArtifactFlower.ImageIndex = ((int)fm.Artifact.Type) + ((int)fm.Artifact.ArtifactSetEffect.Type) * 5;
                     refresh_character_info();
@@ -199,7 +203,7 @@ namespace genshin_sim
                     waifu_artifacts[3] = fm.Artifact;
                     if (waifu_now != null)
                     {
-                        waifu_now.Artifacts[3] = fm.Artifact;
+                        waifu_now.SetAritfact(fm.Artifact);
                     }
                     cmdCharacterArtifactGoblet.ImageIndex = ((int)fm.Artifact.Type) + ((int)fm.Artifact.ArtifactSetEffect.Type) * 5;
                     refresh_character_info();
@@ -218,7 +222,7 @@ namespace genshin_sim
                     waifu_artifacts[1] = fm.Artifact;
                     if (waifu_now != null)
                     {
-                        waifu_now.Artifacts[1] = fm.Artifact;
+                        waifu_now.SetAritfact(fm.Artifact);
                     }
                     cmdCharacterArtifactPlume.ImageIndex = ((int)fm.Artifact.Type) + ((int)fm.Artifact.ArtifactSetEffect.Type) * 5;
                     refresh_character_info();
@@ -237,7 +241,7 @@ namespace genshin_sim
                     waifu_artifacts[2] = fm.Artifact;
                     if (waifu_now != null)
                     {
-                        waifu_now.Artifacts[2] = fm.Artifact;
+                        waifu_now.SetAritfact(fm.Artifact);
                     }
                     cmdCharacterArtifactSands.ImageIndex = ((int)fm.Artifact.Type) + ((int)fm.Artifact.ArtifactSetEffect.Type) * 5;
                     refresh_character_info();
@@ -256,7 +260,7 @@ namespace genshin_sim
                     waifu_artifacts[4] = fm.Artifact;
                     if (waifu_now != null)
                     {
-                        waifu_now.Artifacts[4] = fm.Artifact;
+                        waifu_now.SetAritfact(fm.Artifact);
                     }
                     cmdCharacterArtifactCirclet.ImageIndex = ((int)fm.Artifact.Type) + ((int)fm.Artifact.ArtifactSetEffect.Type) * 5;
                     refresh_character_info();

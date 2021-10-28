@@ -205,7 +205,7 @@ namespace genshin_sim
                 default: return flower_main_affix_arr;
             }
         }
-        public static Affix pick_minor_affixes()
+        public static Affix pick_minor_affix()
         {
             return minor_affixes_arr[rand.Next(minor_affixes_arr.Length)];
         }
@@ -215,49 +215,28 @@ namespace genshin_sim
             switch (type)
             {
                 case ArtifactType.FlowerOfLife:
-                    return new Affix(AffixAttr.HP);
+                    return new Affix(AffixAttr.HP, 0);
                 case ArtifactType.PlumeOfDeath:
-                    return new Affix(AffixAttr.ATK);
+                    return new Affix(AffixAttr.ATK, 0);
                 case ArtifactType.SandsOfEon:
-                    return new Affix(sands_main_affix_attr_arr[rand.Next(sands_main_affix_attr_arr.Length)]);
+                    return new Affix(sands_main_affix_attr_arr[rand.Next(sands_main_affix_attr_arr.Length)], 0);
                 case ArtifactType.GobletOfEonothem:
-                    return new Affix(goblet_main_affix_attr_arr[rand.Next(goblet_main_affix_attr_arr.Length)]);
+                    return new Affix(goblet_main_affix_attr_arr[rand.Next(goblet_main_affix_attr_arr.Length)], 0);
                 case ArtifactType.CircletOfLogos:
-                    return new Affix(circlet_main_affix_attr_arr[rand.Next(circlet_main_affix_attr_arr.Length)]);
+                    return new Affix(circlet_main_affix_attr_arr[rand.Next(circlet_main_affix_attr_arr.Length)], 0);
             }
-            return new Affix(AffixAttr.HP);
+            return new Affix(AffixAttr.HP, 0);
         }
 
-        public static double pick_minor_affix_value(AffixAttr attr)
+        public static Affix pick_minor_affix(AffixAttr attr)
         {
-            switch (attr)
-            {
-                case AffixAttr.HP:
-                    return new double[4] { 209, 239, 269, 299 }[AffixFactory.rand.Next(0, 4)];
-                case AffixAttr.pHP:
-                    return new double[4] { 0.041, 0.047, 0.053, 0.058 }[AffixFactory.rand.Next(0, 4)];
-                case AffixAttr.DEF:
-                    return new double[4] { 16, 19, 21, 23 }[AffixFactory.rand.Next(0, 4)];
-                case AffixAttr.pDEF:
-                    return new double[4] { 0.051, 0.058, 0.066, 0.073 }[AffixFactory.rand.Next(0, 4)];
-                case AffixAttr.ATK:
-                    return new double[4] { 14, 16, 18, 19 }[AffixFactory.rand.Next(0, 4)];
-                case AffixAttr.pATK:
-                    return new double[4] { 0.041, 0.047, 0.053, 0.058 }[AffixFactory.rand.Next(0, 4)];
-                case AffixAttr.pCGR:
-                    return new double[4] { 0.045, 0.052, 0.058, 0.065 }[AffixFactory.rand.Next(0, 4)];
-                case AffixAttr.pCRD:
-                    return new double[4] { 0.054, 0.062, 0.070, 0.078 }[AffixFactory.rand.Next(0, 4)];
-                case AffixAttr.pCRI:
-                    return new double[4] { 0.027, 0.031, 0.035, 0.039 }[AffixFactory.rand.Next(0, 4)];
-                case AffixAttr.ELM:
-                    return new double[4] { 16, 19, 21, 23 }[AffixFactory.rand.Next(0, 4)];
-            }
-            return -1;
+            Affix[] arr = minor_affixes_arr.Where(x => x.Attribute == attr).ToArray();
+            return arr[rand.Next(arr.Length * 100) / 100];
         }
+
         public static string[] affix_names = new string[] {
             "生命值", "攻击力", "防御力", "生命加成", "攻击加成", "防御加成", "元素精通", "充能效率", "暴击率", "暴击伤害",
-            "物理伤害加成", "火属性伤害加成", "水属性伤害加成", "草属性伤害加成", "冰属性伤害加成", "雷属性伤害加成", "风属性伤害加成", "岩属性伤害加成", "治疗效果加成",
+            "物理伤害加成", "火属性伤害加成", "水属性伤害加成", "冰属性伤害加成", "草属性伤害加成", "雷属性伤害加成", "风属性伤害加成", "岩属性伤害加成", "治疗效果加成",
             };
         public static string attr2str(AffixAttr attr)
         {

@@ -55,11 +55,6 @@ namespace genshin_sim
             this.Attribute = attr;
             this.Value = val;
         }
-        public Affix(AffixAttr attr)
-        {
-            this.Attribute = attr;
-            this.Value = AffixFactory.pick_minor_affix_value(attr);
-        }
 
         public Affix(AffixAttr attr, double[] vals, int lv)
         {

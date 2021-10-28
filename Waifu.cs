@@ -68,6 +68,7 @@ namespace genshin_sim
         public WeaponType WeaponType { get; private set; }
         public List<Talent> Talents { get; private set; }
         public Artifact[] Artifacts { get; private set; }
+        public List<SpecialCondEffect> Effects { get; private set; }
         private List<Affix> stat = new List<Affix>();
         public List<Affix> Stat
         { 
@@ -112,6 +113,7 @@ namespace genshin_sim
         public void SetAritfacts(Artifact[] artifacts)
         {
             this.Artifacts = artifacts;
+            update_set_effect();
         }
 
         public void SetAritfact(Artifact artifact)
@@ -134,6 +136,23 @@ namespace genshin_sim
                 default:
                     this.Artifacts[4] = artifact;
                     break;
+            }
+            update_set_effect();
+        }
+
+        private void update_set_effect()
+        {
+            this.Effects.Clear();
+            List<ArtifactSetEffect> set_effect_list = this.Artifacts.Where(x => x != null).GroupBy(x => x.ArtifactSetEffect).Select(x => x.FirstOrDefault().ArtifactSetEffect).ToList();
+            foreach (var set_effect in set_effect_list)
+            {
+                foreach (var effect in set_effect.Effects)
+                {
+                    if (this.Artifacts.Where(x => x != null &&  x.ArtifactSetEffect == set_effect).Count() >= effect.ActiveNumber)
+                    {
+                        this.Effects.Add(effect);
+                    }
+                }
             }
         }
 
@@ -204,9 +223,9 @@ namespace genshin_sim
             // Artifact Set Effect
             double val_set_effect = 0;
             double val_set_effect_pct = 0;
-            if (this.Artifacts[0] != null && this.Artifacts[0].ArtifactSetEffect != null)
+            if (this.Effects != null)
             {
-                foreach (var effect in this.Artifacts[0].ArtifactSetEffect.Effects )
+                foreach (var effect in this.Effects )
                 {
                     if (effect.SpecialCond == SpecialCond.Always)
                     {
@@ -288,6 +307,7 @@ namespace genshin_sim
             this.BaseStat = stat;
             this.level = level;
             this.Artifacts = new Artifact[5];
+            this.Effects = new List<SpecialCondEffect>();
         }
 
         public void SetLevel(int level)

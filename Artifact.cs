@@ -120,7 +120,7 @@ namespace genshin_sim
             for (int i = 0; i < 4; i++)
             {
                 int code = AffixFactory.rand.Next(lst.Count);
-                Affix line = new Affix(lst[code]);
+                Affix line = AffixFactory.pick_minor_affix(lst[code]); ;
                 this.MinorAffixes.Add(line);
                 this.InitAffixes.Add(line);
                 lst.RemoveAt(code);
@@ -253,7 +253,7 @@ namespace genshin_sim
                 if (this.Level % 4 == 0)
                 {
                     int index = AffixFactory.rand.Next(this.InitAffixes.Count);
-                    this.MinorAffixes.Add(new Affix(InitAffixes[index].Attribute));
+                    this.MinorAffixes.Add(AffixFactory.pick_minor_affix(InitAffixes[index].Attribute));
                     //this.MinorAffixes[index].Value += AffixFactory.pick_minor_affixes(this.MinorAffixes[index].Attribute);
                 }
             }
