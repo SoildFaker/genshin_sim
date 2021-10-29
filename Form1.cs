@@ -127,11 +127,14 @@ namespace genshin_sim
             // Artifact
             if (waifu_now.Effects != null)
             {
-                gpCharacterArtifactSetEffect.Text = $"Set Effects";
+                gpCharacterArtifactSetEffect.Text = $"套装加成";
                 labCharacterArtifactSetEffect.Text = "";
                 for (int i = 0; i < waifu_now.Effects.Count; i++)
                 {
-                    labCharacterArtifactSetEffect.Text += $"{waifu_now.Effects[i].Affix.Description}\r\n";
+                    if (waifu_now.Effects[i].SpecialCond == SpecialCond.Always)
+                    {
+                        labCharacterArtifactSetEffect.Text += $"{waifu_now.Effects[i].Affix.Description}\r\n";
+                    }
                 }
             }
             // Weapon
