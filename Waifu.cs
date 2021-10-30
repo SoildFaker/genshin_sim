@@ -88,6 +88,30 @@ namespace genshin_sim
             }
         }
 
+        public double GetStatByAttr(AffixAttr attr)
+        {
+            switch (attr)
+            {
+                case AffixAttr.HP: return this.HP;
+                case AffixAttr.ATK: return this.ATK;
+                case AffixAttr.DEF: return this.DEF;
+                case AffixAttr.ELM: return this.ELM;
+                case AffixAttr.pCGR: return this.CGR;
+                case AffixAttr.pCRI: return this.CRI;
+                case AffixAttr.pCRD: return this.CRD;
+                case AffixAttr.pPhysical: return this.Physical;
+                case AffixAttr.pPyro: return this.Pyro;
+                case AffixAttr.pHydro: return this.Hydro;
+                case AffixAttr.pCryo: return this.Cryo;
+                case AffixAttr.pDendro: return this.Dendro;
+                case AffixAttr.pElectro: return this.Electro;
+                case AffixAttr.pAnemo: return this.Anemo;
+                case AffixAttr.pGeo: return this.Geo;
+                case AffixAttr.pHealing: return this.Healing;
+                default: return 0;
+            }
+        }
+
         public double GetStat(WaifuStat stat)
         {
             switch (stat)
@@ -316,6 +340,17 @@ namespace genshin_sim
             foreach (var item in BaseStat)
             {
                 item.SetLevel(level);
+            }
+        }
+        public int GetRealLevel()
+        {
+            if (this.Level.Contains("+"))
+            {
+                return Convert.ToInt32(this.Level.Remove(this.Level.Length - 1));
+            }
+            else
+            {
+                return Convert.ToInt32(this.Level);
             }
         }
     }

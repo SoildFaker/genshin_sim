@@ -27,6 +27,12 @@ namespace genshin_sim
         pAnemo,     // 风属性伤害加成
         pGeo,       // 岩属性伤害加成
         pHealing,   // 治疗效果加成
+        // 特殊条件加成效果
+        pNormalDMG,
+        pChargedDMG,
+        pPlungingDMG,
+        pElementalSkillDMG,
+        pElementBurstDMG,
     }
 
     public class Affix

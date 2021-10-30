@@ -68,10 +68,13 @@ namespace genshin_sim
         UsingCatalyst = (int)(1 << 5),
         OnNormalAttack = (int)(1 << 6),
         OnChargedAttack = (int)(1 << 7),
-        TakingDMG = (int)(1 << 8),
-        EnemyTakeCryoElement = (int)(1 << 9),
-        EnemyFrozen = (int)(1 << 10),
-        TimeDelay = (int)(1 << 11),
+        OnPlungingAttack = (int)(1 << 8),
+        OnElementSkill = (int)(1 << 9),
+        OnElementBurst = (int)(1 << 10),
+        TakingDMG = (int)(1 << 11),
+        EnemyTakeCryoElement = (int)(1 << 12),
+        EnemyFrozen = (int)(1 << 13),
+        TimeDelay = (int)(1 << 14),
     }
 
     public enum AbilityType

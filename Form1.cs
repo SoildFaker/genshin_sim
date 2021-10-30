@@ -24,6 +24,9 @@ namespace genshin_sim
         int artifact_list_select_index = 0;
         Artifact[] waifu_artifacts = new Artifact[5];
         Waifu waifu_now;
+        Enemy enemy_now;
+        AffixAttr sim_attr;
+        SpecialCond sim_cond = SpecialCond.Always;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -103,6 +106,7 @@ namespace genshin_sim
                     waifu_now.SetAritfacts(waifu_artifacts);
                     refresh_character_info();
                     clear_weapon_info();
+                    refresh_simulation_cond();
                 }
             }
         }
@@ -165,6 +169,8 @@ namespace genshin_sim
                 $"草属性伤害加成: {waifu_now.Dendro.ToString("0.0%")}\r\n" +
                 $"风属性伤害加成: {waifu_now.Anemo.ToString("0.0%")}\r\n" +
                 $"治疗加成: {waifu_now.Healing.ToString("0.0%")}\r\n";
+
+            refresh_damage_info();
         }
 
         private void selCharacterLevel_Scroll(object sender, EventArgs e)
@@ -490,6 +496,203 @@ namespace genshin_sim
                 waifu_now.Weapon.SpecialAbility.SetLevel(level);
                 cmdWeaponRefine.Text = $"Refine: {level + 1}";
                 refresh_character_info();
+            }
+        }
+
+        private void refresh_enemy_info()
+        {
+            labEnemyName.Text = $"{enemy_now.Name} (Lv.{enemy_now.Level})";
+            labEnemyStat.Text = enemy_now.Description;
+        }
+
+        private void refresh_damage_info()
+        {
+            if (waifu_now == null || enemy_now == null)
+            {
+                return;
+            }
+            double damage, damage_cirtical = 0;
+            double val_atk, val_atk_scaling0, val_atk_scaling1, val_damage_bonus, val_critical_bonus, val_defense_fix, val_restance_fix;
+            val_atk = waifu_now.ATK;
+            val_atk_scaling0 = cvt_string2double(txtDamageAtkScaling.Text);
+            val_atk_scaling1 = cvt_string2double(txtDamageAdditionalScaling.Text);
+            val_damage_bonus = cal_damage_bonus_factor();
+            val_critical_bonus = waifu_now.CRD;
+            val_defense_fix = cal_defense_decreased_factor();
+            val_restance_fix = cal_resistance_factor();
+            damage= val_atk * val_atk_scaling0 * (1 + val_atk_scaling1) * (1 + val_damage_bonus) * val_defense_fix * val_restance_fix;
+            damage_cirtical = val_atk * val_atk_scaling0 * (1 + val_atk_scaling1) * (1 + val_damage_bonus) * (1 + val_critical_bonus) * val_defense_fix * val_restance_fix;
+            labDamageInfo.Text = $"伤害组成: \r\n" +
+                $"面板攻击: {val_atk}\r\n" + 
+                $"攻击倍率: {val_atk_scaling0.ToString("0.0%")}\r\n" + 
+                $"额外倍率: {val_atk_scaling1.ToString("0.0%")}\r\n" + 
+                $"伤害增益: {val_damage_bonus.ToString("0.0%")}\r\n" + 
+                $"暴击加成: {val_critical_bonus.ToString("0.0%")}\r\n" + 
+                $"防御修正: {val_defense_fix.ToString("0.0%")}\r\n" + 
+                $"抗性修正: {val_restance_fix.ToString("0.0%")}\r\n" + 
+                $"\r\n" +
+                $"最终伤害: {damage}\r\n" +
+                $"暴击伤害: {damage_cirtical}";
+        }
+
+        private double cal_damage_bonus_factor()
+        {
+            double bonus_always_on = waifu_now.GetStatByAttr(AffixFactory.damage_boost_attr[selDamageElementType.SelectedIndex]);
+            double bonus_append = 0;
+            foreach (var effect in waifu_now.Effects)
+            {
+                if (effect.Affix.Attribute == sim_attr)
+                {
+                    if ((effect.SpecialCond & sim_cond) > 0)
+                    {
+                        bonus_append += effect.Affix.Value;
+                    }
+                }
+            }
+            return bonus_always_on + bonus_append;
+        }
+
+        private double cal_resistance_factor()
+        {
+            double resistance = enemy_now.Resistances[selDamageElementType.SelectedIndex];
+            if (resistance < 0)
+            {
+                return 1 - resistance / 2;
+            }
+            if (resistance <= 0.75)
+            {
+                return 1 - resistance;
+            }
+            if (resistance > 0.75)
+            {
+                return 1 / (1 + 4 * resistance);
+            }
+            return -1;
+
+        }
+
+        private double cal_defense_decreased_factor()
+        {
+            double lv_waifu = waifu_now.GetRealLevel();
+            double lv_enemy = enemy_now.Level;
+            double factor = cvt_string2double(txtDamageDefenseDecreased.Text);
+            return (lv_waifu + 100) / ((lv_waifu + 100) * (1 - factor) + (lv_enemy + 100));
+        }
+
+        private double cvt_string2double(string str)
+        {
+            double factor = 1;
+            double val = 0;
+            if (str.Contains("%"))
+            {
+                factor = 100;
+                str = str.Remove(str.Length - 1);
+            }
+            try
+            {
+                val = Convert.ToDouble(str);
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+            return val / factor;
+
+        }
+
+        private void cmdEnemySelect_Click(object sender, EventArgs e)
+        {
+            using (var fm = new fmEnemyList())
+            {
+                if (fm.ShowDialog() == DialogResult.OK)
+                {
+                    cmdEnemySelect.BackgroundImage = fm.EnemyImage;
+                    enemy_now = fm.Enemy;
+                    selEnemyLevel.Value = enemy_now.Level;
+                    refresh_enemy_info();
+                    refresh_damage_info();
+                }
+            }
+        }
+
+        private void selEnemyLevel_Scroll(object sender, EventArgs e)
+        {
+            if (enemy_now != null)
+            {
+                enemy_now.SetLevel(selEnemyLevel.Value);
+                refresh_enemy_info();
+                refresh_damage_info();
+            }
+        }
+
+        private void txtDamageAtkScaling_TextChanged(object sender, EventArgs e)
+        {
+            refresh_damage_info();
+        }
+
+        private void txtDamageAdditionalScaling_TextChanged(object sender, EventArgs e)
+        {
+            refresh_damage_info();
+        }
+
+        private void selDamageAtkType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            refresh_damage_info();
+        }
+
+        private void txtDamageDefenseDecreased_TextChanged(object sender, EventArgs e)
+        {
+            refresh_damage_info();
+        }
+
+        private void selDamageAttackType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            refresh_simulation_cond();
+            refresh_damage_info();
+        }
+
+        private void refresh_simulation_cond()
+        {
+            switch (waifu_now.WeaponType)
+            {
+                case WeaponType.Sword:
+                    sim_cond |= SpecialCond.UsingSword;
+                    break;
+                case WeaponType.Claymore:
+                    sim_cond |= SpecialCond.UsingClaymore;
+                    break;
+                case WeaponType.Polearm:
+                    sim_cond |= SpecialCond.UsingPolearm;
+                    break;
+                case WeaponType.Bow:
+                    sim_cond |= SpecialCond.UsingBow;
+                    break;
+                case WeaponType.Catalyst: default:
+                    sim_cond |= SpecialCond.UsingCatalyst;
+                    break;
+            }
+            switch (selDamageAttackType.SelectedIndex)
+            {
+                case 0:
+                    sim_cond |= SpecialCond.OnNormalAttack;
+                    sim_attr = AffixAttr.pNormalDMG;
+                    break;
+                case 1:
+                    sim_cond |= SpecialCond.OnChargedAttack;
+                    sim_attr = AffixAttr.pChargedDMG;
+                    break;
+                case 2:
+                    sim_cond |= SpecialCond.OnPlungingAttack;
+                    sim_attr = AffixAttr.pPlungingDMG;
+                    break;
+                case 3:
+                    sim_cond |= SpecialCond.OnElementSkill;
+                    sim_attr = AffixAttr.pElementalSkillDMG;
+                    break;
+                case 4: default:
+                    sim_cond |= SpecialCond.OnElementBurst;
+                    sim_attr = AffixAttr.pElementBurstDMG;
+                    break;
             }
         }
     }

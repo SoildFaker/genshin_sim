@@ -67,6 +67,7 @@ namespace genshin_sim
             this.gpCharacterArtifactCirclet = new System.Windows.Forms.GroupBox();
             this.labCharacterArtifactCirclet = new System.Windows.Forms.Label();
             this.cmdCharacterArtifactCirclet = new System.Windows.Forms.Button();
+            this.imArtifacts = new System.Windows.Forms.ImageList(this.components);
             this.gpCharacterArtifactGoblet = new System.Windows.Forms.GroupBox();
             this.labCharacterArtifactGoblet = new System.Windows.Forms.Label();
             this.cmdCharacterArtifactGoblet = new System.Windows.Forms.Button();
@@ -89,9 +90,28 @@ namespace genshin_sim
             this.cmdCharacterAdd = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.selDamageAttackType = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDamageDefenseDecreased = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.selDamageElementType = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtDamageAdditionalScaling = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtDamageAtkScaling = new System.Windows.Forms.TextBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.labDamageInfo = new System.Windows.Forms.Label();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.labEnemyStat = new System.Windows.Forms.Label();
+            this.selEnemyLevel = new System.Windows.Forms.TrackBar();
+            this.labEnemyName = new System.Windows.Forms.Label();
+            this.cmdEnemySelect = new System.Windows.Forms.Button();
             this.labGithubLink = new System.Windows.Forms.LinkLabel();
             this.imUserIcons = new System.Windows.Forms.ImageList(this.components);
-            this.imArtifacts = new System.Windows.Forms.ImageList(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -113,6 +133,12 @@ namespace genshin_sim
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).BeginInit();
             this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selEnemyLevel)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdAdd
@@ -512,6 +538,26 @@ namespace genshin_sim
             this.cmdCharacterArtifactCirclet.UseVisualStyleBackColor = true;
             this.cmdCharacterArtifactCirclet.Click += new System.EventHandler(this.cmdCharacterArtifactCirclet_Click);
             // 
+            // imArtifacts
+            // 
+            this.imArtifacts.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imArtifacts.ImageStream")));
+            this.imArtifacts.TransparentColor = System.Drawing.Color.Transparent;
+            this.imArtifacts.Images.SetKeyName(0, "Icon_Flower_of_Life.png");
+            this.imArtifacts.Images.SetKeyName(1, "Icon_Plume_of_Death.png");
+            this.imArtifacts.Images.SetKeyName(2, "Icon_Sands_of_Eon.png");
+            this.imArtifacts.Images.SetKeyName(3, "Icon_Goblet_of_Eonothem.png");
+            this.imArtifacts.Images.SetKeyName(4, "Icon_Circlet_of_Logos.png");
+            this.imArtifacts.Images.SetKeyName(5, "Item_Gladiator%27s_Nostalgia.png");
+            this.imArtifacts.Images.SetKeyName(6, "Item_Gladiator%27s_Destiny.png");
+            this.imArtifacts.Images.SetKeyName(7, "Item_Gladiator%27s_Longing.png");
+            this.imArtifacts.Images.SetKeyName(8, "Item_Gladiator%27s_Intoxication.png");
+            this.imArtifacts.Images.SetKeyName(9, "Item_Gladiator%27s_Triumphus.png");
+            this.imArtifacts.Images.SetKeyName(10, "Item_Snowswept_Memory.png");
+            this.imArtifacts.Images.SetKeyName(11, "Item_Icebreaker%27s_Resolve.png");
+            this.imArtifacts.Images.SetKeyName(12, "Item_Frozen_Homeland%27s_Demise.png");
+            this.imArtifacts.Images.SetKeyName(13, "Item_Frost-Weaved_Dignity.png");
+            this.imArtifacts.Images.SetKeyName(14, "Item_Broken_Rime%27s_Echo.png");
+            // 
             // gpCharacterArtifactGoblet
             // 
             this.gpCharacterArtifactGoblet.Controls.Add(this.labCharacterArtifactGoblet);
@@ -752,6 +798,9 @@ namespace genshin_sim
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox13);
+            this.tabPage3.Controls.Add(this.groupBox10);
+            this.tabPage3.Controls.Add(this.groupBox11);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -759,6 +808,235 @@ namespace genshin_sim
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Damage Test";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.BackColor = System.Drawing.Color.White;
+            this.groupBox13.Controls.Add(this.label5);
+            this.groupBox13.Controls.Add(this.selDamageAttackType);
+            this.groupBox13.Controls.Add(this.label4);
+            this.groupBox13.Controls.Add(this.txtDamageDefenseDecreased);
+            this.groupBox13.Controls.Add(this.label3);
+            this.groupBox13.Controls.Add(this.selDamageElementType);
+            this.groupBox13.Controls.Add(this.label2);
+            this.groupBox13.Controls.Add(this.txtDamageAdditionalScaling);
+            this.groupBox13.Controls.Add(this.label1);
+            this.groupBox13.Controls.Add(this.txtDamageAtkScaling);
+            this.groupBox13.Location = new System.Drawing.Point(6, 307);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(277, 217);
+            this.groupBox13.TabIndex = 4;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Append";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(83, 12);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Attack Type: ";
+            // 
+            // selDamageAttackType
+            // 
+            this.selDamageAttackType.FormattingEnabled = true;
+            this.selDamageAttackType.Items.AddRange(new object[] {
+            "普通攻击",
+            "蓄力重击",
+            "下落攻击",
+            "元素战技",
+            "元素爆发"});
+            this.selDamageAttackType.Location = new System.Drawing.Point(137, 14);
+            this.selDamageAttackType.Name = "selDamageAttackType";
+            this.selDamageAttackType.Size = new System.Drawing.Size(134, 20);
+            this.selDamageAttackType.TabIndex = 8;
+            this.selDamageAttackType.Text = "普通攻击";
+            this.toolTip1.SetToolTip(this.selDamageAttackType, "攻击类型");
+            this.selDamageAttackType.SelectedIndexChanged += new System.EventHandler(this.selDamageAttackType_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 123);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(119, 12);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Defense Decreased: ";
+            // 
+            // txtDamageDefenseDecreased
+            // 
+            this.txtDamageDefenseDecreased.Location = new System.Drawing.Point(137, 120);
+            this.txtDamageDefenseDecreased.Name = "txtDamageDefenseDecreased";
+            this.txtDamageDefenseDecreased.Size = new System.Drawing.Size(134, 21);
+            this.txtDamageDefenseDecreased.TabIndex = 6;
+            this.txtDamageDefenseDecreased.Text = "0%";
+            this.toolTip1.SetToolTip(this.txtDamageDefenseDecreased, "角色技能的防御减免");
+            this.txtDamageDefenseDecreased.TextChanged += new System.EventHandler(this.txtDamageDefenseDecreased_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 12);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Element Type: ";
+            // 
+            // selDamageElementType
+            // 
+            this.selDamageElementType.FormattingEnabled = true;
+            this.selDamageElementType.Items.AddRange(new object[] {
+            "物理",
+            "火",
+            "水",
+            "冰",
+            "草",
+            "雷",
+            "风",
+            "岩"});
+            this.selDamageElementType.Location = new System.Drawing.Point(137, 40);
+            this.selDamageElementType.Name = "selDamageElementType";
+            this.selDamageElementType.Size = new System.Drawing.Size(134, 20);
+            this.selDamageElementType.TabIndex = 4;
+            this.selDamageElementType.Text = "物理";
+            this.toolTip1.SetToolTip(this.selDamageElementType, "攻击的元素类型");
+            this.selDamageElementType.SelectedIndexChanged += new System.EventHandler(this.selDamageAtkType_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 96);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 12);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Additional Scaling: ";
+            // 
+            // txtDamageAdditionalScaling
+            // 
+            this.txtDamageAdditionalScaling.Location = new System.Drawing.Point(137, 93);
+            this.txtDamageAdditionalScaling.Name = "txtDamageAdditionalScaling";
+            this.txtDamageAdditionalScaling.Size = new System.Drawing.Size(134, 21);
+            this.txtDamageAdditionalScaling.TabIndex = 2;
+            this.txtDamageAdditionalScaling.Text = "0%";
+            this.toolTip1.SetToolTip(this.txtDamageAdditionalScaling, "某些角色具有的独立倍率");
+            this.txtDamageAdditionalScaling.TextChanged += new System.EventHandler(this.txtDamageAdditionalScaling_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Attack Scaling: ";
+            // 
+            // txtDamageAtkScaling
+            // 
+            this.txtDamageAtkScaling.Location = new System.Drawing.Point(137, 66);
+            this.txtDamageAtkScaling.Name = "txtDamageAtkScaling";
+            this.txtDamageAtkScaling.Size = new System.Drawing.Size(134, 21);
+            this.txtDamageAtkScaling.TabIndex = 0;
+            this.txtDamageAtkScaling.Text = "108%";
+            this.toolTip1.SetToolTip(this.txtDamageAtkScaling, "角色技能的伤害倍率");
+            this.txtDamageAtkScaling.TextChanged += new System.EventHandler(this.txtDamageAtkScaling_TextChanged);
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.BackColor = System.Drawing.Color.White;
+            this.groupBox10.Controls.Add(this.labDamageInfo);
+            this.groupBox10.Location = new System.Drawing.Point(289, 6);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(585, 518);
+            this.groupBox10.TabIndex = 3;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Damage";
+            // 
+            // labDamageInfo
+            // 
+            this.labDamageInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labDamageInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labDamageInfo.Location = new System.Drawing.Point(3, 17);
+            this.labDamageInfo.Name = "labDamageInfo";
+            this.labDamageInfo.Size = new System.Drawing.Size(579, 498);
+            this.labDamageInfo.TabIndex = 0;
+            this.labDamageInfo.Text = "Damage Info:";
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.BackColor = System.Drawing.Color.White;
+            this.groupBox11.Controls.Add(this.groupBox12);
+            this.groupBox11.Controls.Add(this.selEnemyLevel);
+            this.groupBox11.Controls.Add(this.labEnemyName);
+            this.groupBox11.Controls.Add(this.cmdEnemySelect);
+            this.groupBox11.Location = new System.Drawing.Point(6, 6);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(277, 295);
+            this.groupBox11.TabIndex = 2;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Enemy";
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox12.Controls.Add(this.labEnemyStat);
+            this.groupBox12.Location = new System.Drawing.Point(6, 73);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(265, 147);
+            this.groupBox12.TabIndex = 3;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Base Stat";
+            // 
+            // labEnemyStat
+            // 
+            this.labEnemyStat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labEnemyStat.Location = new System.Drawing.Point(6, 17);
+            this.labEnemyStat.Name = "labEnemyStat";
+            this.labEnemyStat.Size = new System.Drawing.Size(253, 127);
+            this.labEnemyStat.TabIndex = 0;
+            this.labEnemyStat.Text = "Stat";
+            // 
+            // selEnemyLevel
+            // 
+            this.selEnemyLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.selEnemyLevel.BackColor = System.Drawing.Color.White;
+            this.selEnemyLevel.Location = new System.Drawing.Point(59, 43);
+            this.selEnemyLevel.Maximum = 100;
+            this.selEnemyLevel.Name = "selEnemyLevel";
+            this.selEnemyLevel.Size = new System.Drawing.Size(212, 45);
+            this.selEnemyLevel.TabIndex = 2;
+            this.selEnemyLevel.TickFrequency = 5;
+            this.selEnemyLevel.Value = 1;
+            this.selEnemyLevel.Scroll += new System.EventHandler(this.selEnemyLevel_Scroll);
+            // 
+            // labEnemyName
+            // 
+            this.labEnemyName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labEnemyName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labEnemyName.Location = new System.Drawing.Point(59, 17);
+            this.labEnemyName.Name = "labEnemyName";
+            this.labEnemyName.Size = new System.Drawing.Size(212, 23);
+            this.labEnemyName.TabIndex = 1;
+            this.labEnemyName.Text = "Name: ";
+            this.labEnemyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmdEnemySelect
+            // 
+            this.cmdEnemySelect.BackColor = System.Drawing.Color.White;
+            this.cmdEnemySelect.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdEnemySelect.BackgroundImage")));
+            this.cmdEnemySelect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdEnemySelect.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmdEnemySelect.Location = new System.Drawing.Point(3, 17);
+            this.cmdEnemySelect.Name = "cmdEnemySelect";
+            this.cmdEnemySelect.Size = new System.Drawing.Size(50, 50);
+            this.cmdEnemySelect.TabIndex = 0;
+            this.cmdEnemySelect.UseVisualStyleBackColor = false;
+            this.cmdEnemySelect.Click += new System.EventHandler(this.cmdEnemySelect_Click);
             // 
             // labGithubLink
             // 
@@ -777,26 +1055,6 @@ namespace genshin_sim
             this.imUserIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imUserIcons.ImageStream")));
             this.imUserIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.imUserIcons.Images.SetKeyName(0, "add.png");
-            // 
-            // imArtifacts
-            // 
-            this.imArtifacts.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imArtifacts.ImageStream")));
-            this.imArtifacts.TransparentColor = System.Drawing.Color.Transparent;
-            this.imArtifacts.Images.SetKeyName(0, "Icon_Flower_of_Life.png");
-            this.imArtifacts.Images.SetKeyName(1, "Icon_Plume_of_Death.png");
-            this.imArtifacts.Images.SetKeyName(2, "Icon_Sands_of_Eon.png");
-            this.imArtifacts.Images.SetKeyName(3, "Icon_Goblet_of_Eonothem.png");
-            this.imArtifacts.Images.SetKeyName(4, "Icon_Circlet_of_Logos.png");
-            this.imArtifacts.Images.SetKeyName(5, "Item_Gladiator%27s_Nostalgia.png");
-            this.imArtifacts.Images.SetKeyName(6, "Item_Gladiator%27s_Destiny.png");
-            this.imArtifacts.Images.SetKeyName(7, "Item_Gladiator%27s_Longing.png");
-            this.imArtifacts.Images.SetKeyName(8, "Item_Gladiator%27s_Intoxication.png");
-            this.imArtifacts.Images.SetKeyName(9, "Item_Gladiator%27s_Triumphus.png");
-            this.imArtifacts.Images.SetKeyName(10, "Item_Snowswept_Memory.png");
-            this.imArtifacts.Images.SetKeyName(11, "Item_Icebreaker%27s_Resolve.png");
-            this.imArtifacts.Images.SetKeyName(12, "Item_Frozen_Homeland%27s_Demise.png");
-            this.imArtifacts.Images.SetKeyName(13, "Item_Frost-Weaved_Dignity.png");
-            this.imArtifacts.Images.SetKeyName(14, "Item_Broken_Rime%27s_Echo.png");
             // 
             // Form1
             // 
@@ -839,6 +1097,14 @@ namespace genshin_sim
             this.groupBox8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.selCharacterLevel)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.selEnemyLevel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -906,6 +1172,26 @@ namespace genshin_sim
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button cmdWeaponRefine;
         private System.Windows.Forms.ImageList imArtifacts;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Label labEnemyStat;
+        private System.Windows.Forms.TrackBar selEnemyLevel;
+        private System.Windows.Forms.Label labEnemyName;
+        private System.Windows.Forms.Button cmdEnemySelect;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Label labDamageInfo;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtDamageAtkScaling;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtDamageAdditionalScaling;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox selDamageElementType;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtDamageDefenseDecreased;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox selDamageAttackType;
     }
 }
 

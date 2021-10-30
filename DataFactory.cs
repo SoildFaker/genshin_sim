@@ -145,6 +145,18 @@ namespace genshin_sim
             AffixAttr.pHealing,
         };
 
+        public static AffixAttr[] damage_boost_attr = new AffixAttr[]
+        {
+            AffixAttr.pPhysical,
+            AffixAttr.pPyro,
+            AffixAttr.pHydro,
+            AffixAttr.pCryo,
+            AffixAttr.pDendro,
+            AffixAttr.pElectro,
+            AffixAttr.pAnemo,
+            AffixAttr.pGeo,
+        };
+
         public static Affix[] flower_main_affix_arr = new Affix[]
         {
             new Affix(AffixAttr.HP, ArtifactFactory.value_array_type_hp, 0),
@@ -283,7 +295,7 @@ namespace genshin_sim
             new List<SpecialCondEffect>()
             {
                 new SpecialCondEffect(SpecialCond.Always, 2, AbilityType.Simple, new Affix(AffixAttr.pATK, 0.18)),
-                new SpecialCondEffect(SpecialCond.UsingSword|SpecialCond.UsingClaymore|SpecialCond.UsingPolearm, 4, AbilityType.Simple, new Affix(AffixAttr.pATK, 0.35))
+                new SpecialCondEffect(SpecialCond.UsingSword|SpecialCond.UsingClaymore|SpecialCond.UsingPolearm, 4, AbilityType.Simple, new Affix(AffixAttr.pNormalDMG, 0.35))
             },
             "两件套: 攻击力提高{0}。\r\n" + 
             "四件套: 装备该圣遗物套装的角色为单手剑、双手剑、长柄武器角色时，角色普通攻击造成的伤害提高{1}。"
@@ -1003,7 +1015,8 @@ namespace genshin_sim
                 new List<SpecialCondAbility>()
                 {
                     new SpecialCondAbility(SpecialCond.OnNormalAttack|SpecialCond.OnChargedAttack, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.12, 0.15, 0.18, 0.21, 0.24}, 0)),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pATK, new double[] { 0.08, 0.10, 0.12, 0.14, 0.16}, 0), WaifuStat.TimeAfter),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pNormalDMG, new double[] { 0.08, 0.10, 0.12, 0.14, 0.16}, 0), WaifuStat.TimeAfter),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pChargedDMG, new double[] { 0.08, 0.10, 0.12, 0.14, 0.16}, 0), WaifuStat.TimeAfter),
                 },
                 "普通攻击和重击造成的伤害提升{0}。箭矢发射后每经过0.1秒，伤害还会提升{1}。至多提升5次。",
                 0
@@ -1016,6 +1029,15 @@ namespace genshin_sim
         {
             AmosBow,
             PrimordialJadeCutter,
+        };
+    }
+
+    public static class EnemyFactory
+    {
+        public static Enemy Hilichurl = new Enemy("丘丘人", 1, 500, new double[] { 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 });
+        public static Enemy[] Enemies = new Enemy[]
+        {
+            Hilichurl,
         };
     }
 }

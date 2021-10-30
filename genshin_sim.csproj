@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataFactory.cs" />
+    <Compile Include="Enemy.cs" />
     <Compile Include="fmArtifactEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +65,12 @@
     </Compile>
     <Compile Include="fmCharacterList.Designer.cs">
       <DependentUpon>fmCharacterList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmEnemyList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmEnemyList.Designer.cs">
+      <DependentUpon>fmEnemyList.cs</DependentUpon>
     </Compile>
     <Compile Include="fmSelectArtifactType.cs">
       <SubType>Form</SubType>
@@ -103,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fmCharacterList.resx">
       <DependentUpon>fmCharacterList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmEnemyList.resx">
+      <DependentUpon>fmEnemyList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmSelectArtifactType.resx">
       <DependentUpon>fmSelectArtifactType.cs</DependentUpon>
