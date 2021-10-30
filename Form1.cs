@@ -653,6 +653,10 @@ namespace genshin_sim
 
         private void refresh_simulation_cond()
         {
+            if (waifu_now == null)
+            {
+                return;
+            }
             switch (waifu_now.WeaponType)
             {
                 case WeaponType.Sword:
