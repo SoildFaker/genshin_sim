@@ -6,6 +6,20 @@ using System.Threading.Tasks;
 
 namespace genshin_sim
 {
+    public enum ElementalReactions
+    {
+        None,
+        VaporizePyro,
+        VaporizeHydro,
+        MeltPyro,
+        MeltCryo,
+        Superconduct,
+        Swirl,
+        ElectorCharged,
+        Shattered,
+        Overloaded,
+    }
+
     public class Enemy
     {
         public string Name { get; private set; }

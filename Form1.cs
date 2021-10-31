@@ -530,11 +530,42 @@ namespace genshin_sim
                 $"暴击加成: {val_critical_bonus.ToString("0.0%")}\r\n" +
                 $"防御修正: {val_defense_fix.ToString("0.0%")}\r\n" +
                 $"抗性修正: {val_resistance_fix.ToString("0.0%")}\r\n" +
-                $"增幅反应: \r\n" +
+                $"增幅反应: ({EnemyFactory.reaction2str(get_amplifying_reaction())})\r\n" +
                 $"\r\n" +
                 $"最终伤害: {damage}\r\n" +
                 $"暴击伤害: {damage_cirtical}\r\n" +
-                $"剧变反应: {cal_transformative_reaction()}";
+                $"剧变反应: ({EnemyFactory.reaction2str(get_transformative_reaction())}) {cal_transformative_reaction()}";
+        }
+
+        private ElementalType get_damage_elemental_type()
+        {
+            return WaifuFactory.ElementalTypes[selDamageElementType.SelectedIndex];
+        }
+
+        private ElementalReactions get_transformative_reaction()
+        {
+            ElementalType e0 = get_damage_elemental_type();
+            if (e0 == ElementalType.None)
+            {
+                return ElementalReactions.None;
+            }
+            ElementalType e1 = enemy_now.Element;
+            if (e0 == ElementalType.Electro)
+            {
+                switch (e1)
+                {
+                    case ElementalType.Pyro: return ElementalReactions.Overloaded;
+                    case ElementalType.Hydro: return ElementalReactions.ElectorCharged;
+                    case ElementalType.Cryo: return ElementalReactions.Superconduct;
+                    case ElementalType.Anemo: return ElementalReactions.Swirl;
+                }
+            }
+            return ElementalReactions.None;
+        }
+
+        private ElementalReactions get_amplifying_reaction()
+        {
+            return ElementalReactions.None;
         }
 
         private double cal_transformative_reaction()
@@ -543,7 +574,29 @@ namespace genshin_sim
             double level_factor = StatData.transformative_reactions_level_factor[(int)lv_waifu - 1];
             double resistance_factor = cal_resistance_factor();
             // superconduct : swirl : elector-charged : shattered : overloaded = 1 : 1.2 : 2.4 : 3 : 4
-            double amplifer = 2.4;
+            double amplifer = 1;
+            ElementalReactions reaction = get_transformative_reaction();
+            switch (reaction)
+            {
+                case ElementalReactions.Superconduct:
+                    amplifer = 1;
+                    break;
+                case ElementalReactions.Swirl:
+                    amplifer = 1.2;
+                    break;
+                case ElementalReactions.ElectorCharged:
+                    amplifer = 2.4;
+                    break;
+                case ElementalReactions.Shattered:
+                    amplifer = 3;
+                    break;
+                case ElementalReactions.Overloaded:
+                    amplifer = 4;
+                    break;
+                default:
+                    amplifer = 0;
+                    break;
+            }
             double elm_factor = (5.8 * 2.78 * waifu_now.ELM) / (2000 + waifu_now.ELM);
             return (level_factor * resistance_factor * amplifer * (1 + elm_factor));
         }
@@ -711,6 +764,12 @@ namespace genshin_sim
                     sim_attr = AffixAttr.pElementBurstDMG;
                     break;
             }
+        }
+
+        private void selDamageEnemyElement_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            enemy_now.SetElement(WaifuFactory.ElementalTypes[selDamageEnemyElement.SelectedIndex]);
+            refresh_damage_info();
         }
     }
 }

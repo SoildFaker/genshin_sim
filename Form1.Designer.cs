@@ -1087,6 +1087,7 @@ namespace genshin_sim
             this.selDamageEnemyElement.TabIndex = 6;
             this.selDamageEnemyElement.Text = "无";
             this.toolTip1.SetToolTip(this.selDamageEnemyElement, "敌人携带的元素类型");
+            this.selDamageEnemyElement.SelectedIndexChanged += new System.EventHandler(this.selDamageEnemyElement_SelectedIndexChanged);
             // 
             // Form1
             // 

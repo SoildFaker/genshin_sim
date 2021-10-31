@@ -976,6 +976,18 @@ namespace genshin_sim
             Yoimiya, Zhongli
         };
 
+        public static ElementalType[] ElementalTypes = new ElementalType[] 
+        {
+            ElementalType.None,
+            ElementalType.Pyro,
+            ElementalType.Hydro,
+            ElementalType.Cryo,
+            ElementalType.Dendro,
+            ElementalType.Electro,
+            ElementalType.Anemo,
+            ElementalType.Geo,
+        };
+
         public static string[] element_names = new string[] {"无", "火", "水", "冰", "草", "雷", "风", "岩" };
 
         public static string element2str(ElementalType type)
@@ -1039,5 +1051,11 @@ namespace genshin_sim
         {
             Hilichurl,
         };
+
+        public static string[] reaction_names = new string[] {"无", "火水蒸发", "水火蒸发", "火冰融化", "冰火融化", "超导", "扩散", "感电", "碎冰", "超载"};
+        public static string reaction2str(ElementalReactions reaction)
+        {
+            return reaction_names[((int)reaction)];
+        }
     }
 }
