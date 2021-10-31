@@ -12,6 +12,7 @@ namespace genshin_sim
         public int Level { get; private set; }
         public double DEF { get; private set; }
         public double[] Resistances { get; private set; }
+        public ElementalType Element { get; private set; }
         public string Description
         { 
             get
@@ -36,11 +37,17 @@ namespace genshin_sim
             this.Level = lv;
             this.DEF = def;
             this.Resistances = res;
+            this.Element = ElementalType.None;
         }
 
         public void SetLevel(int lv)
         {
             this.Level = lv < 1 ? 1 : (lv > 100 ? 100 : lv);
+        }
+
+        public void SetElement(ElementalType type)
+        {
+            this.Element = type;
         }
     }
 }

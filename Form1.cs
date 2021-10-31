@@ -512,27 +512,40 @@ namespace genshin_sim
                 return;
             }
             double damage, damage_cirtical = 0;
-            double val_atk, val_atk_scaling0, val_atk_scaling1, val_damage_bonus, val_critical_bonus, val_defense_fix, val_restance_fix;
+            double val_atk, val_atk_scaling0, val_atk_scaling1, val_damage_bonus, val_critical_bonus, val_defense_fix, val_resistance_fix;
             val_atk = waifu_now.ATK;
             val_atk_scaling0 = cvt_string2double(txtDamageAtkScaling.Text);
             val_atk_scaling1 = cvt_string2double(txtDamageAdditionalScaling.Text);
             val_damage_bonus = cal_damage_bonus_factor();
             val_critical_bonus = waifu_now.CRD;
             val_defense_fix = cal_defense_decreased_factor();
-            val_restance_fix = cal_resistance_factor();
-            damage= val_atk * val_atk_scaling0 * (1 + val_atk_scaling1) * (1 + val_damage_bonus) * val_defense_fix * val_restance_fix;
-            damage_cirtical = val_atk * val_atk_scaling0 * (1 + val_atk_scaling1) * (1 + val_damage_bonus) * (1 + val_critical_bonus) * val_defense_fix * val_restance_fix;
+            val_resistance_fix = cal_resistance_factor();
+            damage= val_atk * val_atk_scaling0 * (1 + val_atk_scaling1) * (1 + val_damage_bonus) * val_defense_fix * val_resistance_fix;
+            damage_cirtical = val_atk * val_atk_scaling0 * (1 + val_atk_scaling1) * (1 + val_damage_bonus) * (1 + val_critical_bonus) * val_defense_fix * val_resistance_fix;
             labDamageInfo.Text = $"伤害组成: \r\n" +
-                $"面板攻击: {val_atk}\r\n" + 
-                $"攻击倍率: {val_atk_scaling0.ToString("0.0%")}\r\n" + 
-                $"额外倍率: {val_atk_scaling1.ToString("0.0%")}\r\n" + 
-                $"伤害增益: {val_damage_bonus.ToString("0.0%")}\r\n" + 
-                $"暴击加成: {val_critical_bonus.ToString("0.0%")}\r\n" + 
-                $"防御修正: {val_defense_fix.ToString("0.0%")}\r\n" + 
-                $"抗性修正: {val_restance_fix.ToString("0.0%")}\r\n" + 
+                $"面板攻击: {val_atk}\r\n" +
+                $"攻击倍率: {val_atk_scaling0.ToString("0.0%")}\r\n" +
+                $"额外倍率: {val_atk_scaling1.ToString("0.0%")}\r\n" +
+                $"伤害增益: {val_damage_bonus.ToString("0.0%")}\r\n" +
+                $"暴击加成: {val_critical_bonus.ToString("0.0%")}\r\n" +
+                $"防御修正: {val_defense_fix.ToString("0.0%")}\r\n" +
+                $"抗性修正: {val_resistance_fix.ToString("0.0%")}\r\n" +
+                $"增幅反应: \r\n" +
                 $"\r\n" +
                 $"最终伤害: {damage}\r\n" +
-                $"暴击伤害: {damage_cirtical}";
+                $"暴击伤害: {damage_cirtical}\r\n" +
+                $"剧变反应: {cal_transformative_reaction()}";
+        }
+
+        private double cal_transformative_reaction()
+        {
+            double lv_waifu = waifu_now.GetRealLevel();
+            double level_factor = StatData.transformative_reactions_level_factor[(int)lv_waifu - 1];
+            double resistance_factor = cal_resistance_factor();
+            // superconduct : swirl : elector-charged : shattered : overloaded = 1 : 1.2 : 2.4 : 3 : 4
+            double amplifer = 2.4;
+            double elm_factor = (5.8 * 2.78 * waifu_now.ELM) / (2000 + waifu_now.ELM);
+            return (level_factor * resistance_factor * amplifer * (1 + elm_factor));
         }
 
         private double cal_damage_bonus_factor()

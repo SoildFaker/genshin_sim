@@ -352,7 +352,7 @@ namespace genshin_sim
     {
         public static Waifu Albedo = new Waifu(
             "阿贝多",
-            ElementType.Geo,
+            ElementalType.Geo,
             WeaponType.Sword,
             new List<Affix>()
             {
@@ -368,7 +368,7 @@ namespace genshin_sim
 
         public static Waifu Amber = new Waifu(
             "安柏",
-            ElementType.Pyro,
+            ElementalType.Pyro,
             WeaponType.Bow,
             new List<Affix>()
             {
@@ -384,7 +384,7 @@ namespace genshin_sim
 
         public static Waifu Keqing = new Waifu(
             "刻晴",
-            ElementType.Electro,
+            ElementalType.Electro,
             WeaponType.Sword,
             new List<Affix>()
             {
@@ -399,7 +399,7 @@ namespace genshin_sim
 
         public static Waifu Ayaka = new Waifu(
             "神里绫华",
-            ElementType.Cryo,
+            ElementalType.Cryo,
             WeaponType.Sword,
             new List<Affix>()
             {
@@ -414,7 +414,7 @@ namespace genshin_sim
 
         public static Waifu Aloy = new Waifu(
             "埃洛伊",
-            ElementType.Cryo,
+            ElementalType.Cryo,
             WeaponType.Bow,
             new List<Affix>()
             {
@@ -430,7 +430,7 @@ namespace genshin_sim
 
         public static Waifu Barbara = new Waifu(
             "芭芭拉",
-            ElementType.Hydro,
+            ElementalType.Hydro,
             WeaponType.Catalyst,
             new List<Affix>()
             {
@@ -446,7 +446,7 @@ namespace genshin_sim
 
         public static Waifu Beidou = new Waifu(
             "北斗",
-            ElementType.Electro,
+            ElementalType.Electro,
             WeaponType.Claymore,
             new List<Affix>()
             {
@@ -462,7 +462,7 @@ namespace genshin_sim
 
         public static Waifu Bennett = new Waifu(
             "班尼特",
-            ElementType.Pyro,
+            ElementalType.Pyro,
             WeaponType.Sword,
             new List<Affix>()
             {
@@ -478,7 +478,7 @@ namespace genshin_sim
 
         public static Waifu Chongyun = new Waifu(
             "重云",
-            ElementType.Cryo,
+            ElementalType.Cryo,
             WeaponType.Claymore,
             new List<Affix>()
             {
@@ -494,7 +494,7 @@ namespace genshin_sim
 
         public static Waifu Diluc = new Waifu(
             "迪卢克",
-            ElementType.Pyro,
+            ElementalType.Pyro,
             WeaponType.Claymore,
             new List<Affix>()
             {
@@ -509,7 +509,7 @@ namespace genshin_sim
 
         public static Waifu Diona = new Waifu(
             "迪奥娜",
-            ElementType.Cryo,
+            ElementalType.Cryo,
             WeaponType.Bow,
             new List<Affix>()
             {
@@ -525,7 +525,7 @@ namespace genshin_sim
 
         public static Waifu Eula = new Waifu(
             "尤拉",
-            ElementType.Cryo,
+            ElementalType.Cryo,
             WeaponType.Claymore,
             new List<Affix>()
             {
@@ -540,7 +540,7 @@ namespace genshin_sim
 
         public static Waifu Fischl = new Waifu(
             "菲谢尔",
-            ElementType.Electro,
+            ElementalType.Electro,
             WeaponType.Bow,
             new List<Affix>()
             {
@@ -556,7 +556,7 @@ namespace genshin_sim
 
         public static Waifu Ganyu = new Waifu(
             "甘雨",
-            ElementType.Cryo,
+            ElementalType.Cryo,
             WeaponType.Bow,
             new List<Affix>()
             {
@@ -571,7 +571,7 @@ namespace genshin_sim
 
         public static Waifu Hutao = new Waifu(
             "胡桃",
-            ElementType.Pyro,
+            ElementalType.Pyro,
             WeaponType.Polearm,
             new List<Affix>()
             {
@@ -586,7 +586,7 @@ namespace genshin_sim
 
         public static Waifu Jean = new Waifu(
             "琴",
-            ElementType.Anemo,
+            ElementalType.Anemo,
             WeaponType.Sword,
             new List<Affix>()
             {
@@ -602,7 +602,7 @@ namespace genshin_sim
 
         public static Waifu Kaedehara = new Waifu(
             "枫原万叶",
-            ElementType.Anemo,
+            ElementalType.Anemo,
             WeaponType.Sword,
             new List<Affix>()
             {
@@ -618,7 +618,7 @@ namespace genshin_sim
 
         public static Waifu Kaeya = new Waifu(
             "凯亚",
-            ElementType.Cryo,
+            ElementalType.Cryo,
             WeaponType.Sword,
             new List<Affix>()
             {
@@ -634,7 +634,7 @@ namespace genshin_sim
 
         public static Waifu Klee = new Waifu(
             "可莉",
-            ElementType.Pyro,
+            ElementalType.Pyro,
             WeaponType.Catalyst,
             new List<Affix>()
             {
@@ -650,7 +650,7 @@ namespace genshin_sim
 
         public static Waifu Lisa = new Waifu(
             "丽莎",
-            ElementType.Electro,
+            ElementalType.Electro,
             WeaponType.Catalyst,
             new List<Affix>()
             {
@@ -666,7 +666,7 @@ namespace genshin_sim
 
         public static Waifu Mona = new Waifu(
             "莫娜",
-            ElementType.Hydro,
+            ElementalType.Hydro,
             WeaponType.Catalyst,
             new List<Affix>()
             {
@@ -682,7 +682,7 @@ namespace genshin_sim
 
         public static Waifu Ningguang = new Waifu(
             "凝光",
-            ElementType.Geo,
+            ElementalType.Geo,
             WeaponType.Catalyst,
             new List<Affix>()
             {
@@ -698,7 +698,7 @@ namespace genshin_sim
 
         public static Waifu Noelle = new Waifu(
             "诺艾尔",
-            ElementType.Geo,
+            ElementalType.Geo,
             WeaponType.Claymore,
             new List<Affix>()
             {
@@ -714,7 +714,7 @@ namespace genshin_sim
 
         public static Waifu Qiqi = new Waifu(
             "七七",
-            ElementType.Cryo,
+            ElementalType.Cryo,
             WeaponType.Sword,
             new List<Affix>()
             {
@@ -730,7 +730,7 @@ namespace genshin_sim
 
         public static Waifu Raiden = new Waifu(
             "雷电将军",
-            ElementType.Electro,
+            ElementalType.Electro,
             WeaponType.Polearm,
             new List<Affix>()
             {
@@ -746,7 +746,7 @@ namespace genshin_sim
 
         public static Waifu Razor = new Waifu(
             "雷泽",
-            ElementType.Electro,
+            ElementalType.Electro,
             WeaponType.Claymore,
             new List<Affix>()
             {
@@ -762,7 +762,7 @@ namespace genshin_sim
 
         public static Waifu Rosaraia = new Waifu(
             "罗萨莉亚",
-            ElementType.Cryo,
+            ElementalType.Cryo,
             WeaponType.Polearm,
             new List<Affix>()
             {
@@ -778,7 +778,7 @@ namespace genshin_sim
 
         public static Waifu Kokomi = new Waifu(
             "珊瑚宫心海",
-            ElementType.Hydro,
+            ElementalType.Hydro,
             WeaponType.Catalyst,
             new List<Affix>()
             {
@@ -794,7 +794,7 @@ namespace genshin_sim
 
         public static Waifu Sayu = new Waifu(
             "早柚",
-            ElementType.Anemo,
+            ElementalType.Anemo,
             WeaponType.Claymore,
             new List<Affix>()
             {
@@ -810,7 +810,7 @@ namespace genshin_sim
 
         public static Waifu Sucrose = new Waifu(
             "砂糖",
-            ElementType.Anemo,
+            ElementalType.Anemo,
             WeaponType.Catalyst,
             new List<Affix>()
             {
@@ -826,7 +826,7 @@ namespace genshin_sim
 
         public static Waifu Tartaglia = new Waifu(
             "公子",
-            ElementType.Hydro,
+            ElementalType.Hydro,
             WeaponType.Bow,
             new List<Affix>()
             {
@@ -842,7 +842,7 @@ namespace genshin_sim
 
         public static Waifu Venti = new Waifu(
             "温蒂",
-            ElementType.Anemo,
+            ElementalType.Anemo,
             WeaponType.Bow,
             new List<Affix>()
             {
@@ -858,7 +858,7 @@ namespace genshin_sim
 
         public static Waifu Xiangling = new Waifu(
             "香菱",
-            ElementType.Pyro,
+            ElementalType.Pyro,
             WeaponType.Polearm,
             new List<Affix>()
             {
@@ -874,7 +874,7 @@ namespace genshin_sim
 
         public static Waifu Xiao = new Waifu(
             "魈",
-            ElementType.Anemo,
+            ElementalType.Anemo,
             WeaponType.Polearm,
             new List<Affix>()
             {
@@ -889,7 +889,7 @@ namespace genshin_sim
 
         public static Waifu Xingqiu = new Waifu(
             "行秋",
-            ElementType.Hydro,
+            ElementalType.Hydro,
             WeaponType.Sword,
             new List<Affix>()
             {
@@ -905,7 +905,7 @@ namespace genshin_sim
         
         public static Waifu Xinyan = new Waifu(
             "辛焱",
-            ElementType.Pyro,
+            ElementalType.Pyro,
             WeaponType.Claymore,
             new List<Affix>()
             {
@@ -921,7 +921,7 @@ namespace genshin_sim
 
         public static Waifu Yanfei = new Waifu(
             "烟绯",
-            ElementType.Pyro,
+            ElementalType.Pyro,
             WeaponType.Catalyst,
             new List<Affix>()
             {
@@ -937,7 +937,7 @@ namespace genshin_sim
 
         public static Waifu Yoimiya = new Waifu(
             "宵宫",
-            ElementType.Pyro,
+            ElementalType.Pyro,
             WeaponType.Bow,
             new List<Affix>()
             {
@@ -952,7 +952,7 @@ namespace genshin_sim
 
         public static Waifu Zhongli = new Waifu(
             "钟离",
-            ElementType.Geo,
+            ElementalType.Geo,
             WeaponType.Polearm,
             new List<Affix>()
             {
@@ -976,9 +976,9 @@ namespace genshin_sim
             Yoimiya, Zhongli
         };
 
-        public static string[] element_names = new string[] { "火", "水", "冰", "草", "雷", "风", "岩" };
+        public static string[] element_names = new string[] {"无", "火", "水", "冰", "草", "雷", "风", "岩" };
 
-        public static string element2str(ElementType type)
+        public static string element2str(ElementalType type)
         {
             return element_names[((int)type)];
         }

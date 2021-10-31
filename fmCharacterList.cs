@@ -62,21 +62,21 @@ namespace genshin_sim
             this.Close();
         }
 
-        private ElementType cvt_str2element(string raw)
+        private ElementalType cvt_str2element(string raw)
         {
             switch (raw)
             {
                 case "Hydro":
-                    return ElementType.Hydro;
+                    return ElementalType.Hydro;
                 case "Cryo":
-                    return ElementType.Cryo;
+                    return ElementalType.Cryo;
                 case "Electro":
-                    return ElementType.Electro;
+                    return ElementalType.Electro;
                 case "Anemo":
-                    return ElementType.Anemo;
+                    return ElementalType.Anemo;
                 case "Geo":
                 default:
-                    return ElementType.Geo;
+                    return ElementalType.Geo;
             }
         }
 

@@ -112,6 +112,8 @@ namespace genshin_sim
             this.labGithubLink = new System.Windows.Forms.LinkLabel();
             this.imUserIcons = new System.Windows.Forms.ImageList(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label6 = new System.Windows.Forms.Label();
+            this.selDamageEnemyElement = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -822,9 +824,9 @@ namespace genshin_sim
             this.groupBox13.Controls.Add(this.txtDamageAdditionalScaling);
             this.groupBox13.Controls.Add(this.label1);
             this.groupBox13.Controls.Add(this.txtDamageAtkScaling);
-            this.groupBox13.Location = new System.Drawing.Point(6, 307);
+            this.groupBox13.Location = new System.Drawing.Point(6, 258);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(277, 217);
+            this.groupBox13.Size = new System.Drawing.Size(277, 266);
             this.groupBox13.TabIndex = 4;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Append";
@@ -965,13 +967,15 @@ namespace genshin_sim
             // groupBox11
             // 
             this.groupBox11.BackColor = System.Drawing.Color.White;
+            this.groupBox11.Controls.Add(this.label6);
+            this.groupBox11.Controls.Add(this.selDamageEnemyElement);
             this.groupBox11.Controls.Add(this.groupBox12);
             this.groupBox11.Controls.Add(this.selEnemyLevel);
             this.groupBox11.Controls.Add(this.labEnemyName);
             this.groupBox11.Controls.Add(this.cmdEnemySelect);
             this.groupBox11.Location = new System.Drawing.Point(6, 6);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(277, 295);
+            this.groupBox11.Size = new System.Drawing.Size(277, 254);
             this.groupBox11.TabIndex = 2;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Enemy";
@@ -1055,6 +1059,34 @@ namespace genshin_sim
             this.imUserIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imUserIcons.ImageStream")));
             this.imUserIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.imUserIcons.Images.SetKeyName(0, "add.png");
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 229);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 12);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Element Applied: ";
+            // 
+            // selDamageEnemyElement
+            // 
+            this.selDamageEnemyElement.FormattingEnabled = true;
+            this.selDamageEnemyElement.Items.AddRange(new object[] {
+            "无",
+            "火",
+            "水",
+            "冰",
+            "草",
+            "雷",
+            "风",
+            "岩"});
+            this.selDamageEnemyElement.Location = new System.Drawing.Point(137, 226);
+            this.selDamageEnemyElement.Name = "selDamageEnemyElement";
+            this.selDamageEnemyElement.Size = new System.Drawing.Size(134, 20);
+            this.selDamageEnemyElement.TabIndex = 6;
+            this.selDamageEnemyElement.Text = "无";
+            this.toolTip1.SetToolTip(this.selDamageEnemyElement, "敌人携带的元素类型");
             // 
             // Form1
             // 
@@ -1192,6 +1224,8 @@ namespace genshin_sim
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox selDamageAttackType;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox selDamageEnemyElement;
     }
 }
 
