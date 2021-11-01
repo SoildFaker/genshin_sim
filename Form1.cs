@@ -545,11 +545,8 @@ namespace genshin_sim
         private ElementalReactions get_transformative_reaction()
         {
             ElementalType e0 = get_damage_elemental_type();
-            if (e0 == ElementalType.None)
-            {
-                return ElementalReactions.None;
-            }
             ElementalType e1 = enemy_now.Element;
+
             if (e0 == ElementalType.Electro)
             {
                 switch (e1)
@@ -558,6 +555,43 @@ namespace genshin_sim
                     case ElementalType.Hydro: return ElementalReactions.ElectorCharged;
                     case ElementalType.Cryo: return ElementalReactions.Superconduct;
                     case ElementalType.Anemo: return ElementalReactions.Swirl;
+                }
+            }
+            if (e0 == ElementalType.Pyro)
+            {
+                switch (e1)
+                {
+                    case ElementalType.Electro: return ElementalReactions.Overloaded;
+                    case ElementalType.Anemo: return ElementalReactions.Swirl;
+                }
+            }
+            if (e0 == ElementalType.Hydro)
+            {
+                switch (e1)
+                {
+                    case ElementalType.Electro: return ElementalReactions.ElectorCharged;
+                    case ElementalType.Cryo: return ElementalReactions.Shattered;
+                    case ElementalType.Anemo: return ElementalReactions.Swirl;
+                }
+            }
+            if (e0 == ElementalType.Cryo)
+            {
+                switch (e1)
+                {
+                    case ElementalType.Electro: return ElementalReactions.Superconduct;
+                    case ElementalType.Hydro: return ElementalReactions.Shattered;
+                    case ElementalType.Anemo: return ElementalReactions.Swirl;
+                }
+            }
+            if (e0 == ElementalType.Anemo)
+            {
+                switch (e1)
+                {
+                    case ElementalType.Electro:
+                    case ElementalType.Hydro:
+                    case ElementalType.Cryo:
+                    case ElementalType.Pyro:
+                        return ElementalReactions.Swirl;
                 }
             }
             return ElementalReactions.None;
