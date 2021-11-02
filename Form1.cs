@@ -513,6 +513,7 @@ namespace genshin_sim
             }
             double damage, damage_cirtical = 0;
             double val_atk, val_atk_scaling0, val_atk_scaling1, val_damage_bonus, val_critical_bonus, val_defense_fix, val_resistance_fix;
+            double val_amplifying_reaction, val_transformative_reaction;
             val_atk = waifu_now.ATK;
             val_atk_scaling0 = cvt_string2double(txtDamageAtkScaling.Text);
             val_atk_scaling1 = cvt_string2double(txtDamageAdditionalScaling.Text);
@@ -520,8 +521,10 @@ namespace genshin_sim
             val_critical_bonus = waifu_now.CRD;
             val_defense_fix = cal_defense_decreased_factor();
             val_resistance_fix = cal_resistance_factor();
-            damage= val_atk * val_atk_scaling0 * (1 + val_atk_scaling1) * (1 + val_damage_bonus) * val_defense_fix * val_resistance_fix;
-            damage_cirtical = val_atk * val_atk_scaling0 * (1 + val_atk_scaling1) * (1 + val_damage_bonus) * (1 + val_critical_bonus) * val_defense_fix * val_resistance_fix;
+            val_amplifying_reaction = cal_amplifying_reaction();
+            val_transformative_reaction = cal_transformative_reaction();
+            damage= val_atk * val_atk_scaling0 * (1 + val_atk_scaling1) * (1 + val_damage_bonus) * val_defense_fix * val_resistance_fix * (val_amplifying_reaction);
+            damage_cirtical = damage * (1 + val_critical_bonus);
             labDamageInfo.Text = $"伤害组成: \r\n" +
                 $"面板攻击: {val_atk}\r\n" +
                 $"攻击倍率: {val_atk_scaling0.ToString("0.0%")}\r\n" +
@@ -530,11 +533,11 @@ namespace genshin_sim
                 $"暴击加成: {val_critical_bonus.ToString("0.0%")}\r\n" +
                 $"防御修正: {val_defense_fix.ToString("0.0%")}\r\n" +
                 $"抗性修正: {val_resistance_fix.ToString("0.0%")}\r\n" +
-                $"增幅反应: ({EnemyFactory.reaction2str(get_amplifying_reaction())})\r\n" +
+                $"增幅反应: ({EnemyFactory.reaction2str(get_amplifying_reaction())}) {val_amplifying_reaction.ToString("0.0%")}\r\n" +
                 $"\r\n" +
                 $"最终伤害: {damage}\r\n" +
                 $"暴击伤害: {damage_cirtical}\r\n" +
-                $"剧变反应: ({EnemyFactory.reaction2str(get_transformative_reaction())}) {cal_transformative_reaction()}";
+                $"剧变反应: ({EnemyFactory.reaction2str(get_transformative_reaction())}) {val_transformative_reaction}";
         }
 
         private ElementalType get_damage_elemental_type()
@@ -599,7 +602,49 @@ namespace genshin_sim
 
         private ElementalReactions get_amplifying_reaction()
         {
+            ElementalType e0 = get_damage_elemental_type();
+            ElementalType e1 = enemy_now.Element;
+            if (e0 == ElementalType.Pyro && e1 == ElementalType.Hydro)
+            {
+                return ElementalReactions.VaporizePyro;
+            }
+            if (e1 == ElementalType.Pyro && e0 == ElementalType.Hydro)
+            {
+                return ElementalReactions.VaporizeHydro;
+            }
+            if (e0 == ElementalType.Pyro && e1 == ElementalType.Cryo)
+            {
+                return ElementalReactions.MeltPyro;
+            }
+            if (e1 == ElementalType.Pyro && e0 == ElementalType.Cryo)
+            {
+                return ElementalReactions.MeltCryo;
+            }
             return ElementalReactions.None;
+        }
+
+        private double cal_amplifying_reaction()
+        {
+            double amplifer = 0;
+            ElementalReactions reaction = get_amplifying_reaction();
+            switch (reaction)
+            {
+                case ElementalReactions.MeltPyro:
+                    amplifer = 2.0;
+                    break;
+                case ElementalReactions.MeltCryo:
+                    amplifer = 1.5;
+                    break;
+                case ElementalReactions.VaporizePyro:
+                    amplifer = 2.0;
+                    break;
+                case ElementalReactions.VaporizeHydro:
+                    amplifer = 1.5;
+                    break;
+                default:
+                    return 1;
+            }
+            return amplifer * (1 + (2.78 * waifu_now.ELM) / (waifu_now.ELM + 1400));
         }
 
         private double cal_transformative_reaction()
