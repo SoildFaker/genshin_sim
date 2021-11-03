@@ -840,6 +840,22 @@ namespace genshin_sim
             new List<Talent>()
         );
 
+        public static Waifu Traveler = new Waifu(
+            "旅行者",
+            ElementalType.None,
+            WeaponType.Sword,
+            new List<Affix>()
+            {
+                new Affix(AffixAttr.HP, StatData.traveler_base_hp, 0),
+                new Affix(AffixAttr.ATK, StatData.traveler_base_atk, 0),
+                new Affix(AffixAttr.DEF, StatData.traveler_base_def, 0),
+                new Affix(AffixAttr.pATK, StatData.traveler_atk, 0),
+                new Affix(AffixAttr.pCRD, StatData.traveler_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, StatData.traveler_crit_rate, 0),
+            } ,
+            new List<Talent>()
+        );
+
         public static Waifu Venti = new Waifu(
             "温蒂",
             ElementalType.Anemo,
@@ -972,7 +988,7 @@ namespace genshin_sim
             Albedo, Aloy, Amber, Barbara, Beidou, Bennett, Chongyun, Diluc, Diona,
             Eula, Fischl, Ganyu, Hutao, Jean, Kaedehara, Kaeya, Ayaka, Keqing, Klee,
             Lisa, Mona, Ningguang, Noelle, Qiqi, Raiden, Razor, Rosaraia, Kokomi,
-            Sayu, Sucrose, Tartaglia, Venti, Xiangling, Xiao, Xingqiu, Xinyan, Yanfei,
+            Sayu, Sucrose, Tartaglia, Traveler, Venti, Xiangling, Xiao, Xingqiu, Xinyan, Yanfei,
             Yoimiya, Zhongli
         };
 
