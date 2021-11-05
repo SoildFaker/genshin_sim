@@ -356,12 +356,12 @@ namespace genshin_sim
             WeaponType.Sword,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.albedo_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.albedo_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.albedo_base_def, 0),
-                new Affix(AffixAttr.pGeo, StatData.albedo_geo_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.albedo_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.albedo_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.albedo_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.albedo_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.albedo_base_def, 0),
+                new Affix(AffixAttr.pGeo, WaifuData.albedo_geo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.albedo_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.albedo_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -372,12 +372,12 @@ namespace genshin_sim
             WeaponType.Bow,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.amber_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.amber_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.amber_base_def, 0),
-                new Affix(AffixAttr.pATK, StatData.amber_atk, 0),
-                new Affix(AffixAttr.pCRD, StatData.amber_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.amber_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.amber_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.amber_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.amber_base_def, 0),
+                new Affix(AffixAttr.pATK, WaifuData.amber_atk, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.amber_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.amber_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -388,11 +388,11 @@ namespace genshin_sim
             WeaponType.Sword,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.keqing_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.keqing_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.keqing_base_def, 0),
-                new Affix(AffixAttr.pCRD, StatData.keqing_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.keqing_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.keqing_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.keqing_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.keqing_base_def, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.keqing_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.keqing_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -403,11 +403,11 @@ namespace genshin_sim
             WeaponType.Sword,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.ayaka_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.ayaka_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.ayaka_base_def, 0),
-                new Affix(AffixAttr.pCRD, StatData.ayaka_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.ayaka_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.ayaka_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.ayaka_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.ayaka_base_def, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.ayaka_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.ayaka_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -418,12 +418,12 @@ namespace genshin_sim
             WeaponType.Bow,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.aloy_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.aloy_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.aloy_base_def, 0),
-                new Affix(AffixAttr.pCryo, StatData.aloy_cryo_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.aloy_cryo_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRI, StatData.albedo_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.aloy_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.aloy_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.aloy_base_def, 0),
+                new Affix(AffixAttr.pCryo, WaifuData.aloy_cryo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.aloy_cryo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.albedo_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -434,12 +434,12 @@ namespace genshin_sim
             WeaponType.Catalyst,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.barbara_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.barbara_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.barbara_base_def, 0),
-                new Affix(AffixAttr.pHP, StatData.barbara_hp, 0),
-                new Affix(AffixAttr.pCRD, StatData.barbara_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.barbara_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.barbara_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.barbara_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.barbara_base_def, 0),
+                new Affix(AffixAttr.pHP, WaifuData.barbara_hp, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.barbara_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.barbara_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -450,12 +450,12 @@ namespace genshin_sim
             WeaponType.Claymore,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.beidou_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.beidou_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.beidou_base_def, 0),
-                new Affix(AffixAttr.pElectro, StatData.beidou_electro_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.beidou_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.beidou_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.beidou_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.beidou_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.beidou_base_def, 0),
+                new Affix(AffixAttr.pElectro, WaifuData.beidou_electro_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.beidou_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.beidou_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -466,12 +466,12 @@ namespace genshin_sim
             WeaponType.Sword,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.benne_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.benne_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.benne_base_def, 0),
-                new Affix(AffixAttr.pCGR, StatData.benne_energy_recharge, 0),
-                new Affix(AffixAttr.pCRD, StatData.benne_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.benne_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.benne_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.benne_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.benne_base_def, 0),
+                new Affix(AffixAttr.pCGR, WaifuData.benne_energy_recharge, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.benne_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.benne_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -482,12 +482,12 @@ namespace genshin_sim
             WeaponType.Claymore,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.chongyun_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.chongyun_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.chongyun_base_def, 0),
-                new Affix(AffixAttr.pATK, StatData.chongyun_atk, 0),
-                new Affix(AffixAttr.pCRD, StatData.chongyun_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.chongyun_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.chongyun_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.chongyun_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.chongyun_base_def, 0),
+                new Affix(AffixAttr.pATK, WaifuData.chongyun_atk, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.chongyun_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.chongyun_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -498,11 +498,11 @@ namespace genshin_sim
             WeaponType.Claymore,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.diluc_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.diluc_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.diluc_base_def, 0),
-                new Affix(AffixAttr.pCRD, StatData.diluc_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.diluc_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.diluc_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.diluc_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.diluc_base_def, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.diluc_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.diluc_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -513,12 +513,12 @@ namespace genshin_sim
             WeaponType.Bow,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.diona_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.diona_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.diona_base_def, 0),
-                new Affix(AffixAttr.pPyro, StatData.diona_cryo_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.diona_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.diona_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.diona_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.diona_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.diona_base_def, 0),
+                new Affix(AffixAttr.pPyro, WaifuData.diona_cryo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.diona_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.diona_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -529,11 +529,11 @@ namespace genshin_sim
             WeaponType.Claymore,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.eula_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.eula_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.eula_base_def, 0),
-                new Affix(AffixAttr.pCRD, StatData.eula_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.eula_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.eula_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.eula_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.eula_base_def, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.eula_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.eula_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -544,12 +544,12 @@ namespace genshin_sim
             WeaponType.Bow,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.fisc_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.fisc_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.fisc_base_def, 0),
-                new Affix(AffixAttr.pATK, StatData.fisc_atk, 0),
-                new Affix(AffixAttr.pCRD, StatData.fisc_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.fisc_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.fisc_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.fisc_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.fisc_base_def, 0),
+                new Affix(AffixAttr.pATK, WaifuData.fisc_atk, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.fisc_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.fisc_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -560,11 +560,11 @@ namespace genshin_sim
             WeaponType.Bow,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.ganyu_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.ganyu_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.ganyu_base_def, 0),
-                new Affix(AffixAttr.pCRD, StatData.ganyu_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.ganyu_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.ganyu_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.ganyu_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.ganyu_base_def, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.ganyu_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.ganyu_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -575,11 +575,11 @@ namespace genshin_sim
             WeaponType.Polearm,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.hutao_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.hutao_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.hutao_base_def, 0),
-                new Affix(AffixAttr.pCRD, StatData.hutao_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.hutao_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.hutao_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.hutao_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.hutao_base_def, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.hutao_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.hutao_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -590,12 +590,12 @@ namespace genshin_sim
             WeaponType.Sword,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.jean_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.jean_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.jean_base_def, 0),
-                new Affix(AffixAttr.pHealing, StatData.jean_healing_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.jean_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.jean_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.jean_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.jean_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.jean_base_def, 0),
+                new Affix(AffixAttr.pHealing, WaifuData.jean_healing_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.jean_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.jean_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -606,12 +606,12 @@ namespace genshin_sim
             WeaponType.Sword,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.kazuha_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.kazuha_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.kazuha_base_def, 0),
-                new Affix(AffixAttr.ELM, StatData.kazuha_elemental_mastery, 0),
-                new Affix(AffixAttr.pCRD, StatData.kazuha_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.kazuha_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.kazuha_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.kazuha_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.kazuha_base_def, 0),
+                new Affix(AffixAttr.ELM, WaifuData.kazuha_elemental_mastery, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.kazuha_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.kazuha_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -622,12 +622,12 @@ namespace genshin_sim
             WeaponType.Sword,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.kaeya_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.kaeya_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.kaeya_base_def, 0),
-                new Affix(AffixAttr.pCGR, StatData.kaeya_energy_recharge, 0),
-                new Affix(AffixAttr.pCRD, StatData.kaeya_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.kaeya_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.kaeya_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.kaeya_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.kaeya_base_def, 0),
+                new Affix(AffixAttr.pCGR, WaifuData.kaeya_energy_recharge, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.kaeya_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.kaeya_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -638,12 +638,12 @@ namespace genshin_sim
             WeaponType.Catalyst,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.klee_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.klee_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.klee_base_def, 0),
-                new Affix(AffixAttr.pPyro, StatData.klee_pyro_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.klee_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.klee_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.klee_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.klee_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.klee_base_def, 0),
+                new Affix(AffixAttr.pPyro, WaifuData.klee_pyro_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.klee_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.klee_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -654,12 +654,12 @@ namespace genshin_sim
             WeaponType.Catalyst,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.lisa_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.lisa_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.lisa_base_def, 0),
-                new Affix(AffixAttr.ELM, StatData.lisa_elemental_mastery, 0),
-                new Affix(AffixAttr.pCRD, StatData.lisa_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.lisa_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.lisa_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.lisa_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.lisa_base_def, 0),
+                new Affix(AffixAttr.ELM, WaifuData.lisa_elemental_mastery, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.lisa_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.lisa_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -670,12 +670,12 @@ namespace genshin_sim
             WeaponType.Catalyst,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.mona_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.mona_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.mona_base_def, 0),
-                new Affix(AffixAttr.pCGR, StatData.mona_energy_recharge, 0),
-                new Affix(AffixAttr.pCRD, StatData.mona_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.mona_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.mona_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.mona_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.mona_base_def, 0),
+                new Affix(AffixAttr.pCGR, WaifuData.mona_energy_recharge, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.mona_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.mona_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -686,12 +686,12 @@ namespace genshin_sim
             WeaponType.Catalyst,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.ningguang_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.ningguang_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.ningguang_base_def, 0),
-                new Affix(AffixAttr.pGeo, StatData.ningguang_geo_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.ningguang_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.ningguang_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.ningguang_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.ningguang_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.ningguang_base_def, 0),
+                new Affix(AffixAttr.pGeo, WaifuData.ningguang_geo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.ningguang_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.ningguang_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -702,12 +702,12 @@ namespace genshin_sim
             WeaponType.Claymore,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.noelle_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.noelle_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.noelle_base_def, 0),
-                new Affix(AffixAttr.pDEF, StatData.noelle_def, 0),
-                new Affix(AffixAttr.pCRD, StatData.noelle_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.noelle_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.noelle_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.noelle_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.noelle_base_def, 0),
+                new Affix(AffixAttr.pDEF, WaifuData.noelle_def, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.noelle_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.noelle_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -718,12 +718,12 @@ namespace genshin_sim
             WeaponType.Sword,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.qiqi_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.qiqi_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.qiqi_base_def, 0),
-                new Affix(AffixAttr.pHealing, StatData.qiqi_healing_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.qiqi_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.qiqi_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.qiqi_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.qiqi_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.qiqi_base_def, 0),
+                new Affix(AffixAttr.pHealing, WaifuData.qiqi_healing_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.qiqi_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.qiqi_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -734,12 +734,12 @@ namespace genshin_sim
             WeaponType.Polearm,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.shougun_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.shougun_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.shougun_base_def, 0),
-                new Affix(AffixAttr.pCGR, StatData.shougun_energy_recharge, 0),
-                new Affix(AffixAttr.pCRD, StatData.shougun_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.shougun_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.shougun_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.shougun_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.shougun_base_def, 0),
+                new Affix(AffixAttr.pCGR, WaifuData.shougun_energy_recharge, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.shougun_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.shougun_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -750,12 +750,12 @@ namespace genshin_sim
             WeaponType.Claymore,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.razor_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.razor_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.razor_base_def, 0),
-                new Affix(AffixAttr.pPhysical, StatData.razor_physical_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.razor_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.razor_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.razor_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.razor_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.razor_base_def, 0),
+                new Affix(AffixAttr.pPhysical, WaifuData.razor_physical_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.razor_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.razor_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -766,12 +766,12 @@ namespace genshin_sim
             WeaponType.Polearm,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.rosaria_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.rosaria_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.rosaria_base_def, 0),
-                new Affix(AffixAttr.pATK, StatData.rosaria_atk, 0),
-                new Affix(AffixAttr.pCRD, StatData.rosaria_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.rosaria_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.rosaria_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.rosaria_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.rosaria_base_def, 0),
+                new Affix(AffixAttr.pATK, WaifuData.rosaria_atk, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.rosaria_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.rosaria_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -782,12 +782,12 @@ namespace genshin_sim
             WeaponType.Catalyst,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.kokomi_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.kokomi_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.kokomi_base_def, 0),
-                new Affix(AffixAttr.pHydro, StatData.kokomi_hydro_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.kokomi_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.kokomi_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.kokomi_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.kokomi_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.kokomi_base_def, 0),
+                new Affix(AffixAttr.pHydro, WaifuData.kokomi_hydro_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.kokomi_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.kokomi_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -798,12 +798,12 @@ namespace genshin_sim
             WeaponType.Claymore,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.sayu_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.sayu_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.sayu_base_def, 0),
-                new Affix(AffixAttr.ELM, StatData.sayu_elemental_mastery, 0),
-                new Affix(AffixAttr.pCRD, StatData.sayu_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.sayu_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.sayu_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.sayu_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.sayu_base_def, 0),
+                new Affix(AffixAttr.ELM, WaifuData.sayu_elemental_mastery, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.sayu_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.sayu_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -814,12 +814,12 @@ namespace genshin_sim
             WeaponType.Catalyst,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.sucrose_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.sucrose_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.sucrose_base_def, 0),
-                new Affix(AffixAttr.pAnemo, StatData.sucrose_anemo_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.sucrose_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.sucrose_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.sucrose_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.sucrose_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.sucrose_base_def, 0),
+                new Affix(AffixAttr.pAnemo, WaifuData.sucrose_anemo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.sucrose_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.sucrose_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -830,12 +830,12 @@ namespace genshin_sim
             WeaponType.Bow,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.tartaglia_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.tartaglia_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.tartaglia_base_def, 0),
-                new Affix(AffixAttr.pHydro, StatData.tartaglia_hydro_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.tartaglia_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.tartaglia_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.tartaglia_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.tartaglia_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.tartaglia_base_def, 0),
+                new Affix(AffixAttr.pHydro, WaifuData.tartaglia_hydro_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.tartaglia_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.tartaglia_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -846,12 +846,12 @@ namespace genshin_sim
             WeaponType.Sword,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.traveler_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.traveler_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.traveler_base_def, 0),
-                new Affix(AffixAttr.pATK, StatData.traveler_atk, 0),
-                new Affix(AffixAttr.pCRD, StatData.traveler_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.traveler_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.traveler_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.traveler_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.traveler_base_def, 0),
+                new Affix(AffixAttr.pATK, WaifuData.traveler_atk, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.traveler_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.traveler_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -862,12 +862,12 @@ namespace genshin_sim
             WeaponType.Bow,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.venti_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.venti_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.venti_base_def, 0),
-                new Affix(AffixAttr.pCGR, StatData.venti_energy_recharge, 0),
-                new Affix(AffixAttr.pCRD, StatData.venti_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.venti_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.venti_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.venti_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.venti_base_def, 0),
+                new Affix(AffixAttr.pCGR, WaifuData.venti_energy_recharge, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.venti_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.venti_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -878,12 +878,12 @@ namespace genshin_sim
             WeaponType.Polearm,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.xiangling_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.xiangling_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.xiangling_base_def, 0),
-                new Affix(AffixAttr.ELM, StatData.xiangling_elemental_mastery, 0),
-                new Affix(AffixAttr.pCRD, StatData.xiangling_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.xiangling_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.xiangling_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.xiangling_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.xiangling_base_def, 0),
+                new Affix(AffixAttr.ELM, WaifuData.xiangling_elemental_mastery, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.xiangling_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.xiangling_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -894,11 +894,11 @@ namespace genshin_sim
             WeaponType.Polearm,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.xiao_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.xiao_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.xiao_base_def, 0),
-                new Affix(AffixAttr.pCRD, StatData.xiao_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.xiao_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.xiao_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.xiao_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.xiao_base_def, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.xiao_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.xiao_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -909,12 +909,12 @@ namespace genshin_sim
             WeaponType.Sword,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.xingqiu_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.xingqiu_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.xingqiu_base_def, 0),
-                new Affix(AffixAttr.pATK, StatData.xingqiu_atk, 0),
-                new Affix(AffixAttr.pCRD, StatData.xingqiu_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.xingqiu_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.xingqiu_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.xingqiu_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.xingqiu_base_def, 0),
+                new Affix(AffixAttr.pATK, WaifuData.xingqiu_atk, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.xingqiu_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.xingqiu_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -925,12 +925,12 @@ namespace genshin_sim
             WeaponType.Claymore,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.xinyan_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.xinyan_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.xinyan_base_def, 0),
-                new Affix(AffixAttr.pATK, StatData.xinyan_atk, 0),
-                new Affix(AffixAttr.pCRD, StatData.xinyan_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.xinyan_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.xinyan_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.xinyan_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.xinyan_base_def, 0),
+                new Affix(AffixAttr.pATK, WaifuData.xinyan_atk, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.xinyan_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.xinyan_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -941,12 +941,12 @@ namespace genshin_sim
             WeaponType.Catalyst,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.feiyan_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.feiyan_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.feiyan_base_def, 0),
-                new Affix(AffixAttr.pPyro, StatData.feiyan_pyro_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.feiyan_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.feiyan_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.feiyan_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.feiyan_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.feiyan_base_def, 0),
+                new Affix(AffixAttr.pPyro, WaifuData.feiyan_pyro_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.feiyan_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.feiyan_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -957,11 +957,11 @@ namespace genshin_sim
             WeaponType.Bow,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.yoimiya_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.yoimiya_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.yoimiya_base_def, 0),
-                new Affix(AffixAttr.pCRD, StatData.yoimiya_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.yoimiya_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.yoimiya_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.yoimiya_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.yoimiya_base_def, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.yoimiya_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.yoimiya_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -972,12 +972,12 @@ namespace genshin_sim
             WeaponType.Polearm,
             new List<Affix>()
             {
-                new Affix(AffixAttr.HP, StatData.zhongli_base_hp, 0),
-                new Affix(AffixAttr.ATK, StatData.zhongli_base_atk, 0),
-                new Affix(AffixAttr.DEF, StatData.zhongli_base_def, 0),
-                new Affix(AffixAttr.pGeo, StatData.zhongli_geo_dmg_bonus, 0),
-                new Affix(AffixAttr.pCRD, StatData.zhongli_crit_dmg, 0),
-                new Affix(AffixAttr.pCRI, StatData.zhongli_crit_rate, 0),
+                new Affix(AffixAttr.HP, WaifuData.zhongli_base_hp, 0),
+                new Affix(AffixAttr.ATK, WaifuData.zhongli_base_atk, 0),
+                new Affix(AffixAttr.DEF, WaifuData.zhongli_base_def, 0),
+                new Affix(AffixAttr.pGeo, WaifuData.zhongli_geo_dmg_bonus, 0),
+                new Affix(AffixAttr.pCRD, WaifuData.zhongli_crit_dmg, 0),
+                new Affix(AffixAttr.pCRI, WaifuData.zhongli_crit_rate, 0),
             } ,
             new List<Talent>()
         );
@@ -1017,8 +1017,8 @@ namespace genshin_sim
         public static Weapon PrimordialJadeCutter = new Weapon(
             "磐岩结绿",
             WeaponType.Sword,
-            new Affix(AffixAttr.ATK, StatData.primordial_jade_cutter_base_atk, 1),
-            new Affix(AffixAttr.pCRI, StatData.primordial_jade_cutter_crit_rate, 1),
+            new Affix(AffixAttr.ATK, WeaponData.primordial_jade_cutter_base_atk, 1),
+            new Affix(AffixAttr.pCRI, WeaponData.primordial_jade_cutter_crit_rate, 1),
             new WeaponSpecialAbility(
                 "护国的无垢之心",
                 new List<SpecialCondAbility>()
@@ -1036,8 +1036,8 @@ namespace genshin_sim
         public static Weapon AmosBow = new Weapon(
             "阿莫斯之弓",
             WeaponType.Bow,
-            new Affix(AffixAttr.ATK, StatData.primordial_jade_cutter_base_atk, 1),
-            new Affix(AffixAttr.pCRI, StatData.primordial_jade_cutter_crit_rate, 1),
+            new Affix(AffixAttr.ATK, WeaponData.amos_bow_base_atk, 1),
+            new Affix(AffixAttr.pCRI, WeaponData.amos_bow_atk, 1),
             new WeaponSpecialAbility(
                 "矢志不忘",
                 new List<SpecialCondAbility>()

@@ -650,7 +650,7 @@ namespace genshin_sim
         private double cal_transformative_reaction()
         {
             double lv_waifu = waifu_now.GetRealLevel();
-            double level_factor = StatData.transformative_reactions_level_factor[(int)lv_waifu - 1];
+            double level_factor = SystemData.transformative_reactions_level_factor[(int)lv_waifu - 1];
             double resistance_factor = cal_resistance_factor();
             // superconduct : swirl : elector-charged : shattered : overloaded = 1 : 1.2 : 2.4 : 3 : 4
             double amplifer = 1;
