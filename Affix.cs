@@ -31,8 +31,11 @@ namespace genshin_sim
         pNormalDMG,
         pChargedDMG,
         pPlungingDMG,
+        pElementalDMG,
+        pDMG,
         pElementalSkillDMG,
         pElementBurstDMG,
+        pNoEffect,
     }
 
     public class Affix

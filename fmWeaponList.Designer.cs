@@ -92,6 +92,9 @@
             this.imWeapons.TransparentColor = System.Drawing.Color.Transparent;
             this.imWeapons.Images.SetKeyName(0, "Weapon_Primordial_Jade_Cutter.png");
             this.imWeapons.Images.SetKeyName(1, "Weapon_Amos%27_Bow.png");
+            this.imWeapons.Images.SetKeyName(2, "Weapon_Serpent_Spine.png");
+            this.imWeapons.Images.SetKeyName(3, "Weapon_Lost_Prayer_to_the_Sacred_Winds.png");
+            this.imWeapons.Images.SetKeyName(4, "Weapon_Dragon%27s_Bane.png");
             // 
             // fmWeaponList
             // 

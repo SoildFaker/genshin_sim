@@ -144,7 +144,7 @@ namespace genshin_sim
             // Weapon
             if (waifu_now.Weapon != null)
             {
-                labWeaponName.Text = $"{waifu_now.Weapon.Name} (Lv.{waifu_now.Weapon.Level} {waifu_now.Weapon.Type})";
+                labWeaponName.Text = $"{waifu_now.Weapon.Name} (Lv.{waifu_now.Weapon.Level} {WeaponFactory.type2str(waifu_now.Weapon.Type)})";
                 labWeaponStat.Text = $"{waifu_now.Weapon.BaseATK.Description}\r\n{waifu_now.Weapon.SecondaryStat.Description}";
                 labWeaponStat.Text += $"\r\n\r\n{waifu_now.Weapon.SpecialAbility.Name}:\r\n{waifu_now.Weapon.SpecialAbility.Description}";
             }
@@ -682,7 +682,8 @@ namespace genshin_sim
 
         private double cal_damage_bonus_factor()
         {
-            double bonus_always_on = waifu_now.GetStatByAttr(AffixFactory.damage_boost_attr[selDamageElementType.SelectedIndex]);
+            AffixAttr attr = AffixFactory.damage_boost_attr[selDamageElementType.SelectedIndex];
+            double bonus_always_on = waifu_now.GetStatByAttr(attr);
             double bonus_append = 0;
             foreach (var effect in waifu_now.Effects)
             {
@@ -694,7 +695,21 @@ namespace genshin_sim
                     }
                 }
             }
-            return bonus_always_on + bonus_append;
+            double bonus_weapon = 0;
+            if (waifu_now.Weapon != null)
+            {
+                foreach (var ability in waifu_now.Weapon.SpecialAbility.Abilities)
+                {
+                    if ((ability.SpecialCond & sim_cond) > 0)
+                    {
+                        if (ability.Affix.Attribute == attr || (attr != AffixAttr.pPhysical && ability.Affix.Attribute == AffixAttr.pElementalDMG) || ability.Affix.Attribute == AffixAttr.pDMG)
+                        {
+                            bonus_weapon += ability.Affix.Value;
+                        }
+                    }
+                }
+            }
+            return bonus_always_on + bonus_append + bonus_weapon;
         }
 
         private double cal_resistance_factor()
@@ -802,6 +817,7 @@ namespace genshin_sim
             {
                 return;
             }
+            sim_cond &= SpecialCond.ClearWeapon;
             switch (waifu_now.WeaponType)
             {
                 case WeaponType.Sword:
@@ -820,6 +836,7 @@ namespace genshin_sim
                     sim_cond |= SpecialCond.UsingCatalyst;
                     break;
             }
+            sim_cond &= SpecialCond.ClearAttack;
             switch (selDamageAttackType.SelectedIndex)
             {
                 case 0:
@@ -843,10 +860,39 @@ namespace genshin_sim
                     sim_attr = AffixAttr.pElementBurstDMG;
                     break;
             }
+            sim_cond &= SpecialCond.ClearElement;
+            switch (selDamageEnemyElement.SelectedIndex)
+            {
+                case 1:
+                    sim_cond |= SpecialCond.EnemyTakePyroElement;
+                    break;
+                case 2:
+                    sim_cond |= SpecialCond.EnemyTakeHydroElement;
+                    break;
+                case 3:
+                    sim_cond |= SpecialCond.EnemyTakeCryoElement;
+                    break;
+                case 4:
+                    sim_cond |= SpecialCond.EnemyTakeDendroElement;
+                    break;
+                case 5:
+                    sim_cond |= SpecialCond.EnemyTakeElectroElement;
+                    break;
+                case 6:
+                    sim_cond |= SpecialCond.EnemyTakeAnemoElement;
+                    break;
+                case 7:
+                    sim_cond |= SpecialCond.EnemyTakeGeoElement;
+                    break;
+                case 8:
+                    sim_cond |= SpecialCond.EnemyFrozen;
+                    break;
+            }
         }
 
         private void selDamageEnemyElement_SelectedIndexChanged(object sender, EventArgs e)
         {
+            refresh_simulation_cond();
             enemy_now.SetElement(WaifuFactory.ElementalTypes[selDamageEnemyElement.SelectedIndex]);
             refresh_damage_info();
         }

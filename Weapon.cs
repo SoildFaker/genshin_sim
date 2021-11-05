@@ -8,6 +8,7 @@ namespace genshin_sim
 {
     public enum WeaponType
     {
+        Unknow,
         Sword,
         Claymore,
         Polearm,
@@ -58,23 +59,32 @@ namespace genshin_sim
         }
     }
 
-    public enum SpecialCond : int
+    public enum SpecialCond : uint
     {
-        Always = (int)(1 << 0),
-        UsingSword = (int)(1 << 1),
-        UsingClaymore = (int)(1 << 2),
-        UsingBow = (int)(1 << 3),
-        UsingPolearm = (int)(1 << 4),
-        UsingCatalyst = (int)(1 << 5),
-        OnNormalAttack = (int)(1 << 6),
-        OnChargedAttack = (int)(1 << 7),
-        OnPlungingAttack = (int)(1 << 8),
-        OnElementSkill = (int)(1 << 9),
-        OnElementBurst = (int)(1 << 10),
-        TakingDMG = (int)(1 << 11),
-        EnemyTakeCryoElement = (int)(1 << 12),
-        EnemyFrozen = (int)(1 << 13),
-        TimeDelay = (int)(1 << 14),
+        Always = (uint)(1 << 0),
+        ClearWeapon = (uint)(0xffffffc1),
+        UsingSword = (uint)(1 << 1),
+        UsingClaymore = (uint)(1 << 2),
+        UsingBow = (uint)(1 << 3),
+        UsingPolearm = (uint)(1 << 4),
+        UsingCatalyst = (uint)(1 << 5),
+        ClearAttack = (uint)(0xfffff83f),
+        OnNormalAttack = (uint)(1 << 6),
+        OnChargedAttack = (uint)(1 << 7),
+        OnPlungingAttack = (uint)(1 << 8),
+        OnElementSkill = (uint)(1 << 9),
+        OnElementBurst = (uint)(1 << 10),
+        TakingDMG = (uint)(1 << 11),
+        ClearElement = (uint)(0xfff00fff),
+        EnemyTakeCryoElement = (uint)(1 << 12),
+        EnemyTakePyroElement = (uint)(1 << 13),
+        EnemyTakeHydroElement = (uint)(1 << 14),
+        EnemyTakeAnemoElement = (uint)(1 << 15),
+        EnemyTakeElectroElement = (uint)(1 << 16),
+        EnemyTakeGeoElement = (uint)(1 << 17),
+        EnemyTakeDendroElement = (uint)(1 << 18),
+        EnemyFrozen = (uint)(1 << 19),
+        TimeDelay = (uint)(1 << 20),
     }
 
     public enum AbilityType

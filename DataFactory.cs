@@ -1002,6 +1002,7 @@ namespace genshin_sim
             ElementalType.Electro,
             ElementalType.Anemo,
             ElementalType.Geo,
+            ElementalType.Cryo,
         };
 
         public static string[] element_names = new string[] {"无", "火", "水", "冰", "草", "雷", "风", "岩" };
@@ -1042,7 +1043,7 @@ namespace genshin_sim
                 "矢志不忘",
                 new List<SpecialCondAbility>()
                 {
-                    new SpecialCondAbility(SpecialCond.OnNormalAttack|SpecialCond.OnChargedAttack, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.12, 0.15, 0.18, 0.21, 0.24}, 0)),
+                    new SpecialCondAbility(SpecialCond.OnNormalAttack|SpecialCond.OnChargedAttack, AbilityType.Bonus, new Affix(AffixAttr.pDMG, new double[] { 0.12, 0.15, 0.18, 0.21, 0.24}, 0)),
                     new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pNormalDMG, new double[] { 0.08, 0.10, 0.12, 0.14, 0.16}, 0), WaifuStat.TimeAfter),
                     new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pChargedDMG, new double[] { 0.08, 0.10, 0.12, 0.14, 0.16}, 0), WaifuStat.TimeAfter),
                 },
@@ -1053,11 +1054,76 @@ namespace genshin_sim
             0
         );
 
+        public static Weapon SerpentSpine = new Weapon(
+            "螭骨剑",
+            WeaponType.Claymore,
+            new Affix(AffixAttr.ATK, WeaponData.serpent_spine_base_atk, 1),
+            new Affix(AffixAttr.pCRI, WeaponData.serpent_spine_crit_rate, 1),
+            new WeaponSpecialAbility(
+                "破浪",
+                new List<SpecialCondAbility>()
+                {
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Bonus, new Affix(AffixAttr.pDMG, new double[] { 0.06, 0.07, 0.08, 0.09, 0.10}, 0)),
+                    new SpecialCondAbility(SpecialCond.TakingDMG, AbilityType.Simple, new Affix(AffixAttr.pNoEffect, new double[] { 0.03, 0.027, 0.024, 0.022, 0.02}, 0)),
+                },
+                "角色在场上时，每4秒提升{0}造成的伤害，{1}受到的伤害。该效果最多叠加5层，不随角色退场重置，受到伤害后会减少1层效果。",
+                0
+            ),
+            2, // image index
+            0
+        );
+
+        public static Weapon LostPrayerToTheSacredWinds = new Weapon(
+            "四风原典",
+            WeaponType.Catalyst,
+            new Affix(AffixAttr.ATK, WeaponData.lost_prayer_to_the_sacred_winds_base_atk, 1),
+            new Affix(AffixAttr.pCRI, WeaponData.lost_prayer_to_the_sacred_winds_crit_rate, 1),
+            new WeaponSpecialAbility(
+                "无边际的眷顾",
+                new List<SpecialCondAbility>()
+                {
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Bonus, new Affix(AffixAttr.pElementalDMG, new double[] { 0.08, 0.1, 0.12, 0.14, 0.16}, 0)),
+                },
+                "移动速度提高10%；在场上每4秒获得{0}元素伤害加成。该效果最多叠加4层，角色倒下或离场后清空。",
+                0
+            ),
+            3, // image index
+            0
+        );
+
+        public static Weapon DragonsBane = new Weapon(
+            "匣里灭辰",
+            WeaponType.Polearm,
+            new Affix(AffixAttr.ATK, WeaponData.dragons_bane_base_atk, 1),
+            new Affix(AffixAttr.ELM, WeaponData.dragons_bane_elemental_mastery, 1),
+            new WeaponSpecialAbility(
+                "踏火止水",
+                new List<SpecialCondAbility>()
+                {
+                    new SpecialCondAbility(SpecialCond.EnemyTakeHydroElement|SpecialCond.EnemyTakePyroElement, AbilityType.Bonus, new Affix(AffixAttr.pDMG, new double[] { 0.2, 0.24, 0.28, 0.32, 0.36 }, 0)),
+                },
+                "对于处于水元素或火元素影响下的敌人，造成的伤害提高{0}。",
+                0
+            ),
+            4, // image index
+            0
+        );
+
         public static Weapon[] Weapons = new Weapon[]
         {
             AmosBow,
             PrimordialJadeCutter,
+            SerpentSpine,
+            LostPrayerToTheSacredWinds,
+            DragonsBane,
         };
+
+        public static string[] type_names = new string[] {"未知", "单手剑", "双手剑", "枪", "弓", "法器" };
+
+        public static string type2str(WeaponType type)
+        {
+            return type_names[((int)type)];
+        }
     }
 
     public static class EnemyFactory
