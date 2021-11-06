@@ -343,12 +343,25 @@ namespace genshin_sim
             "四件套: 对处于雷元素影响下的敌人造成的伤害提升{1}。"
         );
 
+        public static ArtifactSetEffect ViridescentVenerer = new ArtifactSetEffect(
+            "翠绿之影",
+            ArtifactSetEffectType.ViridescentVenerer,
+            new List<SpecialCondEffect>()
+            {
+                new SpecialCondEffect(SpecialCond.Always, 2, AbilityType.Simple, new Affix(AffixAttr.pAnemo, 0.15)),
+                new SpecialCondEffect(SpecialCond.Always, 4, AbilityType.Simple, new Affix(AffixAttr.pSwirl, 0.6)),
+            },
+            "两件套: 获得{0}风元素伤害加成。\r\n" +
+            "四件套: 扩散反应造成的伤害提升{1}，根据扩散的元素类型，降低受到影响的敌人40%的对应元素抗性，持续10秒。"
+        );
+
         public static string[,] set_effect_names = new string[,] {
             { "未知的生之花", "未知的死之羽", "未知的时之沙", "未知的空之杯", "未知的理之冠" },
             { "角斗士的留恋", "角斗士的归宿", "角斗士的希冀", "角斗士的酣醉", "角斗士的凯旋" },
             { "历经风雪的思念", "摧冰而行的执望", "冰雪故园的终期", "遍结寒霜的傲骨", "破冰踏雪的回音" },
             { "魔女的炎之花", "魔女的燃之羽", "魔女破灭之时", "魔女的心之火", "焦灼的魔女帽" },
             { "平雷之心", "平雷之羽", "平雷之刻", "平雷之器", "平雷之冠" },
+            { "野花记忆的绿野", "猎人青翠的箭羽", "翠绿猎人的笃定", "翠绿猎人的容器", "翠绿的猎人之冠" },
         }; 
 
         public static string get_artifact_name(ArtifactType artifact_type, ArtifactSetEffectType set_type)
@@ -363,6 +376,7 @@ namespace genshin_sim
             BlizzardStrayer,
             CrimsonWitchOfFlames,
             Thundersoother,
+            ViridescentVenerer,
         };
 
         public static string[] artifact_type_names = new string[]

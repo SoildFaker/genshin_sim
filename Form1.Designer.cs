@@ -570,6 +570,11 @@ namespace genshin_sim
             this.imArtifacts.Images.SetKeyName(22, "Item_Hour_of_Soothing_Thunder.png");
             this.imArtifacts.Images.SetKeyName(23, "Item_Thundersoother%27s_Goblet.png");
             this.imArtifacts.Images.SetKeyName(24, "Item_Thundersoother%27s_Diadem.png");
+            this.imArtifacts.Images.SetKeyName(25, "Item_In_Remembrance_of_Viridescent_Fields.png");
+            this.imArtifacts.Images.SetKeyName(26, "Item_Viridescent_Arrow_Feather.png");
+            this.imArtifacts.Images.SetKeyName(27, "Item_Viridescent_Venerer%27s_Determination.png");
+            this.imArtifacts.Images.SetKeyName(28, "Item_Viridescent_Venerer%27s_Vessel.png");
+            this.imArtifacts.Images.SetKeyName(29, "Item_Viridescent_Venerer%27s_Diadem.png");
             // 
             // gpCharacterArtifactGoblet
             // 

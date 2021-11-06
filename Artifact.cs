@@ -267,6 +267,7 @@ namespace genshin_sim
         BlizzardStrayer,
         CrimsonWitchOfFlames,
         Thundersoother,
+        ViridescentVenerer,
     }
     public class SpecialCondEffect
     {

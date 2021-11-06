@@ -482,6 +482,11 @@ namespace genshin_sim
             {
                 waifu_artifacts[i] = null;
             }
+            cmdCharacterArtifactFlower.ImageIndex = 0;
+            cmdCharacterArtifactPlume.ImageIndex = 1;
+            cmdCharacterArtifactSands.ImageIndex = 2;
+            cmdCharacterArtifactGoblet.ImageIndex = 3;
+            cmdCharacterArtifactCirclet.ImageIndex = 4;
             gpCharacterArtifactFlower.Text = ArtifactFactory.type2str(ArtifactType.FlowerOfLife);
             gpCharacterArtifactPlume.Text = ArtifactFactory.type2str(ArtifactType.PlumeOfDeath);
             gpCharacterArtifactSands.Text = ArtifactFactory.type2str(ArtifactType.SandsOfEon);
