@@ -355,19 +355,32 @@ namespace genshin_sim
             "四件套: 扩散反应造成的伤害提升{1}，根据扩散的元素类型，降低受到影响的敌人40%的对应元素抗性，持续10秒。"
         );
 
-        public static string[,] set_effect_names = new string[,] {
-            { "未知的生之花", "未知的死之羽", "未知的时之沙", "未知的空之杯", "未知的理之冠" },
-            { "角斗士的留恋", "角斗士的归宿", "角斗士的希冀", "角斗士的酣醉", "角斗士的凯旋" },
-            { "历经风雪的思念", "摧冰而行的执望", "冰雪故园的终期", "遍结寒霜的傲骨", "破冰踏雪的回音" },
-            { "魔女的炎之花", "魔女的燃之羽", "魔女破灭之时", "魔女的心之火", "焦灼的魔女帽" },
-            { "平雷之心", "平雷之羽", "平雷之刻", "平雷之器", "平雷之冠" },
-            { "野花记忆的绿野", "猎人青翠的箭羽", "翠绿猎人的笃定", "翠绿猎人的容器", "翠绿的猎人之冠" },
-        }; 
+        public static ArtifactSetEffect HeartOfDepth = new ArtifactSetEffect(
+            "沉沦之心",
+            ArtifactSetEffectType.HeartOfDepth,
+            new List<SpecialCondEffect>()
+            {
+                new SpecialCondEffect(SpecialCond.Always, 2, AbilityType.Simple, new Affix(AffixAttr.pHydro, 0.15)),
+                new SpecialCondEffect(SpecialCond.TimeDelay, 4, AbilityType.Simple, new Affix(AffixAttr.pNormalDMG, 0.30)),
+                new SpecialCondEffect(SpecialCond.TimeDelay, 4, AbilityType.Simple, new Affix(AffixAttr.pChargedDMG, 0.30)),
+            },
+            "两件套: 获得{0}水元素伤害加成。\r\n" +
+            "四件套: 施放元素战技后的15秒内，普通攻击与重击造成的伤害提高{1}。"
+        );
 
-        public static string get_artifact_name(ArtifactType artifact_type, ArtifactSetEffectType set_type)
-        {
-            return set_effect_names[((int)set_type), ((int)artifact_type)];
-        }
+        public static ArtifactSetEffect ThunderingFury = new ArtifactSetEffect(
+            "如雷的盛怒",
+            ArtifactSetEffectType.ThunderingFury,
+            new List<SpecialCondEffect>()
+            {
+                new SpecialCondEffect(SpecialCond.Always, 2, AbilityType.Simple, new Affix(AffixAttr.pElectro, 0.15)),
+                new SpecialCondEffect(SpecialCond.Always, 4, AbilityType.Simple, new Affix(AffixAttr.pSuperconduct, 0.40)),
+                new SpecialCondEffect(SpecialCond.Always, 4, AbilityType.Simple, new Affix(AffixAttr.pElectorCharged, 0.40)),
+                new SpecialCondEffect(SpecialCond.Always, 4, AbilityType.Simple, new Affix(AffixAttr.pOverload, 0.40)),
+            },
+            "两件套: 获得{0}雷元素伤害加成。\r\n" +
+            "四件套: 超载、感电、超导反应造成的伤害提升{1}。触发这些元素反应时，元素战技冷却时间减少1秒。该效果每0.8秒最多触发一次。"
+        );
         
         public static ArtifactSetEffect[] SetEffects = new ArtifactSetEffect[]
         {
@@ -377,7 +390,25 @@ namespace genshin_sim
             CrimsonWitchOfFlames,
             Thundersoother,
             ViridescentVenerer,
+            HeartOfDepth,
+            ThunderingFury,
         };
+
+        public static string[,] set_effect_names = new string[,] {
+            { "未知的生之花", "未知的死之羽", "未知的时之沙", "未知的空之杯", "未知的理之冠" },
+            { "角斗士的留恋", "角斗士的归宿", "角斗士的希冀", "角斗士的酣醉", "角斗士的凯旋" },
+            { "历经风雪的思念", "摧冰而行的执望", "冰雪故园的终期", "遍结寒霜的傲骨", "破冰踏雪的回音" },
+            { "魔女的炎之花", "魔女的燃之羽", "魔女破灭之时", "魔女的心之火", "焦灼的魔女帽" },
+            { "平雷之心", "平雷之羽", "平雷之刻", "平雷之器", "平雷之冠" },
+            { "野花记忆的绿野", "猎人青翠的箭羽", "翠绿猎人的笃定", "翠绿猎人的容器", "翠绿的猎人之冠" },
+            { "饰金胸花", "追忆之风", "坚铜罗盘", "沉波之盏", "酒渍船帽" },
+            { "雷鸟的怜悯", "雷灾的孑遗", "雷霆的时计", "降雷的凶兆", "唤雷的头冠" },
+        }; 
+
+        public static string get_artifact_name(ArtifactType artifact_type, ArtifactSetEffectType set_type)
+        {
+            return set_effect_names[((int)set_type), ((int)artifact_type)];
+        }
 
         public static string[] artifact_type_names = new string[]
         {
@@ -1029,7 +1060,6 @@ namespace genshin_sim
             new List<Talent>()
         );
 
-//31=Traveler,Geo,31
         public static Waifu[] Waifus = new Waifu[] 
         {
             Albedo, Aloy, Amber, Barbara, Beidou, Bennett, Chongyun, Diluc, Diona,

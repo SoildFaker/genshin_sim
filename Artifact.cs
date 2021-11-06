@@ -268,6 +268,8 @@ namespace genshin_sim
         CrimsonWitchOfFlames,
         Thundersoother,
         ViridescentVenerer,
+        HeartOfDepth,
+        ThunderingFury,
     }
     public class SpecialCondEffect
     {

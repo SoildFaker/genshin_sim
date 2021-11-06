@@ -114,6 +114,7 @@ namespace genshin_sim
             this.labGithubLink = new System.Windows.Forms.LinkLabel();
             this.imUserIcons = new System.Windows.Forms.ImageList(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -352,6 +353,7 @@ namespace genshin_sim
             this.tabMain.Controls.Add(this.tabPage2);
             this.tabMain.Controls.Add(this.tabPage1);
             this.tabMain.Controls.Add(this.tabPage3);
+            this.tabMain.Controls.Add(this.tabPage4);
             this.tabMain.Location = new System.Drawing.Point(12, 12);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
@@ -575,6 +577,16 @@ namespace genshin_sim
             this.imArtifacts.Images.SetKeyName(27, "Item_Viridescent_Venerer%27s_Determination.png");
             this.imArtifacts.Images.SetKeyName(28, "Item_Viridescent_Venerer%27s_Vessel.png");
             this.imArtifacts.Images.SetKeyName(29, "Item_Viridescent_Venerer%27s_Diadem.png");
+            this.imArtifacts.Images.SetKeyName(30, "Item_Gilded_Corsage.png");
+            this.imArtifacts.Images.SetKeyName(31, "Item_Gust_of_Nostalgia.png");
+            this.imArtifacts.Images.SetKeyName(32, "Item_Copper_Compass.png");
+            this.imArtifacts.Images.SetKeyName(33, "Item_Goblet_of_Thundering_Deep.png");
+            this.imArtifacts.Images.SetKeyName(34, "Item_Wine-Stained_Tricorne.png");
+            this.imArtifacts.Images.SetKeyName(35, "Item_Thunderbird%27s_Mercy.png");
+            this.imArtifacts.Images.SetKeyName(36, "Item_Survivor_of_Catastrophe.png");
+            this.imArtifacts.Images.SetKeyName(37, "Item_Hourglass_of_Thunder.png");
+            this.imArtifacts.Images.SetKeyName(38, "Item_Omen_of_Thunderstorm.png");
+            this.imArtifacts.Images.SetKeyName(39, "Item_Thunder_Summoner%27s_Crown.png");
             // 
             // gpCharacterArtifactGoblet
             // 
@@ -1110,6 +1122,16 @@ namespace genshin_sim
             this.imUserIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.imUserIcons.Images.SetKeyName(0, "add.png");
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(880, 530);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Artifact Analysis";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1248,6 +1270,7 @@ namespace genshin_sim
         private System.Windows.Forms.ComboBox selDamageAttackType;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox selDamageEnemyElement;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }
 
