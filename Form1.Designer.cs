@@ -560,6 +560,16 @@ namespace genshin_sim
             this.imArtifacts.Images.SetKeyName(12, "Item_Frozen_Homeland%27s_Demise.png");
             this.imArtifacts.Images.SetKeyName(13, "Item_Frost-Weaved_Dignity.png");
             this.imArtifacts.Images.SetKeyName(14, "Item_Broken_Rime%27s_Echo.png");
+            this.imArtifacts.Images.SetKeyName(15, "Item_Witch%27s_Flower_of_Blaze.png");
+            this.imArtifacts.Images.SetKeyName(16, "Item_Witch%27s_Ever-Burning_Plume.png");
+            this.imArtifacts.Images.SetKeyName(17, "Item_Witch%27s_End_Time.png");
+            this.imArtifacts.Images.SetKeyName(18, "Item_Witch%27s_Heart_Flames.png");
+            this.imArtifacts.Images.SetKeyName(19, "Item_Witch%27s_Scorching_Hat.png");
+            this.imArtifacts.Images.SetKeyName(20, "Item_Thundersoother%27s_Heart.png");
+            this.imArtifacts.Images.SetKeyName(21, "Item_Thundersoother%27s_Plume.png");
+            this.imArtifacts.Images.SetKeyName(22, "Item_Hour_of_Soothing_Thunder.png");
+            this.imArtifacts.Images.SetKeyName(23, "Item_Thundersoother%27s_Goblet.png");
+            this.imArtifacts.Images.SetKeyName(24, "Item_Thundersoother%27s_Diadem.png");
             // 
             // gpCharacterArtifactGoblet
             // 

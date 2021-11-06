@@ -28,13 +28,21 @@ namespace genshin_sim
         pGeo,       // 岩属性伤害加成
         pHealing,   // 治疗效果加成
         // 特殊条件加成效果
+        pDMG,
         pNormalDMG,
         pChargedDMG,
         pPlungingDMG,
         pElementalDMG,
-        pDMG,
         pElementalSkillDMG,
         pElementBurstDMG,
+        pOverload,
+        pBurning,
+        pSuperconduct,
+        pSwirl,
+        pElectorCharged,
+        pShattered,
+        pVaporize,
+        pMelt,
         pNoEffect,
     }
 
@@ -92,6 +100,11 @@ namespace genshin_sim
                 level++;
                 this.Value = value_arr[level];
             }
+        }
+
+        public Affix Clone()
+        {
+            return this.MemberwiseClone() as Affix;
         }
 
     }

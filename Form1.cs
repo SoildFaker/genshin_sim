@@ -104,9 +104,9 @@ namespace genshin_sim
                     waifu_now = fm.Waifu;
                     selCharacterLevel.Value = waifu_now.LevelIndex;
                     waifu_now.SetAritfacts(waifu_artifacts);
-                    refresh_character_info();
                     clear_weapon_info();
                     refresh_simulation_cond();
+                    refresh_character_info();
                 }
             }
         }
@@ -120,6 +120,26 @@ namespace genshin_sim
             this.selWeaponLevel.Value = 0;
         }
 
+        private void refresh_artifact_info()
+        {
+            if (waifu_now == null)
+            {
+                return;
+            }
+            if (waifu_now.Effects != null)
+            {
+                gpCharacterArtifactSetEffect.Text = $"套装加成(生效)";
+                labCharacterArtifactSetEffect.Text = "";
+                for (int i = 0; i < waifu_now.Effects.Count; i++)
+                {
+                    if ((waifu_now.Effects[i].SpecialCond & sim_cond) > 0)
+                    {
+                        labCharacterArtifactSetEffect.Text += $"{waifu_now.Effects[i].Affix.Description}\r\n";
+                    }
+                }
+            }
+        }
+
         private void refresh_character_info()
         {
             if (waifu_now == null)
@@ -128,19 +148,7 @@ namespace genshin_sim
             }
             List<Affix> stat = waifu_now.Stat;
             labCharacterName.Text = $"{waifu_now.Name} (lv.{waifu_now.Level} {WaifuFactory.element2str(waifu_now.Vision)})";
-            // Artifact
-            if (waifu_now.Effects != null)
-            {
-                gpCharacterArtifactSetEffect.Text = $"套装加成";
-                labCharacterArtifactSetEffect.Text = "";
-                for (int i = 0; i < waifu_now.Effects.Count; i++)
-                {
-                    if (waifu_now.Effects[i].SpecialCond == SpecialCond.Always)
-                    {
-                        labCharacterArtifactSetEffect.Text += $"{waifu_now.Effects[i].Affix.Description}\r\n";
-                    }
-                }
-            }
+            refresh_artifact_info();
             // Weapon
             if (waifu_now.Weapon != null)
             {
@@ -340,7 +348,7 @@ namespace genshin_sim
                         minor_affix.Add(AffixFactory.minor_affixes_arr[Convert.ToInt32(item[6 + j])]);
                     }
                     ArtifactType type = ArtifactFactory.artifactTypes[Convert.ToInt32(item[0])];
-                    Artifact tmp = new Artifact(type, AffixFactory.get_artifact_main_affix_array(type)[Convert.ToInt32(item[4])], minor_affix, ArtifactFactory.SetEffects[Convert.ToInt32(item[2])], Convert.ToInt32(item[1]));
+                    Artifact tmp = new Artifact(type, AffixFactory.get_artifact_main_affix_array(type)[Convert.ToInt32(item[4])].Clone(), minor_affix, ArtifactFactory.SetEffects[Convert.ToInt32(item[2])], Convert.ToInt32(item[1]));
                     tmp.NickName = item[3];
                     artifacts_inventory.Add(tmp);
                 }
@@ -644,7 +652,29 @@ namespace genshin_sim
                 default:
                     return 1;
             }
-            return amplifer * (1 + (2.78 * waifu_now.ELM) / (waifu_now.ELM + 1400));
+            double artifact_bonus = 0;
+            foreach (var effect in waifu_now.Effects)
+            {
+                if ((effect.SpecialCond & sim_cond) > 0)
+                {
+                    if (reaction == ElementalReactions.VaporizeHydro || reaction == ElementalReactions.VaporizePyro)
+                    {
+                        if (effect.Affix.Attribute == AffixAttr.pVaporize)
+                        {
+                            artifact_bonus += effect.Affix.Value;
+                        }
+                    }
+                    if (reaction == ElementalReactions.MeltCryo || reaction == ElementalReactions.MeltPyro)
+                    {
+                        if (effect.Affix.Attribute == AffixAttr.pMelt)
+                        {
+                            artifact_bonus += effect.Affix.Value;
+                        }
+                    }
+                }
+            }
+
+            return amplifer * (1 + artifact_bonus + (2.78 * waifu_now.ELM) / (waifu_now.ELM + 1400));
         }
 
         private double cal_transformative_reaction()
@@ -676,8 +706,35 @@ namespace genshin_sim
                     amplifer = 0;
                     break;
             }
+            double artifact_bonus = 0;
+            foreach (var effect in waifu_now.Effects)
+            {
+                if ((effect.SpecialCond & sim_cond) > 0)
+                {
+                    if (reaction == ElementalReactions.Burning && effect.Affix.Attribute == AffixAttr.pBurning)
+                    {
+                        artifact_bonus += effect.Affix.Value;
+                    }
+                    if (reaction == ElementalReactions.Overloaded && effect.Affix.Attribute == AffixAttr.pOverload)
+                    {
+                        artifact_bonus += effect.Affix.Value;
+                    }
+                    if (reaction == ElementalReactions.Swirl && effect.Affix.Attribute == AffixAttr.pSwirl)
+                    {
+                        artifact_bonus += effect.Affix.Value;
+                    }
+                    if (reaction == ElementalReactions.Superconduct && effect.Affix.Attribute == AffixAttr.pSuperconduct)
+                    {
+                        artifact_bonus += effect.Affix.Value;
+                    }
+                    if (reaction == ElementalReactions.ElectorCharged && effect.Affix.Attribute == AffixAttr.pElectorCharged)
+                    {
+                        artifact_bonus += effect.Affix.Value;
+                    }
+                }
+            }
             double elm_factor = (5.8 * 2.78 * waifu_now.ELM) / (2000 + waifu_now.ELM);
-            return (level_factor * resistance_factor * amplifer * (1 + elm_factor));
+            return (level_factor * resistance_factor * amplifer * (1 + elm_factor + artifact_bonus));
         }
 
         private double cal_damage_bonus_factor()
@@ -709,7 +766,18 @@ namespace genshin_sim
                     }
                 }
             }
-            return bonus_always_on + bonus_append + bonus_weapon;
+            double bonus_artifact = 0;
+            foreach (var effect in waifu_now.Effects)
+            {
+                if ((effect.SpecialCond & sim_cond) > 0)
+                {
+                    if (effect.Affix.Attribute == attr || (attr != AffixAttr.pPhysical && effect.Affix.Attribute == AffixAttr.pElementalDMG) || effect.Affix.Attribute == AffixAttr.pDMG)
+                    {
+                        bonus_artifact += effect.Affix.Value;
+                    }
+                }
+            }
+            return bonus_always_on + bonus_append + bonus_weapon + bonus_artifact;
         }
 
         private double cal_resistance_factor()
@@ -888,6 +956,7 @@ namespace genshin_sim
                     sim_cond |= SpecialCond.EnemyFrozen;
                     break;
             }
+            refresh_artifact_info();
         }
 
         private void selDamageEnemyElement_SelectedIndexChanged(object sender, EventArgs e)

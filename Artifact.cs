@@ -265,6 +265,8 @@ namespace genshin_sim
         Unknow,
         GladiatorsFinale,
         BlizzardStrayer,
+        CrimsonWitchOfFlames,
+        Thundersoother,
     }
     public class SpecialCondEffect
     {

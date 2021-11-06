@@ -249,6 +249,8 @@ namespace genshin_sim
         public static string[] affix_names = new string[] {
             "生命值", "攻击力", "防御力", "生命加成", "攻击加成", "防御加成", "元素精通", "充能效率", "暴击率", "暴击伤害",
             "物理伤害加成", "火属性伤害加成", "水属性伤害加成", "冰属性伤害加成", "草属性伤害加成", "雷属性伤害加成", "风属性伤害加成", "岩属性伤害加成", "治疗效果加成",
+            "伤害加成", "普通攻击加成", "蓄力重击加成", "下落攻击加成", "元素伤害加成", "元素战技伤害加成", "元素爆发伤害加成", 
+            "超载伤害加成", "燃烧伤害加成", "超导伤害加成", "扩散伤害加成", "感电伤害加成", "碎冰伤害加成", "蒸发反应系数", "融化反应系数", "无效果"
             };
         public static string attr2str(AffixAttr attr)
         {
@@ -310,14 +312,43 @@ namespace genshin_sim
                 new SpecialCondEffect(SpecialCond.EnemyTakeCryoElement, 4, AbilityType.Simple, new Affix(AffixAttr.pCRI, 0.20)),
                 new SpecialCondEffect(SpecialCond.EnemyFrozen, 4, AbilityType.Simple, new Affix(AffixAttr.pCRI, 0.20))
             },
-            "两件套: 获得{0}冰元素伤害加成\r\n" + 
+            "两件套: 获得{0}冰元素伤害加成。\r\n" + 
             "四件套:	攻击处于冰元素影响状态下的敌人时，暴击率提高{1}；若敌人处于冰冻状态下，暴击率额外提高{2}。"
+        );
+
+        public static ArtifactSetEffect CrimsonWitchOfFlames = new ArtifactSetEffect(
+            "炽烈的炎之魔女",
+            ArtifactSetEffectType.CrimsonWitchOfFlames,
+            new List<SpecialCondEffect>()
+            {
+                new SpecialCondEffect(SpecialCond.Always, 2, AbilityType.Simple, new Affix(AffixAttr.pPyro, 0.15)),
+                new SpecialCondEffect(SpecialCond.Always, 4, AbilityType.Simple, new Affix(AffixAttr.pOverload, 0.40)),
+                new SpecialCondEffect(SpecialCond.Always, 4, AbilityType.Simple, new Affix(AffixAttr.pBurning, 0.40)),
+                new SpecialCondEffect(SpecialCond.Always, 4, AbilityType.Simple, new Affix(AffixAttr.pVaporize, 0.15)),
+                new SpecialCondEffect(SpecialCond.Always, 4, AbilityType.Simple, new Affix(AffixAttr.pMelt, 0.15))
+            },
+            "两件套: 获得{0}火元素伤害加成。\r\n" + 
+            "四件套:	超载、燃烧反应造成的伤害提升{1}，蒸发、融化反应的加成系数提高{3}。施放元素战技后的10秒内，二件套的效果提高50%，该效果最多叠加3次。"
+        );
+
+        public static ArtifactSetEffect Thundersoother = new ArtifactSetEffect(
+            "平息鸣雷的尊者",
+            ArtifactSetEffectType.Thundersoother,
+            new List<SpecialCondEffect>()
+            {
+                new SpecialCondEffect(SpecialCond.Ignore, 2, AbilityType.Simple, new Affix(AffixAttr.pNoEffect, 0.4)),
+                new SpecialCondEffect(SpecialCond.EnemyTakeElectroElement, 4, AbilityType.Simple, new Affix(AffixAttr.pDMG, 0.35)),
+            },
+            "两件套: 雷元素抗性提高{0}。\r\n" +
+            "四件套: 对处于雷元素影响下的敌人造成的伤害提升{1}。"
         );
 
         public static string[,] set_effect_names = new string[,] {
             { "未知的生之花", "未知的死之羽", "未知的时之沙", "未知的空之杯", "未知的理之冠" },
             { "角斗士的留恋", "角斗士的归宿", "角斗士的希冀", "角斗士的酣醉", "角斗士的凯旋" },
             { "历经风雪的思念", "摧冰而行的执望", "冰雪故园的终期", "遍结寒霜的傲骨", "破冰踏雪的回音" },
+            { "魔女的炎之花", "魔女的燃之羽", "魔女破灭之时", "魔女的心之火", "焦灼的魔女帽" },
+            { "平雷之心", "平雷之羽", "平雷之刻", "平雷之器", "平雷之冠" },
         }; 
 
         public static string get_artifact_name(ArtifactType artifact_type, ArtifactSetEffectType set_type)
@@ -330,6 +361,8 @@ namespace genshin_sim
             UnknowSetEffect,
             GladiatorsFinale,
             BlizzardStrayer,
+            CrimsonWitchOfFlames,
+            Thundersoother,
         };
 
         public static string[] artifact_type_names = new string[]
@@ -1134,7 +1167,7 @@ namespace genshin_sim
             Hilichurl,
         };
 
-        public static string[] reaction_names = new string[] {"无", "火水蒸发", "水火蒸发", "火冰融化", "冰火融化", "超导", "扩散", "感电", "碎冰", "超载"};
+        public static string[] reaction_names = new string[] {"无", "火水蒸发", "水火蒸发", "火冰融化", "冰火融化", "超导", "扩散", "燃烧", "感电", "碎冰", "超载"};
         public static string reaction2str(ElementalReactions reaction)
         {
             return reaction_names[((int)reaction)];

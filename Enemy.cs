@@ -15,6 +15,7 @@ namespace genshin_sim
         MeltCryo,
         Superconduct,
         Swirl,
+        Burning,
         ElectorCharged,
         Shattered,
         Overloaded,
