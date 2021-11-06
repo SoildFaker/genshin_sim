@@ -1018,8 +1018,8 @@ namespace genshin_sim
         public static Weapon PrimordialJadeCutter = new Weapon(
             "磐岩结绿",
             WeaponType.Sword,
-            new Affix(AffixAttr.ATK, WeaponData.primordial_jade_cutter_base_atk, 1),
-            new Affix(AffixAttr.pCRI, WeaponData.primordial_jade_cutter_crit_rate, 1),
+            new Affix(AffixAttr.ATK, WeaponData.primordial_jade_cutter_base_atk, 0),
+            new Affix(AffixAttr.pCRI, WeaponData.primordial_jade_cutter_crit_rate, 0),
             new WeaponSpecialAbility(
                 "护国的无垢之心",
                 new List<SpecialCondAbility>()
@@ -1037,8 +1037,8 @@ namespace genshin_sim
         public static Weapon AmosBow = new Weapon(
             "阿莫斯之弓",
             WeaponType.Bow,
-            new Affix(AffixAttr.ATK, WeaponData.amos_bow_base_atk, 1),
-            new Affix(AffixAttr.pCRI, WeaponData.amos_bow_atk, 1),
+            new Affix(AffixAttr.ATK, WeaponData.amos_bow_base_atk, 0),
+            new Affix(AffixAttr.pCRI, WeaponData.amos_bow_atk, 0),
             new WeaponSpecialAbility(
                 "矢志不忘",
                 new List<SpecialCondAbility>()
@@ -1057,8 +1057,8 @@ namespace genshin_sim
         public static Weapon SerpentSpine = new Weapon(
             "螭骨剑",
             WeaponType.Claymore,
-            new Affix(AffixAttr.ATK, WeaponData.serpent_spine_base_atk, 1),
-            new Affix(AffixAttr.pCRI, WeaponData.serpent_spine_crit_rate, 1),
+            new Affix(AffixAttr.ATK, WeaponData.serpent_spine_base_atk, 0),
+            new Affix(AffixAttr.pCRI, WeaponData.serpent_spine_crit_rate, 0),
             new WeaponSpecialAbility(
                 "破浪",
                 new List<SpecialCondAbility>()
@@ -1076,8 +1076,8 @@ namespace genshin_sim
         public static Weapon LostPrayerToTheSacredWinds = new Weapon(
             "四风原典",
             WeaponType.Catalyst,
-            new Affix(AffixAttr.ATK, WeaponData.lost_prayer_to_the_sacred_winds_base_atk, 1),
-            new Affix(AffixAttr.pCRI, WeaponData.lost_prayer_to_the_sacred_winds_crit_rate, 1),
+            new Affix(AffixAttr.ATK, WeaponData.lost_prayer_to_the_sacred_winds_base_atk, 0),
+            new Affix(AffixAttr.pCRI, WeaponData.lost_prayer_to_the_sacred_winds_crit_rate, 0),
             new WeaponSpecialAbility(
                 "无边际的眷顾",
                 new List<SpecialCondAbility>()
@@ -1094,8 +1094,8 @@ namespace genshin_sim
         public static Weapon DragonsBane = new Weapon(
             "匣里灭辰",
             WeaponType.Polearm,
-            new Affix(AffixAttr.ATK, WeaponData.dragons_bane_base_atk, 1),
-            new Affix(AffixAttr.ELM, WeaponData.dragons_bane_elemental_mastery, 1),
+            new Affix(AffixAttr.ATK, WeaponData.dragons_bane_base_atk, 0),
+            new Affix(AffixAttr.ELM, WeaponData.dragons_bane_elemental_mastery, 0),
             new WeaponSpecialAbility(
                 "踏火止水",
                 new List<SpecialCondAbility>()
