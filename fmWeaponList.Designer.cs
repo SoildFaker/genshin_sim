@@ -95,6 +95,10 @@
             this.imWeapons.Images.SetKeyName(2, "Weapon_Serpent_Spine.png");
             this.imWeapons.Images.SetKeyName(3, "Weapon_Lost_Prayer_to_the_Sacred_Winds.png");
             this.imWeapons.Images.SetKeyName(4, "Weapon_Dragon%27s_Bane.png");
+            this.imWeapons.Images.SetKeyName(5, "Weapon_Polar_Star.png");
+            this.imWeapons.Images.SetKeyName(6, "Weapon_Thundering_Pulse.png");
+            this.imWeapons.Images.SetKeyName(7, "Weapon_Elegy_for_the_End.png");
+            this.imWeapons.Images.SetKeyName(8, "Weapon_Skyward_Harp.png");
             // 
             // fmWeaponList
             // 

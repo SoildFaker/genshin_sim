@@ -120,7 +120,7 @@ namespace genshin_sim
         {
             get
             {
-                return String.Format(description, Abilities.Select(x => x.Affix.Value.ToString("0.0%")).ToArray());
+                return String.Format(description, Abilities.Select(x => x.Affix.Attribute.ToString().StartsWith("p") ? x.Affix.Value.ToString("0.0%") : x.Affix.Value.ToString()).ToArray());
             }
         }
         public WeaponSpecialAbility(string name, List<SpecialCondAbility> abilities, string desc, int lv = 0)

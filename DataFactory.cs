@@ -250,7 +250,7 @@ namespace genshin_sim
             "生命值", "攻击力", "防御力", "生命加成", "攻击加成", "防御加成", "元素精通", "充能效率", "暴击率", "暴击伤害",
             "物理伤害加成", "火属性伤害加成", "水属性伤害加成", "冰属性伤害加成", "草属性伤害加成", "雷属性伤害加成", "风属性伤害加成", "岩属性伤害加成", "治疗效果加成",
             "伤害加成", "普通攻击加成", "蓄力重击加成", "下落攻击加成", "元素伤害加成", "元素战技伤害加成", "元素爆发伤害加成", 
-            "超载伤害加成", "燃烧伤害加成", "超导伤害加成", "扩散伤害加成", "感电伤害加成", "碎冰伤害加成", "蒸发反应系数", "融化反应系数", "无效果"
+            "超载伤害加成", "燃烧伤害加成", "超导伤害加成", "扩散伤害加成", "感电伤害加成", "碎冰伤害加成", "蒸发反应系数", "融化反应系数", "无效果", "无效果"
             };
         public static string attr2str(AffixAttr attr)
         {
@@ -1120,7 +1120,7 @@ namespace genshin_sim
                 "矢志不忘",
                 new List<SpecialCondAbility>()
                 {
-                    new SpecialCondAbility(SpecialCond.OnNormalAttack|SpecialCond.OnChargedAttack, AbilityType.Bonus, new Affix(AffixAttr.pDMG, new double[] { 0.12, 0.15, 0.18, 0.21, 0.24}, 0)),
+                    new SpecialCondAbility(SpecialCond.OnNormalAttack|SpecialCond.OnChargedAttack, AbilityType.Simple, new Affix(AffixAttr.pDMG, new double[] { 0.12, 0.15, 0.18, 0.21, 0.24}, 0)),
                     new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pNormalDMG, new double[] { 0.08, 0.10, 0.12, 0.14, 0.16}, 0), WaifuStat.TimeAfter),
                     new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pChargedDMG, new double[] { 0.08, 0.10, 0.12, 0.14, 0.16}, 0), WaifuStat.TimeAfter),
                 },
@@ -1140,8 +1140,8 @@ namespace genshin_sim
                 "破浪",
                 new List<SpecialCondAbility>()
                 {
-                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Bonus, new Affix(AffixAttr.pDMG, new double[] { 0.06, 0.07, 0.08, 0.09, 0.10}, 0)),
-                    new SpecialCondAbility(SpecialCond.TakingDMG, AbilityType.Simple, new Affix(AffixAttr.pNoEffect, new double[] { 0.03, 0.027, 0.024, 0.022, 0.02}, 0)),
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Bonus, new Affix(AffixAttr.pDMG, new double[] { 0.06, 0.07, 0.08, 0.09, 0.10}, 0), WaifuStat.TimeAfter),
+                    new SpecialCondAbility(SpecialCond.TakingDMG, AbilityType.Bonus, new Affix(AffixAttr.pNoEffect, new double[] { 0.03, 0.027, 0.024, 0.022, 0.02}, 0), WaifuStat.TimeAfter),
                 },
                 "角色在场上时，每4秒提升{0}造成的伤害，{1}受到的伤害。该效果最多叠加5层，不随角色退场重置，受到伤害后会减少1层效果。",
                 0
@@ -1159,7 +1159,7 @@ namespace genshin_sim
                 "无边际的眷顾",
                 new List<SpecialCondAbility>()
                 {
-                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Bonus, new Affix(AffixAttr.pElementalDMG, new double[] { 0.08, 0.1, 0.12, 0.14, 0.16}, 0)),
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Bonus, new Affix(AffixAttr.pElementalDMG, new double[] { 0.08, 0.1, 0.12, 0.14, 0.16}, 0), WaifuStat.TimeAfter),
                 },
                 "移动速度提高10%；在场上每4秒获得{0}元素伤害加成。该效果最多叠加4层，角色倒下或离场后清空。",
                 0
@@ -1177,12 +1177,95 @@ namespace genshin_sim
                 "踏火止水",
                 new List<SpecialCondAbility>()
                 {
-                    new SpecialCondAbility(SpecialCond.EnemyTakeHydroElement|SpecialCond.EnemyTakePyroElement, AbilityType.Bonus, new Affix(AffixAttr.pDMG, new double[] { 0.2, 0.24, 0.28, 0.32, 0.36 }, 0)),
+                    new SpecialCondAbility(SpecialCond.EnemyTakeHydroElement|SpecialCond.EnemyTakePyroElement, AbilityType.Simple, new Affix(AffixAttr.pDMG, new double[] { 0.2, 0.24, 0.28, 0.32, 0.36 }, 0)),
                 },
                 "对于处于水元素或火元素影响下的敌人，造成的伤害提高{0}。",
                 0
             ),
             4, // image index
+            0
+        );
+
+        public static Weapon PolarStar = new Weapon(
+            "东极白星",
+            WeaponType.Bow,
+            new Affix(AffixAttr.ATK, WeaponData.polar_star_base_atk, 0),
+            new Affix(AffixAttr.pCRI, WeaponData.polar_star_crit_rate, 0),
+            new WeaponSpecialAbility(
+                "极昼的先兆者",
+                new List<SpecialCondAbility>()
+                {
+                    new SpecialCondAbility(SpecialCond.OnElementBurst|SpecialCond.OnElementSkill, AbilityType.Simple, new Affix(AffixAttr.pDMG, new double[] { 0.12, 0.15, 0.18, 0.21, 0.24 }, 0)),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pATK, new double[] { 0.1, 0.125, 0.15, 0.175, 0.20}, 0), WaifuStat.TimeAfter),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pATK, new double[] { 0.2, 0.25, 0.30, 0.35, 0.40}, 0), WaifuStat.TimeAfter),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pATK, new double[] { 0.3, 0.375, 0.45, 0.525, 0.60}, 0), WaifuStat.TimeAfter),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pATK, new double[] { 0.48, 0.60, 0.72, 0.84, 0.96}, 0), WaifuStat.TimeAfter),
+                },
+                "元素战技和元素爆发造成的伤害提高{0}；普通攻击、重击、元素战技或元素爆发命中敌人后，将产生1层持续12秒的「白夜极星」效果。处于1/2/3/4层「白夜极星」效果下时，攻击力将提高({1}/{2}/{3}/{4})。由普通攻击、重击、元素战技或元素爆发产生的「白夜极星」将分别独立存在。",
+                0
+            ),
+            5, // image index
+            0
+        );
+
+        public static Weapon ThunderingPulse = new Weapon(
+            "飞雷之弦振",
+            WeaponType.Bow,
+            new Affix(AffixAttr.ATK, WeaponData.thundering_pulse_base_atk, 0),
+            new Affix(AffixAttr.pCRD, WeaponData.thundering_pulse_crit_dmg, 0),
+            new WeaponSpecialAbility(
+                "飞雷御执",
+                new List<SpecialCondAbility>()
+                {
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.20, 0.25, 0.30, 0.35, 0.40 }, 0)),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pNormalDMG, new double[] { 0.12, 0.15, 0.18, 0.21, 0.24}, 0), WaifuStat.TimeAfter),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pNormalDMG, new double[] { 0.24, 0.30, 0.36, 0.42, 0.48}, 0), WaifuStat.TimeAfter),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pNormalDMG, new double[] { 0.40, 0.50, 0.60, 0.70, 0.80}, 0), WaifuStat.TimeAfter),
+                },
+                "攻击力提高{0}，并能获得「飞雷之巴印」的威势。飞雷之巴印：持有1/2/3层飞雷之巴印时，普通攻击造成的伤害提高({1}/{2}/{3})。在下列情况下，角色将各获得1层飞雷之巴印：普通攻击造成伤害时，持续5秒；施放元素战技时，持续10秒；此外，角色元素能量低于100%时，将获得1层飞雷之巴印，此飞雷之巴印会在角色的元素能量充满时消失。每层飞雷之巴印的持续时间独立计算。",
+                0
+            ),
+            6, // image index
+            0
+        );
+
+        public static Weapon ElegyForTheEnd = new Weapon(
+            "终末嗟叹之诗",
+            WeaponType.Bow,
+            new Affix(AffixAttr.ATK, WeaponData.elegy_for_the_end_base_atk, 0),
+            new Affix(AffixAttr.pCGR, WeaponData.elegy_for_the_end_energy_recharge, 0),
+            new WeaponSpecialAbility(
+                "离别的思念之歌",
+                new List<SpecialCondAbility>()
+                {
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.ELM, new double[] { 60, 75, 90, 105, 120 }, 0)),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Simple, new Affix(AffixAttr.ELM, new double[] { 100, 125, 150, 175, 200 }, 0)),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.20, 0.25, 0.30, 0.35, 0.40}, 0)),
+                },
+                "飘游风中的「千年的大乐章」的一部分。元素精通提高{0}点；元素战技或元素爆发命中敌人时，角色获得一枚追思之符，每0.2秒内至多触发一次，角色处于队伍后台也能触发。拥有4枚追思之符时，将消耗所有追思之符，使附近的队伍中所有角色获得持续12秒的「千年的大乐章·别离之歌」效果：元素精通提高{1}点，攻击力提升{2}。触发后20秒内，无法再次获得追思之符。「千年的大乐章」触发的多种数值效果中，同类数值效果不可叠加。",
+                0
+            ),
+            7, // image index
+            0
+        );
+
+        public static Weapon SkywardHarp = new Weapon(
+            "天空之翼",
+            WeaponType.Bow,
+            new Affix(AffixAttr.ATK, WeaponData.skyward_harp_base_atk, 0),
+            new Affix(AffixAttr.pCRI, WeaponData.skyward_harp_crit_rate, 0),
+            new WeaponSpecialAbility(
+                "回响长天的诗歌",
+                new List<SpecialCondAbility>()
+                {
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.pCRD, new double[] { 0.2, 0.25, 0.3, 0.35, 0.4 }, 0)),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Simple, new Affix(AffixAttr.pNoEffect, new double[] { 0.6, 0.7, 0.8, 0.9, 1 }, 0)),
+                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Simple, new Affix(AffixAttr.NoEffect, new double[] { 4, 3.5, 3, 2.5, 2 }, 0)),
+                },
+                "暴击伤害提高{0}；攻击命中时有{1}概率造成125%攻击力的小范围物理伤害，该效果每{2}秒只能触发一次。",
+                0
+            ),
+            8, // image index
             0
         );
 
@@ -1193,6 +1276,10 @@ namespace genshin_sim
             SerpentSpine,
             LostPrayerToTheSacredWinds,
             DragonsBane,
+            PolarStar,
+            ThunderingPulse,
+            ElegyForTheEnd,
+            SkywardHarp,
         };
 
         public static string[] type_names = new string[] {"未知", "单手剑", "双手剑", "枪", "弓", "法器" };

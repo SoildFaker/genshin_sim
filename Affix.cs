@@ -43,6 +43,7 @@ namespace genshin_sim
         pShattered,
         pVaporize,
         pMelt,
+        NoEffect,
         pNoEffect,
     }
 
