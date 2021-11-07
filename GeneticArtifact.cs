@@ -25,9 +25,7 @@ namespace genshin_sim
         {
             this.Group = Group.OrderByDescending(x => x.Score).ToList();
             this.BestGene = Group[0];
-            Group.RemoveAt(Group.Count - 1);
-            Group.Append(new Gene((int[][])Group[0].Data.Clone()));
-
+            //Group[Group.Count - 1].SetData(Group[0].Data);
             for (int i = 1; i < Group.Count/4; i++)
             {
                 Group[i].CrossNoSideEffect(BestGene);
@@ -247,6 +245,11 @@ namespace genshin_sim
         public void SetData(int type, int[] data)
         {
             this.data_arr[type] = data;
+        }
+        
+        public void SetData(int[][] data)
+        {
+            this.data_arr = (int[][])data.Clone();
         }
 
         public Gene Clone()

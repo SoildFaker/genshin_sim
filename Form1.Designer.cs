@@ -122,6 +122,9 @@ namespace genshin_sim
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.labEvolutionConds = new System.Windows.Forms.Label();
+            this.selEvolutionSpeed = new System.Windows.Forms.TrackBar();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -153,6 +156,7 @@ namespace genshin_sim
             this.gpEvolutionInfo.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selEvolutionSpeed)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdAdd
@@ -1174,37 +1178,50 @@ namespace genshin_sim
             this.cmdEvolutionPause.Name = "cmdEvolutionPause";
             this.cmdEvolutionPause.Size = new System.Drawing.Size(75, 23);
             this.cmdEvolutionPause.TabIndex = 2;
-            this.cmdEvolutionPause.Text = "Pause";
+            this.cmdEvolutionPause.Text = "Stop";
             this.cmdEvolutionPause.UseVisualStyleBackColor = true;
             this.cmdEvolutionPause.Click += new System.EventHandler(this.cmdEvolutionPause_Click);
             // 
             // gpEvolutionInfo
             // 
+            this.gpEvolutionInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gpEvolutionInfo.BackColor = System.Drawing.Color.White;
             this.gpEvolutionInfo.Controls.Add(this.labGroupBest);
-            this.gpEvolutionInfo.Location = new System.Drawing.Point(183, 6);
+            this.gpEvolutionInfo.Location = new System.Drawing.Point(239, 6);
             this.gpEvolutionInfo.Name = "gpEvolutionInfo";
-            this.gpEvolutionInfo.Size = new System.Drawing.Size(691, 518);
+            this.gpEvolutionInfo.Size = new System.Drawing.Size(635, 518);
             this.gpEvolutionInfo.TabIndex = 3;
             this.gpEvolutionInfo.TabStop = false;
             this.gpEvolutionInfo.Text = "Info";
             // 
             // groupBox15
             // 
+            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox15.BackColor = System.Drawing.Color.White;
+            this.groupBox15.Controls.Add(this.label8);
+            this.groupBox15.Controls.Add(this.label7);
             this.groupBox15.Controls.Add(this.cmdEvolutionStart);
+            this.groupBox15.Controls.Add(this.selEvolutionSpeed);
             this.groupBox15.Controls.Add(this.cmdEvolutionPause);
             this.groupBox15.Location = new System.Drawing.Point(6, 6);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(171, 91);
+            this.groupBox15.Size = new System.Drawing.Size(227, 115);
             this.groupBox15.TabIndex = 4;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Command";
             // 
             // groupBox14
             // 
+            this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox14.BackColor = System.Drawing.Color.White;
             this.groupBox14.Controls.Add(this.labEvolutionConds);
-            this.groupBox14.Location = new System.Drawing.Point(3, 103);
+            this.groupBox14.Location = new System.Drawing.Point(3, 127);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(174, 421);
+            this.groupBox14.Size = new System.Drawing.Size(230, 397);
             this.groupBox14.TabIndex = 5;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "运行前提";
@@ -1217,6 +1234,36 @@ namespace genshin_sim
             this.labEvolutionConds.Size = new System.Drawing.Size(35, 12);
             this.labEvolutionConds.TabIndex = 0;
             this.labEvolutionConds.Text = "Conds";
+            // 
+            // selEvolutionSpeed
+            // 
+            this.selEvolutionSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.selEvolutionSpeed.BackColor = System.Drawing.Color.White;
+            this.selEvolutionSpeed.Location = new System.Drawing.Point(6, 64);
+            this.selEvolutionSpeed.Maximum = 20;
+            this.selEvolutionSpeed.Minimum = 1;
+            this.selEvolutionSpeed.Name = "selEvolutionSpeed";
+            this.selEvolutionSpeed.Size = new System.Drawing.Size(215, 45);
+            this.selEvolutionSpeed.TabIndex = 3;
+            this.selEvolutionSpeed.Value = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 97);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 12);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Faster";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(180, 97);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 12);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Better";
             // 
             // Form1
             // 
@@ -1272,8 +1319,10 @@ namespace genshin_sim
             this.gpEvolutionInfo.ResumeLayout(false);
             this.gpEvolutionInfo.PerformLayout();
             this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selEvolutionSpeed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1371,6 +1420,9 @@ namespace genshin_sim
         private System.Windows.Forms.GroupBox gpEvolutionInfo;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.Label labEvolutionConds;
+        private System.Windows.Forms.TrackBar selEvolutionSpeed;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }
 

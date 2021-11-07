@@ -190,6 +190,30 @@ namespace genshin_sim
             }
         }
 
+        private void set_character_artifact()
+        {
+            Artifact flower = waifu_now.Artifacts[0];
+            labCharacterArtifactFlowerInfo.Text = $"{flower.MainAffixString}\r\n{flower.MinorAffixesString}";
+            gpCharacterArtifactFlower.Text = $"{flower.Name} (Lv.{flower.Level})";
+            cmdCharacterArtifactFlower.ImageIndex = ((int)flower.Type) + ((int)flower.ArtifactSetEffect.Type) * 5;
+            Artifact plume = waifu_now.Artifacts[1];
+            labCharacterArtifactPlume.Text = $"{plume.MainAffixString}\r\n{plume.MinorAffixesString}";
+            gpCharacterArtifactPlume.Text = $"{plume.Name} (Lv.{plume.Level})";
+            cmdCharacterArtifactPlume.ImageIndex = ((int)plume.Type) + ((int)plume.ArtifactSetEffect.Type) * 5;
+            Artifact sands = waifu_now.Artifacts[2];
+            labCharacterArtifactSands.Text = $"{sands.MainAffixString}\r\n{sands.MinorAffixesString}";
+            gpCharacterArtifactSands.Text = $"{sands.Name} (Lv.{sands.Level})";
+            cmdCharacterArtifactSands.ImageIndex = ((int)sands.Type) + ((int)sands.ArtifactSetEffect.Type) * 5;
+            Artifact goblet = waifu_now.Artifacts[3];
+            labCharacterArtifactGoblet.Text = $"{goblet.MainAffixString}\r\n{goblet.MinorAffixesString}";
+            gpCharacterArtifactGoblet.Text = $"{goblet.Name} (Lv.{goblet.Level})";
+            cmdCharacterArtifactGoblet.ImageIndex = ((int)goblet.Type) + ((int)goblet.ArtifactSetEffect.Type) * 5;
+            Artifact circlet = waifu_now.Artifacts[3];
+            labCharacterArtifactCirclet.Text = $"{circlet.MainAffixString}\r\n{circlet.MinorAffixesString}";
+            gpCharacterArtifactCirclet.Text = $"{circlet.Name} (Lv.{circlet.Level})";
+            cmdCharacterArtifactCirclet.ImageIndex = ((int)circlet.Type) + ((int)circlet.ArtifactSetEffect.Type) * 5;
+        }
+
         private void cmdCharacterArtifactFlower_Click(object sender, EventArgs e)
         {
             using (var fm = new fmArtifactList(artifacts_inventory.Where(x => x.Type == ArtifactType.FlowerOfLife).ToList(), this.imArtifacts, ArtifactType.FlowerOfLife))
@@ -539,7 +563,7 @@ namespace genshin_sim
             damage_cirtical = damage * (1 + val_critical_bonus);
             double cri = waifu_now.CRI;
             cri = cri > 1 ? 1 : cri;
-            return (cri * damage_cirtical) + (1 - cri) * damage;
+            return (cri * damage_cirtical) + (1 - cri) * damage + val_transformative_reaction;
         }
 
         private void refresh_damage_info()
@@ -1001,10 +1025,13 @@ namespace genshin_sim
         {
             if (!Worker.IsBusy)
             {
+                selEvolutionSpeed.Enabled = false;
                 Worker.DoWork += RunGA;
                 Worker.ProgressChanged += Worker_ProgressChanged;
+                Worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
                 Worker.WorkerSupportsCancellation = true;
                 Worker.WorkerReportsProgress = true;
+                GA = new GeneticArtifact(selEvolutionSpeed.Value * 100);
                 Worker.RunWorkerAsync();
                 gpEvolutionInfo.Text = "正在运行...";
             }
@@ -1018,6 +1045,14 @@ namespace genshin_sim
             }
         }
 
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            selEvolutionSpeed.Enabled = true;
+            this.waifu_now.SetAritfacts(GA.GetBestArtifacts());
+            gpEvolutionInfo.Text = "搜索结果：";
+            set_character_artifact();
+        }
+
         private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             this.labGroupBest.Text = e.UserState.ToString();
@@ -1025,7 +1060,6 @@ namespace genshin_sim
 
         private void RunGA(object sender, DoWorkEventArgs e)
         {
-            GA = new GeneticArtifact(2000);
             BackgroundWorker backgroundWorker = sender as BackgroundWorker;
             string message;
             for (;;)
@@ -1063,9 +1097,11 @@ namespace genshin_sim
         {
             if (Worker.IsBusy)
             {
+                //selEvolutionSpeed.Enabled = true;
                 Worker.CancelAsync();
-                this.waifu_now.SetAritfacts(GA.GetBestArtifacts());
-                gpEvolutionInfo.Text = "搜索结果：";
+                //this.waifu_now.SetAritfacts(GA.GetBestArtifacts());
+                //set_character_artifact();
+                //gpEvolutionInfo.Text = "搜索结果：";
             }
         }
     }

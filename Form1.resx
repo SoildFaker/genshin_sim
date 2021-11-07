@@ -2149,4 +2149,7 @@
         AgABHwH/AfAYAAL/AfACAAF/Af8B8BgAA/8BgAEPAv8B8BgACw==
 </value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>555, 17</value>
+  </metadata>
 </root>
