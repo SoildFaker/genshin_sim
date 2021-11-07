@@ -517,6 +517,30 @@ namespace genshin_sim
             labEnemyName.Text = $"{enemy_now.Name} (Lv.{enemy_now.Level})";
             labEnemyStat.Text = enemy_now.Description;
         }
+        private double get_damage_exp()
+        {
+            if (waifu_now == null || enemy_now == null)
+            {
+                return -1;
+            }
+            double damage, damage_cirtical = 0;
+            double val_atk, val_atk_scaling0, val_atk_scaling1, val_damage_bonus, val_critical_bonus, val_defense_fix, val_resistance_fix;
+            double val_amplifying_reaction, val_transformative_reaction;
+            val_atk = waifu_now.ATK;
+            val_atk_scaling0 = cvt_string2double(txtDamageAtkScaling.Text);
+            val_atk_scaling1 = cvt_string2double(txtDamageAdditionalScaling.Text);
+            val_damage_bonus = cal_damage_bonus_factor();
+            val_critical_bonus = waifu_now.CRD;
+            val_defense_fix = cal_defense_decreased_factor();
+            val_resistance_fix = cal_resistance_factor();
+            val_amplifying_reaction = cal_amplifying_reaction();
+            val_transformative_reaction = cal_transformative_reaction();
+            damage= val_atk * val_atk_scaling0 * (1 + val_atk_scaling1) * (1 + val_damage_bonus) * val_defense_fix * val_resistance_fix * (val_amplifying_reaction);
+            damage_cirtical = damage * (1 + val_critical_bonus);
+            double cri = waifu_now.CRI;
+            cri = cri > 1 ? 1 : cri;
+            return (cri * damage_cirtical) + (1 - cri) * damage;
+        }
 
         private void refresh_damage_info()
         {
@@ -969,6 +993,80 @@ namespace genshin_sim
             refresh_simulation_cond();
             enemy_now.SetElement(WaifuFactory.ElementalTypes[selDamageEnemyElement.SelectedIndex]);
             refresh_damage_info();
+        }
+
+        private BackgroundWorker Worker = new BackgroundWorker();
+        GeneticArtifact GA;
+        private void cmdEvolutionStart_Click(object sender, EventArgs e)
+        {
+            if (!Worker.IsBusy)
+            {
+                Worker.DoWork += RunGA;
+                Worker.ProgressChanged += Worker_ProgressChanged;
+                Worker.WorkerSupportsCancellation = true;
+                Worker.WorkerReportsProgress = true;
+                Worker.RunWorkerAsync();
+                gpEvolutionInfo.Text = "正在运行...";
+            }
+            labEvolutionConds.Text = "";
+            for (int i = 0; i < WaifuFactory.Conds.Length; i++)
+            {
+                if ((WaifuFactory.Conds[i] & sim_cond) > 0)
+                {
+                    labEvolutionConds.Text += WaifuFactory.CondsStr[i] + "\r\n";
+                }
+            }
+        }
+
+        private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            this.labGroupBest.Text = e.UserState.ToString();
+        }
+
+        private void RunGA(object sender, DoWorkEventArgs e)
+        {
+            GA = new GeneticArtifact(2000);
+            BackgroundWorker backgroundWorker = sender as BackgroundWorker;
+            string message;
+            for (;;)
+            {
+                foreach (var gene in GA.Group)
+                {
+                    this.waifu_now.SetAritfacts(GA.GetArtifactsByGene(gene));
+                    gene.Score = (int)get_damage_exp();
+                }
+                GA.Next();
+                this.waifu_now.SetAritfacts(GA.GetBestArtifacts());
+                message = $"第{GA.Generation}代，伤害期望：{GA.BestGene.Score}\r\n";
+                for (int j = 0; j < 5; j++)
+                {
+                    message += $"{waifu_now.Artifacts[j].Name}\r\n{waifu_now.Artifacts[j].Description}\r\n";
+                }
+                backgroundWorker.ReportProgress(GA.BestGene.Score, message);
+                if (backgroundWorker.CancellationPending == true)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Worker.IsBusy)
+            {
+                Worker.CancelAsync();
+            }
+        }
+
+        private void cmdEvolutionPause_Click(object sender, EventArgs e)
+        {
+            if (Worker.IsBusy)
+            {
+                Worker.CancelAsync();
+                this.waifu_now.SetAritfacts(GA.GetBestArtifacts());
+                gpEvolutionInfo.Text = "搜索结果：";
+            }
         }
     }
 }

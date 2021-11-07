@@ -72,6 +72,20 @@ namespace genshin_sim
             ELM_16, ELM_19, ELM_21, ELM_23,
         };
 
+        public static Affix[] minor_affixes_max_arr = new Affix[]
+        {
+             HP_299,
+             HP_5p8,
+             ATK_19,
+             ATK_5p8,
+             DEF_23,
+             DEF_7p3,
+             CRD_7p8,
+             CRI_3p9,
+             CGR_4p5,
+             ELM_23,
+        };
+
         public static AffixAttr[] waifu_stat_arr = new AffixAttr[]
         {
             AffixAttr.HP,
@@ -1082,6 +1096,52 @@ namespace genshin_sim
             ElementalType.Cryo,
         };
 
+        public static SpecialCond[] Conds = new SpecialCond[]
+        {
+            SpecialCond.UsingSword,
+            SpecialCond.UsingClaymore,
+            SpecialCond.UsingBow,
+            SpecialCond.UsingPolearm,
+            SpecialCond.UsingCatalyst,
+            SpecialCond.OnNormalAttack,
+            SpecialCond.OnChargedAttack,
+            SpecialCond.OnPlungingAttack,
+            SpecialCond.OnElementSkill,
+            SpecialCond.OnElementBurst,
+            SpecialCond.TakingDMG,
+            SpecialCond.EnemyTakeCryoElement,
+            SpecialCond.EnemyTakePyroElement,
+            SpecialCond.EnemyTakeHydroElement,
+            SpecialCond.EnemyTakeAnemoElement,
+            SpecialCond.EnemyTakeElectroElement,
+            SpecialCond.EnemyTakeGeoElement,
+            SpecialCond.EnemyTakeDendroElement,
+            SpecialCond.EnemyFrozen,
+        };
+
+        public static string[] CondsStr = new string[]
+        {
+            "UsingSword",
+            "UsingClaymore",
+            "UsingBow",
+            "UsingPolearm",
+            "UsingCatalyst",
+            "OnNormalAttack",
+            "OnChargedAttack",
+            "OnPlungingAttack",
+            "OnElementSkill",
+            "OnElementBurst",
+            "TakingDMG",
+            "EnemyTakeCryoElement",
+            "EnemyTakePyroElement",
+            "EnemyTakeHydroElement",
+            "EnemyTakeAnemoElement",
+            "EnemyTakeElectroElement",
+            "EnemyTakeGeoElement",
+            "EnemyTakeDendroElement",
+            "EnemyFrozen",
+        };
+
         public static string[] element_names = new string[] {"无", "火", "水", "冰", "草", "雷", "风", "岩" };
 
         public static string element2str(ElementalType type)
@@ -1288,6 +1348,7 @@ namespace genshin_sim
         {
             return type_names[((int)type)];
         }
+
     }
 
     public static class EnemyFactory
