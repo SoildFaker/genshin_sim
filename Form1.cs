@@ -208,7 +208,7 @@ namespace genshin_sim
             labCharacterArtifactGoblet.Text = $"{goblet.MainAffixString}\r\n{goblet.MinorAffixesString}";
             gpCharacterArtifactGoblet.Text = $"{goblet.Name} (Lv.{goblet.Level})";
             cmdCharacterArtifactGoblet.ImageIndex = ((int)goblet.Type) + ((int)goblet.ArtifactSetEffect.Type) * 5;
-            Artifact circlet = waifu_now.Artifacts[3];
+            Artifact circlet = waifu_now.Artifacts[4];
             labCharacterArtifactCirclet.Text = $"{circlet.MainAffixString}\r\n{circlet.MinorAffixesString}";
             gpCharacterArtifactCirclet.Text = $"{circlet.Name} (Lv.{circlet.Level})";
             cmdCharacterArtifactCirclet.ImageIndex = ((int)circlet.Type) + ((int)circlet.ArtifactSetEffect.Type) * 5;

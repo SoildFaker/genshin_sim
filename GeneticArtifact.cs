@@ -25,7 +25,7 @@ namespace genshin_sim
         {
             this.Group = Group.OrderByDescending(x => x.Score).ToList();
             this.BestGene = Group[0];
-            //Group[Group.Count - 1].SetData(Group[0].Data);
+            //Group[^1].SetData(Group[0].Data);
             for (int i = 1; i < Group.Count/4; i++)
             {
                 Group[i].CrossNoSideEffect(BestGene);
