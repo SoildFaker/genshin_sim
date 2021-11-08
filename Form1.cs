@@ -166,17 +166,17 @@ namespace genshin_sim
                 $"攻击力: {waifu_now.ATK}\r\n" +
                 $"防御力: {waifu_now.DEF}\r\n" +
                 $"元素精通: {waifu_now.ELM}\r\n" +
-                $"暴击率: {waifu_now.CRI.ToString("0.0%")}\r\n" +
-                $"暴击伤害: {waifu_now.CRD.ToString("0.0%")}\r\n" +
-                $"物理伤害加成: {waifu_now.Physical.ToString("0.0%")}\r\n" +
-                $"火属性伤害加成: {waifu_now.Pyro.ToString("0.0%")}\r\n" +
-                $"水属性伤害加成: {waifu_now.Hydro.ToString("0.0%")}\r\n" +
-                $"岩属性伤害加成: {waifu_now.Geo.ToString("0.0%")}\r\n" +
-                $"雷属性伤害加成: {waifu_now.Electro.ToString("0.0%")}\r\n" +
-                $"冰属性伤害加成: {waifu_now.Cryo.ToString("0.0%")}\r\n" +
-                $"草属性伤害加成: {waifu_now.Dendro.ToString("0.0%")}\r\n" +
-                $"风属性伤害加成: {waifu_now.Anemo.ToString("0.0%")}\r\n" +
-                $"治疗加成: {waifu_now.Healing.ToString("0.0%")}\r\n";
+                $"暴击率: {waifu_now.CRI:0.0%}\r\n" +
+                $"暴击伤害: {waifu_now.CRD:0.0%}\r\n" +
+                $"物理伤害加成: {waifu_now.Physical:0.0%}\r\n" +
+                $"火属性伤害加成: {waifu_now.Pyro:0.0%}\r\n" +
+                $"水属性伤害加成: {waifu_now.Hydro:0.0%}\r\n" +
+                $"岩属性伤害加成: {waifu_now.Geo:0.0%}\r\n" +
+                $"雷属性伤害加成: {waifu_now.Electro:0.0%}\r\n" +
+                $"冰属性伤害加成: {waifu_now.Cryo:0.0%}\r\n" +
+                $"草属性伤害加成: {waifu_now.Dendro:0.0%}\r\n" +
+                $"风属性伤害加成: {waifu_now.Anemo:0.0%}\r\n" +
+                $"治疗加成: {waifu_now.Healing:0.0%}\r\n";
 
             refresh_damage_info();
         }
@@ -588,13 +588,13 @@ namespace genshin_sim
             damage_cirtical = damage * (1 + val_critical_bonus);
             labDamageInfo.Text = $"伤害组成: \r\n" +
                 $"面板攻击: {val_atk}\r\n" +
-                $"攻击倍率: {val_atk_scaling0.ToString("0.0%")}\r\n" +
-                $"额外倍率: {val_atk_scaling1.ToString("0.0%")}\r\n" +
-                $"伤害增益: {val_damage_bonus.ToString("0.0%")}\r\n" +
-                $"暴击加成: {val_critical_bonus.ToString("0.0%")}\r\n" +
-                $"防御修正: {val_defense_fix.ToString("0.0%")}\r\n" +
-                $"抗性修正: {val_resistance_fix.ToString("0.0%")}\r\n" +
-                $"增幅反应: ({EnemyFactory.reaction2str(get_amplifying_reaction())}) {val_amplifying_reaction.ToString("0.0%")}\r\n" +
+                $"攻击倍率: {val_atk_scaling0:0.0%}\r\n" +
+                $"额外倍率: {val_atk_scaling1:0.0%}\r\n" +
+                $"伤害增益: {val_damage_bonus:0.0%}\r\n" +
+                $"暴击加成: {val_critical_bonus:0.0%}\r\n" +
+                $"防御修正: {val_defense_fix:0.0%}\r\n" +
+                $"抗性修正: {val_resistance_fix:0.0%}\r\n" +
+                $"增幅反应: ({EnemyFactory.reaction2str(get_amplifying_reaction())}) {val_amplifying_reaction:0.0%}\r\n" +
                 $"\r\n" +
                 $"最终伤害: {damage}\r\n" +
                 $"暴击伤害: {damage_cirtical}\r\n" +
