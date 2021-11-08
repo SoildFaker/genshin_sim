@@ -25,13 +25,9 @@ namespace genshin_sim
         {
             this.Group = Group.OrderByDescending(x => x.Score).ToList();
             this.BestGene = Group[0];
-            //Group[^1].SetData(Group[0].Data);
-            for (int i = 1; i < Group.Count/4; i++)
-            {
-                Group[i].CrossNoSideEffect(BestGene);
-            }
             for (int i = 1; i < Group.Count; i++)
             {
+                Group[i].CrossNoSideEffect(BestGene);
                 Group[i].Cross(Group[rand.Next(1, Group.Count)]);
                 Group[i].MutateSetEffect();
                 Group[i].MutateMinorAffix();
@@ -178,7 +174,7 @@ namespace genshin_sim
         {
             for (int i = 0; i < 5; i++)
             {
-                if (rand.Next(100) > 50)
+                if (rand.Next(100) > 80)
                 {
                     this.data_arr[i] = (int[])gene.Data[i].Clone();
                 }
@@ -214,7 +210,7 @@ namespace genshin_sim
         {
             for (int i = 0; i < 5; i++)
             {
-                if (rand.Next(100) > 80)
+                if (rand.Next(100) > 50)
                 {
                     mutate_minor_affix_value(i, this.data_arr[i]);
                 }
