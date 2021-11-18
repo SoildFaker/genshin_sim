@@ -60,6 +60,8 @@ namespace genshin_sim
 
         public Artifact[] GetBestArtifacts()
         {
+            this.Group = Group.OrderByDescending(x => x.Score).ToList();
+            this.BestGene = Group[0];
             return GetArtifactsByGene(BestGene);
         }
     }
