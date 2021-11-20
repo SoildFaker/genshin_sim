@@ -1328,6 +1328,65 @@ namespace genshin_sim
             8, // image index
             0
         );
+        
+        public static Weapon AquilaFavonia = new Weapon(
+            "风鹰剑",
+            WeaponType.Sword,
+            new Affix(AffixAttr.ATK, WeaponData.aquila_favonia_base_atk, 0),
+            new Affix(AffixAttr.pPhysical, WeaponData.aquila_favonia_physical_dmg_bonus, 0),
+            new WeaponSpecialAbility(
+                "西风之鹰的抗争",
+                new List<SpecialCondAbility>()
+                {
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.2, 0.25, 0.3, 0.35, 0.4 }, 0)),
+                    new SpecialCondAbility(SpecialCond.TakingDMG, AbilityType.Simple, new Affix(AffixAttr.pNoEffect, new double[] { 1.0, 1.15, 1.30, 1.40, 1.60 }, 0)),
+                    new SpecialCondAbility(SpecialCond.TakingDMG, AbilityType.Simple, new Affix(AffixAttr.pDMG, new double[] { 2, 2.3, 2.6, 2.9, 3.2 }, 0)),
+                },
+                "攻击力提高{0}；受到伤害时触发：高扬抗争旗号的西风鹰之魂苏醒，恢复同等与攻击力的{1}生命值，并对周围的敌人造成{2}攻击力的伤害。该效果每15秒只能触发一次。",
+                0
+            ),
+            9, // image index
+            0
+        );
+
+        public static Weapon SummitShaper = new Weapon(
+            "斫峰之刃",
+            WeaponType.Sword,
+            new Affix(AffixAttr.ATK, WeaponData.summit_shaper_base_atk, 0),
+            new Affix(AffixAttr.pATK, WeaponData.summit_shaper_atk, 0),
+            new WeaponSpecialAbility(
+                "金璋皇极",
+                new List<SpecialCondAbility>()
+                {
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.pNoEffect, new double[] { 0.2, 0.25, 0.3, 0.35, 0.4 }, 0)),
+                    new SpecialCondAbility(SpecialCond.OnAttack, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.04, 0.05, 0.06, 0.07, 0.08 }, 0)),
+                    new SpecialCondAbility(SpecialCond.TakingShield, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.04, 0.05, 0.06, 0.07, 0.08 }, 0)),
+                },
+                "护盾强效提升{0}。攻击命中后的8秒内，攻击力提升{1}。该效果至多可叠加5层，每0.3秒只能触发一次。此外，处于护盾庇护下时，该效果的攻击力提升效果提高100%。",
+                0
+            ),
+            10, // image index
+            0
+        );
+
+        public static Weapon SkywardBlade = new Weapon(
+            "天空之刃",
+            WeaponType.Sword,
+            new Affix(AffixAttr.ATK, WeaponData.skyward_blade_base_atk, 0),
+            new Affix(AffixAttr.pCGR, WeaponData.skyward_blade_energy_recharge, 0),
+            new WeaponSpecialAbility(
+                "穿刺高天的利齿",
+                new List<SpecialCondAbility>()
+                {
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.pCRI, new double[] { 0.04, 0.05, 0.06, 0.07, 0.08 }, 0)),
+                    new SpecialCondAbility(SpecialCond.OnNormalAttack | SpecialCond.OnChargedAttack, AbilityType.Simple, new Affix(AffixAttr.pDMG, new double[] {  0.2, 0.25, 0.3, 0.35, 0.4 }, 0)),
+                },
+                "暴击率提升{0}；施放元素爆发时，获得破空之势：移动速度提升10%，攻击速度提升10%，普通攻击与重击命中时，额外造成{1}攻击力的伤害，持续12秒。",
+                0
+            ),
+            11, // image index
+            0
+        );
 
         public static Weapon[] Weapons = new Weapon[]
         {
@@ -1340,6 +1399,9 @@ namespace genshin_sim
             ThunderingPulse,
             ElegyForTheEnd,
             SkywardHarp,
+            AquilaFavonia,
+            SummitShaper,
+            SkywardBlade,
         };
 
         public static string[] type_names = new string[] {"未知", "单手剑", "双手剑", "枪", "弓", "法器" };

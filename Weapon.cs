@@ -85,6 +85,8 @@ namespace genshin_sim
         EnemyTakeDendroElement = ((ulong)1 << 18),
         EnemyFrozen = ((ulong)1 << 19),
         TimeDelay = ((ulong)1 << 20),
+        TakingShield = ((ulong)1 << 21),
+        OnAttack = ((ulong)1 << 22),
         Ignore = ((ulong)1 << 63),
     }
 
@@ -109,8 +111,7 @@ namespace genshin_sim
             this.BonusBase = bonus_base;
         }
     }
-
-    public class WeaponSpecialAbility
+ public class WeaponSpecialAbility
     {
         public int Level { get; private set; }
         public string Name { get; private set; }

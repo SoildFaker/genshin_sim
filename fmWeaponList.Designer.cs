@@ -99,6 +99,9 @@
             this.imWeapons.Images.SetKeyName(6, "Weapon_Thundering_Pulse.png");
             this.imWeapons.Images.SetKeyName(7, "Weapon_Elegy_for_the_End.png");
             this.imWeapons.Images.SetKeyName(8, "Weapon_Skyward_Harp.png");
+            this.imWeapons.Images.SetKeyName(9, "Weapon_Aquila_Favonia.png");
+            this.imWeapons.Images.SetKeyName(10, "Weapon_Summit_Shaper.png");
+            this.imWeapons.Images.SetKeyName(11, "Weapon_Skyward_Blade.png");
             // 
             // fmWeaponList
             // 
