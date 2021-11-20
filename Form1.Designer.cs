@@ -111,20 +111,20 @@ namespace genshin_sim
             this.selEnemyLevel = new System.Windows.Forms.TrackBar();
             this.labEnemyName = new System.Windows.Forms.Label();
             this.cmdEnemySelect = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.labEvolutionConds = new System.Windows.Forms.Label();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmdEvolutionStart = new System.Windows.Forms.Button();
+            this.selEvolutionSpeed = new System.Windows.Forms.TrackBar();
+            this.cmdEvolutionPause = new System.Windows.Forms.Button();
+            this.gpEvolutionInfo = new System.Windows.Forms.GroupBox();
+            this.labGroupBest = new System.Windows.Forms.Label();
             this.labGithubLink = new System.Windows.Forms.LinkLabel();
             this.imUserIcons = new System.Windows.Forms.ImageList(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.cmdEvolutionStart = new System.Windows.Forms.Button();
-            this.labGroupBest = new System.Windows.Forms.Label();
-            this.cmdEvolutionPause = new System.Windows.Forms.Button();
-            this.gpEvolutionInfo = new System.Windows.Forms.GroupBox();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.labEvolutionConds = new System.Windows.Forms.Label();
-            this.selEvolutionSpeed = new System.Windows.Forms.TrackBar();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -153,10 +153,10 @@ namespace genshin_sim
             this.groupBox12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selEnemyLevel)).BeginInit();
             this.tabPage4.SuspendLayout();
-            this.gpEvolutionInfo.SuspendLayout();
-            this.groupBox15.SuspendLayout();
             this.groupBox14.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selEvolutionSpeed)).BeginInit();
+            this.gpEvolutionInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmdAdd
@@ -603,6 +603,11 @@ namespace genshin_sim
             this.imArtifacts.Images.SetKeyName(37, "Item_Hourglass_of_Thunder.png");
             this.imArtifacts.Images.SetKeyName(38, "Item_Omen_of_Thunderstorm.png");
             this.imArtifacts.Images.SetKeyName(39, "Item_Thunder_Summoner%27s_Crown.png");
+            this.imArtifacts.Images.SetKeyName(40, "Item_Lavawalker%27s_Resolution.png");
+            this.imArtifacts.Images.SetKeyName(41, "Item_Lavawalker%27s_Salvation.png");
+            this.imArtifacts.Images.SetKeyName(42, "Item_Lavawalker%27s_Torment.png");
+            this.imArtifacts.Images.SetKeyName(43, "Item_Lavawalker%27s_Epiphany.png");
+            this.imArtifacts.Images.SetKeyName(44, "Item_Lavawalker%27s_Wisdom.png");
             // 
             // gpCharacterArtifactGoblet
             // 
@@ -1122,24 +1127,6 @@ namespace genshin_sim
             this.cmdEnemySelect.UseVisualStyleBackColor = false;
             this.cmdEnemySelect.Click += new System.EventHandler(this.cmdEnemySelect_Click);
             // 
-            // labGithubLink
-            // 
-            this.labGithubLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labGithubLink.AutoSize = true;
-            this.labGithubLink.Location = new System.Drawing.Point(805, 567);
-            this.labGithubLink.Name = "labGithubLink";
-            this.labGithubLink.Size = new System.Drawing.Size(95, 12);
-            this.labGithubLink.TabIndex = 5;
-            this.labGithubLink.TabStop = true;
-            this.labGithubLink.Text = "View on Github!";
-            this.labGithubLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labGithubLink_LinkClicked);
-            // 
-            // imUserIcons
-            // 
-            this.imUserIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imUserIcons.ImageStream")));
-            this.imUserIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.imUserIcons.Images.SetKeyName(0, "add.png");
-            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.groupBox14);
@@ -1152,65 +1139,6 @@ namespace genshin_sim
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Artifact Analysis";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // cmdEvolutionStart
-            // 
-            this.cmdEvolutionStart.Location = new System.Drawing.Point(6, 20);
-            this.cmdEvolutionStart.Name = "cmdEvolutionStart";
-            this.cmdEvolutionStart.Size = new System.Drawing.Size(75, 23);
-            this.cmdEvolutionStart.TabIndex = 0;
-            this.cmdEvolutionStart.Text = "Start";
-            this.cmdEvolutionStart.UseVisualStyleBackColor = true;
-            this.cmdEvolutionStart.Click += new System.EventHandler(this.cmdEvolutionStart_Click);
-            // 
-            // labGroupBest
-            // 
-            this.labGroupBest.AutoSize = true;
-            this.labGroupBest.Location = new System.Drawing.Point(6, 17);
-            this.labGroupBest.Name = "labGroupBest";
-            this.labGroupBest.Size = new System.Drawing.Size(35, 12);
-            this.labGroupBest.TabIndex = 1;
-            this.labGroupBest.Text = "info:";
-            // 
-            // cmdEvolutionPause
-            // 
-            this.cmdEvolutionPause.Location = new System.Drawing.Point(87, 20);
-            this.cmdEvolutionPause.Name = "cmdEvolutionPause";
-            this.cmdEvolutionPause.Size = new System.Drawing.Size(75, 23);
-            this.cmdEvolutionPause.TabIndex = 2;
-            this.cmdEvolutionPause.Text = "Stop";
-            this.cmdEvolutionPause.UseVisualStyleBackColor = true;
-            this.cmdEvolutionPause.Click += new System.EventHandler(this.cmdEvolutionPause_Click);
-            // 
-            // gpEvolutionInfo
-            // 
-            this.gpEvolutionInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gpEvolutionInfo.BackColor = System.Drawing.Color.White;
-            this.gpEvolutionInfo.Controls.Add(this.labGroupBest);
-            this.gpEvolutionInfo.Location = new System.Drawing.Point(239, 6);
-            this.gpEvolutionInfo.Name = "gpEvolutionInfo";
-            this.gpEvolutionInfo.Size = new System.Drawing.Size(635, 518);
-            this.gpEvolutionInfo.TabIndex = 3;
-            this.gpEvolutionInfo.TabStop = false;
-            this.gpEvolutionInfo.Text = "Info";
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox15.BackColor = System.Drawing.Color.White;
-            this.groupBox15.Controls.Add(this.label8);
-            this.groupBox15.Controls.Add(this.label7);
-            this.groupBox15.Controls.Add(this.cmdEvolutionStart);
-            this.groupBox15.Controls.Add(this.selEvolutionSpeed);
-            this.groupBox15.Controls.Add(this.cmdEvolutionPause);
-            this.groupBox15.Location = new System.Drawing.Point(6, 6);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(227, 115);
-            this.groupBox15.TabIndex = 4;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Command";
             // 
             // groupBox14
             // 
@@ -1235,6 +1163,51 @@ namespace genshin_sim
             this.labEvolutionConds.TabIndex = 0;
             this.labEvolutionConds.Text = "Conds";
             // 
+            // groupBox15
+            // 
+            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox15.BackColor = System.Drawing.Color.White;
+            this.groupBox15.Controls.Add(this.label8);
+            this.groupBox15.Controls.Add(this.label7);
+            this.groupBox15.Controls.Add(this.cmdEvolutionStart);
+            this.groupBox15.Controls.Add(this.selEvolutionSpeed);
+            this.groupBox15.Controls.Add(this.cmdEvolutionPause);
+            this.groupBox15.Location = new System.Drawing.Point(6, 6);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(227, 115);
+            this.groupBox15.TabIndex = 4;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Command";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(180, 97);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 12);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Better";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(4, 97);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 12);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Faster";
+            // 
+            // cmdEvolutionStart
+            // 
+            this.cmdEvolutionStart.Location = new System.Drawing.Point(6, 20);
+            this.cmdEvolutionStart.Name = "cmdEvolutionStart";
+            this.cmdEvolutionStart.Size = new System.Drawing.Size(75, 23);
+            this.cmdEvolutionStart.TabIndex = 0;
+            this.cmdEvolutionStart.Text = "Start";
+            this.cmdEvolutionStart.UseVisualStyleBackColor = true;
+            this.cmdEvolutionStart.Click += new System.EventHandler(this.cmdEvolutionStart_Click);
+            // 
             // selEvolutionSpeed
             // 
             this.selEvolutionSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -1247,23 +1220,55 @@ namespace genshin_sim
             this.selEvolutionSpeed.TabIndex = 3;
             this.selEvolutionSpeed.Value = 1;
             // 
-            // label7
+            // cmdEvolutionPause
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 97);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 12);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Faster";
+            this.cmdEvolutionPause.Location = new System.Drawing.Point(87, 20);
+            this.cmdEvolutionPause.Name = "cmdEvolutionPause";
+            this.cmdEvolutionPause.Size = new System.Drawing.Size(75, 23);
+            this.cmdEvolutionPause.TabIndex = 2;
+            this.cmdEvolutionPause.Text = "Stop";
+            this.cmdEvolutionPause.UseVisualStyleBackColor = true;
+            this.cmdEvolutionPause.Click += new System.EventHandler(this.cmdEvolutionPause_Click);
             // 
-            // label8
+            // gpEvolutionInfo
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(180, 97);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 12);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Better";
+            this.gpEvolutionInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gpEvolutionInfo.BackColor = System.Drawing.Color.White;
+            this.gpEvolutionInfo.Controls.Add(this.labGroupBest);
+            this.gpEvolutionInfo.Location = new System.Drawing.Point(239, 6);
+            this.gpEvolutionInfo.Name = "gpEvolutionInfo";
+            this.gpEvolutionInfo.Size = new System.Drawing.Size(635, 518);
+            this.gpEvolutionInfo.TabIndex = 3;
+            this.gpEvolutionInfo.TabStop = false;
+            this.gpEvolutionInfo.Text = "Info";
+            // 
+            // labGroupBest
+            // 
+            this.labGroupBest.AutoSize = true;
+            this.labGroupBest.Location = new System.Drawing.Point(6, 17);
+            this.labGroupBest.Name = "labGroupBest";
+            this.labGroupBest.Size = new System.Drawing.Size(35, 12);
+            this.labGroupBest.TabIndex = 1;
+            this.labGroupBest.Text = "info:";
+            // 
+            // labGithubLink
+            // 
+            this.labGithubLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labGithubLink.AutoSize = true;
+            this.labGithubLink.Location = new System.Drawing.Point(805, 567);
+            this.labGithubLink.Name = "labGithubLink";
+            this.labGithubLink.Size = new System.Drawing.Size(95, 12);
+            this.labGithubLink.TabIndex = 5;
+            this.labGithubLink.TabStop = true;
+            this.labGithubLink.Text = "View on Github!";
+            this.labGithubLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labGithubLink_LinkClicked);
+            // 
+            // imUserIcons
+            // 
+            this.imUserIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imUserIcons.ImageStream")));
+            this.imUserIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.imUserIcons.Images.SetKeyName(0, "add.png");
             // 
             // Form1
             // 
@@ -1316,13 +1321,13 @@ namespace genshin_sim
             this.groupBox12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.selEnemyLevel)).EndInit();
             this.tabPage4.ResumeLayout(false);
-            this.gpEvolutionInfo.ResumeLayout(false);
-            this.gpEvolutionInfo.PerformLayout();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selEvolutionSpeed)).EndInit();
+            this.gpEvolutionInfo.ResumeLayout(false);
+            this.gpEvolutionInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

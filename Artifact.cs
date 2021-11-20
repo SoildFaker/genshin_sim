@@ -270,6 +270,7 @@ namespace genshin_sim
         ViridescentVenerer,
         HeartOfDepth,
         ThunderingFury,
+        LavaWalker,
     }
     public class SpecialCondEffect
     {

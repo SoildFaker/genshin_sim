@@ -395,6 +395,18 @@ namespace genshin_sim
             "两件套: 获得{0}雷元素伤害加成。\r\n" +
             "四件套: 超载、感电、超导反应造成的伤害提升{1}。触发这些元素反应时，元素战技冷却时间减少1秒。该效果每0.8秒最多触发一次。"
         );
+
+        public static ArtifactSetEffect LavaWalker= new ArtifactSetEffect(
+            "渡过烈火的贤人",
+            ArtifactSetEffectType.LavaWalker,
+            new List<SpecialCondEffect>()
+            {
+                new SpecialCondEffect(SpecialCond.Always, 2, AbilityType.Simple, new Affix(AffixAttr.NoEffect, 0.4)),
+                new SpecialCondEffect(SpecialCond.EnemyTakePyroElement, 4, AbilityType.Simple, new Affix(AffixAttr.pDMG, 0.35)),
+            },
+            "两件套: 火元素抗性提高{0}。\r\n" +
+            "四件套: 对处于火元素影响下的敌人造成的伤害提升{1}。"
+        );
         
         public static ArtifactSetEffect[] SetEffects = new ArtifactSetEffect[]
         {
@@ -406,6 +418,7 @@ namespace genshin_sim
             ViridescentVenerer,
             HeartOfDepth,
             ThunderingFury,
+            LavaWalker,
         };
 
         public static string[,] set_effect_names = new string[,] {
@@ -417,6 +430,7 @@ namespace genshin_sim
             { "野花记忆的绿野", "猎人青翠的箭羽", "翠绿猎人的笃定", "翠绿猎人的容器", "翠绿的猎人之冠" },
             { "饰金胸花", "追忆之风", "坚铜罗盘", "沉波之盏", "酒渍船帽" },
             { "雷鸟的怜悯", "雷灾的孑遗", "雷霆的时计", "降雷的凶兆", "唤雷的头冠" },
+            { "渡火者的决绝", "渡火者的解脱", "渡火者的煎熬", "渡火者的醒悟", "渡火者的智慧" },
         }; 
 
         public static string get_artifact_name(ArtifactType artifact_type, ArtifactSetEffectType set_type)
