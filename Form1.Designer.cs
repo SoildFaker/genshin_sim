@@ -125,6 +125,8 @@ namespace genshin_sim
             this.labGithubLink = new System.Windows.Forms.LinkLabel();
             this.imUserIcons = new System.Windows.Forms.ImageList(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.selWeaponArtActive = new System.Windows.Forms.CheckBox();
+            this.selArtifactArtActive = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -868,7 +870,11 @@ namespace genshin_sim
             // 
             // groupBox13
             // 
+            this.groupBox13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox13.BackColor = System.Drawing.Color.White;
+            this.groupBox13.Controls.Add(this.selArtifactArtActive);
+            this.groupBox13.Controls.Add(this.selWeaponArtActive);
             this.groupBox13.Controls.Add(this.label5);
             this.groupBox13.Controls.Add(this.selDamageAttackType);
             this.groupBox13.Controls.Add(this.label4);
@@ -1000,6 +1006,9 @@ namespace genshin_sim
             // 
             // groupBox10
             // 
+            this.groupBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox10.BackColor = System.Drawing.Color.White;
             this.groupBox10.Controls.Add(this.labDamageInfo);
             this.groupBox10.Location = new System.Drawing.Point(289, 6);
@@ -1011,7 +1020,9 @@ namespace genshin_sim
             // 
             // labDamageInfo
             // 
-            this.labDamageInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labDamageInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labDamageInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labDamageInfo.Location = new System.Drawing.Point(3, 17);
             this.labDamageInfo.Name = "labDamageInfo";
@@ -1142,9 +1153,8 @@ namespace genshin_sim
             // 
             // groupBox14
             // 
-            this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox14.BackColor = System.Drawing.Color.White;
             this.groupBox14.Controls.Add(this.labEvolutionConds);
             this.groupBox14.Location = new System.Drawing.Point(3, 127);
@@ -1165,8 +1175,6 @@ namespace genshin_sim
             // 
             // groupBox15
             // 
-            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox15.BackColor = System.Drawing.Color.White;
             this.groupBox15.Controls.Add(this.label8);
             this.groupBox15.Controls.Add(this.label7);
@@ -1232,7 +1240,8 @@ namespace genshin_sim
             // 
             // gpEvolutionInfo
             // 
-            this.gpEvolutionInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gpEvolutionInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gpEvolutionInfo.BackColor = System.Drawing.Color.White;
             this.gpEvolutionInfo.Controls.Add(this.labGroupBest);
@@ -1269,6 +1278,28 @@ namespace genshin_sim
             this.imUserIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imUserIcons.ImageStream")));
             this.imUserIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.imUserIcons.Images.SetKeyName(0, "add.png");
+            // 
+            // selWeaponArtActive
+            // 
+            this.selWeaponArtActive.AutoSize = true;
+            this.selWeaponArtActive.Location = new System.Drawing.Point(6, 148);
+            this.selWeaponArtActive.Name = "selWeaponArtActive";
+            this.selWeaponArtActive.Size = new System.Drawing.Size(126, 16);
+            this.selWeaponArtActive.TabIndex = 10;
+            this.selWeaponArtActive.Text = "Weapon Art Active";
+            this.selWeaponArtActive.UseVisualStyleBackColor = true;
+            this.selWeaponArtActive.CheckedChanged += new System.EventHandler(this.selWeaponArtActive_CheckedChanged);
+            // 
+            // selArtifactArtActive
+            // 
+            this.selArtifactArtActive.AutoSize = true;
+            this.selArtifactArtActive.Location = new System.Drawing.Point(6, 170);
+            this.selArtifactArtActive.Name = "selArtifactArtActive";
+            this.selArtifactArtActive.Size = new System.Drawing.Size(138, 16);
+            this.selArtifactArtActive.TabIndex = 11;
+            this.selArtifactArtActive.Text = "Artifact Art Active";
+            this.selArtifactArtActive.UseVisualStyleBackColor = true;
+            this.selArtifactArtActive.CheckedChanged += new System.EventHandler(this.selArtifactArtActive_CheckedChanged);
             // 
             // Form1
             // 
@@ -1428,6 +1459,8 @@ namespace genshin_sim
         private System.Windows.Forms.TrackBar selEvolutionSpeed;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox selArtifactArtActive;
+        private System.Windows.Forms.CheckBox selWeaponArtActive;
     }
 }
 

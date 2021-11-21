@@ -375,8 +375,8 @@ namespace genshin_sim
             new List<SpecialCondEffect>()
             {
                 new SpecialCondEffect(SpecialCond.Always, 2, AbilityType.Simple, new Affix(AffixAttr.pHydro, 0.15)),
-                new SpecialCondEffect(SpecialCond.TimeDelay, 4, AbilityType.Simple, new Affix(AffixAttr.pNormalDMG, 0.30)),
-                new SpecialCondEffect(SpecialCond.TimeDelay, 4, AbilityType.Simple, new Affix(AffixAttr.pChargedDMG, 0.30)),
+                new SpecialCondEffect(SpecialCond.ArtifactArtActive, 4, AbilityType.Simple, new Affix(AffixAttr.pNormalDMG, 0.30)),
+                new SpecialCondEffect(SpecialCond.ArtifactArtActive, 4, AbilityType.Simple, new Affix(AffixAttr.pChargedDMG, 0.30)),
             },
             "两件套: 获得{0}水元素伤害加成。\r\n" +
             "四件套: 施放元素战技后的15秒内，普通攻击与重击造成的伤害提高{1}。"
@@ -1131,6 +1131,8 @@ namespace genshin_sim
             SpecialCond.EnemyTakeGeoElement,
             SpecialCond.EnemyTakeDendroElement,
             SpecialCond.EnemyFrozen,
+            SpecialCond.ArtifactArtActive,
+            SpecialCond.WeaponArtActive,
         };
 
         public static string[] CondsStr = new string[]
@@ -1154,6 +1156,8 @@ namespace genshin_sim
             "EnemyTakeGeoElement",
             "EnemyTakeDendroElement",
             "EnemyFrozen",
+            "ArtifactArtActive",
+            "WeaponArtActive",
         };
 
         public static string[] element_names = new string[] {"无", "火", "水", "冰", "草", "雷", "风", "岩" };
@@ -1195,8 +1199,8 @@ namespace genshin_sim
                 new List<SpecialCondAbility>()
                 {
                     new SpecialCondAbility(SpecialCond.OnNormalAttack|SpecialCond.OnChargedAttack, AbilityType.Simple, new Affix(AffixAttr.pDMG, new double[] { 0.12, 0.15, 0.18, 0.21, 0.24}, 0)),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pNormalDMG, new double[] { 0.08, 0.10, 0.12, 0.14, 0.16}, 0), WaifuStat.TimeAfter),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pChargedDMG, new double[] { 0.08, 0.10, 0.12, 0.14, 0.16}, 0), WaifuStat.TimeAfter),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Bonus, new Affix(AffixAttr.pNormalDMG, new double[] { 0.08, 0.10, 0.12, 0.14, 0.16}, 0), WaifuStat.WeaponArtLevel, 5),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Bonus, new Affix(AffixAttr.pChargedDMG, new double[] { 0.08, 0.10, 0.12, 0.14, 0.16}, 0), WaifuStat.WeaponArtLevel, 5),
                 },
                 "普通攻击和重击造成的伤害提升{0}。箭矢发射后每经过0.1秒，伤害还会提升{1}。至多提升5次。",
                 0
@@ -1214,8 +1218,8 @@ namespace genshin_sim
                 "破浪",
                 new List<SpecialCondAbility>()
                 {
-                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Bonus, new Affix(AffixAttr.pDMG, new double[] { 0.06, 0.07, 0.08, 0.09, 0.10}, 0), WaifuStat.TimeAfter),
-                    new SpecialCondAbility(SpecialCond.TakingDMG, AbilityType.Bonus, new Affix(AffixAttr.pNoEffect, new double[] { 0.03, 0.027, 0.024, 0.022, 0.02}, 0), WaifuStat.TimeAfter),
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Bonus, new Affix(AffixAttr.pDMG, new double[] { 0.06, 0.07, 0.08, 0.09, 0.10}, 0), WaifuStat.WeaponArtLevel, 5),
+                    new SpecialCondAbility(SpecialCond.Ignore, AbilityType.Simple, new Affix(AffixAttr.pNoEffect, new double[] { 0.03, 0.027, 0.024, 0.022, 0.02}, 0)),
                 },
                 "角色在场上时，每4秒提升{0}造成的伤害，{1}受到的伤害。该效果最多叠加5层，不随角色退场重置，受到伤害后会减少1层效果。",
                 0
@@ -1233,7 +1237,7 @@ namespace genshin_sim
                 "无边际的眷顾",
                 new List<SpecialCondAbility>()
                 {
-                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Bonus, new Affix(AffixAttr.pElementalDMG, new double[] { 0.08, 0.1, 0.12, 0.14, 0.16}, 0), WaifuStat.TimeAfter),
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Bonus, new Affix(AffixAttr.pElementalDMG, new double[] { 0.08, 0.1, 0.12, 0.14, 0.16}, 0), WaifuStat.WeaponArtLevel, 4),
                 },
                 "移动速度提高10%；在场上每4秒获得{0}元素伤害加成。该效果最多叠加4层，角色倒下或离场后清空。",
                 0
@@ -1270,10 +1274,10 @@ namespace genshin_sim
                 new List<SpecialCondAbility>()
                 {
                     new SpecialCondAbility(SpecialCond.OnElementBurst|SpecialCond.OnElementSkill, AbilityType.Simple, new Affix(AffixAttr.pDMG, new double[] { 0.12, 0.15, 0.18, 0.21, 0.24 }, 0)),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pATK, new double[] { 0.1, 0.125, 0.15, 0.175, 0.20}, 0), WaifuStat.TimeAfter),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pATK, new double[] { 0.2, 0.25, 0.30, 0.35, 0.40}, 0), WaifuStat.TimeAfter),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pATK, new double[] { 0.3, 0.375, 0.45, 0.525, 0.60}, 0), WaifuStat.TimeAfter),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pATK, new double[] { 0.48, 0.60, 0.72, 0.84, 0.96}, 0), WaifuStat.TimeAfter),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Level, new Affix(AffixAttr.pATK, new double[] { 0.1, 0.125, 0.15, 0.175, 0.20}, 0), WaifuStat.WeaponArtLevel, 0),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Level, new Affix(AffixAttr.pATK, new double[] { 0.2, 0.25, 0.30, 0.35, 0.40}, 0), WaifuStat.WeaponArtLevel, 1),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Level, new Affix(AffixAttr.pATK, new double[] { 0.3, 0.375, 0.45, 0.525, 0.60}, 0), WaifuStat.WeaponArtLevel, 2),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Level, new Affix(AffixAttr.pATK, new double[] { 0.48, 0.60, 0.72, 0.84, 0.96}, 0), WaifuStat.WeaponArtLevel, 3),
                 },
                 "元素战技和元素爆发造成的伤害提高{0}；普通攻击、重击、元素战技或元素爆发命中敌人后，将产生1层持续12秒的「白夜极星」效果。处于1/2/3/4层「白夜极星」效果下时，攻击力将提高({1}/{2}/{3}/{4})。由普通攻击、重击、元素战技或元素爆发产生的「白夜极星」将分别独立存在。",
                 0
@@ -1292,9 +1296,9 @@ namespace genshin_sim
                 new List<SpecialCondAbility>()
                 {
                     new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.20, 0.25, 0.30, 0.35, 0.40 }, 0)),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pNormalDMG, new double[] { 0.12, 0.15, 0.18, 0.21, 0.24}, 0), WaifuStat.TimeAfter),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pNormalDMG, new double[] { 0.24, 0.30, 0.36, 0.42, 0.48}, 0), WaifuStat.TimeAfter),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Bonus, new Affix(AffixAttr.pNormalDMG, new double[] { 0.40, 0.50, 0.60, 0.70, 0.80}, 0), WaifuStat.TimeAfter),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Level, new Affix(AffixAttr.pNormalDMG, new double[] { 0.12, 0.15, 0.18, 0.21, 0.24}, 0), WaifuStat.WeaponArtLevel, 0),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Level, new Affix(AffixAttr.pNormalDMG, new double[] { 0.24, 0.30, 0.36, 0.42, 0.48}, 0), WaifuStat.WeaponArtLevel, 1),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Level, new Affix(AffixAttr.pNormalDMG, new double[] { 0.40, 0.50, 0.60, 0.70, 0.80}, 0), WaifuStat.WeaponArtLevel, 2),
                 },
                 "攻击力提高{0}，并能获得「飞雷之巴印」的威势。飞雷之巴印：持有1/2/3层飞雷之巴印时，普通攻击造成的伤害提高({1}/{2}/{3})。在下列情况下，角色将各获得1层飞雷之巴印：普通攻击造成伤害时，持续5秒；施放元素战技时，持续10秒；此外，角色元素能量低于100%时，将获得1层飞雷之巴印，此飞雷之巴印会在角色的元素能量充满时消失。每层飞雷之巴印的持续时间独立计算。",
                 0
@@ -1313,8 +1317,8 @@ namespace genshin_sim
                 new List<SpecialCondAbility>()
                 {
                     new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.ELM, new double[] { 60, 75, 90, 105, 120 }, 0)),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Simple, new Affix(AffixAttr.ELM, new double[] { 100, 125, 150, 175, 200 }, 0)),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.20, 0.25, 0.30, 0.35, 0.40}, 0)),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Level, new Affix(AffixAttr.ELM, new double[] { 100, 125, 150, 175, 200 }, 0), WaifuStat.WeaponArtLevel, 3),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Level, new Affix(AffixAttr.pATK, new double[] { 0.20, 0.25, 0.30, 0.35, 0.40}, 0), WaifuStat.WeaponArtLevel, 3),
                 },
                 "飘游风中的「千年的大乐章」的一部分。元素精通提高{0}点；元素战技或元素爆发命中敌人时，角色获得一枚追思之符，每0.2秒内至多触发一次，角色处于队伍后台也能触发。拥有4枚追思之符时，将消耗所有追思之符，使附近的队伍中所有角色获得持续12秒的「千年的大乐章·别离之歌」效果：元素精通提高{1}点，攻击力提升{2}。触发后20秒内，无法再次获得追思之符。「千年的大乐章」触发的多种数值效果中，同类数值效果不可叠加。",
                 0
@@ -1333,10 +1337,11 @@ namespace genshin_sim
                 new List<SpecialCondAbility>()
                 {
                     new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.pCRD, new double[] { 0.2, 0.25, 0.3, 0.35, 0.4 }, 0)),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Simple, new Affix(AffixAttr.pNoEffect, new double[] { 0.6, 0.7, 0.8, 0.9, 1 }, 0)),
-                    new SpecialCondAbility(SpecialCond.TimeDelay, AbilityType.Simple, new Affix(AffixAttr.NoEffect, new double[] { 4, 3.5, 3, 2.5, 2 }, 0)),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Bonus, new Affix(AffixAttr.pDMG, new double[] { 1.25, 1.25, 1.25, 1.25, 1.25 }, 0), WaifuStat.ATK, 1),
+                    new SpecialCondAbility(SpecialCond.Ignore, AbilityType.Simple, new Affix(AffixAttr.pNoEffect, new double[] { 0.6, 0.7, 0.8, 0.9, 1 }, 0)),
+                    new SpecialCondAbility(SpecialCond.Ignore, AbilityType.Simple, new Affix(AffixAttr.NoEffect, new double[] { 4, 3.5, 3, 2.5, 2 }, 0)),
                 },
-                "暴击伤害提高{0}；攻击命中时有{1}概率造成125%攻击力的小范围物理伤害，该效果每{2}秒只能触发一次。",
+                "暴击伤害提高{0}；攻击命中时有{2}概率造成{1}攻击力的小范围物理伤害，该效果每{3}秒只能触发一次。",
                 0
             ),
             8, // image index
@@ -1354,7 +1359,7 @@ namespace genshin_sim
                 {
                     new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.2, 0.25, 0.3, 0.35, 0.4 }, 0)),
                     new SpecialCondAbility(SpecialCond.TakingDMG, AbilityType.Simple, new Affix(AffixAttr.pNoEffect, new double[] { 1.0, 1.15, 1.30, 1.40, 1.60 }, 0)),
-                    new SpecialCondAbility(SpecialCond.TakingDMG, AbilityType.Simple, new Affix(AffixAttr.pDMG, new double[] { 2, 2.3, 2.6, 2.9, 3.2 }, 0)),
+                    new SpecialCondAbility(SpecialCond.TakingDMG, AbilityType.Bonus, new Affix(AffixAttr.pDMG, new double[] { 2, 2.3, 2.6, 2.9, 3.2 }, 0), WaifuStat.ATK, 1),
                 },
                 "攻击力提高{0}；受到伤害时触发：高扬抗争旗号的西风鹰之魂苏醒，恢复同等与攻击力的{1}生命值，并对周围的敌人造成{2}攻击力的伤害。该效果每15秒只能触发一次。",
                 0
@@ -1373,8 +1378,8 @@ namespace genshin_sim
                 new List<SpecialCondAbility>()
                 {
                     new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.pNoEffect, new double[] { 0.2, 0.25, 0.3, 0.35, 0.4 }, 0)),
-                    new SpecialCondAbility(SpecialCond.OnAttack, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.04, 0.05, 0.06, 0.07, 0.08 }, 0)),
-                    new SpecialCondAbility(SpecialCond.TakingShield, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.04, 0.05, 0.06, 0.07, 0.08 }, 0)),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Bonus, new Affix(AffixAttr.pATK, new double[] { 0.04, 0.05, 0.06, 0.07, 0.08 }, 0), WaifuStat.WeaponArtLevel, 5),
+                    new SpecialCondAbility(SpecialCond.TakingShield, AbilityType.Bonus, new Affix(AffixAttr.pATK, new double[] { 0.04, 0.05, 0.06, 0.07, 0.08 }, 0), WaifuStat.WeaponArtLevel, 5),
                 },
                 "护盾强效提升{0}。攻击命中后的8秒内，攻击力提升{1}。该效果至多可叠加5层，每0.3秒只能触发一次。此外，处于护盾庇护下时，该效果的攻击力提升效果提高100%。",
                 0
@@ -1393,12 +1398,34 @@ namespace genshin_sim
                 new List<SpecialCondAbility>()
                 {
                     new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.pCRI, new double[] { 0.04, 0.05, 0.06, 0.07, 0.08 }, 0)),
-                    new SpecialCondAbility(SpecialCond.OnNormalAttack | SpecialCond.OnChargedAttack, AbilityType.Simple, new Affix(AffixAttr.pDMG, new double[] {  0.2, 0.25, 0.3, 0.35, 0.4 }, 0)),
+                    new SpecialCondAbility(SpecialCond.OnNormalAttack | SpecialCond.OnChargedAttack, AbilityType.Bonus, new Affix(AffixAttr.pDMG, new double[] {  0.2, 0.25, 0.3, 0.35, 0.4 }, 0), WaifuStat.ATK, 1),
                 },
                 "暴击率提升{0}；施放元素爆发时，获得破空之势：移动速度提升10%，攻击速度提升10%，普通攻击与重击命中时，额外造成{1}攻击力的伤害，持续12秒。",
                 0
             ),
             11, // image index
+            0
+        );
+
+        public static Weapon FreedomSworn = new Weapon(
+            "苍古自由之誓",
+            WeaponType.Sword,
+            new Affix(AffixAttr.ATK, WeaponData.freedom_sworn_base_atk, 0),
+            new Affix(AffixAttr.ELM, WeaponData.freedom_sworn_elemental_mastery, 0),
+            new WeaponSpecialAbility(
+                "抗争的践行之歌",
+                new List<SpecialCondAbility>()
+                {
+                    new SpecialCondAbility(SpecialCond.Always, AbilityType.Simple, new Affix(AffixAttr.pDMG, new double[] { 0.1, 0.125, 0.15, 0.175, 0.2 }, 0)),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Simple, new Affix(AffixAttr.pNormalDMG, new double[] { 0.16, 0.20, 0.24, 0.28, 0.32 }, 0)),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Simple, new Affix(AffixAttr.pChargedDMG, new double[] { 0.16, 0.20, 0.24, 0.28, 0.32 }, 0)),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Simple, new Affix(AffixAttr.pPlungingDMG, new double[] { 0.16, 0.20, 0.24, 0.28, 0.32 }, 0)),
+                    new SpecialCondAbility(SpecialCond.WeaponArtActive, AbilityType.Simple, new Affix(AffixAttr.pATK, new double[] { 0.2, 0.25, 0.3, 0.35, 0.4 }, 0)),
+                },
+                "飘游风中的「千年的大乐章」的一部分。造成的伤害提升{0}；触发元素反应时，角色获得一枚奋起之符，每0.5秒内至多触发一次，角色处于队伍后台也能触发。拥有2枚奋起之符时，将消耗所有奋起之符，使附近队伍中所有角色获得持续12秒的「千年的大乐章·抗争之歌」效果：普通攻击、重击、下落攻击造成的伤害提升{1}，攻击力提升{4}。触发后20秒内，无法再次获得奋起之符。「千年的大乐章」触发的多种数值效果中，同类数值效果不可叠加。",
+                0
+            ),
+            12, // image index
             0
         );
 
@@ -1416,6 +1443,7 @@ namespace genshin_sim
             AquilaFavonia,
             SummitShaper,
             SkywardBlade,
+            FreedomSworn,
         };
 
         public static string[] type_names = new string[] {"未知", "单手剑", "双手剑", "枪", "弓", "法器" };

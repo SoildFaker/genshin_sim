@@ -84,9 +84,9 @@ namespace genshin_sim
         EnemyTakeGeoElement = ((ulong)1 << 17),
         EnemyTakeDendroElement = ((ulong)1 << 18),
         EnemyFrozen = ((ulong)1 << 19),
-        TimeDelay = ((ulong)1 << 20),
-        TakingShield = ((ulong)1 << 21),
-        OnAttack = ((ulong)1 << 22),
+        WeaponArtActive = ((ulong)1 << 20),
+        ArtifactArtActive = ((ulong)1 << 21),
+        TakingShield = ((ulong)1 << 22),
         Ignore = ((ulong)1 << 63),
     }
 
@@ -94,6 +94,7 @@ namespace genshin_sim
     {
         Simple,
         Bonus,
+        Level,
     }
 
     public class SpecialCondAbility
@@ -101,17 +102,20 @@ namespace genshin_sim
         public AbilityType Type { get; private set; }
         public SpecialCond SpecialCond { get; private set; }
         public WaifuStat BonusBase { get; private set; }
+        public int BonusLimit { get; private set; }
         public Affix Affix { get; private set; }
 
-        public SpecialCondAbility(SpecialCond cond, AbilityType type, Affix affix, WaifuStat bonus_base = WaifuStat.HP)
+        public SpecialCondAbility(SpecialCond cond, AbilityType type, Affix affix, WaifuStat bonus_base = WaifuStat.HP, int bonus_limit = 5)
         {
             this.SpecialCond = cond;
             this.Type = type;
             this.Affix = affix;
             this.BonusBase = bonus_base;
+            this.BonusLimit = bonus_limit;
         }
     }
- public class WeaponSpecialAbility
+
+     public class WeaponSpecialAbility
     {
         public int Level { get; private set; }
         public string Name { get; private set; }

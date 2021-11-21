@@ -102,6 +102,7 @@
             this.imWeapons.Images.SetKeyName(9, "Weapon_Aquila_Favonia.png");
             this.imWeapons.Images.SetKeyName(10, "Weapon_Summit_Shaper.png");
             this.imWeapons.Images.SetKeyName(11, "Weapon_Skyward_Blade.png");
+            this.imWeapons.Images.SetKeyName(12, "Weapon_Freedom-Sworn.png");
             // 
             // fmWeaponList
             // 

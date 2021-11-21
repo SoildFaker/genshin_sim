@@ -67,6 +67,8 @@ namespace genshin_sim
         public static readonly double[] one_side_none = new double[] {0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, };
         public static readonly double[] mistsplitter_reforged_base_atk = new double[] {48, 65, 87, 110, 133, 164, 188, 212, 236, 261, 292, 316, 341, 373, 398, 423, 455, 480, 506, 537, 563, 590, 621, 648, 674, };
         public static readonly double[] mistsplitter_reforged_crit_dmg = new double[] {0.0960, 0.1120, 0.1310, 0.1500, 0.1700, 0.1700, 0.1890, 0.2080, 0.2280, 0.2470, 0.2470, 0.2670, 0.2860, 0.2860, 0.3050, 0.3250, 0.3250, 0.3440, 0.3630, 0.3630, 0.3830, 0.4020, 0.4020, 0.4220, 0.4410, };
+        public static readonly double[] freedom_sworn_base_atk = new double[] {46, 62, 82, 102, 122, 153, 173, 194, 214, 235, 266, 287, 308, 340, 361, 382, 414, 435, 457, 488, 510, 532, 563, 586, 608, };
+        public static readonly double[] freedom_sworn_elemental_mastery = new double[] { 43, 50, 59, 68, 76, 76, 85, 94, 103, 111, 111, 120, 129, 129, 137, 146, 146, 155, 164, 164, 172, 181, 181, 190, 198, };
 
         // Claymore
         public static readonly double[] bloodtainted_greatsword_base_atk = new double[] {38, 48, 61, 73, 86, 105, 117, 129, 140, 151, 171, 182, 193, 212, 223, 234, 253, 264, 274, 294, 304, 314, 334, 344, 354, };

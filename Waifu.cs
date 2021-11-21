@@ -25,7 +25,7 @@ namespace genshin_sim
         ATK,
         DEF,
         ELM,
-        TimeAfter,
+        WeaponArtLevel,
     }
 
     public class Waifu
@@ -212,7 +212,7 @@ namespace genshin_sim
                         {
                             if (ability.Affix.Attribute == attr)
                             {
-                                val+= ability.Affix.Value;
+                                val += ability.Affix.Value;
                             }
 
                         }
@@ -220,7 +220,7 @@ namespace genshin_sim
                         {
                             if (ability.Affix.Attribute == attr)
                             {
-                                val+= ability.Affix.Value * GetStat(ability.BonusBase);
+                                val += ability.Affix.Value * GetStat(ability.BonusBase);
                             }
                         }
                     }

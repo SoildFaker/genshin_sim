@@ -1104,5 +1104,29 @@ namespace genshin_sim
                 //gpEvolutionInfo.Text = "搜索结果：";
             }
         }
+
+        private void selWeaponArtActive_CheckedChanged(object sender, EventArgs e)
+        {
+            if (selWeaponArtActive.Checked)
+            {
+                sim_cond |= SpecialCond.WeaponArtActive;
+            }
+            else
+            {
+                sim_cond &= (SpecialCond)(0xffff_ffff_ffef_ffff);
+            }
+        }
+
+        private void selArtifactArtActive_CheckedChanged(object sender, EventArgs e)
+        {
+            if (selArtifactArtActive.Checked)
+            {
+                sim_cond |= SpecialCond.ArtifactArtActive;
+            }
+            else
+            {
+                sim_cond &= (SpecialCond)(0xffff_ffff_ffdf_ffff);
+            }
+        }
     }
 }
