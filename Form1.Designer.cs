@@ -91,6 +91,8 @@ namespace genshin_sim
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.selArtifactArtActive = new System.Windows.Forms.CheckBox();
+            this.selWeaponArtActive = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.selDamageAttackType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -125,8 +127,8 @@ namespace genshin_sim
             this.labGithubLink = new System.Windows.Forms.LinkLabel();
             this.imUserIcons = new System.Windows.Forms.ImageList(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.selWeaponArtActive = new System.Windows.Forms.CheckBox();
-            this.selArtifactArtActive = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.selDamageAttackAction = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -164,9 +166,10 @@ namespace genshin_sim
             // cmdAdd
             // 
             this.cmdAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdAdd.Location = new System.Drawing.Point(490, 13);
+            this.cmdAdd.Location = new System.Drawing.Point(735, 20);
+            this.cmdAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdAdd.Name = "cmdAdd";
-            this.cmdAdd.Size = new System.Drawing.Size(115, 23);
+            this.cmdAdd.Size = new System.Drawing.Size(172, 34);
             this.cmdAdd.TabIndex = 2;
             this.cmdAdd.Text = "Level Up";
             this.cmdAdd.UseVisualStyleBackColor = true;
@@ -175,19 +178,21 @@ namespace genshin_sim
             // labInfo
             // 
             this.labInfo.AutoSize = true;
-            this.labInfo.Font = new System.Drawing.Font("SimSun", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labInfo.Location = new System.Drawing.Point(6, 17);
+            this.labInfo.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labInfo.Location = new System.Drawing.Point(9, 26);
+            this.labInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labInfo.Name = "labInfo";
-            this.labInfo.Size = new System.Drawing.Size(63, 13);
+            this.labInfo.Size = new System.Drawing.Size(89, 20);
             this.labInfo.TabIndex = 3;
             this.labInfo.Text = "Level: 1";
             // 
             // cmdLevelUp20
             // 
             this.cmdLevelUp20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdLevelUp20.Location = new System.Drawing.Point(490, 42);
+            this.cmdLevelUp20.Location = new System.Drawing.Point(735, 63);
+            this.cmdLevelUp20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdLevelUp20.Name = "cmdLevelUp20";
-            this.cmdLevelUp20.Size = new System.Drawing.Size(115, 23);
+            this.cmdLevelUp20.Size = new System.Drawing.Size(172, 34);
             this.cmdLevelUp20.TabIndex = 4;
             this.cmdLevelUp20.Text = "Level Up 20";
             this.cmdLevelUp20.UseVisualStyleBackColor = true;
@@ -200,9 +205,11 @@ namespace genshin_sim
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(9, 9);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(868, 518);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(1302, 777);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Artifact";
@@ -218,9 +225,11 @@ namespace genshin_sim
             this.groupBox3.Controls.Add(this.labInfo);
             this.groupBox3.Controls.Add(this.cmdLevelUp20);
             this.groupBox3.Controls.Add(this.cmdAdd);
-            this.groupBox3.Location = new System.Drawing.Point(9, 360);
+            this.groupBox3.Location = new System.Drawing.Point(14, 540);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(853, 152);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Size = new System.Drawing.Size(1280, 228);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Info";
@@ -228,9 +237,10 @@ namespace genshin_sim
             // cmdArtifactAdd
             // 
             this.cmdArtifactAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdArtifactAdd.Location = new System.Drawing.Point(611, 13);
+            this.cmdArtifactAdd.Location = new System.Drawing.Point(916, 20);
+            this.cmdArtifactAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdArtifactAdd.Name = "cmdArtifactAdd";
-            this.cmdArtifactAdd.Size = new System.Drawing.Size(115, 23);
+            this.cmdArtifactAdd.Size = new System.Drawing.Size(172, 34);
             this.cmdArtifactAdd.TabIndex = 8;
             this.cmdArtifactAdd.Text = "Add";
             this.cmdArtifactAdd.UseVisualStyleBackColor = true;
@@ -239,9 +249,10 @@ namespace genshin_sim
             // cmdArtifactDelete
             // 
             this.cmdArtifactDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdArtifactDelete.Location = new System.Drawing.Point(611, 42);
+            this.cmdArtifactDelete.Location = new System.Drawing.Point(916, 63);
+            this.cmdArtifactDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdArtifactDelete.Name = "cmdArtifactDelete";
-            this.cmdArtifactDelete.Size = new System.Drawing.Size(115, 23);
+            this.cmdArtifactDelete.Size = new System.Drawing.Size(172, 34);
             this.cmdArtifactDelete.TabIndex = 7;
             this.cmdArtifactDelete.Text = "Delete";
             this.cmdArtifactDelete.UseVisualStyleBackColor = true;
@@ -250,9 +261,10 @@ namespace genshin_sim
             // cmdArtifactSave
             // 
             this.cmdArtifactSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdArtifactSave.Location = new System.Drawing.Point(732, 42);
+            this.cmdArtifactSave.Location = new System.Drawing.Point(1098, 63);
+            this.cmdArtifactSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdArtifactSave.Name = "cmdArtifactSave";
-            this.cmdArtifactSave.Size = new System.Drawing.Size(115, 23);
+            this.cmdArtifactSave.Size = new System.Drawing.Size(172, 34);
             this.cmdArtifactSave.TabIndex = 6;
             this.cmdArtifactSave.Text = "Save";
             this.cmdArtifactSave.UseVisualStyleBackColor = true;
@@ -261,9 +273,10 @@ namespace genshin_sim
             // cmdArtifactEdit
             // 
             this.cmdArtifactEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdArtifactEdit.Location = new System.Drawing.Point(732, 13);
+            this.cmdArtifactEdit.Location = new System.Drawing.Point(1098, 20);
+            this.cmdArtifactEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdArtifactEdit.Name = "cmdArtifactEdit";
-            this.cmdArtifactEdit.Size = new System.Drawing.Size(115, 23);
+            this.cmdArtifactEdit.Size = new System.Drawing.Size(172, 34);
             this.cmdArtifactEdit.TabIndex = 5;
             this.cmdArtifactEdit.Text = "Edit";
             this.cmdArtifactEdit.UseVisualStyleBackColor = true;
@@ -275,9 +288,11 @@ namespace genshin_sim
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.lstArtifact);
-            this.groupBox2.Location = new System.Drawing.Point(6, 17);
+            this.groupBox2.Location = new System.Drawing.Point(9, 26);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(856, 337);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(1284, 506);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Artifact List";
@@ -294,10 +309,11 @@ namespace genshin_sim
             this.lstArtifact.FullRowSelect = true;
             this.lstArtifact.GridLines = true;
             this.lstArtifact.HideSelection = false;
-            this.lstArtifact.Location = new System.Drawing.Point(3, 17);
+            this.lstArtifact.Location = new System.Drawing.Point(4, 25);
+            this.lstArtifact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstArtifact.MultiSelect = false;
             this.lstArtifact.Name = "lstArtifact";
-            this.lstArtifact.Size = new System.Drawing.Size(850, 317);
+            this.lstArtifact.Size = new System.Drawing.Size(1276, 477);
             this.lstArtifact.TabIndex = 5;
             this.lstArtifact.TileSize = new System.Drawing.Size(120, 80);
             this.lstArtifact.UseCompatibleStateImageBehavior = false;
@@ -328,37 +344,38 @@ namespace genshin_sim
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuArtifactEdit,
             this.menuArtifactAdd,
             this.toolStripMenuItem1,
             this.menuArtifactDelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 100);
             // 
             // menuArtifactEdit
             // 
             this.menuArtifactEdit.Name = "menuArtifactEdit";
-            this.menuArtifactEdit.Size = new System.Drawing.Size(107, 22);
+            this.menuArtifactEdit.Size = new System.Drawing.Size(136, 30);
             this.menuArtifactEdit.Text = "Edit";
             this.menuArtifactEdit.Click += new System.EventHandler(this.menuArtifactEdit_Click);
             // 
             // menuArtifactAdd
             // 
             this.menuArtifactAdd.Name = "menuArtifactAdd";
-            this.menuArtifactAdd.Size = new System.Drawing.Size(107, 22);
+            this.menuArtifactAdd.Size = new System.Drawing.Size(136, 30);
             this.menuArtifactAdd.Text = "Add";
             this.menuArtifactAdd.Click += new System.EventHandler(this.menuArtifactAdd_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(104, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(133, 6);
             // 
             // menuArtifactDelete
             // 
             this.menuArtifactDelete.Name = "menuArtifactDelete";
-            this.menuArtifactDelete.Size = new System.Drawing.Size(107, 22);
+            this.menuArtifactDelete.Size = new System.Drawing.Size(136, 30);
             this.menuArtifactDelete.Text = "Delete";
             this.menuArtifactDelete.Click += new System.EventHandler(this.menuArtifactDelete_Click);
             // 
@@ -371,10 +388,11 @@ namespace genshin_sim
             this.tabMain.Controls.Add(this.tabPage1);
             this.tabMain.Controls.Add(this.tabPage3);
             this.tabMain.Controls.Add(this.tabPage4);
-            this.tabMain.Location = new System.Drawing.Point(12, 12);
+            this.tabMain.Location = new System.Drawing.Point(18, 18);
+            this.tabMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(888, 556);
+            this.tabMain.Size = new System.Drawing.Size(1332, 834);
             this.tabMain.TabIndex = 6;
             this.tabMain.SelectedIndexChanged += new System.EventHandler(this.tabMain_SelectedIndexChanged);
             // 
@@ -385,10 +403,11 @@ namespace genshin_sim
             this.tabPage2.Controls.Add(this.groupBox9);
             this.tabPage2.Controls.Add(this.groupBox7);
             this.tabPage2.Controls.Add(this.groupBox6);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(880, 530);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Size = new System.Drawing.Size(1324, 802);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Character";
             // 
@@ -401,9 +420,11 @@ namespace genshin_sim
             this.groupBox4.Controls.Add(this.selWeaponLevel);
             this.groupBox4.Controls.Add(this.labWeaponName);
             this.groupBox4.Controls.Add(this.cmdWeaponAdd);
-            this.groupBox4.Location = new System.Drawing.Point(289, 6);
+            this.groupBox4.Location = new System.Drawing.Point(434, 9);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(278, 202);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Size = new System.Drawing.Size(417, 303);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Weapon";
@@ -415,18 +436,21 @@ namespace genshin_sim
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.cmdWeaponRefine);
             this.groupBox5.Controls.Add(this.labWeaponStat);
-            this.groupBox5.Location = new System.Drawing.Point(6, 73);
+            this.groupBox5.Location = new System.Drawing.Point(9, 110);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(266, 123);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Size = new System.Drawing.Size(399, 184);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Stat and Ability";
             // 
             // cmdWeaponRefine
             // 
-            this.cmdWeaponRefine.Location = new System.Drawing.Point(185, 12);
+            this.cmdWeaponRefine.Location = new System.Drawing.Point(278, 18);
+            this.cmdWeaponRefine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdWeaponRefine.Name = "cmdWeaponRefine";
-            this.cmdWeaponRefine.Size = new System.Drawing.Size(75, 23);
+            this.cmdWeaponRefine.Size = new System.Drawing.Size(112, 34);
             this.cmdWeaponRefine.TabIndex = 1;
             this.cmdWeaponRefine.Text = "Refine: 1";
             this.cmdWeaponRefine.UseVisualStyleBackColor = true;
@@ -437,9 +461,10 @@ namespace genshin_sim
             this.labWeaponStat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labWeaponStat.Location = new System.Drawing.Point(6, 17);
+            this.labWeaponStat.Location = new System.Drawing.Point(9, 26);
+            this.labWeaponStat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labWeaponStat.Name = "labWeaponStat";
-            this.labWeaponStat.Size = new System.Drawing.Size(254, 103);
+            this.labWeaponStat.Size = new System.Drawing.Size(381, 154);
             this.labWeaponStat.TabIndex = 0;
             this.labWeaponStat.Text = "Stat";
             // 
@@ -448,10 +473,11 @@ namespace genshin_sim
             this.selWeaponLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selWeaponLevel.BackColor = System.Drawing.Color.White;
-            this.selWeaponLevel.Location = new System.Drawing.Point(59, 43);
+            this.selWeaponLevel.Location = new System.Drawing.Point(88, 64);
+            this.selWeaponLevel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selWeaponLevel.Maximum = 24;
             this.selWeaponLevel.Name = "selWeaponLevel";
-            this.selWeaponLevel.Size = new System.Drawing.Size(213, 45);
+            this.selWeaponLevel.Size = new System.Drawing.Size(320, 69);
             this.selWeaponLevel.TabIndex = 2;
             this.selWeaponLevel.Scroll += new System.EventHandler(this.selWeaponLevel_Scroll);
             // 
@@ -460,9 +486,10 @@ namespace genshin_sim
             this.labWeaponName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labWeaponName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labWeaponName.Location = new System.Drawing.Point(59, 17);
+            this.labWeaponName.Location = new System.Drawing.Point(88, 26);
+            this.labWeaponName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labWeaponName.Name = "labWeaponName";
-            this.labWeaponName.Size = new System.Drawing.Size(213, 23);
+            this.labWeaponName.Size = new System.Drawing.Size(318, 34);
             this.labWeaponName.TabIndex = 1;
             this.labWeaponName.Text = "Name: ";
             this.labWeaponName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -472,10 +499,11 @@ namespace genshin_sim
             this.cmdWeaponAdd.BackColor = System.Drawing.Color.White;
             this.cmdWeaponAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdWeaponAdd.BackgroundImage")));
             this.cmdWeaponAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdWeaponAdd.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmdWeaponAdd.Location = new System.Drawing.Point(3, 17);
+            this.cmdWeaponAdd.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmdWeaponAdd.Location = new System.Drawing.Point(4, 26);
+            this.cmdWeaponAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdWeaponAdd.Name = "cmdWeaponAdd";
-            this.cmdWeaponAdd.Size = new System.Drawing.Size(50, 50);
+            this.cmdWeaponAdd.Size = new System.Drawing.Size(75, 75);
             this.cmdWeaponAdd.TabIndex = 0;
             this.cmdWeaponAdd.UseVisualStyleBackColor = false;
             this.cmdWeaponAdd.Click += new System.EventHandler(this.cmdWeaponAdd_Click);
@@ -491,9 +519,11 @@ namespace genshin_sim
             this.groupBox9.Controls.Add(this.gpCharacterArtifactSands);
             this.groupBox9.Controls.Add(this.gpCharacterArtifactPlume);
             this.groupBox9.Controls.Add(this.gpCharacterArtifactFlower);
-            this.groupBox9.Location = new System.Drawing.Point(6, 214);
+            this.groupBox9.Location = new System.Drawing.Point(9, 321);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(561, 310);
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox9.Size = new System.Drawing.Size(842, 465);
             this.groupBox9.TabIndex = 3;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Artifact";
@@ -501,9 +531,10 @@ namespace genshin_sim
             // cmdCharacterArtifactClear
             // 
             this.cmdCharacterArtifactClear.AutoSize = true;
-            this.cmdCharacterArtifactClear.Location = new System.Drawing.Point(520, 0);
+            this.cmdCharacterArtifactClear.Location = new System.Drawing.Point(780, 0);
+            this.cmdCharacterArtifactClear.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.cmdCharacterArtifactClear.Name = "cmdCharacterArtifactClear";
-            this.cmdCharacterArtifactClear.Size = new System.Drawing.Size(35, 12);
+            this.cmdCharacterArtifactClear.Size = new System.Drawing.Size(53, 18);
             this.cmdCharacterArtifactClear.TabIndex = 8;
             this.cmdCharacterArtifactClear.TabStop = true;
             this.cmdCharacterArtifactClear.Text = "Clear";
@@ -512,9 +543,11 @@ namespace genshin_sim
             // gpCharacterArtifactSetEffect
             // 
             this.gpCharacterArtifactSetEffect.Controls.Add(this.labCharacterArtifactSetEffect);
-            this.gpCharacterArtifactSetEffect.Location = new System.Drawing.Point(283, 214);
+            this.gpCharacterArtifactSetEffect.Location = new System.Drawing.Point(424, 321);
+            this.gpCharacterArtifactSetEffect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gpCharacterArtifactSetEffect.Name = "gpCharacterArtifactSetEffect";
-            this.gpCharacterArtifactSetEffect.Size = new System.Drawing.Size(271, 91);
+            this.gpCharacterArtifactSetEffect.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpCharacterArtifactSetEffect.Size = new System.Drawing.Size(406, 136);
             this.gpCharacterArtifactSetEffect.TabIndex = 7;
             this.gpCharacterArtifactSetEffect.TabStop = false;
             this.gpCharacterArtifactSetEffect.Text = "Artifact Set Effect";
@@ -522,9 +555,10 @@ namespace genshin_sim
             // labCharacterArtifactSetEffect
             // 
             this.labCharacterArtifactSetEffect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labCharacterArtifactSetEffect.Location = new System.Drawing.Point(3, 17);
+            this.labCharacterArtifactSetEffect.Location = new System.Drawing.Point(4, 25);
+            this.labCharacterArtifactSetEffect.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labCharacterArtifactSetEffect.Name = "labCharacterArtifactSetEffect";
-            this.labCharacterArtifactSetEffect.Size = new System.Drawing.Size(265, 71);
+            this.labCharacterArtifactSetEffect.Size = new System.Drawing.Size(398, 107);
             this.labCharacterArtifactSetEffect.TabIndex = 2;
             this.labCharacterArtifactSetEffect.Text = "Info";
             // 
@@ -532,9 +566,11 @@ namespace genshin_sim
             // 
             this.gpCharacterArtifactCirclet.Controls.Add(this.labCharacterArtifactCirclet);
             this.gpCharacterArtifactCirclet.Controls.Add(this.cmdCharacterArtifactCirclet);
-            this.gpCharacterArtifactCirclet.Location = new System.Drawing.Point(6, 214);
+            this.gpCharacterArtifactCirclet.Location = new System.Drawing.Point(9, 321);
+            this.gpCharacterArtifactCirclet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gpCharacterArtifactCirclet.Name = "gpCharacterArtifactCirclet";
-            this.gpCharacterArtifactCirclet.Size = new System.Drawing.Size(271, 91);
+            this.gpCharacterArtifactCirclet.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpCharacterArtifactCirclet.Size = new System.Drawing.Size(406, 136);
             this.gpCharacterArtifactCirclet.TabIndex = 5;
             this.gpCharacterArtifactCirclet.TabStop = false;
             this.gpCharacterArtifactCirclet.Text = "Circlet of Logos";
@@ -542,9 +578,10 @@ namespace genshin_sim
             // labCharacterArtifactCirclet
             // 
             this.labCharacterArtifactCirclet.AutoSize = true;
-            this.labCharacterArtifactCirclet.Location = new System.Drawing.Point(76, 20);
+            this.labCharacterArtifactCirclet.Location = new System.Drawing.Point(114, 30);
+            this.labCharacterArtifactCirclet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labCharacterArtifactCirclet.Name = "labCharacterArtifactCirclet";
-            this.labCharacterArtifactCirclet.Size = new System.Drawing.Size(47, 12);
+            this.labCharacterArtifactCirclet.Size = new System.Drawing.Size(71, 18);
             this.labCharacterArtifactCirclet.TabIndex = 2;
             this.labCharacterArtifactCirclet.Text = "(Empty)";
             // 
@@ -553,9 +590,10 @@ namespace genshin_sim
             this.cmdCharacterArtifactCirclet.BackColor = System.Drawing.Color.White;
             this.cmdCharacterArtifactCirclet.ImageIndex = 4;
             this.cmdCharacterArtifactCirclet.ImageList = this.imArtifacts;
-            this.cmdCharacterArtifactCirclet.Location = new System.Drawing.Point(6, 20);
+            this.cmdCharacterArtifactCirclet.Location = new System.Drawing.Point(9, 30);
+            this.cmdCharacterArtifactCirclet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdCharacterArtifactCirclet.Name = "cmdCharacterArtifactCirclet";
-            this.cmdCharacterArtifactCirclet.Size = new System.Drawing.Size(64, 64);
+            this.cmdCharacterArtifactCirclet.Size = new System.Drawing.Size(96, 96);
             this.cmdCharacterArtifactCirclet.TabIndex = 0;
             this.cmdCharacterArtifactCirclet.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cmdCharacterArtifactCirclet.UseVisualStyleBackColor = false;
@@ -615,9 +653,11 @@ namespace genshin_sim
             // 
             this.gpCharacterArtifactGoblet.Controls.Add(this.labCharacterArtifactGoblet);
             this.gpCharacterArtifactGoblet.Controls.Add(this.cmdCharacterArtifactGoblet);
-            this.gpCharacterArtifactGoblet.Location = new System.Drawing.Point(283, 117);
+            this.gpCharacterArtifactGoblet.Location = new System.Drawing.Point(424, 176);
+            this.gpCharacterArtifactGoblet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gpCharacterArtifactGoblet.Name = "gpCharacterArtifactGoblet";
-            this.gpCharacterArtifactGoblet.Size = new System.Drawing.Size(271, 91);
+            this.gpCharacterArtifactGoblet.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpCharacterArtifactGoblet.Size = new System.Drawing.Size(406, 136);
             this.gpCharacterArtifactGoblet.TabIndex = 4;
             this.gpCharacterArtifactGoblet.TabStop = false;
             this.gpCharacterArtifactGoblet.Text = "Goblet of Eonothem";
@@ -625,9 +665,10 @@ namespace genshin_sim
             // labCharacterArtifactGoblet
             // 
             this.labCharacterArtifactGoblet.AutoSize = true;
-            this.labCharacterArtifactGoblet.Location = new System.Drawing.Point(76, 20);
+            this.labCharacterArtifactGoblet.Location = new System.Drawing.Point(114, 30);
+            this.labCharacterArtifactGoblet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labCharacterArtifactGoblet.Name = "labCharacterArtifactGoblet";
-            this.labCharacterArtifactGoblet.Size = new System.Drawing.Size(47, 12);
+            this.labCharacterArtifactGoblet.Size = new System.Drawing.Size(71, 18);
             this.labCharacterArtifactGoblet.TabIndex = 2;
             this.labCharacterArtifactGoblet.Text = "(Empty)";
             // 
@@ -636,9 +677,10 @@ namespace genshin_sim
             this.cmdCharacterArtifactGoblet.BackColor = System.Drawing.Color.White;
             this.cmdCharacterArtifactGoblet.ImageIndex = 3;
             this.cmdCharacterArtifactGoblet.ImageList = this.imArtifacts;
-            this.cmdCharacterArtifactGoblet.Location = new System.Drawing.Point(6, 20);
+            this.cmdCharacterArtifactGoblet.Location = new System.Drawing.Point(9, 30);
+            this.cmdCharacterArtifactGoblet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdCharacterArtifactGoblet.Name = "cmdCharacterArtifactGoblet";
-            this.cmdCharacterArtifactGoblet.Size = new System.Drawing.Size(64, 64);
+            this.cmdCharacterArtifactGoblet.Size = new System.Drawing.Size(96, 96);
             this.cmdCharacterArtifactGoblet.TabIndex = 0;
             this.cmdCharacterArtifactGoblet.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cmdCharacterArtifactGoblet.UseVisualStyleBackColor = false;
@@ -648,9 +690,11 @@ namespace genshin_sim
             // 
             this.gpCharacterArtifactSands.Controls.Add(this.labCharacterArtifactSands);
             this.gpCharacterArtifactSands.Controls.Add(this.cmdCharacterArtifactSands);
-            this.gpCharacterArtifactSands.Location = new System.Drawing.Point(6, 117);
+            this.gpCharacterArtifactSands.Location = new System.Drawing.Point(9, 176);
+            this.gpCharacterArtifactSands.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gpCharacterArtifactSands.Name = "gpCharacterArtifactSands";
-            this.gpCharacterArtifactSands.Size = new System.Drawing.Size(271, 91);
+            this.gpCharacterArtifactSands.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpCharacterArtifactSands.Size = new System.Drawing.Size(406, 136);
             this.gpCharacterArtifactSands.TabIndex = 3;
             this.gpCharacterArtifactSands.TabStop = false;
             this.gpCharacterArtifactSands.Text = "Sands of Eon";
@@ -658,9 +702,10 @@ namespace genshin_sim
             // labCharacterArtifactSands
             // 
             this.labCharacterArtifactSands.AutoSize = true;
-            this.labCharacterArtifactSands.Location = new System.Drawing.Point(76, 20);
+            this.labCharacterArtifactSands.Location = new System.Drawing.Point(114, 30);
+            this.labCharacterArtifactSands.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labCharacterArtifactSands.Name = "labCharacterArtifactSands";
-            this.labCharacterArtifactSands.Size = new System.Drawing.Size(47, 12);
+            this.labCharacterArtifactSands.Size = new System.Drawing.Size(71, 18);
             this.labCharacterArtifactSands.TabIndex = 2;
             this.labCharacterArtifactSands.Text = "(Empty)";
             // 
@@ -669,9 +714,10 @@ namespace genshin_sim
             this.cmdCharacterArtifactSands.BackColor = System.Drawing.Color.White;
             this.cmdCharacterArtifactSands.ImageIndex = 2;
             this.cmdCharacterArtifactSands.ImageList = this.imArtifacts;
-            this.cmdCharacterArtifactSands.Location = new System.Drawing.Point(6, 20);
+            this.cmdCharacterArtifactSands.Location = new System.Drawing.Point(9, 30);
+            this.cmdCharacterArtifactSands.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdCharacterArtifactSands.Name = "cmdCharacterArtifactSands";
-            this.cmdCharacterArtifactSands.Size = new System.Drawing.Size(64, 64);
+            this.cmdCharacterArtifactSands.Size = new System.Drawing.Size(96, 96);
             this.cmdCharacterArtifactSands.TabIndex = 0;
             this.cmdCharacterArtifactSands.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cmdCharacterArtifactSands.UseVisualStyleBackColor = false;
@@ -681,9 +727,11 @@ namespace genshin_sim
             // 
             this.gpCharacterArtifactPlume.Controls.Add(this.labCharacterArtifactPlume);
             this.gpCharacterArtifactPlume.Controls.Add(this.cmdCharacterArtifactPlume);
-            this.gpCharacterArtifactPlume.Location = new System.Drawing.Point(283, 20);
+            this.gpCharacterArtifactPlume.Location = new System.Drawing.Point(424, 30);
+            this.gpCharacterArtifactPlume.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gpCharacterArtifactPlume.Name = "gpCharacterArtifactPlume";
-            this.gpCharacterArtifactPlume.Size = new System.Drawing.Size(271, 91);
+            this.gpCharacterArtifactPlume.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpCharacterArtifactPlume.Size = new System.Drawing.Size(406, 136);
             this.gpCharacterArtifactPlume.TabIndex = 2;
             this.gpCharacterArtifactPlume.TabStop = false;
             this.gpCharacterArtifactPlume.Text = "Plume of Death";
@@ -691,9 +739,10 @@ namespace genshin_sim
             // labCharacterArtifactPlume
             // 
             this.labCharacterArtifactPlume.AutoSize = true;
-            this.labCharacterArtifactPlume.Location = new System.Drawing.Point(76, 20);
+            this.labCharacterArtifactPlume.Location = new System.Drawing.Point(114, 30);
+            this.labCharacterArtifactPlume.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labCharacterArtifactPlume.Name = "labCharacterArtifactPlume";
-            this.labCharacterArtifactPlume.Size = new System.Drawing.Size(47, 12);
+            this.labCharacterArtifactPlume.Size = new System.Drawing.Size(71, 18);
             this.labCharacterArtifactPlume.TabIndex = 2;
             this.labCharacterArtifactPlume.Text = "(Empty)";
             // 
@@ -702,9 +751,10 @@ namespace genshin_sim
             this.cmdCharacterArtifactPlume.BackColor = System.Drawing.Color.White;
             this.cmdCharacterArtifactPlume.ImageIndex = 1;
             this.cmdCharacterArtifactPlume.ImageList = this.imArtifacts;
-            this.cmdCharacterArtifactPlume.Location = new System.Drawing.Point(6, 20);
+            this.cmdCharacterArtifactPlume.Location = new System.Drawing.Point(9, 30);
+            this.cmdCharacterArtifactPlume.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdCharacterArtifactPlume.Name = "cmdCharacterArtifactPlume";
-            this.cmdCharacterArtifactPlume.Size = new System.Drawing.Size(64, 64);
+            this.cmdCharacterArtifactPlume.Size = new System.Drawing.Size(96, 96);
             this.cmdCharacterArtifactPlume.TabIndex = 0;
             this.cmdCharacterArtifactPlume.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cmdCharacterArtifactPlume.UseVisualStyleBackColor = false;
@@ -714,9 +764,11 @@ namespace genshin_sim
             // 
             this.gpCharacterArtifactFlower.Controls.Add(this.labCharacterArtifactFlowerInfo);
             this.gpCharacterArtifactFlower.Controls.Add(this.cmdCharacterArtifactFlower);
-            this.gpCharacterArtifactFlower.Location = new System.Drawing.Point(6, 20);
+            this.gpCharacterArtifactFlower.Location = new System.Drawing.Point(9, 30);
+            this.gpCharacterArtifactFlower.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gpCharacterArtifactFlower.Name = "gpCharacterArtifactFlower";
-            this.gpCharacterArtifactFlower.Size = new System.Drawing.Size(271, 91);
+            this.gpCharacterArtifactFlower.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpCharacterArtifactFlower.Size = new System.Drawing.Size(406, 136);
             this.gpCharacterArtifactFlower.TabIndex = 1;
             this.gpCharacterArtifactFlower.TabStop = false;
             this.gpCharacterArtifactFlower.Text = "Flower of Life";
@@ -724,9 +776,10 @@ namespace genshin_sim
             // labCharacterArtifactFlowerInfo
             // 
             this.labCharacterArtifactFlowerInfo.AutoSize = true;
-            this.labCharacterArtifactFlowerInfo.Location = new System.Drawing.Point(76, 20);
+            this.labCharacterArtifactFlowerInfo.Location = new System.Drawing.Point(114, 30);
+            this.labCharacterArtifactFlowerInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labCharacterArtifactFlowerInfo.Name = "labCharacterArtifactFlowerInfo";
-            this.labCharacterArtifactFlowerInfo.Size = new System.Drawing.Size(47, 12);
+            this.labCharacterArtifactFlowerInfo.Size = new System.Drawing.Size(71, 18);
             this.labCharacterArtifactFlowerInfo.TabIndex = 2;
             this.labCharacterArtifactFlowerInfo.Text = "(Empty)";
             // 
@@ -735,9 +788,10 @@ namespace genshin_sim
             this.cmdCharacterArtifactFlower.BackColor = System.Drawing.Color.White;
             this.cmdCharacterArtifactFlower.ImageIndex = 0;
             this.cmdCharacterArtifactFlower.ImageList = this.imArtifacts;
-            this.cmdCharacterArtifactFlower.Location = new System.Drawing.Point(6, 20);
+            this.cmdCharacterArtifactFlower.Location = new System.Drawing.Point(9, 30);
+            this.cmdCharacterArtifactFlower.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdCharacterArtifactFlower.Name = "cmdCharacterArtifactFlower";
-            this.cmdCharacterArtifactFlower.Size = new System.Drawing.Size(64, 64);
+            this.cmdCharacterArtifactFlower.Size = new System.Drawing.Size(96, 96);
             this.cmdCharacterArtifactFlower.TabIndex = 0;
             this.cmdCharacterArtifactFlower.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.cmdCharacterArtifactFlower.UseVisualStyleBackColor = false;
@@ -749,9 +803,11 @@ namespace genshin_sim
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.labCharacterAttributes);
-            this.groupBox7.Location = new System.Drawing.Point(573, 6);
+            this.groupBox7.Location = new System.Drawing.Point(860, 9);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(301, 518);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Size = new System.Drawing.Size(452, 777);
             this.groupBox7.TabIndex = 2;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Attributes";
@@ -760,9 +816,10 @@ namespace genshin_sim
             // 
             this.labCharacterAttributes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labCharacterAttributes.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labCharacterAttributes.Location = new System.Drawing.Point(3, 17);
+            this.labCharacterAttributes.Location = new System.Drawing.Point(4, 25);
+            this.labCharacterAttributes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labCharacterAttributes.Name = "labCharacterAttributes";
-            this.labCharacterAttributes.Size = new System.Drawing.Size(295, 498);
+            this.labCharacterAttributes.Size = new System.Drawing.Size(444, 748);
             this.labCharacterAttributes.TabIndex = 0;
             this.labCharacterAttributes.Text = "Info";
             // 
@@ -775,9 +832,11 @@ namespace genshin_sim
             this.groupBox6.Controls.Add(this.selCharacterLevel);
             this.groupBox6.Controls.Add(this.labCharacterName);
             this.groupBox6.Controls.Add(this.cmdCharacterAdd);
-            this.groupBox6.Location = new System.Drawing.Point(6, 6);
+            this.groupBox6.Location = new System.Drawing.Point(9, 9);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(277, 202);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Size = new System.Drawing.Size(416, 303);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Character";
@@ -788,9 +847,11 @@ namespace genshin_sim
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox8.Controls.Add(this.labCharacterBaseStat);
-            this.groupBox8.Location = new System.Drawing.Point(6, 73);
+            this.groupBox8.Location = new System.Drawing.Point(9, 110);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(265, 123);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox8.Size = new System.Drawing.Size(398, 184);
             this.groupBox8.TabIndex = 3;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Base Stat";
@@ -800,9 +861,10 @@ namespace genshin_sim
             this.labCharacterBaseStat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labCharacterBaseStat.Location = new System.Drawing.Point(6, 17);
+            this.labCharacterBaseStat.Location = new System.Drawing.Point(9, 26);
+            this.labCharacterBaseStat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labCharacterBaseStat.Name = "labCharacterBaseStat";
-            this.labCharacterBaseStat.Size = new System.Drawing.Size(253, 103);
+            this.labCharacterBaseStat.Size = new System.Drawing.Size(380, 154);
             this.labCharacterBaseStat.TabIndex = 0;
             this.labCharacterBaseStat.Text = "Stat";
             // 
@@ -811,10 +873,11 @@ namespace genshin_sim
             this.selCharacterLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selCharacterLevel.BackColor = System.Drawing.Color.White;
-            this.selCharacterLevel.Location = new System.Drawing.Point(59, 43);
+            this.selCharacterLevel.Location = new System.Drawing.Point(88, 64);
+            this.selCharacterLevel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selCharacterLevel.Maximum = 95;
             this.selCharacterLevel.Name = "selCharacterLevel";
-            this.selCharacterLevel.Size = new System.Drawing.Size(212, 45);
+            this.selCharacterLevel.Size = new System.Drawing.Size(318, 69);
             this.selCharacterLevel.TabIndex = 2;
             this.selCharacterLevel.TickFrequency = 10;
             this.selCharacterLevel.Scroll += new System.EventHandler(this.selCharacterLevel_Scroll);
@@ -824,9 +887,10 @@ namespace genshin_sim
             this.labCharacterName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labCharacterName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labCharacterName.Location = new System.Drawing.Point(59, 17);
+            this.labCharacterName.Location = new System.Drawing.Point(88, 26);
+            this.labCharacterName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labCharacterName.Name = "labCharacterName";
-            this.labCharacterName.Size = new System.Drawing.Size(212, 23);
+            this.labCharacterName.Size = new System.Drawing.Size(317, 34);
             this.labCharacterName.TabIndex = 1;
             this.labCharacterName.Text = "Name: ";
             this.labCharacterName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -836,10 +900,11 @@ namespace genshin_sim
             this.cmdCharacterAdd.BackColor = System.Drawing.Color.White;
             this.cmdCharacterAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdCharacterAdd.BackgroundImage")));
             this.cmdCharacterAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdCharacterAdd.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmdCharacterAdd.Location = new System.Drawing.Point(3, 17);
+            this.cmdCharacterAdd.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmdCharacterAdd.Location = new System.Drawing.Point(4, 26);
+            this.cmdCharacterAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdCharacterAdd.Name = "cmdCharacterAdd";
-            this.cmdCharacterAdd.Size = new System.Drawing.Size(50, 50);
+            this.cmdCharacterAdd.Size = new System.Drawing.Size(75, 75);
             this.cmdCharacterAdd.TabIndex = 0;
             this.cmdCharacterAdd.UseVisualStyleBackColor = false;
             this.cmdCharacterAdd.Click += new System.EventHandler(this.cmdCharacterAdd_Click);
@@ -847,10 +912,11 @@ namespace genshin_sim
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(880, 530);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Size = new System.Drawing.Size(1324, 802);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Artifact";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -860,10 +926,11 @@ namespace genshin_sim
             this.tabPage3.Controls.Add(this.groupBox13);
             this.tabPage3.Controls.Add(this.groupBox10);
             this.tabPage3.Controls.Add(this.groupBox11);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(880, 530);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Size = new System.Drawing.Size(1324, 802);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Damage Test";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -873,6 +940,8 @@ namespace genshin_sim
             this.groupBox13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox13.BackColor = System.Drawing.Color.White;
+            this.groupBox13.Controls.Add(this.selDamageAttackAction);
+            this.groupBox13.Controls.Add(this.label9);
             this.groupBox13.Controls.Add(this.selArtifactArtActive);
             this.groupBox13.Controls.Add(this.selWeaponArtActive);
             this.groupBox13.Controls.Add(this.label5);
@@ -885,19 +954,46 @@ namespace genshin_sim
             this.groupBox13.Controls.Add(this.txtDamageAdditionalScaling);
             this.groupBox13.Controls.Add(this.label1);
             this.groupBox13.Controls.Add(this.txtDamageAtkScaling);
-            this.groupBox13.Location = new System.Drawing.Point(6, 266);
+            this.groupBox13.Location = new System.Drawing.Point(9, 399);
+            this.groupBox13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(277, 258);
+            this.groupBox13.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox13.Size = new System.Drawing.Size(416, 387);
             this.groupBox13.TabIndex = 4;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Append";
             // 
+            // selArtifactArtActive
+            // 
+            this.selArtifactArtActive.AutoSize = true;
+            this.selArtifactArtActive.Location = new System.Drawing.Point(12, 269);
+            this.selArtifactArtActive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.selArtifactArtActive.Name = "selArtifactArtActive";
+            this.selArtifactArtActive.Size = new System.Drawing.Size(205, 22);
+            this.selArtifactArtActive.TabIndex = 11;
+            this.selArtifactArtActive.Text = "Artifact Art Active";
+            this.selArtifactArtActive.UseVisualStyleBackColor = true;
+            this.selArtifactArtActive.CheckedChanged += new System.EventHandler(this.selArtifactArtActive_CheckedChanged);
+            // 
+            // selWeaponArtActive
+            // 
+            this.selWeaponArtActive.AutoSize = true;
+            this.selWeaponArtActive.Location = new System.Drawing.Point(12, 239);
+            this.selWeaponArtActive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.selWeaponArtActive.Name = "selWeaponArtActive";
+            this.selWeaponArtActive.Size = new System.Drawing.Size(187, 22);
+            this.selWeaponArtActive.TabIndex = 10;
+            this.selWeaponArtActive.Text = "Weapon Art Active";
+            this.selWeaponArtActive.UseVisualStyleBackColor = true;
+            this.selWeaponArtActive.CheckedChanged += new System.EventHandler(this.selWeaponArtActive_CheckedChanged);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 17);
+            this.label5.Location = new System.Drawing.Point(9, 26);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 12);
+            this.label5.Size = new System.Drawing.Size(125, 18);
             this.label5.TabIndex = 9;
             this.label5.Text = "Attack Type: ";
             // 
@@ -910,9 +1006,10 @@ namespace genshin_sim
             "下落攻击",
             "元素战技",
             "元素爆发"});
-            this.selDamageAttackType.Location = new System.Drawing.Point(137, 14);
+            this.selDamageAttackType.Location = new System.Drawing.Point(206, 21);
+            this.selDamageAttackType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selDamageAttackType.Name = "selDamageAttackType";
-            this.selDamageAttackType.Size = new System.Drawing.Size(134, 20);
+            this.selDamageAttackType.Size = new System.Drawing.Size(199, 26);
             this.selDamageAttackType.TabIndex = 8;
             this.selDamageAttackType.Text = "普通攻击";
             this.toolTip1.SetToolTip(this.selDamageAttackType, "攻击类型");
@@ -921,17 +1018,19 @@ namespace genshin_sim
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 123);
+            this.label4.Location = new System.Drawing.Point(9, 201);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 12);
+            this.label4.Size = new System.Drawing.Size(179, 18);
             this.label4.TabIndex = 7;
             this.label4.Text = "Defense Decreased: ";
             // 
             // txtDamageDefenseDecreased
             // 
-            this.txtDamageDefenseDecreased.Location = new System.Drawing.Point(137, 120);
+            this.txtDamageDefenseDecreased.Location = new System.Drawing.Point(206, 198);
+            this.txtDamageDefenseDecreased.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDamageDefenseDecreased.Name = "txtDamageDefenseDecreased";
-            this.txtDamageDefenseDecreased.Size = new System.Drawing.Size(134, 21);
+            this.txtDamageDefenseDecreased.Size = new System.Drawing.Size(199, 28);
             this.txtDamageDefenseDecreased.TabIndex = 6;
             this.txtDamageDefenseDecreased.Text = "0%";
             this.toolTip1.SetToolTip(this.txtDamageDefenseDecreased, "角色技能的防御减免");
@@ -940,9 +1039,10 @@ namespace genshin_sim
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 43);
+            this.label3.Location = new System.Drawing.Point(9, 64);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 12);
+            this.label3.Size = new System.Drawing.Size(152, 18);
             this.label3.TabIndex = 5;
             this.label3.Text = "Elemental Type: ";
             // 
@@ -958,9 +1058,10 @@ namespace genshin_sim
             "雷",
             "风",
             "岩"});
-            this.selDamageElementType.Location = new System.Drawing.Point(137, 40);
+            this.selDamageElementType.Location = new System.Drawing.Point(206, 60);
+            this.selDamageElementType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selDamageElementType.Name = "selDamageElementType";
-            this.selDamageElementType.Size = new System.Drawing.Size(134, 20);
+            this.selDamageElementType.Size = new System.Drawing.Size(199, 26);
             this.selDamageElementType.TabIndex = 4;
             this.selDamageElementType.Text = "物理";
             this.toolTip1.SetToolTip(this.selDamageElementType, "攻击的元素类型");
@@ -969,17 +1070,19 @@ namespace genshin_sim
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 96);
+            this.label2.Location = new System.Drawing.Point(9, 167);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 12);
+            this.label2.Size = new System.Drawing.Size(188, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "Additional Scaling: ";
             // 
             // txtDamageAdditionalScaling
             // 
-            this.txtDamageAdditionalScaling.Location = new System.Drawing.Point(137, 93);
+            this.txtDamageAdditionalScaling.Location = new System.Drawing.Point(206, 164);
+            this.txtDamageAdditionalScaling.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDamageAdditionalScaling.Name = "txtDamageAdditionalScaling";
-            this.txtDamageAdditionalScaling.Size = new System.Drawing.Size(134, 21);
+            this.txtDamageAdditionalScaling.Size = new System.Drawing.Size(199, 28);
             this.txtDamageAdditionalScaling.TabIndex = 2;
             this.txtDamageAdditionalScaling.Text = "0%";
             this.toolTip1.SetToolTip(this.txtDamageAdditionalScaling, "某些角色具有的独立倍率");
@@ -988,17 +1091,19 @@ namespace genshin_sim
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 69);
+            this.label1.Location = new System.Drawing.Point(9, 131);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 12);
+            this.label1.Size = new System.Drawing.Size(152, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Attack Scaling: ";
             // 
             // txtDamageAtkScaling
             // 
-            this.txtDamageAtkScaling.Location = new System.Drawing.Point(137, 66);
+            this.txtDamageAtkScaling.Location = new System.Drawing.Point(206, 128);
+            this.txtDamageAtkScaling.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDamageAtkScaling.Name = "txtDamageAtkScaling";
-            this.txtDamageAtkScaling.Size = new System.Drawing.Size(134, 21);
+            this.txtDamageAtkScaling.Size = new System.Drawing.Size(199, 28);
             this.txtDamageAtkScaling.TabIndex = 0;
             this.txtDamageAtkScaling.Text = "108%";
             this.toolTip1.SetToolTip(this.txtDamageAtkScaling, "角色技能的伤害倍率");
@@ -1011,9 +1116,11 @@ namespace genshin_sim
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox10.BackColor = System.Drawing.Color.White;
             this.groupBox10.Controls.Add(this.labDamageInfo);
-            this.groupBox10.Location = new System.Drawing.Point(289, 6);
+            this.groupBox10.Location = new System.Drawing.Point(434, 9);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(585, 518);
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox10.Size = new System.Drawing.Size(878, 777);
             this.groupBox10.TabIndex = 3;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Damage";
@@ -1024,9 +1131,10 @@ namespace genshin_sim
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labDamageInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labDamageInfo.Location = new System.Drawing.Point(3, 17);
+            this.labDamageInfo.Location = new System.Drawing.Point(4, 26);
+            this.labDamageInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labDamageInfo.Name = "labDamageInfo";
-            this.labDamageInfo.Size = new System.Drawing.Size(579, 498);
+            this.labDamageInfo.Size = new System.Drawing.Size(868, 747);
             this.labDamageInfo.TabIndex = 0;
             this.labDamageInfo.Text = "Damage Info:";
             // 
@@ -1039,9 +1147,11 @@ namespace genshin_sim
             this.groupBox11.Controls.Add(this.selEnemyLevel);
             this.groupBox11.Controls.Add(this.labEnemyName);
             this.groupBox11.Controls.Add(this.cmdEnemySelect);
-            this.groupBox11.Location = new System.Drawing.Point(6, 6);
+            this.groupBox11.Location = new System.Drawing.Point(9, 9);
+            this.groupBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(277, 254);
+            this.groupBox11.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox11.Size = new System.Drawing.Size(416, 381);
             this.groupBox11.TabIndex = 2;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Enemy";
@@ -1049,9 +1159,10 @@ namespace genshin_sim
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 229);
+            this.label6.Location = new System.Drawing.Point(9, 344);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 12);
+            this.label6.Size = new System.Drawing.Size(161, 18);
             this.label6.TabIndex = 7;
             this.label6.Text = "Element Applied: ";
             // 
@@ -1068,9 +1179,10 @@ namespace genshin_sim
             "风",
             "岩",
             "冰冻"});
-            this.selDamageEnemyElement.Location = new System.Drawing.Point(137, 226);
+            this.selDamageEnemyElement.Location = new System.Drawing.Point(206, 339);
+            this.selDamageEnemyElement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selDamageEnemyElement.Name = "selDamageEnemyElement";
-            this.selDamageEnemyElement.Size = new System.Drawing.Size(134, 20);
+            this.selDamageEnemyElement.Size = new System.Drawing.Size(199, 26);
             this.selDamageEnemyElement.TabIndex = 6;
             this.selDamageEnemyElement.Text = "无";
             this.toolTip1.SetToolTip(this.selDamageEnemyElement, "敌人携带的元素类型");
@@ -1081,9 +1193,11 @@ namespace genshin_sim
             this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox12.Controls.Add(this.labEnemyStat);
-            this.groupBox12.Location = new System.Drawing.Point(6, 73);
+            this.groupBox12.Location = new System.Drawing.Point(9, 110);
+            this.groupBox12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(265, 147);
+            this.groupBox12.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox12.Size = new System.Drawing.Size(398, 220);
             this.groupBox12.TabIndex = 3;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Base Stat";
@@ -1093,9 +1207,10 @@ namespace genshin_sim
             this.labEnemyStat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labEnemyStat.Location = new System.Drawing.Point(6, 17);
+            this.labEnemyStat.Location = new System.Drawing.Point(9, 26);
+            this.labEnemyStat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labEnemyStat.Name = "labEnemyStat";
-            this.labEnemyStat.Size = new System.Drawing.Size(253, 127);
+            this.labEnemyStat.Size = new System.Drawing.Size(380, 190);
             this.labEnemyStat.TabIndex = 0;
             this.labEnemyStat.Text = "Stat";
             // 
@@ -1104,10 +1219,11 @@ namespace genshin_sim
             this.selEnemyLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selEnemyLevel.BackColor = System.Drawing.Color.White;
-            this.selEnemyLevel.Location = new System.Drawing.Point(59, 43);
+            this.selEnemyLevel.Location = new System.Drawing.Point(88, 64);
+            this.selEnemyLevel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selEnemyLevel.Maximum = 100;
             this.selEnemyLevel.Name = "selEnemyLevel";
-            this.selEnemyLevel.Size = new System.Drawing.Size(212, 45);
+            this.selEnemyLevel.Size = new System.Drawing.Size(318, 69);
             this.selEnemyLevel.TabIndex = 2;
             this.selEnemyLevel.TickFrequency = 5;
             this.selEnemyLevel.Value = 1;
@@ -1118,9 +1234,10 @@ namespace genshin_sim
             this.labEnemyName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labEnemyName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labEnemyName.Location = new System.Drawing.Point(59, 17);
+            this.labEnemyName.Location = new System.Drawing.Point(88, 26);
+            this.labEnemyName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labEnemyName.Name = "labEnemyName";
-            this.labEnemyName.Size = new System.Drawing.Size(212, 23);
+            this.labEnemyName.Size = new System.Drawing.Size(317, 34);
             this.labEnemyName.TabIndex = 1;
             this.labEnemyName.Text = "Name: ";
             this.labEnemyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1130,10 +1247,11 @@ namespace genshin_sim
             this.cmdEnemySelect.BackColor = System.Drawing.Color.White;
             this.cmdEnemySelect.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cmdEnemySelect.BackgroundImage")));
             this.cmdEnemySelect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cmdEnemySelect.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.cmdEnemySelect.Location = new System.Drawing.Point(3, 17);
+            this.cmdEnemySelect.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cmdEnemySelect.Location = new System.Drawing.Point(4, 26);
+            this.cmdEnemySelect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdEnemySelect.Name = "cmdEnemySelect";
-            this.cmdEnemySelect.Size = new System.Drawing.Size(50, 50);
+            this.cmdEnemySelect.Size = new System.Drawing.Size(75, 75);
             this.cmdEnemySelect.TabIndex = 0;
             this.cmdEnemySelect.UseVisualStyleBackColor = false;
             this.cmdEnemySelect.Click += new System.EventHandler(this.cmdEnemySelect_Click);
@@ -1143,10 +1261,11 @@ namespace genshin_sim
             this.tabPage4.Controls.Add(this.groupBox14);
             this.tabPage4.Controls.Add(this.groupBox15);
             this.tabPage4.Controls.Add(this.gpEvolutionInfo);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 28);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(880, 530);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Size = new System.Drawing.Size(1324, 802);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Artifact Analysis";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1157,9 +1276,11 @@ namespace genshin_sim
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox14.BackColor = System.Drawing.Color.White;
             this.groupBox14.Controls.Add(this.labEvolutionConds);
-            this.groupBox14.Location = new System.Drawing.Point(3, 127);
+            this.groupBox14.Location = new System.Drawing.Point(4, 190);
+            this.groupBox14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(230, 397);
+            this.groupBox14.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox14.Size = new System.Drawing.Size(345, 596);
             this.groupBox14.TabIndex = 5;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "运行前提";
@@ -1167,9 +1288,10 @@ namespace genshin_sim
             // labEvolutionConds
             // 
             this.labEvolutionConds.AutoSize = true;
-            this.labEvolutionConds.Location = new System.Drawing.Point(7, 17);
+            this.labEvolutionConds.Location = new System.Drawing.Point(10, 26);
+            this.labEvolutionConds.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labEvolutionConds.Name = "labEvolutionConds";
-            this.labEvolutionConds.Size = new System.Drawing.Size(35, 12);
+            this.labEvolutionConds.Size = new System.Drawing.Size(53, 18);
             this.labEvolutionConds.TabIndex = 0;
             this.labEvolutionConds.Text = "Conds";
             // 
@@ -1181,9 +1303,11 @@ namespace genshin_sim
             this.groupBox15.Controls.Add(this.cmdEvolutionStart);
             this.groupBox15.Controls.Add(this.selEvolutionSpeed);
             this.groupBox15.Controls.Add(this.cmdEvolutionPause);
-            this.groupBox15.Location = new System.Drawing.Point(6, 6);
+            this.groupBox15.Location = new System.Drawing.Point(9, 9);
+            this.groupBox15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(227, 115);
+            this.groupBox15.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox15.Size = new System.Drawing.Size(340, 172);
             this.groupBox15.TabIndex = 4;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Command";
@@ -1191,26 +1315,29 @@ namespace genshin_sim
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(180, 97);
+            this.label8.Location = new System.Drawing.Point(270, 146);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 12);
+            this.label8.Size = new System.Drawing.Size(62, 18);
             this.label8.TabIndex = 5;
             this.label8.Text = "Better";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 97);
+            this.label7.Location = new System.Drawing.Point(6, 146);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 12);
+            this.label7.Size = new System.Drawing.Size(62, 18);
             this.label7.TabIndex = 4;
             this.label7.Text = "Faster";
             // 
             // cmdEvolutionStart
             // 
-            this.cmdEvolutionStart.Location = new System.Drawing.Point(6, 20);
+            this.cmdEvolutionStart.Location = new System.Drawing.Point(9, 30);
+            this.cmdEvolutionStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdEvolutionStart.Name = "cmdEvolutionStart";
-            this.cmdEvolutionStart.Size = new System.Drawing.Size(75, 23);
+            this.cmdEvolutionStart.Size = new System.Drawing.Size(112, 34);
             this.cmdEvolutionStart.TabIndex = 0;
             this.cmdEvolutionStart.Text = "Start";
             this.cmdEvolutionStart.UseVisualStyleBackColor = true;
@@ -1220,19 +1347,21 @@ namespace genshin_sim
             // 
             this.selEvolutionSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.selEvolutionSpeed.BackColor = System.Drawing.Color.White;
-            this.selEvolutionSpeed.Location = new System.Drawing.Point(6, 64);
+            this.selEvolutionSpeed.Location = new System.Drawing.Point(9, 96);
+            this.selEvolutionSpeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.selEvolutionSpeed.Maximum = 20;
             this.selEvolutionSpeed.Minimum = 1;
             this.selEvolutionSpeed.Name = "selEvolutionSpeed";
-            this.selEvolutionSpeed.Size = new System.Drawing.Size(215, 45);
+            this.selEvolutionSpeed.Size = new System.Drawing.Size(322, 69);
             this.selEvolutionSpeed.TabIndex = 3;
             this.selEvolutionSpeed.Value = 1;
             // 
             // cmdEvolutionPause
             // 
-            this.cmdEvolutionPause.Location = new System.Drawing.Point(87, 20);
+            this.cmdEvolutionPause.Location = new System.Drawing.Point(130, 30);
+            this.cmdEvolutionPause.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdEvolutionPause.Name = "cmdEvolutionPause";
-            this.cmdEvolutionPause.Size = new System.Drawing.Size(75, 23);
+            this.cmdEvolutionPause.Size = new System.Drawing.Size(112, 34);
             this.cmdEvolutionPause.TabIndex = 2;
             this.cmdEvolutionPause.Text = "Stop";
             this.cmdEvolutionPause.UseVisualStyleBackColor = true;
@@ -1245,9 +1374,11 @@ namespace genshin_sim
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gpEvolutionInfo.BackColor = System.Drawing.Color.White;
             this.gpEvolutionInfo.Controls.Add(this.labGroupBest);
-            this.gpEvolutionInfo.Location = new System.Drawing.Point(239, 6);
+            this.gpEvolutionInfo.Location = new System.Drawing.Point(358, 9);
+            this.gpEvolutionInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gpEvolutionInfo.Name = "gpEvolutionInfo";
-            this.gpEvolutionInfo.Size = new System.Drawing.Size(635, 518);
+            this.gpEvolutionInfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpEvolutionInfo.Size = new System.Drawing.Size(952, 777);
             this.gpEvolutionInfo.TabIndex = 3;
             this.gpEvolutionInfo.TabStop = false;
             this.gpEvolutionInfo.Text = "Info";
@@ -1255,9 +1386,10 @@ namespace genshin_sim
             // labGroupBest
             // 
             this.labGroupBest.AutoSize = true;
-            this.labGroupBest.Location = new System.Drawing.Point(6, 17);
+            this.labGroupBest.Location = new System.Drawing.Point(9, 26);
+            this.labGroupBest.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labGroupBest.Name = "labGroupBest";
-            this.labGroupBest.Size = new System.Drawing.Size(35, 12);
+            this.labGroupBest.Size = new System.Drawing.Size(53, 18);
             this.labGroupBest.TabIndex = 1;
             this.labGroupBest.Text = "info:";
             // 
@@ -1265,9 +1397,10 @@ namespace genshin_sim
             // 
             this.labGithubLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labGithubLink.AutoSize = true;
-            this.labGithubLink.Location = new System.Drawing.Point(805, 567);
+            this.labGithubLink.Location = new System.Drawing.Point(1208, 850);
+            this.labGithubLink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labGithubLink.Name = "labGithubLink";
-            this.labGithubLink.Size = new System.Drawing.Size(95, 12);
+            this.labGithubLink.Size = new System.Drawing.Size(143, 18);
             this.labGithubLink.TabIndex = 5;
             this.labGithubLink.TabStop = true;
             this.labGithubLink.Text = "View on Github!";
@@ -1279,36 +1412,37 @@ namespace genshin_sim
             this.imUserIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.imUserIcons.Images.SetKeyName(0, "add.png");
             // 
-            // selWeaponArtActive
+            // label9
             // 
-            this.selWeaponArtActive.AutoSize = true;
-            this.selWeaponArtActive.Location = new System.Drawing.Point(6, 148);
-            this.selWeaponArtActive.Name = "selWeaponArtActive";
-            this.selWeaponArtActive.Size = new System.Drawing.Size(126, 16);
-            this.selWeaponArtActive.TabIndex = 10;
-            this.selWeaponArtActive.Text = "Weapon Art Active";
-            this.selWeaponArtActive.UseVisualStyleBackColor = true;
-            this.selWeaponArtActive.CheckedChanged += new System.EventHandler(this.selWeaponArtActive_CheckedChanged);
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(9, 97);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(143, 18);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Attack Action: ";
             // 
-            // selArtifactArtActive
+            // selDamageAttackAction
             // 
-            this.selArtifactArtActive.AutoSize = true;
-            this.selArtifactArtActive.Location = new System.Drawing.Point(6, 170);
-            this.selArtifactArtActive.Name = "selArtifactArtActive";
-            this.selArtifactArtActive.Size = new System.Drawing.Size(138, 16);
-            this.selArtifactArtActive.TabIndex = 11;
-            this.selArtifactArtActive.Text = "Artifact Art Active";
-            this.selArtifactArtActive.UseVisualStyleBackColor = true;
-            this.selArtifactArtActive.CheckedChanged += new System.EventHandler(this.selArtifactArtActive_CheckedChanged);
+            this.selDamageAttackAction.FormattingEnabled = true;
+            this.selDamageAttackAction.Location = new System.Drawing.Point(206, 94);
+            this.selDamageAttackAction.Margin = new System.Windows.Forms.Padding(4);
+            this.selDamageAttackAction.Name = "selDamageAttackAction";
+            this.selDamageAttackAction.Size = new System.Drawing.Size(199, 26);
+            this.selDamageAttackAction.TabIndex = 13;
+            this.selDamageAttackAction.Text = "一段伤害";
+            this.toolTip1.SetToolTip(this.selDamageAttackAction, "攻击的动作");
+            this.selDamageAttackAction.SelectedIndexChanged += new System.EventHandler(this.selDamageAttackAction_SelectedIndexChanged);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 580);
+            this.ClientSize = new System.Drawing.Size(1360, 870);
             this.Controls.Add(this.labGithubLink);
             this.Controls.Add(this.tabMain);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Genshin Impact Damage Simulator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -1461,6 +1595,8 @@ namespace genshin_sim
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox selArtifactArtActive;
         private System.Windows.Forms.CheckBox selWeaponArtActive;
+        private System.Windows.Forms.ComboBox selDamageAttackAction;
+        private System.Windows.Forms.Label label9;
     }
 }
 

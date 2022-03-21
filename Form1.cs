@@ -177,8 +177,16 @@ namespace genshin_sim
                 $"草属性伤害加成: {waifu_now.Dendro:0.0%}\r\n" +
                 $"风属性伤害加成: {waifu_now.Anemo:0.0%}\r\n" +
                 $"治疗加成: {waifu_now.Healing:0.0%}\r\n";
-
+            refresh_attack_actions();
             refresh_damage_info();
+        }
+
+        private void refresh_attack_actions()
+        {
+            if (waifu_now.Talent != null)
+            {
+                selDamageAttackAction.Items.AddRange(waifu_now.Talent.AttackTalent1.Actions.Select(x => x.ActionName).ToArray());
+            }
         }
 
         private void selCharacterLevel_Scroll(object sender, EventArgs e)
@@ -1127,6 +1135,11 @@ namespace genshin_sim
             {
                 sim_cond &= (SpecialCond)(0xffff_ffff_ffdf_ffff);
             }
+        }
+
+        private void selDamageAttackAction_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtDamageAtkScaling.Text = waifu_now.Talent.AttackTalent1.Actions[selDamageAttackAction.SelectedIndex].Scales[0].ToString("0.00%");
         }
     }
 }

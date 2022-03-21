@@ -468,8 +468,60 @@ namespace genshin_sim
                 new Affix(AffixAttr.pGeo, WaifuData.albedo_geo_dmg_bonus, 0),
                 new Affix(AffixAttr.pCRD, WaifuData.albedo_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.albedo_crit_rate, 0),
-            } ,
-            new List<Talent>()
+            },
+            new WaifuTalent(
+                new AttackTalent("普通攻击·西风剑术·白", 1, new TypedAction[] { 
+                    new TypedAction("一段伤害", ActionType.NormalAttack, new Action(new List<double[]> {
+                        new double[] { 0.3674, 0.3973, 0.4272, 0.4998, 0.534, 0.581, 0.628, 0.675, 0.7262, 0.785, 0.8541, 0.9231, 0.9922, 1.0676,  },
+                    })),
+                    new TypedAction("二段伤害", ActionType.NormalAttack, new Action(new List<double[]> {
+                        new double[] { 0.3674, 0.3973, 0.4272, 0.4998, 0.534, 0.581, 0.628, 0.675, 0.7262, 0.785, 0.8541, 0.9231, 0.9922, 1.0676,  },
+                    })),
+                    new TypedAction("三段伤害", ActionType.NormalAttack, new Action(new List<double[]> {
+                        new double[] { 0.4745, 0.5132, 0.5518, 0.6456, 0.6898, 0.7504, 0.8111, 0.8718, 0.9381, 1.0139, 1.1032, 1.1924, 1.2816, 1.3789,  },
+                    })),
+                    new TypedAction("四段伤害", ActionType.NormalAttack, new Action(new List<double[]> {
+                        new double[] { 0.4975, 0.538, 0.5785, 0.6768, 0.7231, 0.7868, 0.8504, 0.914, 0.9835, 1.063, 1.1565, 1.2501, 1.3436, 1.4457,  },
+                    })),
+                    new TypedAction("五段伤害", ActionType.NormalAttack, new Action(new List<double[]> {
+                        new double[] { 0.6207, 0.6713, 0.7218, 0.8445, 0.9022, 0.9816, 1.061, 1.1404, 1.227, 1.3263, 1.443, 1.5597, 1.6764, 1.8038,  },
+                    })),
+                    new TypedAction("重击伤害", ActionType.ChargedAttack, new Action(new List<double[]> {
+                        new double[] { 0.473, 0.5115, 0.55, 0.6435, 0.6875, 0.748, 0.8085, 0.869, 0.935, 1.0106, 1.0996, 1.1885, 1.2774, 1.3745,  },
+                        new double[] { 0.602, 0.651, 0.7, 0.819, 0.875, 0.952, 1.029, 1.106, 1.19, 1.2862, 1.3994, 1.5126, 1.6258, 1.7493,  },
+                    })),
+                    new TypedAction("下坠期间伤害", ActionType.PlungingAttack, new Action(new List<double[]> {
+                        new double[] { 0.6393, 0.6914, 0.7434, 0.8698, 0.9293, 1.011, 1.0928, 1.1746, 1.2638, 1.353, 1.4422, 1.5314, 1.6206, 1.7098,  },
+                    })),
+                    new TypedAction("低空坠地伤害", ActionType.LowPlungAttack, new Action(new List<double[]> {
+                        new double[] { 1.2784, 1.3824, 1.4865, 1.7392, 1.8581, 2.0216, 2.1851, 2.3486, 2.527, 2.7054, 2.8838, 3.0622, 3.2405, 3.4189,  },
+                    })),
+                    new TypedAction("高空坠地伤害", ActionType.HighPlungAttack, new Action(new List<double[]> {
+                        new double[] { 1.5968, 1.7267, 1.8567, 2.1723, 2.3209, 2.5251, 2.7293, 2.9336, 3.1564, 3.3792, 3.602, 3.8248, 4.0476, 4.2704,  },
+                    })),
+
+                }),
+                new AttackTalent("创生法·拟造阳华", 1, new TypedAction[]
+                {
+                    new TypedAction("技能伤害", ActionType.ElementSkill, new Action(new List<double[]> {
+                        new double[] { 1.304, 1.4018, 1.4996, 1.7278, 1.8256, 1.956, 2.0864, 2.2168, 2.3472, 2.4776, 2.608, 2.771, 2.934, 3.097,  },
+                    })),
+                    new TypedAction("刹那之花伤害", ActionType.ElementSkill, new Action(new List<double[]> {
+                        new double[] { 1.304, 1.4018, 1.4996, 1.7278, 1.8256, 1.956, 2.0864, 2.2168, 2.3472, 2.4776, 2.608, 2.771, 2.934, 3.097,  },
+                    }, WaifuStat.DEF)),
+                }),
+                new AttackTalent("诞生式·大地之潮", 1, new TypedAction[]
+                {
+                    new TypedAction("爆发伤害", ActionType.ElementBurst, new Action(new List<double[]> {
+                        new double[] { 3.672, 3.9474, 4.2228, 4.8654, 5.1408, 5.508, 5.8752, 6.2424, 6.6096, 6.9768, 7.344, 7.803, 8.262, 8.721,  },
+                    })),
+                    new TypedAction("生灭之花", ActionType.ElementBurst, new Action(new List<double[]> {
+                        new double[] { 0.72, 0.774, 0.828, 0.954, 1.008, 1.08, 1.152, 1.224, 1.296, 1.368, 1.44, 1.53, 1.62, 1.71,  },
+                    })),
+                }),
+                new PassiveTalent("白垩色的威压", new Affix[] { new Affix(AffixAttr.pDMG, 0.25) }, "创生法·拟造阳华的刹那之花对生命值低于50%的敌人造成的伤害提高25%。"),
+                new PassiveTalent("瓶中人的天慧", new Affix[] { new Affix(AffixAttr.ELM, 125) }, "释放诞生式·大地之潮时，使附近的队伍中角色的元素精通提高125点，持续10秒。"),
+                new PassiveTalent("天才的发现", new Affix[] { new Affix(AffixAttr.NoEffect, 0) }, "合成武器突破素材时，有10%概率获得2倍产出。"))
         );
 
         public static Waifu Amber = new Waifu(
@@ -485,7 +537,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.amber_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.amber_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Keqing = new Waifu(
@@ -500,7 +552,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.keqing_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.keqing_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Ayaka = new Waifu(
@@ -515,7 +567,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.ayaka_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.ayaka_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Aloy = new Waifu(
@@ -531,7 +583,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.aloy_cryo_dmg_bonus, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.albedo_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Barbara = new Waifu(
@@ -547,7 +599,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.barbara_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.barbara_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Beidou = new Waifu(
@@ -563,7 +615,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.beidou_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.beidou_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Bennett = new Waifu(
@@ -579,7 +631,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.benne_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.benne_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Chongyun = new Waifu(
@@ -595,7 +647,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.chongyun_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.chongyun_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Diluc = new Waifu(
@@ -610,7 +662,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.diluc_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.diluc_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Diona = new Waifu(
@@ -626,7 +678,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.diona_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.diona_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Eula = new Waifu(
@@ -641,7 +693,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.eula_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.eula_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Fischl = new Waifu(
@@ -657,7 +709,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.fisc_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.fisc_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Ganyu = new Waifu(
@@ -672,7 +724,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.ganyu_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.ganyu_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Hutao = new Waifu(
@@ -687,7 +739,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.hutao_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.hutao_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Jean = new Waifu(
@@ -703,7 +755,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.jean_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.jean_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Kaedehara = new Waifu(
@@ -719,7 +771,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.kazuha_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.kazuha_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Kaeya = new Waifu(
@@ -735,7 +787,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.kaeya_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.kaeya_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Klee = new Waifu(
@@ -751,7 +803,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.klee_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.klee_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Lisa = new Waifu(
@@ -767,7 +819,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.lisa_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.lisa_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Mona = new Waifu(
@@ -783,7 +835,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.mona_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.mona_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Ningguang = new Waifu(
@@ -799,7 +851,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.ningguang_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.ningguang_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Noelle = new Waifu(
@@ -815,7 +867,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.noelle_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.noelle_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Qiqi = new Waifu(
@@ -831,7 +883,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.qiqi_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.qiqi_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Raiden = new Waifu(
@@ -847,7 +899,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.shougun_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.shougun_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Razor = new Waifu(
@@ -863,7 +915,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.razor_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.razor_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Rosaraia = new Waifu(
@@ -879,7 +931,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.rosaria_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.rosaria_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Kokomi = new Waifu(
@@ -895,7 +947,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.kokomi_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.kokomi_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Sayu = new Waifu(
@@ -911,7 +963,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.sayu_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.sayu_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Sucrose = new Waifu(
@@ -927,7 +979,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.sucrose_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.sucrose_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Tartaglia = new Waifu(
@@ -943,7 +995,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.tartaglia_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.tartaglia_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Traveler = new Waifu(
@@ -959,7 +1011,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.traveler_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.traveler_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Venti = new Waifu(
@@ -975,7 +1027,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.venti_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.venti_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Xiangling = new Waifu(
@@ -991,7 +1043,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.xiangling_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.xiangling_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Xiao = new Waifu(
@@ -1006,7 +1058,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.xiao_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.xiao_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Xingqiu = new Waifu(
@@ -1022,7 +1074,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.xingqiu_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.xingqiu_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
         
         public static Waifu Xinyan = new Waifu(
@@ -1038,7 +1090,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.xinyan_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.xinyan_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Yanfei = new Waifu(
@@ -1054,7 +1106,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.feiyan_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.feiyan_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Yoimiya = new Waifu(
@@ -1069,7 +1121,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.yoimiya_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.yoimiya_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu Zhongli = new Waifu(
@@ -1085,7 +1137,7 @@ namespace genshin_sim
                 new Affix(AffixAttr.pCRD, WaifuData.zhongli_crit_dmg, 0),
                 new Affix(AffixAttr.pCRI, WaifuData.zhongli_crit_rate, 0),
             } ,
-            new List<Talent>()
+            null
         );
 
         public static Waifu[] Waifus = new Waifu[] 

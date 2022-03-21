@@ -67,7 +67,7 @@ namespace genshin_sim
         public List<Affix> BaseStat {  get; private set; }
         public Weapon Weapon { get; private set; }
         public WeaponType WeaponType { get; private set; }
-        public List<Talent> Talents { get; private set; }
+        public WaifuTalent Talent { get; private set; }
         public Artifact[] Artifacts { get; private set; }
         public List<SpecialCondEffect> Effects { get; private set; }
         private List<Affix> stat = new List<Affix>();
@@ -323,12 +323,12 @@ namespace genshin_sim
                 );
         }
 
-        public Waifu(string name, ElementalType vision, WeaponType weapon_type, List<Affix> stat, List<Talent> talents, int level = 0)
+        public Waifu(string name, ElementalType vision, WeaponType weapon_type, List<Affix> stat, WaifuTalent talent, int level = 0)
         {
             this.Name = name;
             this.Vision = vision;
             this.WeaponType = weapon_type;
-            this.Talents = talents;
+            this.Talent = talent;
             this.BaseStat = stat;
             this.level = level;
             this.Artifacts = new Artifact[5];
@@ -354,24 +354,129 @@ namespace genshin_sim
                 return Convert.ToInt32(this.Level);
             }
         }
+
+        public void SetTalentLevel(int index, int lv)
+        {
+            if (this.Talent != null)
+            {
+                if (index == 0)
+                {
+                    this.Talent.AttackTalent1.SetLevel(lv);
+                }
+            }
+        }
+        
     }
 
-    public class Talent
+    public class WaifuTalent
+    {
+        public AttackTalent AttackTalent1 { get; private set; }
+        public AttackTalent AttackTalent2 { get; private set; }
+        public AttackTalent AttackTalent3 { get; private set; }
+        public PassiveTalent PassiveTalent1 { get; private set; }
+        public PassiveTalent PassiveTalent2 { get; private set; }
+        public PassiveTalent PassiveTalent3 { get; private set; }
+
+        public WaifuTalent(AttackTalent talent1, AttackTalent talent2, AttackTalent talent3, PassiveTalent talent4, PassiveTalent talent5, PassiveTalent talent6)
+        {
+            this.AttackTalent1 = talent1;
+            this.AttackTalent2 = talent2;
+            this.AttackTalent3 = talent3;
+            this.PassiveTalent1 = talent4;
+            this.PassiveTalent2 = talent5;
+            this.PassiveTalent3 = talent6;
+        }
+    }
+
+    public class AttackTalent
     {
         public string Name { get; private set; }
-        public List<double> Actions { get; private set; }
-
-        public Talent(string name)
+        public int Level { get; private set; }
+        public List<TypedAction> Actions { get; private set; }
+        public AttackTalent(string name, int level, TypedAction[] attions)
         {
             this.Name = name;
-            this.Actions = new List<double>();
+            this.Level = level;
+            this.Actions = new List<TypedAction>();
+            this.Actions.AddRange(attions);
         }
 
-        public Talent(string name, double[] actions)
+        public void SetLevel(int lv)
+        {
+            if (lv > 0 && lv < 16)
+            {
+                this.Level = lv;
+                foreach (var action in Actions)
+                {
+                    action.Level = lv;
+                }
+            }
+        }
+    }
+
+    public class PassiveTalent
+    {
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+        public bool Enable { get; private set; }
+        public List<Affix> Affixes { get; private set; }
+        public PassiveTalent(string name, Affix[] affixes, string desc)
         {
             this.Name = name;
-            this.Actions = new List<double>();
-            this.Actions.AddRange(actions);
+            this.Affixes = new List<Affix>();
+            this.Affixes.AddRange(affixes);
+            this.Description = desc;
+            this.Enable = true;
+        }
+    }
+
+    public enum ActionType
+    {
+        NormalAttack,
+        ChargedAttack,
+        PlungingAttack,
+        LowPlungAttack,
+        HighPlungAttack,
+        ElementSkill,
+        ElementBurst,
+    }
+
+    public class TypedAction
+    {
+        public string ActionName { get; private set; }
+        public double[] Scales
+        {
+            get
+            {
+                double[] tmp = new double[Action.Scales.Count];
+                for (int i = 0; i < tmp.Length; i++)
+                {
+                    tmp[i] = Action.Scales[Level - 1][i];
+                }
+                return tmp;
+            }
+        }
+        public Action Action { get; private set; }
+        public ActionType Type { get; private set; }
+        public int Level = 1;
+        public TypedAction(string name, ActionType type, Action action)
+        {
+            this.ActionName = name;
+            this.Action = action;
+            this.Type = type;
+        }
+
+    }
+
+    public class Action
+    {
+        public List<double[]> Scales { get; private set; }
+        public WaifuStat BaseStat { get; private set; }
+
+        public Action(List<double[]> scales, WaifuStat baseStat = WaifuStat.ATK)
+        {
+            this.Scales = scales;
+            this.BaseStat = baseStat;
         }
     }
 }
